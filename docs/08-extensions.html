@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Common Extensions — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Common T&amp;Q Extensions</h1>
+      <p class="subtitle">Scoping, sizing, and best practices for extending the T&amp;Q application</p>
+    </div>
+    <div class="content-body">
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">When and How to Extend</span>
+          <span class="tsd-step-desc">You'll learn which extensions are most common, how to scope and size them, and how to protect the upgrade path.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Extension Examples</span>
+          <span class="tsd-step-desc">Instructor walks through two or three real extension examples — how they were scoped, built, and documented.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Scope an Extension</span>
+          <span class="tsd-step-desc">Given the CloudWorks scenario, identify one extension the customer would likely need. Scope it: what does it do, how long, what risk?</span>
+        </div>
+      </div>
+
+      <h2>Configure vs. Extend — Decision Framework</h2>
+      <p>Before writing a single line of custom logic, work through this decision tree with the customer. Extensions are expensive to build and to maintain across upgrades. Exhaust configuration options first.</p>
+
+      <div class="decision-tree">
+        <div class="dt-question">Does the base app include this capability at all?</div>
+        <div class="dt-branches">
+          <div class="dt-branch">
+            <div class="dt-branch-label dt-no">No</div>
+            <div class="dt-branch-content">
+              <div class="dt-answer dt-extend">Extension required — scope it, size it, document it from the start.</div>
+            </div>
+          </div>
+          <div class="dt-branch">
+            <div class="dt-branch-label dt-yes">Yes</div>
+            <div class="dt-branch-content">
+              <div class="dt-question">Is the customer's requirement a configuration setting in the Configurator?</div>
+              <div class="dt-branches">
+                <div class="dt-branch">
+                  <div class="dt-branch-label dt-yes">Yes</div>
+                  <div class="dt-answer dt-configure">Configure it. Go back to the Configurator — this is a generation-time decision.</div>
+                </div>
+                <div class="dt-branch">
+                  <div class="dt-branch-label dt-no">No</div>
+                  <div class="dt-question">Can the customer change their <em>process</em> to match what the base app provides?</div>
+                  <div class="dt-branches">
+                    <div class="dt-branch">
+                      <div class="dt-branch-label dt-yes">Yes</div>
+                      <div class="dt-answer dt-configure">Recommend the process change. This is a consulting conversation, not a build conversation. Changing the process protects their upgrade path forever.</div>
+                    </div>
+                    <div class="dt-branch">
+                      <div class="dt-branch-label dt-no">No</div>
+                      <div class="dt-question">Is this a small calibration (label rename, add an export action, minor formula tweak)?</div>
+                      <div class="dt-branches">
+                        <div class="dt-branch">
+                          <div class="dt-branch-label dt-yes">Yes</div>
+                          <div class="dt-answer dt-configure">Post-gen configuration — handle it during Model Readiness. Not a project extension scope item.</div>
+                        </div>
+                        <div class="dt-branch">
+                          <div class="dt-branch-label dt-no">No</div>
+                          <div class="dt-answer dt-extend">Extension required — but build it <strong>cleanly</strong>: net-new modules, EXT_ naming prefix, full documentation. Never modify base app line items.</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout-tip" style="margin-top:1rem;">
+        <span class="callout-label">💡 The Golden Rule</span>
+        <p>When a customer shows you a custom spreadsheet column and says "we need this in Anaplan" — your first question is always: <strong>"Does the base app already provide this?"</strong> Show them the base app page that covers it before agreeing to build anything. This conversation alone eliminates a large fraction of extensions on every project.</p>
+      </div>
+
+      <div class="callout-note">
+        <strong>No Zero-Effort Implementations</strong><br>
+        Even when the base app covers a use case, there is always calibration effort to fit it to a specific customer. The "pure configure, no extensions" path has happened exactly once — for a customer with no existing process who took whatever the app gave them. For everyone else: expect extensions.
+      </div>
+
+      <h2>Extension Best Practices</h2>
+      <p>How you build extensions matters as much as what you build. Follow these principles to protect the upgrade path and reduce long-term maintenance burden:</p>
+      <ol>
+        <li><strong>Document everything.</strong> Every extension should be noted — module name, purpose, what base app component it relates to. Use a naming convention (e.g., prefix extension line items with "EXT_") so they're easy to identify.</li>
+        <li><strong>Keep extensions separate from baseline.</strong> Don't modify base app line items. Create net-new line items that reference or extend the base. When an upgrade ships, your net-new items are untouched.</li>
+        <li><strong>Create net-new line items instead of modifying base formulas.</strong> If you need different logic than what the base provides: create a new line item with your formula, and reference that new item downstream. The base item remains intact and will be correctly overwritten on upgrade.</li>
+        <li><strong>Anticipate extensions during discovery.</strong> Use the extension list and discovery questions below to identify likely extensions before the project starts. Scope them explicitly — don't let them emerge as surprises mid-build.</li>
+        <li><strong>Challenge every extension request.</strong> One-third to one-half of initially identified extensions can often be addressed using base app functionality — either used differently or explained to the customer as a better practice. Always validate whether the base app can handle it before building net-new.</li>
+      </ol>
+
+      <h2>Common Extensions by Functional Area</h2>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Area</th>
+            <th>Extension</th>
+            <th>Size</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Resource &amp; Quota</td>
+            <td>Position Management</td>
+            <td>M</td>
+            <td>Insert a "position" entity between territory and employee. Common for enterprise customers with headcount planning tied to roles rather than individuals. Connects well to Capacity Planning output.</td>
+          </tr>
+          <tr>
+            <td>Quota</td>
+            <td>Currency Conversion</td>
+            <td>S–M</td>
+            <td>Required when customer sets targets in USD but reps operate in local currencies. Applies conversion rate to quota reporting and acknowledgement output.</td>
+          </tr>
+          <tr>
+            <td>Quota</td>
+            <td>Custom Proration Logic</td>
+            <td>S–M</td>
+            <td>When customer's proration rules differ from the system default (e.g., hire date rounding to quarter vs. month, specific LOA rules, different handling for promotions).</td>
+          </tr>
+          <tr>
+            <td>Quota</td>
+            <td>Weighted Allocation Blend</td>
+            <td>S</td>
+            <td>Allow admins to set a percentage weight for each allocation method (e.g., 60% prior year, 40% pipeline). Just a line item and subset reference — small effort, high value.</td>
+          </tr>
+          <tr>
+            <td>Quota</td>
+            <td>Quota Letter / Acknowledgement</td>
+            <td>M–L</td>
+            <td>Basic: rep-specific page showing their quota composition for review. Advanced: DocuSign connector integration for a signed acknowledgement. DocuSign connector maps quota values to a template and captures a digital signature.</td>
+          </tr>
+          <tr>
+            <td>Quota</td>
+            <td>Per-Role Raw/Discrete Selection</td>
+            <td>S</td>
+            <td>Base app applies raw vs. discrete quota universally per level. Extension allows selecting raw or discrete per role per quota type, giving managers more nuanced control.</td>
+          </tr>
+          <tr>
+            <td>Account Assignment</td>
+            <td>Account Ownership Export</td>
+            <td>S</td>
+            <td>The export module exists out of the box (account × territory assignment); it just needs an export action added. Required to sync account ownership back to CRM at end of planning.</td>
+          </tr>
+          <tr>
+            <td>Account Assignment</td>
+            <td>Split Account Management</td>
+            <td>M</td>
+            <td>Allows an account to be assigned to multiple territories with defined split percentages. Coming in V3 natively; requires extension in V2.</td>
+          </tr>
+          <tr>
+            <td>Account Assignment</td>
+            <td>Geomapping Enhancement</td>
+            <td>M</td>
+            <td>Requires a cleaned-up geography list with correct boundary polygons for the mapping widget. Customer must have latitude/longitude on account records. Source available from Anaplan's geography list resource.</td>
+          </tr>
+          <tr>
+            <td>Account Assignment</td>
+            <td>Boomerang Account/Resource</td>
+            <td>M</td>
+            <td>V3's time-intersection model loses day-level precision for assignments. If a rep leaves and returns within the same month, or an account moves mid-month, extension needed to handle day-level effective dating.</td>
+          </tr>
+          <tr>
+            <td>Territory</td>
+            <td>Child Follows Parent</td>
+            <td>S</td>
+            <td>When reparenting a territory, all child territories and their account assignments move with it. Base app only moves the selected territory. Simple reference update extension.</td>
+          </tr>
+          <tr>
+            <td>Target</td>
+            <td>Target Setting by Exception</td>
+            <td>M</td>
+            <td>Some managers want to set targets for only select territories rather than running the full allocation across all. Requires a flag/selector layer and filtered allocation logic.</td>
+          </tr>
+          <tr>
+            <td>Reporting</td>
+            <td>Custom Manager Dashboards</td>
+            <td>S–XL</td>
+            <td>Almost always required. Base dashboards are conversation starters. Final dashboards are customer-specific, incorporating their preferred KPIs, hierarchy breakdowns, and visual layout.</td>
+          </tr>
+          <tr>
+            <td>Admin</td>
+            <td>Parsed Data Load Actions</td>
+            <td>S</td>
+            <td>Replace the generated "load everything" bulk action with per-object actions (Account load, Employee load, etc.). Improves error management and gives admins control over what to refresh and when.</td>
+          </tr>
+          <tr>
+            <td>Data</td>
+            <td>Custom Data Objects</td>
+            <td>S per object</td>
+            <td>Additional hierarchical lists or flat data feeds beyond the standard objects (accounts, employees, opportunities, orders, territories). Common examples: Business Unit hierarchy, Partner hierarchy, custom scoring data.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Upgrade Path for Extensions</h2>
+      <p>When a new version of the T&amp;Q app ships, here's how to manage the upgrade with extensions in place:</p>
+      <ol>
+        <li><strong>Review the release notes.</strong> Understand what modules, line items, and UX pages are being updated in the new version.</li>
+        <li><strong>For extensions on untouched base modules</strong>: No action needed. Your net-new modules are unaffected by the upgrade.</li>
+        <li><strong>For base line items you needed to reference differently</strong>: Compare the new version's formula against what was there before. If the logic improved, update your extension's reference. If it's the same, no action needed.</li>
+        <li><strong>For extensions that added new modules</strong>: No impact from upgrade. They exist outside the base app's module set.</li>
+        <li><strong>Use the template app to preview changes.</strong> Before upgrading a customer, spin up the new template version and compare it side-by-side with the current customer model. Identify what's different, then plan the merge.</li>
+        <li><strong>Current reality</strong>: Until Anaplan's Path/AAF framework matures, upgrades are essentially a faster re-implementation. Well-documented, cleanly separated extensions make this significantly faster — you know exactly what to move over.</li>
+      </ol>
+
+      <div class="callout-warning">
+        <strong>Modified Base App Line Items</strong><br>
+        If you modified a base app line item's formula (not best practice, but it happens), that modification will be overwritten when the app is upgraded. This is why creating net-new line items is critical. You can reference a base item in your extension — just don't edit the base item itself.
+      </div>
+
+      <h2>Pre-Project Discovery Questions</h2>
+      <p>Use these questions before or at project kickoff to assess T&amp;Q fit and identify likely extensions early. ⭐ marks the highest-priority questions.</p>
+
+      <h3>Territory Structure</h3>
+      <ul>
+        <li>⭐ Do you have a defined territory hierarchy today, or do your reps "own" accounts directly?</li>
+        <li>⭐ How many levels does your territory hierarchy have? Does this differ by region (e.g., 4 levels in Americas, 3 in EMEA)?</li>
+        <li>Is your territory hierarchy finalized and approved, or still under discussion?</li>
+        <li>Do accounts move between territories mid-year? How often?</li>
+        <li>Do you have global accounts or named accounts with special coverage requirements?</li>
+      </ul>
+
+      <h3>Quota &amp; Target Setting</h3>
+      <ul>
+        <li>⭐ What planning measures do you set targets against? (e.g., Bookings, New ARR, Renewals, Product-specific). How many?</li>
+        <li>⭐ At what level does Finance provide initial targets — region, area, or district?</li>
+        <li>⭐ What time granularity are targets provided at — annual or quarterly?</li>
+        <li>Do you set targets by product or product family? For how many products?</li>
+        <li>How do you handle over-allocation? Is there a standard uplift percentage per level?</li>
+        <li>Do you have a formal target approval workflow today? Who approves at each level?</li>
+        <li>Do you need quota acknowledgement (rep sign-off)? Is DocuSign in scope?</li>
+      </ul>
+
+      <h3>Rep Coverage &amp; Assignments</h3>
+      <ul>
+        <li>⭐ How do you handle in-year changes? (New hires, attrition, promotions, LOA, account transfers)</li>
+        <li>Do you use overlay roles (product specialists, solution engineers, customer success)? At which hierarchy levels?</li>
+        <li>Do you use role-based quotas (all reps with the same role in the same region share the same quota)?</li>
+        <li>Do any reps cover multiple territories simultaneously?</li>
+      </ul>
+
+      <h3>Data &amp; Integration</h3>
+      <ul>
+        <li>⭐ What is your current data source for accounts, opportunities, and territory hierarchy?</li>
+        <li>Do you have an existing Anaplan COE with a Data Hub? Or is this greenfield?</li>
+        <li>Do your account records include latitude and longitude attributes?</li>
+        <li>Do you have unique identifiers on all key objects (accounts, employees, territories)?</li>
+        <li>How frequently does account data need to refresh in the planning tool?</li>
+      </ul>
+
+      <h3>Process Maturity &amp; Fit</h3>
+      <ul>
+        <li>⭐ Are stakeholders available and empowered to make decisions during the project? What is their availability (hours/week)?</li>
+        <li>Do you have a designated COE owner or admin who will maintain the app post-go-live?</li>
+        <li>How do you currently manage T&amp;Q planning today (Excel, legacy system, other Anaplan model)?</li>
+        <li>Is there organizational appetite to adopt Anaplan best practices, or do you need the tool to mirror your existing process exactly?</li>
+        <li>What does your ICM process look like today? (Sets up the future ICM expansion conversation)</li>
+      </ul>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Scope an Extension</span>
+        <p>Return to the CloudWorks scenario. Based on what you know about their setup:</p>
+        <ul>
+          <li>Identify one extension the customer would likely request (look at the discovery questions for hints).</li>
+          <li>Write a one-sentence scope statement: "We will build X to support Y, using Z approach."</li>
+          <li>Estimate the effort in days. What makes it more complex? What simplifies it?</li>
+          <li>What naming convention and documentation would you use to protect the upgrade path?</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

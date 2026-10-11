@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacity Model Review — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Capacity Planning Model Review</h1>
+      <p class="subtitle">Understanding the generated Capacity model using CoModeler</p>
+      <div class="badge-row">
+        <span class="content-badge">Capacity Module</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>The Capacity model's complexity lives in the ramp calculation logic and the tops-down/bottoms-up connection. CoModeler is particularly useful here because the formula chains are longer than in T&amp;Q or Segmentation.</p>
+
+      <h2>Key Capacity Modules</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Module</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>HC Hiring Plan</td><td>The bottoms-up hiring plan input — month-by-month by role and geo</td></tr>
+            <tr><td>HC Revenue Projection</td><td>Converts headcount plan to projected revenue output via ramp profiles</td></tr>
+            <tr><td>HC Tops-Down NTE</td><td>Finance guardrails — NTE ceilings per geo and role family</td></tr>
+            <tr><td>HC Ramp Profile</td><td>Productivity ramp table by role — foundation of all revenue calculations</td></tr>
+            <tr><td>HC Coverage Ratios</td><td>Role-to-account ratios used to calculate suggested headcount</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>CoModeler Lab A — Document the Hiring Plan Module</h2>
+      <p>Generate a line item dictionary for the HC Hiring Plan module to understand the inputs and outputs of the bottoms-up hiring plan.</p>
+
+      <ol class="lab-steps">
+        <li>Open the <strong>Capacity demo app</strong> in your partner workspace.</li>
+        <li>Navigate to the <strong>HC Hiring Plan</strong> module.</li>
+        <li>Open CoModeler and prompt: <em>"Generate a line item dictionary for this module. Include name, formula summary, data type, and what downstream modules depend on each line item."</em></li>
+        <li>Identify which line item represents planned new hires by month and which line item represents cumulative headcount.</li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which module reads from HC Hiring Plan to calculate projected revenue? What is the key formula that connects a hire date to a revenue contribution?
+      </div>
+
+      <h2>CoModeler Lab C — Explain the Ramp-to-Revenue Logic</h2>
+      <p>Use CoModeler to understand exactly how the ramp profile converts a hire date into a monthly revenue contribution.</p>
+
+      <ol class="lab-steps">
+        <li>Launch CoModeler in the Capacity app.</li>
+        <li>Ask: <em>"If I hire a Commercial AE on March 15th, and the ramp profile is 0% month 1, 30% month 2, 70% month 3, 100% month 4+, what is the projected revenue contribution for April, May, June, and July? Walk me through the exact calculation."</em></li>
+        <li>Follow up: <em>"How does the hire-date-to-ramp rule work — what is the cutoff rule for whether ramp starts in the hire month or the next month?"</em></li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        A hire on the 20th of March — does ramp start in March or April? What is the revenue impact of this decision over a 12-month planning horizon for a $1M quota AE?
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

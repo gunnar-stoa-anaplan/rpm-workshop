@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: CoModeler — Segmentation — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: CoModeler</h1>
+      <p class="subtitle">Using CoModeler to document and understand the Segmentation model</p>
+      <div class="badge-row">
+        <span class="content-badge">Segmentation Module</span>
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Use CoModeler to explore the generated model structure. These labs are designed to produce <strong>predictable, verifiable outputs</strong> — each one has a specific question you should be able to answer when done.</p>
+
+      <div class="callout-important">
+        <span class="callout-label">⚠ Key Concept: UCP (Unacceptable Customer Profile)</span>
+        <p><strong>UCP is not a segmentation category.</strong> It defines which accounts should be <strong>excluded from ALL planning activities</strong> before segmentation even begins.</p>
+        <p>Accounts flagged as UCP are removed from the addressable universe upfront — they will not receive a segment assignment, will not appear in T&amp;Q territory carving, and will not be counted in Capacity coverage ratios. This is a design decision made at the start of the implementation: identify and exclude bad-fit accounts first, so all planning effort is focused on the valid target market.</p>
+        <p>UCP rules must be managed carefully — an overly broad UCP rule can accidentally exclude accounts that should be in your plan.</p>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Access</span>
+        <p>CoModeler is available within Anaplan. Open any module in the app → look for the CoModeler icon in the toolbar. Complete Lab A before Lab B — Lab B builds on what you find in Lab A.</p>
+      </div>
+
+      <h2>What You'll See — CoModeler in Segmentation</h2>
+      <p>The screenshots below show what CoModeler looks like when open in the Segmentation app.</p>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler panel open in Segmentation SG Account Scoring module]</div>
+        <div class="ss-desc">Show CoModeler side panel alongside SG Account Scoring. Prompt input field visible. No live demo recorded — capture from Segmentation demo app with CoModeler enabled.</div>
+      </div>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler output — SG Account Scoring dictionary showing weight contributions]</div>
+        <div class="ss-desc">Show CoModeler listing scoring line items, showing how each metric weight combines to produce the final account score.</div>
+      </div>
+
+
+
+      <h2>CoModeler Lab A — Document the Account Scoring Module</h2>
+      <p>Generate a line item dictionary for the SG Account Scoring module to understand how each scoring metric contributes to the final account score.</p>
+
+      <ol class="lab-steps">
+        <li>Open the <strong>Segmentation demo app</strong> in your partner workspace.</li>
+        <li>Navigate to the <strong>SG Account Scoring</strong> module.</li>
+        <li>Open CoModeler and prompt: <em>"Generate a line item dictionary for this module. Include name, formula summary, and how each line item contributes to the final score."</em></li>
+        <li>Identify which line item holds the final weighted score and which holds the segment assignment derived from that score.</li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        How does the app decide whether rule-based or score-based takes precedence when both apply to the same account?
+      </div>
+
+      <h2>CoModeler Lab B — Explain the Score-to-Segment Mapping</h2>
+      <p>Use CoModeler to understand the exact logic that converts a numeric score (0–10) into a segment assignment.</p>
+
+      <ol class="lab-steps">
+        <li>Launch CoModeler in the Segmentation app.</li>
+        <li>Ask: <em>"How does the app map a numeric score to a segment? Walk me through the formula logic that converts a score of 7.2 to the 'Named' segment."</em></li>
+        <li>Follow up: <em>"If I want to change the threshold so that accounts scoring above 8 are Strategic instead of 7, which line item or admin setting do I change?"</em></li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Where in the Segmentation app does an admin change the score thresholds without requiring a re-generation?
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Post-Generation Steps — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Post-Generation Steps</h1>
+      <p class="subtitle">From raw generation to Model Readiness — the complete post-gen checklist</p>
+      <div class="badge-row">
+        <span class="content-badge">Section 5</span>
+        <span class="content-badge">45 min</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <p>After the T&amp;Q app is generated, you have a structurally complete application — but it is not yet ready for the customer. There is a defined set of post-generation steps that must be completed before the app can be considered "Model Ready" and presented to the customer with data. With focused effort, the actual hands-on work is approximately <strong>1–2 days</strong>, though it is typically spread over 1–2 weeks to allow for data preparation on the customer side.</p>
+
+      <p>The goal of the Model Readiness phase is to deliver a live demo of the app with the customer's own data loaded, so they can validate the configuration choices and sign off before building begins.</p>
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">Model Readiness Checklist</span>
+          <span class="tsd-step-desc">You'll learn every step required between raw generation and a customer-ready app — and how long each takes.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Facilitator Walkthrough</span>
+          <span class="tsd-step-desc">Instructor walks through the checklist with a freshly-generated app, showing what each step looks like in practice.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Checklist Review</span>
+          <span class="tsd-step-desc">Review the full checklist and flag any steps where you'd need help from the App Engineering team.</span>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Known Issues</span>
+        <p>The following known issues occur regularly after generation and should be expected. Do not escalate these as bugs unless they persist after the documented fix:</p>
+        <ul>
+          <li><strong>Source model bug:</strong> Some formula references in generated modules point to the configurator source model rather than the generated app. These must be manually updated in the affected line items. The App Engineering team maintains a log of which line items are typically affected for each version.</li>
+          <li><strong>Save view mappings:</strong> Dashboard saved views are not always correctly mapped after generation. Check every dashboard page and re-save any view that shows incorrect filters or formatting.</li>
+          <li><strong>Broken formula references:</strong> Modules that are conditionally generated (only exist when certain features are enabled) sometimes have forward references from always-generated modules. These show as formula errors. Work through the error log systematically — most are one-line fixes.</li>
+        </ul>
+      </div>
+
+      <h2>Who Handles What</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Activity</th>
+              <th>Owner</th>
+              <th>Timing</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>App Generation (running the generator)</td>
+              <td>App Engineering (Chan/John)</td>
+              <td>Day 0 (generation day)</td>
+              <td>Schedule 2–3 hrs with the App Engineering team</td>
+            </tr>
+            <tr>
+              <td>Generation error review</td>
+              <td>App Engineering + Delivery Lead</td>
+              <td>Day 0–1</td>
+              <td>App Engineering reviews the error log; delivery lead gets a summary</td>
+            </tr>
+            <tr>
+              <td>Source model bug fixes</td>
+              <td>Delivery Lead</td>
+              <td>Day 1–2</td>
+              <td>Follow the App Engineering fix guide for the current version</td>
+            </tr>
+            <tr>
+              <td>Formula reference cleanup</td>
+              <td>Delivery Lead</td>
+              <td>Day 1–3</td>
+              <td>Work through the Anaplan model errors list systematically</td>
+            </tr>
+            <tr>
+              <td>Save view remapping</td>
+              <td>Delivery Lead</td>
+              <td>Day 2–3</td>
+              <td>Go through every dashboard page; re-save views as needed</td>
+            </tr>
+            <tr>
+              <td>Data Hub data loads (accounts, territories, reps)</td>
+              <td>Delivery Lead + Customer IT</td>
+              <td>Day 3–7</td>
+              <td>Requires customer to provide formatted data files</td>
+            </tr>
+            <tr>
+              <td>Historical actuals load</td>
+              <td>Delivery Lead + Customer IT</td>
+              <td>Day 5–10</td>
+              <td>Often the slowest step — data quality issues are common</td>
+            </tr>
+            <tr>
+              <td>ADO pipeline setup</td>
+              <td>Delivery Lead + Customer IT</td>
+              <td>Day 3–10</td>
+              <td>Requires IT involvement; can parallelize with data cleanup</td>
+            </tr>
+            <tr>
+              <td>Initial target load</td>
+              <td>Delivery Lead</td>
+              <td>Day 8–12</td>
+              <td>Load Finance targets, validate rollup totals</td>
+            </tr>
+            <tr>
+              <td>Model Readiness demo to customer</td>
+              <td>Delivery Lead</td>
+              <td>Day 10–14</td>
+              <td>Present the loaded app; get sign-off to proceed to UAT</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Post-Generation Checklist</h2>
+      <p>Work through this checklist in order. Each category contains sub-steps — see the full printable checklist (distributed as a separate document) for the complete item-level list.</p>
+
+      <h3>1. Generation Validation</h3>
+      <ul class="checklist">
+        <li>Review the generation error log — count total errors (0–200 is acceptable)</li>
+        <li>Categorize errors: formula errors vs. structural errors vs. data errors</li>
+        <li>Identify and log any errors above the expected count for the configuration</li>
+        <li>Confirm all expected modules, lists, and dashboards were created</li>
+        <li>Confirm workspace size post-generation — check for any workspace overage warnings</li>
+      </ul>
+
+      <h3>2. Formula &amp; Reference Fixes</h3>
+      <ul class="checklist">
+        <li>Open the model errors panel — work through every error</li>
+        <li>Fix source model references (broken links to configurator source model)</li>
+        <li>Fix forward formula references to conditionally-generated modules</li>
+        <li>Verify all line items in core modules (Target Allocation, Quota Calculation, Resource Assignment) are formula-correct</li>
+        <li>Re-run any failed process actions to verify they complete cleanly</li>
+      </ul>
+      <div class="callout-note">
+        <span class="callout-label">📝 How this plays out in practice</span>
+        <p>Post-gen error review is a collaborative step. Partners and Anaplan address the error list together — not in isolation. After generation, you'll see a panel like the one below showing formula error counts (Count Formula Error, Count Action Error, Count Module Error) and the individual <code>ERROR FORMULA …</code> entries that explain each broken reference. Work through them as a paired exercise.</p>
+      </div>
+      <img src="../screenshots/post-gen/postgen-02-formula-error.jpg" alt="Model Generation page showing 13 formula errors with the FORMULA error log entries enumerated for review" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h3>3. Dashboard &amp; View Cleanup</h3>
+      <p>The core dashboard-cleanup move is to scan the <strong>dimensionality selectors at the top-right of each dashboard</strong> (Revenue / Total Territory / Storage / FY25 / Reset etc.) and verify each one is set to a sensible default. Post-generation, these selectors can render in unexpected states — sometimes blank, sometimes pointing at an out-of-scope dimension — and they're the first thing the user sees, so a wrong default makes the whole dashboard look broken.</p>
+      <ul class="checklist">
+        <li>Open every dashboard page in the spoke app</li>
+        <li><strong>Verify the top-right dimensionality selectors render and default to sensible values</strong> — Jon: "sometimes they can be funky"</li>
+        <li>Check saved view filters — re-save any that are blank or incorrect</li>
+        <li>Verify pivot table headers are correct (not showing "undefined" or configurator placeholders)</li>
+        <li>Check conditional formatting rules are firing correctly</li>
+        <li>Verify navigation links between dashboard pages work correctly</li>
+      </ul>
+      <img src="../screenshots/post-gen/postgen-03-dashboard-selectors.jpg" alt="4.2 Top Down Allocation dashboard with the Revenue / Total Territory / Storage / FY25 / Reset selectors highlighted in the top-right of the page" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      <p style="font-size:0.88rem;color:#6b7280;margin-top:-8px;"><em>The selectors highlighted in the top-right (Revenue, Total Territory, Storage, FY25, Reset) are the per-dashboard dimensionality controls. Confirm each renders and defaults to a sensible value before moving on.</em></p>
+
+      <h3>4. Data Hub Setup &amp; Initial Data Load</h3>
+      <ul class="checklist">
+        <li>Load Territory hierarchy (all tiers) — verify rollup integrity</li>
+        <li>Load Account list — check for duplicate IDs, missing mandatory fields</li>
+        <li>Load Resource (rep) list — verify territory assignments are populated</li>
+        <li>Load Account-to-territory mapping (if using pre-assigned mapping)</li>
+        <li>Run the "Validate Data Hub" action and resolve any errors</li>
+        <li>Spot-check: select 3–5 territories and verify accounts, reps, and rollups look correct</li>
+      </ul>
+      <img src="../screenshots/post-gen/postgen-01-generation-validation.jpg" alt="Data Hub attribute mapping for territory assignment initialization" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h3>5. Historical Actuals Load &amp; Validation</h3>
+      <p>After you've loaded all of your account data — including historical actuals — the <strong>Historical Sales Analysis</strong> page is where you'd come to validate that the model is rendering correctly. The point isn't just "did the import succeed" but "am I seeing my accounts, am I seeing my data, and is it generally making sense?" If the page below shows your accounts with realistic spend, KPIs, and YoY growth percentages, the load worked.</p>
+      <ul class="checklist">
+        <li>Format historical actuals data to match the import template</li>
+        <li>Load actuals for each historical period (Year 1, Year 2)</li>
+        <li>Verify actuals roll up correctly to territory → region → theater → global</li>
+        <li>Compare total actuals in Anaplan to source system total — must reconcile to within 0.5%</li>
+        <li>Check for orphaned actuals (actuals with no matching account or territory)</li>
+        <li><strong>Open the Historical Sales Analysis page and confirm accounts + KPIs render as expected</strong> (the visual sanity check)</li>
+      </ul>
+      <img src="../screenshots/post-gen/postgen-05-historical-validation.jpg" alt="2.1 Historical Sales Analysis page showing the Account Details table populated with companies, addressable market, potential spend, account capacity, segment, predictive score, region columns, plus KPIs by Product/Quarter and Industry charts" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h3>6. Target Import &amp; Allocation Validation</h3>
+      <ul class="checklist">
+        <li>Import Finance targets at the configured entry tier</li>
+        <li>Run the allocation process down the hierarchy</li>
+        <li>Verify allocation totals match Finance targets (before over-allocation buffer)</li>
+        <li>Spot-check 3–5 territories: allocated target vs. manual expectation</li>
+        <li>Test the over-allocation warning — verify it fires at the configured threshold</li>
+      </ul>
+      <img src="../screenshots/post-gen/postgen-06-finance-targets.jpg" alt="4.1 Target Setup page showing the Target by Quarter and Area table populated with quarterly targets across US East, US South, US Central, US West, AMER, Canada, LATAM, EMEA, APAC; and a stacked bar chart for Review Target by Quarter and Area" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h3>7. Quota Calculation Validation</h3>
+      <ul class="checklist">
+        <li>Assign test resources to territories (use test reps, not real reps)</li>
+        <li>Run the quota calculation process</li>
+        <li>Verify quota = territory target × assignment % × ramp factor</li>
+        <li>Test ramp scenarios: 100% assignment, 50% split, new hire ramp</li>
+        <li>Verify quota totals roll up correctly</li>
+      </ul>
+      <img src="../screenshots/post-gen/postgen-07-quota-validation.jpg" alt="10.1 Front Line Rep Quota page showing Missing Quotas / Over Assigned / Under Assigned summary cards, Territory Summary table with sales reps and quotas, Target vs Quota table, Sales Rep Assignments, Quota Measures per Sales Rep Role, and Sales Rep Quota Overrides by Quota Measures" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h3>8. Integration &amp; ADO Setup</h3>
+      <div class="callout-note">
+        <span class="callout-label">📝 Forward-looking — V3-oriented</span>
+        <p>Going forward, partners will manage ADO end-to-end as part of post-gen: configure pipelines, set up scheduling, handle incremental updates, and document the architecture for handoff to customer IT. ADO becomes <strong>required</strong> with V3 (it replaces V2's flat-file Data Hub approach). We don't have a representative production example to show today, so this section is intentionally a stub — a more detailed walkthrough will be added when we make this lab V3-oriented.</p>
+        <p>Until then, treat the checklist below as the conceptual scope of the step, not a click-by-click procedure:</p>
+      </div>
+      <ul class="checklist">
+        <li>Configure ADO pipelines for each data source (accounts, actuals, reps)</li>
+        <li>Run a test data refresh end-to-end</li>
+        <li>Verify incremental update behavior (new accounts added, removed accounts handled)</li>
+        <li>Set up and test scheduling for ongoing data refreshes</li>
+        <li>Document the ADO pipeline architecture for handoff to customer IT</li>
+      </ul>
+
+      <h2>Model Readiness Goal</h2>
+      <p>The Model Readiness milestone is a working session with the customer (typically the Sales Ops lead and at least one Sales manager) where you demonstrate the app with their data. The goal is:</p>
+      <ol>
+        <li>Customer sees their actual territories, accounts, reps, and targets in the app</li>
+        <li>Customer can navigate the spoke app independently for the major workflows</li>
+        <li>Customer signs off that the configuration reflects their requirements</li>
+        <li>Any remaining configuration changes are documented as change requests</li>
+        <li>Project proceeds to UAT or extension development</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Tip</span>
+        <p>Don't try to make the app "perfect" before the Model Readiness demo. The goal is to show enough working functionality with real data that the customer can validate. Cosmetic issues, placeholder labels, and secondary dashboards can be cleaned up during UAT. Getting to a live demo quickly builds customer confidence and surfaces real feedback.</p>
+      </div>
+
+      <h2>V3 Note</h2>
+      <div class="callout-note">
+        <span class="callout-label">📝 V3 Specifics</span>
+        <p>The V3 app generates significantly more dashboards and modules than V2. The post-gen checklist above is calibrated for V3. If you are working on a V2 → V3 upgrade, note that:</p>
+        <ul>
+          <li>V3 uses per-tier hierarchy views (not a flat territory list) — the data load format is different from V2</li>
+          <li>V3 ADO integration replaces V2's flat-file Data Hub approach — IT will need separate setup support</li>
+          <li>V3 has additional dashboard categories that don't exist in V2 — plan extra time for dashboard validation</li>
+          <li>V2 extensions do NOT automatically transfer to V3 — each extension must be re-evaluated</li>
+        </ul>
+      </div>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Checklist Review</span>
+        <p>Review the post-generation checklist you just read:</p>
+        <ul>
+          <li>Which steps can you complete independently vs. which require App Engineering support?</li>
+          <li>Estimate: for a customer with clean data already prepared, how long would post-gen realistically take you?</li>
+          <li>What's the most likely step to go wrong on your first solo post-gen? What would you do if it did?</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

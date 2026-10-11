@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix: Segmentation Answer Key — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Appendix: Segmentation Configurator Answer Key</h1>
+      <p class="subtitle">Facilitator reference — review after the lab exercise, not before</p>
+      <div class="badge-row">
+        <span class="content-badge">Appendix</span>
+        <span class="content-badge">Facilitator Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-important">
+        <span class="callout-label">🚫 Participants: Do Not Read Until After the Lab</span>
+        <p>This answer key is intended for facilitator-led debrief after the lab exercise is complete. Review your own answers first, then compare with the key during the group debrief session.</p>
+      </div>
+
+      <p>Each section below shows what the configurator page should look like when the Segmentation lab is correctly completed against the CloudWorks case study. Use these reference captures to verify your own configuration during debrief.</p>
+
+      <h2>Page 1.01 — Data Hub Setup</h2>
+      <p>Establishes the dimensions, facts, and attributes the entire app reads from. Step 1 selects which objects (Order, Opportunity, Account, Product, Territory, Employee, Geography, NAICS Industry, Sales Role, etc.) flow into the Data Hub and Spoke models; Step 2 renames each attribute and sets Format, Validation, and <strong>Enable for Calculations</strong> so downstream configurator pages can reference them.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/shared-1-01-data-hub.png" alt="1.01 Data Hub Setup answer key — configurator page showing Step 1 Setup Dimensions and Facts and Step 2 Rename and add additional attributes with all rows correctly configured, dimensions populated, and the Apply button highlighted with a complete badge" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.01 Data Hub Setup — completed answer state (shared with Capacity lab)</figcaption>
+      </figure>
+
+      <h2>Page 1A.01 — SG GTM Performance Analysis Guided Setup</h2>
+      <p>Configures the dimensionality of the <strong>GTM Performance dashboard</strong> — the historical revenue view. Sets Territory T5 as the top reporting level, picks Country + State for the map breakdown, marks Country Tiers for tier analysis, and selects Close Won (forecast category) plus New Business / Add-on Business (record types) as the inputs to pipeline analysis.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-01.png" alt="1A.01 SG GTM Performance Analysis Guided Setup answer key — Step 1 Configure Reporting Dimensionality with Territory T5, Account Segment, Country Tiers, Opportunity Type Flat populated; Step 2 Fill in Reporting Levels for Maps with Level 5 Territory T5, Country and State levels; Step 3 Tiers Analysis with Country Tiers; Step 4 Commit Forecast Categories with Close Won, Forecast Cat. List Conf.; Step 5 Record Type Subset with New Business and Add-on Business" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.01 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1A.02 — SG UCP &amp; Account Hierarchy Guided Setup</h2>
+      <p>Defines the criteria for tagging accounts as <strong>UCP (Unaddressable Customer Profile)</strong> — accounts excluded from planning — and configures the account-parent hierarchy. UCP rules use NAICS Industry N1, Country, Revenue Tiers, and Employee Count Tiers; territory alignment runs at Geo T1 with NAICS Industry N1 as the industry level; the account parent chain is mapped through Level 10.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-02.png" alt="1A.02 SG UCP and Account Hierarchy Guided Setup answer key — Step 1 Choose UCP Defining Criteria with NAICS Industry N1, Country, Revenue Tiers, Employee Count Tiers selected; Step 2 Choose Account Firmographics with multiple firmographic attributes selected for the Account Dashboard; Step 3 Select Account Hierarchy Alignment Level with Territory Hierarchy Level Geo T1 and Industry Level NAICS Industry N1; Step 4 Create the total level of Account parent with multi-level Account Parent Chain populated through Level 10 Parent" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.02 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1A.03 — SG Wallet Size Calculation Guided Setup</h2>
+      <p>Configures the <strong>wallet-size calculation</strong> — the addressable-spend estimate that powers segmentation and account potential. Creates three scenarios (Best Case / Worst Case / Most Likely Case), drives the spending calculation from NAICS Industry N1 + Revenue Tiers, runs the addressable market at NAICS Industry N1, and sets the spend index at Geo T1.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-03.png" alt="1A.03 SG Wallet Size Calculation Guided Setup answer key — Step 1 Create Spending and Wallet Calc Scenarios with Best Case, Worst Case, Most Likely Case; Step 2 Spending Calculation Drivers with NAICS Industry N1 and Revenue Tiers; Step 3 Wallet Calculation Drivers Addressable Market with NAICS Industry N1; Step 4 Wallet Calculation Drivers Spend Index with Level 1 Geo T1; Step 5 Wallet Reporting Dimensions" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.03 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1A.04 — SG Customer Profile Guided Setup</h2>
+      <p>Builds the <strong>Customer Profile matrix</strong> — maps each account into a profile band (Prospect / Adopt / Sustain / Strategic / Invest) based on Wallet Size × Wallet Penetration. Mapping dimensions are Wallet Size Tiers and Wallet Penetration Tiers; reporting cuts are Territory T5 and NAICS Industry N1.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-04.png" alt="1A.04 SG Customer Profile Guided Setup answer key — Step 1 Select Dimensions to Assign Customer Profile with Wallet Size Tiers and Wallet Penetration Tiers as the first two dimensions; Step 2 Select Dimensions Applied for Customer with Territory T5 and NAICS Industry N1; Customer Profile Mapping Driver matrix and Customer Profile Summary table visible. Mark Completed checked, 44% Complete, 0 Missing Mandatory Inputs" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.04 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1A.05 — SG Segmentation Configuration Guided Setup</h2>
+      <p>The core segmentation page. Selects six account attributes for the <strong>rule-based</strong> path (Customer Profile, Revenue Tiers, Predictive Account Rank, Wallet Size Tiers, NAICS Industry N1, ARR Tiers), picks Geo T1 as the <strong>score-to-segment</strong> mapping driver, and configures categorical (Employee Count Tiers + 3 others) plus numerical (Employee Count, Weighted Pipeline) metrics that feed the segmentation score.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-05.png" alt="1A.05 SG Segmentation Configuration Guided Setup answer key — Step 2 Select Account Attribute for Rule-Based Segmentation with Customer Profile, Revenue Tiers, Predictive Account Rank, Wallet Size Tiers, NAICS Industry N1, ARR Tiers; Step 3 Select Account Score to Segment Mapping Driver with Geo T1; Step 4 Select Categorical Metrics with Employee Count Tiers, NAICS Industry N1, Predictive Account Rank, Country Tiers; Step 5 Select Account Score Metric Drivers with Geo T1 and Account Type > Planning Subset; Step 6a Add Numerical Metrics with Employee Count and Weighted Pipeline" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.05 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1A.06 — SG GTM Planning Guided Setup</h2>
+      <p>Stands up the <strong>GTM Planning hierarchy sandbox</strong> for stress-testing alternative go-to-market structures without disturbing the production sales hierarchy. Maps seven account attributes (NAICS Industry, Region T3, Country, Account Type, Account Segment, Employee Count Tiers, Revenue Tiers) into the new hierarchy and reports at Level 3 Region T3.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/seg-1a-06.png" alt="1A.06 SG GTM Planning Guided Setup answer key — Step 1 Select Attributes for Accounts to New Hierarchy with NAICS Industry N1, Region T3, Country, Account Type, Account Segment, Employee Count Tiers, Revenue Tiers populated; Step 2 Select Account Reporting Hierarchy Level with Current Sales Hierarchy Reporting Level set to Level 3 Region T3. Mark Completed checked, 44% Complete, 0 Missing Mandatory Inputs" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1A.06 — completed answer state</figcaption>
+      </figure>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What's Coming in Sales Applications — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>What's Coming in Sales Applications</h1>
+      <p class="subtitle">Sales Forecasting GA, T&amp;Q V3, Segmentation V2, Capacity V2</p>
+    </div>
+    <div class="content-body">
+
+      <p>This section covers new and upcoming releases as of the workshop date (March 2026). Sales Forecasting went GA the day after the workshop. T&amp;Q V3 launches May 2026. Segmentation V2 and Capacity V2 are imminent.</p>
+
+      <hr>
+
+      <h2>T&amp;Q V3 — Launching May 2026</h2>
+      <p>Classic → Polaris migration plus significant feature additions. All three SPM apps move together.</p>
+
+      <figure class="screenshot">
+        <img src="../img/day2/15-tq-v3-updates.png" alt="T&Q V3 key updates summary" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">T&amp;Q V3 key updates — May 2026 launch</figcaption>
+      </figure>
+
+      <ol>
+        <li>
+          <strong>No more Data Hub — ADO required.</strong> All three SPM apps (T&amp;Q, Seg, Capacity) move to ADO simultaneously in May. If your customer is still on Data Hub, they'll need to plan for the ADO migration as part of their V3 upgrade.
+        </li>
+        <li>
+          <strong>Territory assignment — new intersection model.</strong> Territory × employee × time instead of a children list. More robust and handles complex assignment scenarios, but loses day-level precision for boomerang employees (an extension is needed for that edge case).
+        </li>
+        <li>
+          <strong>Target overrides at every level.</strong> V2 allowed override at one configured level only. V3: override at every level of the hierarchy. Much more flexible.
+        </li>
+        <li>
+          <strong>Split account management — now native.</strong> No longer requires an extension. Define splits, percentages, start/end dates all within the base app.
+        </li>
+        <li>
+          <strong>Rule engine: Inheritance rules.</strong> Parent territory rules are inherited by child territories. Eliminates the need to define the same geographic rule on every territory in a region.
+        </li>
+        <li>
+          <strong>GTM hierarchy comparison.</strong> New: current vs. planning hierarchy with side-by-side comparison pages — see the delta before you commit.
+        </li>
+        <li>
+          <strong>Coverage optimization.</strong> New feature: account-level analysis showing whether adding overlay to a territory is ROI-positive. Still early — account-level granularity may be too fine for most customers.
+        </li>
+      </ol>
+
+      <hr>
+
+      <h2>Segmentation V2 — Imminent</h2>
+
+      <figure class="screenshot">
+        <img src="../img/day2/15-seg-v2-updates.png" alt="Segmentation V2 key updates" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Segmentation V2 key updates</figcaption>
+      </figure>
+
+      <ol>
+        <li>
+          <strong>GTM Hierarchy Planning — completely redesigned.</strong> Much more intuitive. Better reporting on hierarchy balance. The V1 hierarchy planning module was functional but hard to use; V2 is a substantial improvement.
+        </li>
+        <li>
+          <strong>Resource alerts — new.</strong> Flags when a planned hierarchy node is over- or under-resourced based on account count and role ratios. Surfaces imbalances before you commit.
+        </li>
+        <li>
+          <strong>Rule conflict resolution — improved.</strong> Easier to identify and fix conflicting rules (e.g., an account matching both Strategic and Named rule sets).
+        </li>
+        <li>
+          <strong>Workflow to activate planning hierarchy — cleaner process</strong> for committing a scenario and exporting to T&amp;Q.
+        </li>
+      </ol>
+
+      <hr>
+
+      <h2>Capacity V2 — Imminent</h2>
+
+      <figure class="screenshot">
+        <img src="../img/day2/15-cap-v2-updates.png" alt="Capacity V2 key updates" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Capacity V2 key updates</figcaption>
+      </figure>
+
+      <ol>
+        <li>
+          <strong>Improved UX design.</strong> More intuitive navigation, clearer workflow status indicators. The V1 workflow status was easy to miss and caused confusion when scenarios were locked.
+        </li>
+        <li>
+          <strong>More robust ramp modeling.</strong> Better financial liability calculations — models the "payback period" for a hire based on draw, ramp, and seasonality. Shows when you earn back the cost of hiring someone depending on what month they're hired.
+        </li>
+        <li>
+          <strong>Enhanced reporting.</strong> Better visuals on scenario comparison and variance analysis.
+        </li>
+      </ol>
+
+      <hr>
+
+      <h2>Roadmap Horizon</h2>
+      <ul>
+        <li>
+          <strong>ICM (Incentive Comp):</strong> On roadmap, coming later this year. This will complete the full SPM suite. Huge addressable market — no one loves their current comp tool. Every customer you talk to hates their ICM system.
+        </li>
+        <li>
+          <strong>Split Allocation:</strong> The first half of ICM functionality — could ship earlier as a standalone feature before the full ICM module is ready.
+        </li>
+        <li>
+          <strong>App-to-App Native Connections:</strong> Currently, all inter-app data flows require manual export/import or ETL. The goal is native connections: Segmentation → T&amp;Q → Capacity that update automatically when you finalize a planning exercise. Not yet built.
+        </li>
+        <li>
+          <strong>ADO Bidirectional:</strong> Snowflake and Databricks write-back coming. Currently all ADO flows are inbound-only (from source systems into Anaplan). Bidirectional support enables use cases like forecast decisions flowing back to Salesforce.
+        </li>
+      </ul>
+
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

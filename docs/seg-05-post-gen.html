@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation Post-Generation Steps — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Segmentation Post-Generation Steps</h1>
+      <p class="subtitle">From generation to a working Segmentation app</p>
+      <div class="badge-row">
+        <span class="content-badge">Segmentation Module</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Segmentation post-gen is significantly simpler than T&amp;Q. The app is smaller (~40% the complexity) and has fewer formula errors. Estimated hands-on work: <strong>4–6 hours</strong> with clean data.</p>
+
+      <h2>Key Differences from T&amp;Q Post-Gen</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Simpler</h3>
+          <ul>
+            <li>Fewer generated modules and dashboards</li>
+            <li>No approval workflow to configure</li>
+            <li>No quota calculation logic to validate</li>
+            <li>Data load is primarily account + firmographic data</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Watch Out For</h3>
+          <ul>
+            <li>Banded attribute mapping — ensure bands load correctly</li>
+            <li>Wallet size calculation validation — spot-check against manual calculation</li>
+            <li>Segment distribution check — are the right % of accounts in each segment?</li>
+            <li>GTM hierarchy sandbox initialization</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Post-Gen Checklist</h2>
+      <ul class="checklist">
+        <li>Review generation error log — count errors (0–50 is normal for Segmentation)</li>
+        <li>Fix any formula reference errors in the Segmentation spoke</li>
+        <li>Load account data with firmographic attributes</li>
+        <li>Validate banded attributes loaded correctly (spot-check 5–10 accounts)</li>
+        <li>Setup initial segmentation rules</li>
+        <li>Review segment distribution — Strategic %, Named %, Commercial %, SMB %</li>
+        <li>Validate wallet size calculations against a manual spot-check</li>
+        <li>Confirm segment inflow/outflow view shows expected changes</li>
+        <li>Initialize GTM hierarchy planning sandbox</li>
+        <li>Demo app to customer with their own accounts</li>
+      </ul>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Segment Distribution Check</span>
+        <p>After running the initial segmentation on CloudWorks data: What percentage of accounts fall into each segment? Is the Strategic count realistic (typically 1–5% of total accounts)? If you see 40% Strategic, your rules or scoring thresholds need recalibration.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

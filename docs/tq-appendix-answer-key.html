@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>T&amp;Q Configurator Exercise — Answer Key — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .answer-key-banner {
+      background: #fef3c7;
+      border: 2px solid #f59e0b;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+    }
+    .answer-key-banner-icon {
+      font-size: 1.5rem;
+      line-height: 1.2;
+      flex-shrink: 0;
+    }
+    .answer-key-banner-text strong {
+      display: block;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 0.25rem;
+    }
+    .answer-key-banner-text p {
+      margin: 0;
+      font-size: 0.875rem;
+      color: #78350f;
+    }
+    .answer-section {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+    .answer-section-header {
+      background: #1e3a5f;
+      color: #fff;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .answer-section-number {
+      background: rgba(255,255,255,0.2);
+      border-radius: 4px;
+      padding: 0.15rem 0.5rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .answer-section-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .answer-section-body {
+      padding: 1.25rem;
+    }
+    .answer-block {
+      margin-bottom: 1.25rem;
+    }
+    .answer-block:last-child {
+      margin-bottom: 0;
+    }
+    .answer-block h4 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #475569;
+      margin: 0 0 0.5rem 0;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .answer-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+    }
+    .answer-table th {
+      background: #f8fafc;
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      border-bottom: 2px solid #e2e8f0;
+      color: #374151;
+    }
+    .answer-table td {
+      padding: 0.45rem 0.75rem;
+      border-bottom: 1px solid #f1f5f9;
+      vertical-align: top;
+    }
+    .answer-table tr:last-child td {
+      border-bottom: none;
+    }
+    .answer-table .check { color: #16a34a; font-weight: 700; }
+    .answer-table .cross  { color: #dc2626; font-weight: 700; }
+    .answer-table .value  { font-family: monospace; background: #f8fafc; padding: 0.1rem 0.35rem; border-radius: 3px; font-size: 0.82rem; }
+    .pitfall-list {
+      list-style: none;
+      padding: 0;
+      margin: 0.5rem 0 0;
+    }
+    .pitfall-list li {
+      display: flex;
+      gap: 0.5rem;
+      padding: 0.35rem 0;
+      font-size: 0.875rem;
+      border-bottom: 1px solid #fef3c7;
+    }
+    .pitfall-list li:last-child { border-bottom: none; }
+    .pitfall-list li::before {
+      content: "⚠";
+      color: #d97706;
+      flex-shrink: 0;
+    }
+    .rationale {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      padding: 0.6rem 0.85rem;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.85rem;
+      color: #15803d;
+      margin-top: 0.5rem;
+    }
+    .appendix-label {
+      display: inline-block;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>T&amp;Q Configurator Exercise — Answer Key</h1>
+      <p class="subtitle">Reference answers for the CloudWorks Technologies configurator lab</p>
+      <div class="badge-row">
+        <span class="content-badge">Appendix</span>
+        <span class="content-badge">Answer Key</span>
+        <span class="content-badge">Facilitator Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="answer-key-banner">
+        <div class="answer-key-banner-icon">🔒</div>
+        <div class="answer-key-banner-text">
+          <strong>This page contains answers. Complete the exercise before consulting this page.</strong>
+          <p>Work through the full <a href="./04-configurator-exercise.html">Lab: Configurator Exercise</a> independently before checking your answers here. Reviewing answers before attempting the lab significantly reduces learning retention.</p>
+        </div>
+      </div>
+
+      <div class="appendix-label">📎 Appendix — Reference only. Complete the lab exercise before consulting this page.</div>
+
+      <p>This answer key covers all eight sections of the T&amp;Q Configurator Exercise for <strong>CloudWorks Technologies</strong>, a fictional B2B SaaS company selling software subscriptions to mid-market and enterprise customers. The answers below reflect correct configuration choices given CloudWorks's specific scenario.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📋 CloudWorks Quick Reference</span>
+        <p><strong>Company:</strong> CloudWorks Technologies — B2B SaaS, software subscriptions<br>
+        <strong>Hierarchy:</strong> Geo → Area → Region → Sub-Region → Territory (5 tiers)<br>
+        <strong>Data files:</strong> Account, Employee, Opportunity Line, Territory<br>
+        <strong>Planning measures:</strong> Based on Opportunity Line revenue data<br>
+        <strong>CRM:</strong> Salesforce · <strong>Integration:</strong> ADO</p>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.00 — OVERVIEW (How to use this answer key)
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.00</span>
+          <span class="answer-section-title">How to Use This Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <p style="font-size:0.9rem;margin-top:0;">Each section below corresponds to one page of the T&amp;Q Configurator. For each section you'll find:</p>
+          <ul style="font-size:0.9rem;">
+            <li><strong>Correct configuration values</strong> — the specific selections and settings for CloudWorks</li>
+            <li><strong>Rationale</strong> — why each choice was made given the case study data</li>
+            <li><strong>Common pitfalls</strong> — mistakes participants frequently make with this section</li>
+          </ul>
+          <p style="font-size:0.9rem;">There are often multiple defensible approaches. When your answer differs from the key, ask: <em>"Given what I know about CloudWorks, what information would change my answer?"</em> That's the real learning objective.</p>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.01 — DATA HUB SETUP
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.01</span>
+          <span class="answer-section-title">Data Hub Setup — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-01-data-hub-setup-answerkey.png" alt="Answer-key reference — configurator page 1.01 Data Hub Setup with data objects mapped, attributes enabled, and source files attached for the CloudWorks exercise" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Top-Level Settings</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Use Existing Data Hub?</td>
+                  <td><span class="cross">No</span></td>
+                  <td>CloudWorks has no existing Anaplan environment — this is a greenfield SPM deployment.</td>
+                </tr>
+                <tr>
+                  <td>Use ADO?</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>IT team confirmed ADO readiness; ADO is the standard integration method for Polaris-based T&amp;Q.</td>
+                </tr>
+                <tr>
+                  <td>Use Flat File Imports?</td>
+                  <td><span class="cross">No</span></td>
+                  <td>ADO is available and confirmed — flat file is a fallback, not the target state.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Data Objects to Map</h4>
+            <table class="answer-table">
+              <thead><tr><th>Object</th><th>Include?</th><th>Source File</th><th>Notes</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Account</td>
+                  <td><span class="check">Yes</span></td>
+                  <td><code>Account</code></td>
+                  <td>Core object — required for territory assignment and actuals routing.</td>
+                </tr>
+                <tr>
+                  <td>Employee</td>
+                  <td><span class="check">Yes</span></td>
+                  <td><code>Employee</code></td>
+                  <td>Required for sales rep roster and territory-to-rep assignments.</td>
+                </tr>
+                <tr>
+                  <td>Opportunity Line</td>
+                  <td><span class="check">Yes</span></td>
+                  <td><code>Opportunity Line</code></td>
+                  <td>Transaction source — all planning measures derive from Opportunity Line revenue data.</td>
+                </tr>
+                <tr>
+                  <td>Territory</td>
+                  <td><span class="check">Yes</span></td>
+                  <td><code>Territory</code></td>
+                  <td>Required to seed the 5-tier hierarchy (Geo → Territory).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Account Attributes — Enable for Calculation</h4>
+            <p style="font-size:0.875rem;margin-bottom:0.5rem;">Only attributes needed for reporting, rule-based assignment, or calculations should be enabled. Unused enabled attributes bloat the Data Hub.</p>
+            <table class="answer-table">
+              <thead><tr><th>Attribute</th><th>Enable for Calc?</th><th>Enable Auto-Create?</th><th>Purpose</th></tr></thead>
+              <tbody>
+                <tr><td>Account Segment</td><td><span class="check">Yes</span></td><td><span class="check">Yes</span></td><td>Used in Rule Engine assignment (Strategic / Named / Commercial / SMB).</td></tr>
+                <tr><td>Industry</td><td><span class="check">Yes</span></td><td><span class="check">Yes</span></td><td>Rule Engine attribute for territory assignment logic.</td></tr>
+                <tr><td>Employee Count</td><td><span class="check">Yes</span></td><td><span class="cross">No</span></td><td>Banded for mid-market vs. enterprise segmentation rules.</td></tr>
+                <tr><td>Account Rank</td><td><span class="check">Yes</span></td><td><span class="cross">No</span></td><td>Useful for account value KPI reporting and prioritization.</td></tr>
+                <tr><td>Account Type</td><td><span class="check">Yes</span></td><td><span class="check">Yes</span></td><td>Distinguishes named enterprise from mid-market pool accounts.</td></tr>
+                <tr><td>Business Type</td><td><span class="check">Yes</span></td><td><span class="cross">No</span></td><td>New business vs. renewal distinction for quota tracking.</td></tr>
+                <tr><td>HQ Country / Region</td><td><span class="cross">No</span></td><td><span class="cross">No</span></td><td>CloudWorks territories are <em>not</em> geo-defined — geographic mapping is disabled.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Employee Attributes — Custom List Additions</h4>
+            <table class="answer-table">
+              <thead><tr><th>Attribute</th><th>Action</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Job Family</td><td><span class="check">Add</span></td><td>Distinguishes AE, SE (overlay), and management roles for capacity and rep assignment logic.</td></tr>
+                <tr><td>Job Category</td><td><span class="check">Add</span></td><td>Supports quota composition when overlays are included.</td></tr>
+                <tr><td>Business Unit</td><td><span class="check">Add</span></td><td>CloudWorks has multiple product lines; BU distinguishes rep responsibility.</td></tr>
+                <tr><td>Cost Center</td><td><span class="check">Add</span></td><td>Required for headcount cost reporting in capacity planning integration.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Enabling <strong>Geographic Mapping</strong> attributes (HQ State, Country) — CloudWorks territories are industry/segment-defined, not geo-based. Enabling these adds noise and misleads the Rule Engine setup.</li>
+              <li>Skipping Employee attributes — without Job Family, you cannot distinguish AEs from SEs, which breaks the overlay rep assignment flow.</li>
+              <li>Forgetting to enable <strong>Account Segment</strong> for Auto-Create — new accounts flowing in via ADO won't auto-generate in the segment list, causing assignment failures.</li>
+              <li>Adding Opportunity Line attributes to Account — Opportunity Line revenue data belongs in the Transactional Data section (Section 1.03), not as Account attributes.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.02 — HIERARCHY SETUP
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.02</span>
+          <span class="answer-section-title">Hierarchy Setup — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-02-hierarchy-setup-answerkey.png" alt="Answer-key reference — configurator page 1.02 Hierarchy Setup with five hierarchies defined (Product, Territory, NAICS Industry, Geography, Custom Lists) and the 5-tier Territory hierarchy named T1 Geo → T2 Area → T3 Region → T4 Sub-Region → T5 Territory" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Hierarchy Configuration</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th></tr></thead>
+              <tbody>
+                <tr><td>Number of territory tiers</td><td><span class="value">5</span></td></tr>
+                <tr><td>Tier 1 name</td><td><span class="value">Geo</span></td></tr>
+                <tr><td>Tier 2 name</td><td><span class="value">Area</span></td></tr>
+                <tr><td>Tier 3 name</td><td><span class="value">Region</span></td></tr>
+                <tr><td>Tier 4 name</td><td><span class="value">Sub-Region</span></td></tr>
+                <tr><td>Tier 5 name</td><td><span class="value">Territory</span></td></tr>
+              </tbody>
+            </table>
+            <div class="rationale">
+              💡 <strong>Naming tip:</strong> The PPTX recommends appending a level suffix (e.g., "Geo L1", "Area L2") to make hierarchy level references unambiguous in module formulas and UX filters. Either convention is acceptable — consistency is what matters.
+            </div>
+          </div>
+
+          <div class="answer-block">
+            <h4>Hierarchy Attribute Mapping</h4>
+            <p style="font-size:0.875rem;margin-bottom:0.5rem;">After defining tier names, map the attributes enabled for calculation in Data Hub Setup to the appropriate hierarchy levels.</p>
+            <table class="answer-table">
+              <thead><tr><th>Attribute</th><th>Map To Level</th><th>Rationale</th></tr></thead>
+              <tbody>
+                <tr><td>Account Segment</td><td>Territory (L5)</td><td>Segment-based rules operate at the individual territory level where rep assignments live.</td></tr>
+                <tr><td>Industry</td><td>Territory (L5)</td><td>Industry assignment rules are at territory level — each territory may specialize by industry vertical.</td></tr>
+                <tr><td>Account Rank</td><td>Territory (L5)</td><td>Account rank is used for individual territory performance reporting.</td></tr>
+                <tr><td>Business Type</td><td>Territory (L5)</td><td>New vs. renewal breakdown tracked at the rep/territory level.</td></tr>
+                <tr><td>Job Family</td><td>Territory (L5)</td><td>Rep role classification used in resource assignment at territory level.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Representative Example Values</h4>
+            <table class="answer-table">
+              <thead><tr><th>Level</th><th>Example Values</th></tr></thead>
+              <tbody>
+                <tr><td><strong>Geo (L1)</strong></td><td>Americas, EMEA, APAC</td></tr>
+                <tr><td><strong>Area (L2)</strong></td><td>North America, Latin America, Western Europe, CEE</td></tr>
+                <tr><td><strong>Region (L3)</strong></td><td>US-West, US-East, US-Central, UK&amp;I, DACH, Nordics</td></tr>
+                <tr><td><strong>Sub-Region (L4)</strong></td><td>Pacific NW, Bay Area, New England, Mid-Atlantic, Greater London</td></tr>
+                <tr><td><strong>Territory (L5)</strong></td><td>Individual rep territories (~220 total)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Using only 4 tiers (copying the existing Case Study page, which shows an older 4-tier structure) — CloudWorks's current implementation uses 5 tiers. Verify against the Territory data file before committing.</li>
+              <li>Leaving default tier names (L1, L2, L3...) — generic names make downstream module formulas and UX labels confusing for the customer's team.</li>
+              <li>Not mapping attributes after clicking Apply — the "map attributes" step is a second action after naming tiers. It's easy to skip and the configurator doesn't always warn you.</li>
+              <li>Setting the wrong tier as the planning target — quotas are set at Territory (L5), not Sub-Region. Confusing these requires a rebuild.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.03 — SCENARIO PLANNING (Transactional Data + Measures)
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.03</span>
+          <span class="answer-section-title">Scenario Planning — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-03-scenario-planning-answerkey.png" alt="Answer-key reference — configurator page 1.03 Scenario Planning with transactional data source configured, planning measures defined, and the Opportunity Line revenue feed mapped" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Transaction Data Source Configuration</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Source data table</td>
+                  <td><span class="value">Opportunity Line</span></td>
+                  <td>CloudWorks plans against Opportunity Line revenue data — this is the transactional fact table.</td>
+                </tr>
+                <tr>
+                  <td>Revenue attribute</td>
+                  <td><span class="value">Amount / Revenue</span></td>
+                  <td>The currency field on Opportunity Line representing closed-won subscription revenue.</td>
+                </tr>
+                <tr>
+                  <td>Date field (for time routing)</td>
+                  <td><span class="value">Close Date</span></td>
+                  <td>Close Date on the Opportunity Line determines which period the revenue belongs to.</td>
+                </tr>
+                <tr>
+                  <td>Time scale</td>
+                  <td><span class="value">Monthly</span></td>
+                  <td>Source data arrives monthly; the model aggregates to quarterly for planning display.</td>
+                </tr>
+                <tr>
+                  <td>Time offset</td>
+                  <td><span class="value">0</span></td>
+                  <td>No lag between opportunity close and revenue recognition for CloudWorks's subscription model.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Planning Measures</h4>
+            <table class="answer-table">
+              <thead><tr><th>Measure</th><th>Type</th><th>Source Field</th><th>Used For</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td><strong>ARR</strong> (Annual Recurring Revenue)</td>
+                  <td>Currency (USD)</td>
+                  <td>Opportunity Line → Revenue / Amount</td>
+                  <td>Primary planning measure — all territory targets and rep quotas</td>
+                </tr>
+                <tr>
+                  <td><strong>New Logos</strong></td>
+                  <td>Count (Integer)</td>
+                  <td>Opportunity Line → New Logo Flag (Boolean → count)</td>
+                  <td>Secondary measure — net-new customer acquisition tracking</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="rationale">
+              💡 Planning measures are very hard to change post-generation. If the customer hints at adding a third measure (e.g., Services ARR, Pipeline) during the session, add it now as inactive rather than waiting.
+            </div>
+          </div>
+
+          <div class="answer-block">
+            <h4>Forecast vs. Actuals Source</h4>
+            <table class="answer-table">
+              <thead><tr><th>Data Type</th><th>Source</th><th>Attribute</th></tr></thead>
+              <tbody>
+                <tr><td>Actuals</td><td>Opportunity Line</td><td>Revenue (closed-won only)</td></tr>
+                <tr><td>Forecast</td><td>Opportunity Line</td><td>Expected Revenue (open pipeline, weighted by probability)</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Routing actuals from Account instead of Opportunity Line — Account-level actuals are a legacy pattern. For CloudWorks's subscription model, Opportunity Line is the correct source.</li>
+              <li>Setting time scale to Quarterly instead of Monthly — the source data granularity is monthly. Setting Quarterly here loses data fidelity; the model can still display quarterly views.</li>
+              <li>Missing the New Logo Flag mapping — without mapping the Boolean New Logo field to the count measure, the New Logos measure will always return zero.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.04 — HISTORICAL DATA REPORTING
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.04</span>
+          <span class="answer-section-title">Historical Data Reporting — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-04-historical-data-answerkey.png" alt="Answer-key reference — configurator page 1.04 Historical Data Reporting with reporting metrics, growth and average metrics, and reporting dimensions all configured for historical sales analysis" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Seasonality Configuration</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Hierarchy level for seasonality calculation</td>
+                  <td><span class="value">Region (L3)</span></td>
+                  <td>Seasonality patterns differ between Americas and EMEA but are consistent within Regions. Territory-level seasonality would be noisy due to rep turnover.</td>
+                </tr>
+                <tr>
+                  <td>Seasonality periods</td>
+                  <td><span class="value">Monthly (12 periods)</span></td>
+                  <td>Monthly granularity captures intra-quarter patterns; quarterly would lose the end-of-quarter spike typical in SaaS.</td>
+                </tr>
+                <tr>
+                  <td>Historical periods to include</td>
+                  <td><span class="value">2 years</span></td>
+                  <td>CloudWorks provided 2 years of actuals. Using both smooths out anomalous years.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Setting seasonality at Territory level — territory-level seasonality is unreliable when reps turn over; use Region or higher.</li>
+              <li>Using only 1 year of data — a single year may contain anomalies (CloudWorks had a spike in Q4 of one year due to a product launch). Two-year average is more stable.</li>
+              <li>Discussing seasonality with the customer <em>after</em> configuration instead of before — seasonality approach should be agreed in Session Zero. Flag this if it was skipped.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.05 — ACCOUNT VALUE KPI
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.05</span>
+          <span class="answer-section-title">Account Value KPI — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-05-account-value-answerkey.png" alt="Answer-key reference — configurator page 1.05 Account Value KPIs with PY Sales configured for account value and the assumption metrics (Manual Override Value, Industry Average, Predictive Spend Average) selected as defaults" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>KPI Configuration</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Account attribute for Territory (for initial assignment)</td>
+                  <td><span class="value">Territory Code</span></td>
+                  <td>The Territory file includes a Territory Code field that maps accounts to their current territory. This seeds the initial account-to-territory assignments before the Rule Engine runs.</td>
+                </tr>
+                <tr>
+                  <td>Account Value KPI attribute</td>
+                  <td><span class="value">Current ARR</span></td>
+                  <td>For a SaaS business, current ARR is the primary signal of account value for territory balancing decisions.</td>
+                </tr>
+                <tr>
+                  <td>Secondary KPI attribute</td>
+                  <td><span class="value">Potential Spend / Whitespace</span></td>
+                  <td>Potential spend captures growth opportunity — useful alongside current ARR for territory equity analysis.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Leaving "Account attribute for Territory" blank — this field seeds the initial rep-to-territory assignment on import. An empty field means all accounts start unassigned.</li>
+              <li>Using Employee Count as the KPI instead of ARR — Employee Count is a segmentation attribute, not a value signal. Always use revenue-based KPIs for territory balancing.</li>
+              <li>Not enabling the secondary KPI — whitespace/potential spend data is available in CloudWorks's account file; leaving it out limits the sales ops team's balancing toolkit.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.06 — TARGET ALLOCATION
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.06</span>
+          <span class="answer-section-title">Target Allocation — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-06-target-allocation-answerkey.png" alt="Answer-key reference — configurator page 1.06 Target & Allocation with cascade entry level set to Area (L2), time dimension set to monthly, and the allocation method configured for the CloudWorks scenario" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Target Entry and Cascading</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Target entry tier (top-down cascade starts here)</td>
+                  <td><span class="value">Area (L2)</span></td>
+                  <td>Finance provides targets at the Area level (North America, EMEA, etc.). Entering at Geo is too high; entering at Region requires Finance to break down further than they currently do.</td>
+                </tr>
+                <tr>
+                  <td>Time dimension for target import</td>
+                  <td><span class="value">Annual (broken into Q)</span></td>
+                  <td>Finance provides annual targets with a Q1-Q4 seasonality split. Import as annual; the model applies seasonality to generate quarterly targets.</td>
+                </tr>
+                <tr>
+                  <td>Over-allocation enabled?</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>CloudWorks intentionally over-assigns quotas to account for ramp, attrition, and territory vacancies.</td>
+                </tr>
+                <tr>
+                  <td>Over-allocation maximum</td>
+                  <td><span class="value">115%</span></td>
+                  <td>Standard SaaS practice — 10–20% buffer. CloudWorks specified 115%.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Allocation Methods</h4>
+            <table class="answer-table">
+              <thead><tr><th>Method</th><th>Enable?</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr><td>Weighted by Historical Actuals</td><td><span class="check">Yes</span></td><td>Primary allocation method — territories with higher historical performance receive proportionally larger targets.</td></tr>
+                <tr><td>Manual Override</td><td><span class="check">Yes</span></td><td>Sales leaders need to adjust individual territory targets for business reasons (new territory, rep change, strategic accounts).</td></tr>
+                <tr><td>Pipeline Amount</td><td><span class="check">Yes</span></td><td>Add Pipeline as an alternative allocation method — useful for new territories with no historical data.</td></tr>
+                <tr><td>Equal Distribution</td><td><span class="cross">No</span></td><td>CloudWorks territories are unequal in size and maturity. Equal distribution would produce invalid targets.</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Approval Workflow</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th></tr></thead>
+              <tbody>
+                <tr><td>Approval workflow enabled?</td><td><span class="check">Yes</span></td></tr>
+                <tr><td>Stage 1 approver</td><td><span class="value">Regional Manager</span></td></tr>
+                <tr><td>Stage 2 approver</td><td><span class="value">Area VP</span></td></tr>
+                <tr><td>Total approval stages</td><td><span class="value">2</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Setting target entry at Geo (L1) instead of Area (L2) — Finance works at Area level. Entering targets at Geo forces Finance to submit a single global number, which they don't have.</li>
+              <li>Disabling Pipeline Amount as an allocation method — CloudWorks has new territories created this year with no historical actuals. Pipeline is the only basis for allocation in those territories.</li>
+              <li>Forgetting to set the over-allocation ceiling — leaving it blank defaults to 100% (no over-allocation), which conflicts with CloudWorks's stated intent.</li>
+              <li>Setting 3 approval stages when only 2 are needed — adding the Geo VP as a third approver creates unnecessary process overhead for standard quarterly target cycles.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.07 — TERRITORY & RESOURCE ASSIGNMENT
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.07</span>
+          <span class="answer-section-title">Territory &amp; Resource Assignment — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <p style="font-size:0.88rem;color:#1e3a5f;margin:0 0 0.4rem;"><strong>Configurator page 1.07 — Territory Assignment</strong></p>
+          <img src="../screenshots/configurator/config-07-territory-assignment-answerkey.png" alt="Answer-key reference — configurator page 1.07 Territory Assignment with assignment destination levels and quota time dimension configured for the CloudWorks scenario" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+          <p style="font-size:0.88rem;color:#1e3a5f;margin:0 0 0.4rem;"><strong>Configurator page 1.08 — Resource Assignment</strong></p>
+          <img src="../screenshots/configurator/config-08-resource-assignment-answerkey.png" alt="Answer-key reference — configurator page 1.08 Resource Assignment with sales leader level, overlay level, approval levels, and rep-to-territory attribute mapping configured" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Territory Assignment Settings</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Account assignment destination</td>
+                  <td><span class="value">Territory (L5)</span></td>
+                  <td>Accounts are assigned to individual rep territories, not to Regions or Sub-Regions.</td>
+                </tr>
+                <tr>
+                  <td>Sales Rep assignment destination</td>
+                  <td><span class="value">Territory (L5)</span></td>
+                  <td>Reps are assigned at the territory level — one primary rep per territory.</td>
+                </tr>
+                <tr>
+                  <td>First-line manager assignment destination</td>
+                  <td><span class="value">Sub-Region (L4)</span></td>
+                  <td>First-line managers own Sub-Regions (multiple territories each).</td>
+                </tr>
+                <tr>
+                  <td>Time dimension for quota</td>
+                  <td><span class="value">Monthly</span></td>
+                  <td>Per the configurator guide, quota is set at the monthly level in the majority of implementations. Monthly allows for ramp schedules and mid-year adjustments.</td>
+                </tr>
+                <tr>
+                  <td>Manual Assignment</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Required for named enterprise accounts that Sales Ops assigns manually.</td>
+                </tr>
+                <tr>
+                  <td>Geographic Mapping</td>
+                  <td><span class="cross">No</span></td>
+                  <td>CloudWorks territories are industry/segment-based, not geography-based.</td>
+                </tr>
+                <tr>
+                  <td>Rule Engine</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Mid-market accounts are assigned via rule-based automation (see Section 1.08).</td>
+                </tr>
+                <tr>
+                  <td>Optimizer</td>
+                  <td><span class="cross">No</span></td>
+                  <td>Out of scope for this implementation. CloudWorks is not ready for optimizer; manual + rule engine covers their needs.</td>
+                </tr>
+                <tr>
+                  <td>Split Accounts</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Enterprise accounts with multiple divisions can span multiple territories.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Resource Assignment Settings</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Sales Rep level</td>
+                  <td><span class="value">Territory (L5)</span></td>
+                  <td>AEs are assigned one-per-territory at the Territory level.</td>
+                </tr>
+                <tr>
+                  <td>Sales Leader level</td>
+                  <td><span class="value">Sub-Region (L4)</span></td>
+                  <td>First-line managers own Sub-Region blocks of territories.</td>
+                </tr>
+                <tr>
+                  <td>Overlay level</td>
+                  <td><span class="value">Region (L3)</span></td>
+                  <td>SEs (Pre-Sales Engineers) cover entire Regions — they are not assigned to individual territories.</td>
+                </tr>
+                <tr>
+                  <td>Approval levels enabled?</td>
+                  <td><span class="check">Yes — 2 levels</span></td>
+                  <td>Sales Ops submits → First-line Manager approves → Area VP final approval for territory changes.</td>
+                </tr>
+                <tr>
+                  <td>Sales Rep Attribute for Territory (initial assignment seed)</td>
+                  <td><span class="value">Territory Code</span> (on Employee record)</td>
+                  <td>The Employee data file contains a Territory Code field that maps each rep to their current territory. This seeds the initial state before ADO sync runs.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Assigning overlay SEs at Territory level — SEs cover Regions, not individual territories. Territory-level assignment creates ~220 overlay entries instead of ~6, causing UX and calculation issues.</li>
+              <li>Leaving "Sales Rep Attribute for Territory" blank — without this seed, all reps start unassigned and the initial data load produces an empty assignment state.</li>
+              <li>Setting quota time dimension to Quarterly — the exercise guidance says Quarterly for granularity display, but the configuration guide recommends Monthly for quota. Monthly allows ramp curves; Quarterly does not.</li>
+              <li>Enabling Geographic Mapping — CloudWorks explicitly stated territories are NOT geography-defined. Enabling this creates a zip-code / state mapping process that doesn't apply.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.08 — RULE-BASED ASSIGNMENT
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.08</span>
+          <span class="answer-section-title">Rule-Based Assignment — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+          <img src="../screenshots/configurator/config-09-rule-engine-answerkey.png" alt="Answer-key reference — configurator page 1.09 Rule Engine with eligibility attribute selection and rule condition attribute selection configured for the CloudWorks scenario" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 1.25rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+          <div class="answer-block">
+            <h4>Qualifying Attributes (Which accounts are eligible for rule assignment?)</h4>
+            <table class="answer-table">
+              <thead><tr><th>Attribute</th><th>Include?</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Account Segment</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Only Commercial and SMB segments are eligible for rule-based assignment. Strategic and Named accounts are manually assigned.</td>
+                </tr>
+                <tr>
+                  <td>Account Type</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Distinguishes pool accounts (eligible for rules) from named accounts (manually assigned).</td>
+                </tr>
+                <tr>
+                  <td>Employee Count</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Banded employee count separates mid-market (&lt;1,000) from enterprise (1,000+), which drives territory type routing.</td>
+                </tr>
+                <tr>
+                  <td>HQ Country</td>
+                  <td><span class="cross">No</span></td>
+                  <td>Geographic rules are disabled for CloudWorks — territories are not defined by location.</td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="callout-note" style="margin-top:0.75rem;">
+              <span class="callout-label">📝 Note</span>
+              <p style="font-size:0.875rem;">Selected attributes must be in <strong>list format line items</strong> (not free text or numeric). Ensure Account Segment and Account Type are configured as list-type attributes in Data Hub Setup — if they're text fields, the rule engine cannot use them.</p>
+            </div>
+          </div>
+
+          <div class="answer-block">
+            <h4>Rule Definition Attributes (Used to define territory parameters)</h4>
+            <table class="answer-table">
+              <thead><tr><th>Attribute</th><th>Include?</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Industry</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>CloudWorks has industry-specialized territories (e.g., FinServ territory, Healthcare territory). Industry drives which territory a mid-market account routes to.</td>
+                </tr>
+                <tr>
+                  <td>Account Segment</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Commercial vs. SMB accounts route to different territory types even within the same region.</td>
+                </tr>
+                <tr>
+                  <td>Employee Count Band</td>
+                  <td><span class="check">Yes</span></td>
+                  <td>Banded employee count (e.g., 100–249, 250–499) further refines territory routing for mid-market accounts.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Example Rule for CloudWorks</h4>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:6px;padding:0.85rem 1rem;font-size:0.875rem;">
+              <strong>Rule:</strong> <code>Industry = "Technology" AND Account Segment = "Commercial" AND Employee Count Band = "250–999"</code><br>
+              <strong>→ Assign to:</strong> <code>US-West / Bay Area / SF-Commercial-Tech Territory</code><br><br>
+              <strong>Rule:</strong> <code>Industry = "Financial Services" AND Account Segment = "Commercial"</code><br>
+              <strong>→ Assign to:</strong> <code>US-East / Greater NY / NY-FinServ Territory</code>
+            </div>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls for CloudWorks</h4>
+            <ul class="pitfall-list">
+              <li>Using text-type attributes instead of list-type — the Rule Engine requires list-format line items. If Industry is stored as free text in Salesforce, it must be standardized to a list in Data Hub before rules can reference it.</li>
+              <li>Trying to use geographic attributes (State, Country) in rules — CloudWorks territory is NOT geographic. Rules based on HQ State will not match CloudWorks's territory structure.</li>
+              <li>Including Strategic/Named accounts in the qualifying set — these are manually assigned. Including them in the rule-eligible pool creates conflicts between manual assignments and rule outputs.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           SECTION 1.09 — OPTIMIZER
+           ============================================================ -->
+      <div class="answer-section">
+        <div class="answer-section-header">
+          <span class="answer-section-number">1.09</span>
+          <span class="answer-section-title">Optimizer — Answer Key</span>
+        </div>
+        <div class="answer-section-body">
+
+          <div class="answer-block">
+            <h4>Optimizer Configuration Decision</h4>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Answer</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Enable Optimizer?</td>
+                  <td><span class="cross">No — Out of scope for CloudWorks Phase 1</span></td>
+                </tr>
+              </tbody>
+            </table>
+            <div class="rationale">
+              💡 <strong>Rationale:</strong> CloudWorks explicitly stated the Optimizer is not in scope for this implementation. They're moving from Excel — introducing Rule Engine + Manual assignment is already a significant change. Optimizer is typically Phase 2 after data quality is validated.
+            </div>
+          </div>
+
+          <div class="answer-block">
+            <h4>What You Would Configure (If Optimizer Were Enabled)</h4>
+            <p style="font-size:0.875rem;color:#6b7280;margin-bottom:0.5rem;">For reference — if CloudWorks asked for Optimizer in a future phase:</p>
+            <table class="answer-table">
+              <thead><tr><th>Setting</th><th>Recommended Value</th><th>Why</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>Objective (primary)</td>
+                  <td><span class="value">ARR (balance revenue potential across territories)</span></td>
+                  <td>The primary planning measure should be the optimization objective for equitable territory design.</td>
+                </tr>
+                <tr>
+                  <td>Objective (secondary)</td>
+                  <td><span class="value">Pipeline Amount</span></td>
+                  <td>Pipeline is the forward-looking signal; including it balances current ARR with growth opportunity.</td>
+                </tr>
+                <tr>
+                  <td>Geography Constraints level</td>
+                  <td><span class="value">Sub-Region (L4)</span></td>
+                  <td>Optimizer constraints should apply at Sub-Region level — territories within a Sub-Region can be rebalanced, but accounts shouldn't move across Sub-Regions without manager approval.</td>
+                </tr>
+                <tr>
+                  <td>Mix Constraints attribute</td>
+                  <td><span class="value">Account Segment</span></td>
+                  <td>Ensures Optimizer doesn't create a territory with only SMB accounts or only Strategic accounts — each territory should have a healthy segment mix.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="answer-block">
+            <h4>Common Pitfalls (General)</h4>
+            <ul class="pitfall-list">
+              <li>Enabling Optimizer without confirmed data quality — Optimizer requires clean, complete account-level actuals. Garbage in, garbage out. Always validate data quality before activating.</li>
+              <li>Setting Geography Constraints at Territory level — too granular; locks the optimizer into micro-moves that produce minimal improvement.</li>
+              <li>Not including Pipeline as a secondary objective — for B2B SaaS with long sales cycles, historical ARR alone is a lagging indicator. Pipeline is critical for balancing growth potential.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ============================================================
+           DEBRIEF NOTES
+           ============================================================ -->
+      <h2>Facilitator Debrief Notes</h2>
+      <p>When reviewing answers with the group, focus discussion on these decision points where participants most commonly diverge:</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>🔥 Highest-Variance Decisions</h3>
+          <ul>
+            <li><strong>Tier count (1.02):</strong> Some participants choose 4 tiers based on the existing Case Study page (which shows an older structure). The exercise data shows 5 tiers — this is intentional to test whether they verify against the data file.</li>
+            <li><strong>Target entry level (1.06):</strong> Most common wrong answer is Geo (L1). Finance works at Area (L2). Dig into how they discovered Finance's target granularity.</li>
+            <li><strong>Quota time dimension (1.07):</strong> Monthly vs. Quarterly is a genuine debate. Monthly is technically correct; either is defensible if the participant can explain why.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🎯 Key Teaching Moments</h3>
+          <ul>
+            <li><strong>Data Hub drives everything:</strong> Attributes not enabled here cannot be used anywhere else. Decisions in 1.01 cascade through every other section.</li>
+            <li><strong>Optimizer is not a Phase 1 item:</strong> Push back if any participant says "we'd enable it anyway." Build the habit of right-sizing scope.</li>
+            <li><strong>List-type vs. text attributes:</strong> The Rule Engine limitation (list format required) is a real implementation gotcha that catches many delivery teams.</li>
+            <li><strong>Post-generation is expensive to fix:</strong> Planning measures, hierarchy depth, and approval workflow stages are all very difficult to change after model generation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">✅ Exercise Complete</span>
+        <p>Participants who completed the full configurator exercise and reviewed this answer key should be able to confidently run a Session Zero for a B2B SaaS customer and translate their requirements into correct T&amp;Q configurator decisions. If any section still feels uncertain, revisit the <a href="./03-configurator-walkthrough.html">Configurator Review</a> page for the guided walkthrough.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

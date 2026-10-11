@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workshop Overview — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>RPM Apps Tech Enablement Workshop</h1>
+      <p class="subtitle">Territory &amp; Quota · Account Segmentation · Capacity Planning · Sales Forecasting</p>
+      <div class="badge-row">
+        <span class="content-badge">RPM Apps Suite</span>
+        <span class="content-badge">4 Modules</span>
+        <span class="content-badge">Workshop</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div style="background:#eff6ff;border-left:4px solid #0066cc;border-radius:0 6px 6px 0;padding:0.85rem 1.1rem;margin:1rem 0 1.25rem;">
+        <strong style="display:block;color:#1e3a5f;font-size:1rem;">📋 Step 1 — Take the pre-workshop survey</strong>
+        <p style="margin:0.35rem 0 0.6rem 0;color:#374151;">Two minutes. Tells us where you're starting from so we can calibrate the wrap-up conversation and follow-up resources.</p>
+        <a href="https://forms.office.com/Pages/DesignPageV2.aspx?subpage=design&token=3317cd1a6cca4f17b49003621c27f778&id=ROV35w5jXEeges1BQ85RQAZ8qFR_ESxHofSw51yE4mFUOFo2Mjg5N1JVMkNHWlNBWTNaVEFBVTVSTi4u" target="_blank" rel="noopener" style="display:inline-block;background:#0066cc;color:white;text-decoration:none;padding:0.5rem 0.9rem;border-radius:4px;font-weight:600;font-size:0.9rem;">Take pre-workshop survey →</a>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💬 You're Not Alone — Join the Workshop Slack</span>
+        <p>This workshop is self-paced — you work through the guide on your own schedule — but you're not on your own. Our RPM Apps product experts monitor a dedicated Slack channel for workshop participants. Drop in any time, whether you're on Day 1 or Day 5 of working through the labs: ask questions, share what you're stuck on, and see what others have asked.</p>
+        <p><strong>Slack channel:</strong> <a href="https://anaplan.enterprise.slack.com/archives/C0B8FBXBNQL" target="_blank" rel="noopener">#ext-delivery-workshop-rpm-anaplan</a></p>
+        <p><strong>No Slack access?</strong> Send your question by email to <a href="mailto:ext-delivery-workshop-aaaauranzibwilfnfciwwarijy@anaplan.org.slack.com">ext-delivery-workshop-aaaauranzibwilfnfciwwarijy@anaplan.org.slack.com</a> — it posts directly into the channel and an expert will respond there.</p>
+      </div>
+
+      <h2>About This Workshop</h2>
+      <p>The <strong>RPM Apps Technical Enablement Workshop</strong> is a hands-on technical enablement program for Anaplan delivery practitioners — Solutions Consultants, Solution Architects, and Technical Consultants — who will be implementing or supporting the Anaplan Revenue Performance Management (RPM) application suite.</p>
+      <p>This is not a lecture series. It is a structured sequence of demonstrations, discussions, and hands-on labs designed to take you from <em>knowing about</em> these applications to being capable of <em>configuring, explaining, and delivering</em> them for real customers.</p>
+
+      <h3>What we assume you bring</h3>
+      <p>This workshop assumes you already understand what pre-built applications are — and what they are not — and the prescribed methodology used to prepare, configure, and deliver them. If your Anaplan background is in from-scratch model building, be aware that delivering a pre-built application is fundamentally different work. The configurator, the data inputs, and the post-generation steps are not optional shortcuts around custom modeling — they <em>are</em> the delivery method.</p>
+
+      <h3>What we will actually do</h3>
+      <p>We will start by briefly reviewing the common assets that are expected to be shared with you during the pre-project phase — what to ask for, what to expect, and how to read what you receive. As we move into configuration, we will work with the data the client has provided. Not dummy data — real territories, real products, real hierarchies. This data is the input that drives configuration, and configuration is the input that drives what gets built into the client tenant. Treat this step with the weight it deserves: the decisions you make here determine what shows up in the app.</p>
+      <p>With that input in hand, we will configure and build the <strong>Territory &amp; Quota</strong> application first. T&amp;Q is the application you will use during your Application-Led Workshops with clients — the one that demonstrates what comes out of the box. We will spend a full lab exploring the generated app in depth, because there is a lot to cover.</p>
+
+      <h3>When the base app isn't enough</h3>
+      <p>From there, we will look at scenarios where the base application needs to be extended. Several labs will walk through building and deploying extensions, ranging from straightforward changes to more involved work that requires more careful design upfront.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 T&amp;Q content reflects V2</span>
+        <p>The Territory &amp; Quota content in this guide reflects the current <strong>V2</strong> generation of the app. <strong>V3</strong> brings a meaningfully different configurator and UX (Polaris-based, ADO-driven, scenario planning across all functionality), and screens will look different. This guide will be updated once V3 screens are finalized. Where you see T&amp;Q screenshots or configurator details, assume V2 — and confirm against the current product before using with a customer.</p>
+      </div>
+
+      <h2>How Each Module Flows</h2>
+      <p>The workshop is organized into <strong>four application modules</strong> — one per RPM app. Every module follows the same deliberate sequence. The order matters: each section builds on the one before it. Here is the flow and the reasoning behind it:</p>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <strong>Functional Overview</strong> — <em>Orient before you configure</em><br>
+          We start with a short, high-level answer to: what does this app do, who uses it, and why does it exist in the RPM suite? This isn't a deep dive — it's context-setting. You need to understand the shape of what you're about to build before you touch a single setting. 15 minutes max.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <strong>Sample Data Structures</strong> — <em>Know the data before you configure it</em><br>
+          Every configuration decision is a data decision in disguise. Before we open the configurator, we look at exactly what data the app expects — the objects, the required fields, the format, and the common problems. This section grounds you in what the customer needs to have ready before a configuration session can even begin. The CloudWorks dataset is introduced here.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <strong>Configurator Review</strong> — <em>See every decision before you make it</em><br>
+          This section walks through the full configurator page by page, with annotated screenshots of every screen. This is the Tell and Show. For each page you'll learn what the setting controls, what's at risk if you get it wrong, and what questions to ask the customer before answering it. Open the app in your training tenant and follow along screen-for-screen.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-content">
+          <strong>Lab: Configurator</strong> — <em>Configure it yourself</em><br>
+          Now you do it. Using the CloudWorks case study, you work through the configurator yourself — making the same decisions you just saw in the walkthrough, but for a specific customer scenario. Each step is a mini-lab with a clear objective, explicit actions, and a completion screenshot so you know whether you got it right. This is the most important part of each module. Don't skip it, don't rush it.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-content">
+          <strong>Post-Generation Steps</strong> — <em>Generation is not go-live</em><br>
+          The configurator triggers generation — but what comes out is not a customer-ready app. There is a defined sequence of post-generation work that must happen before you can put the app in front of a customer: fixing formula errors, remapping saved views, loading data, validating rollups, and confirming the core workflows function correctly. This section walks through that checklist so you know what to expect and who does what.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-content">
+          <strong>Model Review</strong> — <em>Understand what was built</em><br>
+          After generation, the app contains thousands of objects. You don't need to understand all of them — but you do need to understand the key structural patterns: which modules drive the core logic, how data flows through the model, and where to look first when something doesn't look right. The Model Review focuses on the handful of modules that matter most for implementation and troubleshooting.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">7</div>
+        <div class="step-content">
+          <strong>Lab: CoModeler</strong> — <em>Explore the model with AI assistance</em><br>
+          CoModeler is Anaplan's AI-powered documentation tool. With the generated app open, you'll use it to produce a line item dictionary for a specific module, then ask targeted questions about formula logic — how does the quota calculation actually work? What module consolidates a rep's quota across multiple territory assignments? These aren't hypothetical questions — they're the exact questions that come up during implementation and customer conversations. The lab produces verifiable answers.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">8</div>
+        <div class="step-content">
+          <strong>Application Review</strong> — <em>Walk the app like a customer would</em><br>
+          Now that you understand what was built and how it works under the hood, you walk the generated UX application end to end — the same way you would with a customer. Every section, every key page, every workflow. You'll learn where to spend your demo time, what to skip, and how to tell the planning story in business language rather than model builder language.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">9</div>
+        <div class="step-content">
+          <strong>Common Extensions</strong> — <em>Know when to build and when to configure</em><br>
+          The last section of each module covers what customers consistently ask for beyond the base app — what it is, how to scope it, how long it takes, and how to build it in a way that doesn't break the upgrade path. Before scoping any extension, you'll use the configure-vs-extend decision tree to confirm the base app genuinely doesn't already handle the requirement. Often it does.
+        </div>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 T&amp;Q module also includes</span>
+        <p><strong>Data Integration &amp; ADO</strong> — a dedicated section on how data flows into and out of the app, the V2 Data Hub vs. V3 ADO architecture, and what changes when your customer transitions to V3. This is covered in the T&amp;Q module because T&amp;Q is typically the first app implemented, and the data architecture decisions made here affect all three configurator apps.</p>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Sales Forecasting module</span>
+        <p>Sales Forecasting is covered as a single <strong>App Overview</strong> section rather than the full module structure above. It has no configurator, so there is no configurator lab or post-gen checklist — the app is deployed as-is with limited configuration options. The section covers capabilities, limitations, CRM integration, and how it connects to T&amp;Q quota data.</p>
+      </div>
+
+      <p>The four modules covered in this workshop are:</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>🗺 Territory &amp; Quota (T&amp;Q)</h3>
+          <p>The cornerstone of the RPM suite. Covers territory hierarchy design, account assignment, target allocation, quota calculation, and the approval workflow. The best landing app in the portfolio and the foundation for everything else.</p>
+        </div>
+        <div class="card">
+          <h3>🎯 Account Segmentation &amp; Scoring</h3>
+          <p>Classifies every account into a segment using rule-based and score-based logic. The output feeds directly into territory carving (T&amp;Q) and headcount planning (Capacity). Run Segmentation before you design territories.</p>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>📊 Go-to-Market Capacity Planning</h3>
+          <p>Answers "how many people do I need to hire, when, and where?" Combines finance-driven guardrails (tops-down) with tactical hiring plans (bottoms-up) connected through ramp profiles. Output informs the T&amp;Q territory structure.</p>
+        </div>
+        <div class="card">
+          <h3>📈 Sales Forecasting</h3>
+          <p>The newest addition to the RPM suite — now generally available. Structured forecast collection, pipeline analytics, and scenario modeling. Connects to CRM via ADO or Anaplan for Salesforce. Quota data flows in from T&amp;Q.</p>
+        </div>
+      </div>
+
+      <h2>What This Workshop Intends to Accomplish</h2>
+      <p>By the end of this workshop, you should be able to do three things without hesitation:</p>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <strong>Sit in a room with a customer and lead a configuration session</strong> — you know what questions to ask before each page, what settings to watch out for, and what decisions are hard to reverse. You're not following a script. You're making informed recommendations.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <strong>Demo the generated app in a customer meeting</strong> — you know every section of every app, what it does, who uses it, and where to focus for maximum impact in a 15–20 minute demo. You can answer follow-up questions without going back to the Apps team.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <strong>Scope an engagement</strong> — you can look at a customer's requirements and know whether the base app handles them, whether configuration addresses them, or whether a net-new extension is needed. You can estimate effort and explain the upgrade path implications.
+        </div>
+      </div>
+
+      <h2>How to Think About Completing This Workshop</h2>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 The Right Mindset</span>
+        <p>Don't come to this workshop to watch. Come to do. The demonstrations exist to prepare you for the labs — not to replace them. Every lab in this guide is designed to produce something real: a configuration decision, a working answer, a documented model structure. If you skip the labs, you're only half here.</p>
+      </div>
+
+      <p>Here is how to get the most out of each section:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Section Type</th><th>How to Engage</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><strong>Tell sections</strong> (overview, review)</td>
+              <td>Read actively. Flag anything you don't understand. Write down questions — the debrief at the end of each lab is the place to ask them. Don't let ambiguity accumulate.</td>
+            </tr>
+            <tr>
+              <td><strong>Show sections</strong> (walkthroughs)</td>
+              <td>Open the app in your workspace and follow along with the annotated screenshots. Don't just read — navigate to the same page, see the same setting, confirm your understanding in real time. If something looks different in your workspace, flag it in Slack.</td>
+            </tr>
+            <tr>
+              <td><strong>Do sections</strong> (labs)</td>
+              <td>Complete every step. Check your work against the completion screenshots. If your screen doesn't match, figure out why before moving on — the answer is usually a missed step or a setting from a prior page. This is where the learning happens.</td>
+            </tr>
+            <tr>
+              <td><strong>Debrief questions</strong></td>
+              <td>Don't skip these. They're not filler — they're the bridge between executing steps and understanding <em>why</em>. If you can answer the debrief questions confidently, you understood the lab. If you can't, you executed it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Why Lab Participation and Completion Matter</h2>
+      <p>Every configuration lab in this workshop uses the <strong>CloudWorks Technologies case study</strong> — a consistent fictional customer that follows you through all three configurators. This is deliberate. By the time you finish the Capacity lab, you'll know CloudWorks well enough to answer edge-case questions without looking them up.</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Labs Build Muscle Memory</h3>
+          <p>Reading about the Data Hub Setup page is not the same as completing it. The configurator has a specific sequence, specific dependencies between pages, and specific ways to get it wrong. You need to feel that sequence — not just know it exists. The lab creates that familiarity.</p>
+        </div>
+        <div class="card">
+          <h3>Labs Surface Real Questions</h3>
+          <p>The questions that matter most — the ones that come up in customer sessions — only surface when you're actually doing the work. "What if the CRM only has actuals at the rep level?" is a question that comes up in the lab, not from reading the walkthrough. That's the point.</p>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>CoModeler Labs Build Durable Knowledge</h3>
+          <p>The model review sections teach you what to look for. The CoModeler labs force you to find it yourself. Generating a line item dictionary for the quota calculation module and reading it — that's something you'll remember. Being told about it is not.</p>
+        </div>
+        <div class="card">
+          <h3>Completion is a Signal</h3>
+          <p>Each lab has a "what it should look like when complete" screenshot. If your screen matches, you're done. If it doesn't, you're not — regardless of how far through the steps you got. This is how production implementations work: the output has to match the spec.</p>
+        </div>
+      </div>
+
+      <div class="callout-important">
+        <span class="callout-label">🚫 Don't Generate During Labs</span>
+        <p>Do <strong>not</strong> run app generation against a customer workspace or a live workspace as you work through this workshop. The configurator labs use a dedicated training workspace. Generating a T&amp;Q app creates approximately 8,000 objects and cannot be easily undone. If you're unsure which workspace to use, ask in the workshop Slack channel before clicking anything.</p>
+      </div>
+
+      <h2>Desired Outcomes</h2>
+      <p>When you leave this workshop, the goal is that you can say — with evidence, not just confidence — that you are ready to support an RPM Apps implementation. Specifically:</p>
+
+      <ul>
+        <li>✅ You have completed all three configurator labs and can explain every decision you made</li>
+        <li>✅ You have used CoModeler to document a module and answered specific formula questions</li>
+        <li>✅ You can walk through the T&amp;Q, Segmentation, and Capacity apps end-to-end without notes</li>
+        <li>✅ You can describe the data each app needs, in what format, and why</li>
+        <li>✅ You can scope an extension request and explain the upgrade path risk</li>
+        <li>✅ You understand how data flows between all four RPM apps and what the manual steps are today</li>
+        <li>✅ You can position Sales Forecasting in a customer conversation and explain what it does and doesn't do today</li>
+      </ul>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 After the Workshop</span>
+        <p>This lab guide stays with you. Bookmark it. When you're preparing for your first T&amp;Q engagement, the configurator walkthrough, data structure pages, and extensions table are the sections you'll come back to. When a customer asks about Sales Forecasting timing, the roadmap context is here. When you're doing post-gen and something breaks, the checklist is here. Build the habit of using it now so it's second nature in the field.</p>
+      </div>
+
+      <h2>Learning Objectives</h2>
+      <p>By the end of this workshop, participants will be able to:</p>
+      <ol>
+        <li><strong>Position the full RPM suite</strong> — articulate all five SPM pillars, explain how each app fits the revenue planning lifecycle, and identify the strongest landing scenarios for each app.</li>
+        <li><strong>Configure T&amp;Q, Segmentation, and Capacity</strong> — work through all three configurators with confidence, make informed decisions on each setting, and understand which choices are difficult to reverse.</li>
+        <li><strong>Execute post-generation steps</strong> — apply the post-gen checklist for each app, identify and resolve common issues, and assess model readiness for customer handoff.</li>
+        <li><strong>Demo every app end-to-end</strong> — guide a customer through T&amp;Q, Segmentation, and Capacity in business terms, identify the key demo moments, and handle follow-up questions.</li>
+        <li><strong>Use CoModeler to document generated models</strong> — generate line item dictionaries, explain formula logic, and answer specific questions about model structure.</li>
+        <li><strong>Scope extensions cleanly</strong> — distinguish configure from extend, estimate effort, and build extensions in a way that survives upgrades.</li>
+        <li><strong>Explain Sales Forecasting</strong> — describe what the app does, how it connects to T&amp;Q, its current limitations, and how to position it in a customer conversation.</li>
+      </ol>
+
+      <h2>Workshop Agenda Overview</h2>
+      <p>This workshop is <strong>self-paced</strong> — there are no scheduled sessions and no facilitator-led classes. Each module follows the same structure. Below is the typical time per section and how to engage with it. Move at your own pace — go faster on sections you already know, slower on ones where you want to dig in.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Duration</th><th>Activity</th><th>How to engage</th></tr></thead>
+          <tbody>
+            <tr><td>15 min</td><td>Functional Overview</td><td>Read-through</td></tr>
+            <tr><td>15 min</td><td>Sample Data Structures</td><td>Read-through</td></tr>
+            <tr><td>60–90 min</td><td>Configurator Review</td><td>Read-through + follow along in your training tenant</td></tr>
+            <tr><td>45–60 min</td><td>Lab: Configurator</td><td>Hands-on lab in your training tenant</td></tr>
+            <tr><td>15 min</td><td>Lab Debrief</td><td>Self-debrief — answer the questions in writing or in Slack</td></tr>
+            <tr><td>30 min</td><td>Post-Generation Steps</td><td>Read-through</td></tr>
+            <tr><td>20 min</td><td>Model Review</td><td>Read-through</td></tr>
+            <tr><td>30 min</td><td>Lab: CoModeler</td><td>Hands-on lab</td></tr>
+            <tr><td>60–90 min</td><td>Application Review</td><td>Read-through + follow along in your training tenant</td></tr>
+            <tr><td>30 min</td><td>Common Extensions</td><td>Read-through + post questions in Slack (optional)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📅 Pacing Note</span>
+        <p>The configurator lab and the CoModeler lab are the highest-value activities in each module — we will protect that time first. If we run long on discussion, we'll trim from the application review (participants can complete that self-paced using this guide). We will not skip labs.</p>
+      </div>
+
+      <h2>Prerequisites</h2>
+      <p>To get the most out of this workshop, participants should have:</p>
+      <ul>
+        <li><strong>Basic Anaplan platform knowledge</strong> — familiarity with modules, lists, dashboards, and model building. This is not an Anaplan 101 session.</li>
+        <li><strong>Completed Anaplan Level 1 certification</strong> (or equivalent hands-on platform experience)</li>
+        <li><strong>Access to an Anaplan partner workspace</strong> — required for the configurator lab and CoModeler labs. Confirm access with your manager ahead of time.</li>
+        <li><strong>Lab dataset files downloaded</strong> — CloudWorks CSV and Excel files for the configurator exercises. Available in the shared drive folder distributed before the workshop.</li>
+        <li><strong>Lab guide open in a browser tab</strong> — keep this guide accessible throughout. Each section maps directly to a workshop segment.</li>
+      </ul>
+
+      <h2>Workshop Materials</h2>
+      <p>All materials are distributed via shared drive before the workshop. This guide is your primary reference — everything else supplements it.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Material</th><th>Used For</th></tr></thead>
+          <tbody>
+            <tr><td>This lab guide</td><td>Primary reference throughout — open in a browser tab the entire time</td></tr>
+            <tr><td>T&amp;Q Data Prep Workbook</td><td>Template for Session Zero — what format each data file needs to be in</td></tr>
+            <tr><td>Segmentation Data Prep Workbook</td><td>Same, for the Segmentation configurator</td></tr>
+            <tr><td>Capacity Data Prep Workbook</td><td>Same, for the Capacity configurator</td></tr>
+            <tr><td>CloudWorks dataset files</td><td>Account, Territory, Employee, and Opportunity files for the configurator labs</td></tr>
+            <tr><td>Extension Estimation Template</td><td>Scoping and T-shirt sizing reference for extensions</td></tr>
+            <tr><td>Discovery Template — T&amp;Q v3</td><td>Pre-project discovery question guide for customer conversations</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>How the Apps Connect</h2>
+      <p>All four RPM apps are designed to work together. Understanding the data flows between them is essential context before you start any individual module.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">⚠ Connections Are Not Automatic Today</span>
+        <p>Data flows between apps currently require a manual export/import step. Native app-to-app connections are on the roadmap. Account for this in your project timelines — it is a real implementation step, not a checkbox.</p>
+      </div>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Segmentation → T&amp;Q</h3>
+          <p>Account segments from the Segmentation app are exported and imported as account attributes in T&amp;Q. These drive territory carving, the Rule Engine, and addressable market calculations.</p>
+        </div>
+        <div class="card">
+          <h3>Segmentation → Capacity</h3>
+          <p>Account counts per segment feed directly into the Capacity coverage ratio calculations. Changing segmentation changes required headcount — the two models are tightly linked.</p>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Capacity → T&amp;Q</h3>
+          <p>Territories-per-headcount (TPH) output from Capacity informs how many territories to design in T&amp;Q. The right sequencing is a judgment call — capacity planning and territory design often happen in parallel, each informing the other. What’s better defined at the start of the engagement should go first.</p>
+        </div>
+        <div class="card">
+          <h3>T&amp;Q → Sales Forecasting</h3>
+          <p>Quotas set in T&amp;Q flow into Sales Forecasting as the performance benchmark. Clean T&amp;Q quota data is a prerequisite for meaningful forecast attainment tracking.</p>
+        </div>
+      </div>
+
+      <div class="card" style="margin-top:1rem;">
+        <h3>Recommended Implementation Sequence</h3>
+        <p style="font-size:0.85rem;margin-bottom:0.75rem;">The order below reflects common practice, but Segmentation, Capacity, and T&amp;Q often run in parallel — each informs the others. Use your judgment based on what’s best-defined for the customer at project start.</p>
+        <ol style="padding-left:1.2rem;font-size:0.9rem;margin-top:0.5rem;">
+          <li><strong>Segmentation</strong> — classify your account universe before designing territories</li>
+          <li><strong>Capacity Planning &amp; T&amp;Q</strong> — these often happen in parallel; headcount planning and territory design inform each other</li>
+          <li><strong>Sales Forecasting</strong> — add forecast tracking once quotas are live and trusted</li>
+        </ol>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

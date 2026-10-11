@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacity Planning Sample Data Structures — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Capacity Planning Sample Data Structures</h1>
+      <p class="subtitle">Required data objects and role hierarchy setup</p>
+      <div class="badge-row">
+        <span class="content-badge">Capacity Module</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Capacity shares most of its data objects with T&amp;Q and Segmentation. The key additions are <strong>role hierarchy data</strong> (Job Family, Job Family Group, Sales Role) and <strong>productivity / ramp profile inputs</strong>.</p>
+
+      <h2>Required Data Objects</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Object</th><th>Purpose</th><th>Key Difference from T&amp;Q</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Employee</strong></td><td>Headcount data including role hierarchy</td><td>Requires Job Family, Job Family Group, and Sales Role — must match the hierarchy configured in the Capacity configurator</td></tr>
+            <tr><td><strong>Account</strong></td><td>Account counts per segment per geo (from Segmentation output)</td><td>Segment attribute required — drives coverage ratio calculations</td></tr>
+            <tr><td><strong>Territory</strong></td><td>Geo hierarchy for tops-down and bottoms-up planning</td><td>Same structure as T&amp;Q</td></tr>
+            <tr><td><strong>Position</strong></td><td>Open headcount positions (optional)</td><td>New in Capacity — links to Operational Workforce Planning (OWP) if used</td></tr>
+            <tr><td><strong>Job Family</strong></td><td>Role grouping hierarchy</td><td>New in Capacity — defines the 2–3 level role hierarchy</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Role Hierarchy Setup</h2>
+      <p>Capacity requires a structured role hierarchy. This is one of the most important data design decisions — get it wrong and you'll need to reconfigure:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Level</th><th>Example Values</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Job Family Group (L1)</td><td>Core, Support</td><td>Highest level — typically separates revenue-generating from support roles</td></tr>
+            <tr><td>Job Family (L2)</td><td>AE, CS, Pre-Sales, Management</td><td>Groups related roles</td></tr>
+            <tr><td>Sales Role (L3)</td><td>Strategic AE, Commercial AE, SMB AE, CSM, PSE, Regional Manager</td><td>The level at which coverage ratios and ramp profiles are defined</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Do Not Enable Role Grade Unless Needed</span>
+        <p>Role grade (P1–P5 or similar) adds a 4th level to the hierarchy. Every grade multiplies the number of rows in every coverage, productivity, and hiring table. Challenge this requirement hard before enabling it.</p>
+      </div>
+
+      <h2>Ramp Profile Inputs</h2>
+      <p>Ramp profiles are the foundation of all productivity calculations. You need to agree on these with the customer before or during the configurator session:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sales Role</th><th>Month 1</th><th>Month 2</th><th>Month 3</th><th>Month 4</th><th>Month 5+</th></tr></thead>
+          <tbody>
+            <tr><td>Strategic AE (example)</td><td>0%</td><td>20%</td><td>50%</td><td>75%</td><td>100%</td></tr>
+            <tr><td>Commercial AE (example)</td><td>0%</td><td>30%</td><td>70%</td><td>100%</td><td>100%</td></tr>
+            <tr><td>SMB AE (example)</td><td>20%</td><td>60%</td><td>100%</td><td>100%</td><td>100%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout-tip">
+        <span class="callout-label">💡 Hire Date Rule</span>
+        <p>Hired in the first half of the month → ramp starts that month. Hired in the second half → ramp starts next month. Make sure the customer understands this rule before they start entering hiring dates — it has material impact on projected revenue output.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

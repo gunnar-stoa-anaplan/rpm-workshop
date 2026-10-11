@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: CoModeler — Capacity Planning — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: CoModeler</h1>
+      <p class="subtitle">Using CoModeler to document and understand the Capacity Planning model</p>
+      <div class="badge-row">
+        <span class="content-badge">Capacity Module</span>
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Use CoModeler to explore the generated model structure. These labs are designed to produce <strong>predictable, verifiable outputs</strong> — each one has a specific question you should be able to answer when done.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Access</span>
+        <p>CoModeler is available within Anaplan. Open any module in the app → look for the CoModeler icon in the toolbar. Complete Lab A before Lab B — Lab B builds on what you find in Lab A.</p>
+      </div>
+
+      <h2>What You'll See — CoModeler in Capacity</h2>
+      <p>The screenshots below show what CoModeler looks like when open in the Capacity app.</p>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler panel open in Capacity HC Hiring Plan module]</div>
+        <div class="ss-desc">Show CoModeler side panel alongside HC Hiring Plan. Prompt input field visible. No live demo recorded — capture from Capacity demo app with CoModeler enabled.</div>
+      </div>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler output — HC Hiring Plan ramp formula explanation]</div>
+        <div class="ss-desc">Show CoModeler explaining how a hire date and ramp profile combine to generate a revenue projection. Ramp month offsets should be visible in the explanation.</div>
+      </div>
+
+
+
+      <h2>CoModeler Lab A — Document the Hiring Plan Module</h2>
+      <p>Generate a line item dictionary for the HC Hiring Plan module to understand the inputs and outputs of the bottoms-up hiring plan.</p>
+
+      <ol class="lab-steps">
+        <li>Open the <strong>Capacity demo app</strong> in your partner workspace.</li>
+        <li>Navigate to the <strong>HC Hiring Plan</strong> module.</li>
+        <li>Open CoModeler and prompt: <em>"Generate a line item dictionary for this module. Include name, formula summary, data type, and what downstream modules depend on each line item."</em></li>
+        <li>Identify which line item represents planned new hires by month and which line item represents cumulative headcount.</li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which module reads from HC Hiring Plan to calculate projected revenue? What is the key formula that connects a hire date to a revenue contribution?
+      </div>
+
+      <h2>CoModeler Lab B — Explain the Ramp-to-Revenue Logic</h2>
+      <p>Use CoModeler to understand exactly how the ramp profile converts a hire date into a monthly revenue contribution.</p>
+
+      <ol class="lab-steps">
+        <li>Launch CoModeler in the Capacity app.</li>
+        <li>Ask: <em>"If I hire a Commercial AE on March 15th, and the ramp profile is 0% month 1, 30% month 2, 70% month 3, 100% month 4+, what is the projected revenue contribution for April, May, June, and July? Walk me through the exact calculation."</em></li>
+        <li>Follow up: <em>"How does the hire-date-to-ramp rule work — what is the cutoff rule for whether ramp starts in the hire month or the next month?"</em></li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        A hire on the 20th of March — does ramp start in March or April? What is the revenue impact of this decision over a 12-month planning horizon for a $1M quota AE?
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

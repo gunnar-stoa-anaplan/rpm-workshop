@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacity Common Extensions — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Capacity Planning Common Extensions</h1>
+      <p class="subtitle">Typical customizations and how to scope them</p>
+      <div class="badge-row">
+        <span class="content-badge">Capacity Module</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Capacity has fewer extensions than T&amp;Q but the ones that come up tend to add meaningful complexity. Most are driven by Finance wanting more granular cost modeling or Sales wanting more flexible scenario management.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Extension</th><th>Size</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Custom Ramp Profiles</td><td>S</td><td>The base app provides 3 ramp profiles. Adding more requires a new profile in the admin setup and corresponding formula updates. Common when different geos (APAC vs. EMEA) have materially different ramp times.</td></tr>
+            <tr><td>Revenue Target by Product Line</td><td>M</td><td>When Finance provides separate targets for different product lines. Requires adding product dimension to the revenue target and coverage modules — significant dimensionality addition.</td></tr>
+            <tr><td>OWP Integration</td><td>M–L</td><td>Connecting Operational Workforce Planning data (approved positions, cost data) to the Capacity hiring plan. High value for customers with mature headcount planning processes, but requires both products to be live.</td></tr>
+            <tr><td>Custom Cost Modeling</td><td>M</td><td>Adding fully-loaded cost per hire (base + benefits + equipment + recruiting cost) to the financial liability analysis. Common for CFOs who want full cost-of-hire visibility, not just quota capacity.</td></tr>
+            <tr><td>Additional Scenario Management</td><td>S</td><td>The configurator sets the number of scenarios at generation time. Adding scenarios post-gen requires extending the scenario list and replicating scenario logic across modules. Small effort but needs careful testing.</td></tr>
+            <tr><td>Segmentation Auto-Sync</td><td>S</td><td>Automating the segment-count feed from Segmentation to Capacity coverage ratios. Currently manual export/import. An ADO pipeline makes this seamless — small setup effort once ADO is configured.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Positioning Tip</span>
+        <p>The most powerful Capacity demo moment is showing a VP of Sales Finance the "holy grail" page: "Hire 2 AEs in January, 3 in April — here's exactly when you close the revenue gap." Lead with that. Everything else is detail.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Pre-Project Discovery Questions</h2>
+      <p>Use these questions before or during kickoff to assess Capacity Planning fit and identify likely extensions early. ⭐ marks the highest-priority questions.</p>
+
+      <h3>Role Hierarchy &amp; Headcount</h3>
+      <ul>
+        <li>⭐ How many sales roles do you have? Do they map cleanly to a 2–3 level hierarchy (Job Family Group → Job Family → Sales Role)?</li>
+        <li>⭐ Do different roles have materially different ramp times? Do you have data to support those assumptions, or are they estimates?</li>
+        <li>Do you use role grades (P1–P5 or equivalent)? Do you need grade-level headcount planning, or is role-level sufficient?</li>
+        <li>How do you define "fully ramped"? Is there a consistent definition across the organization, or does it vary by manager?</li>
+        <li>Do you use position management (open headcount positions tied to org structure) or purely people-based planning?</li>
+      </ul>
+
+      <h3>Planning Process</h3>
+      <ul>
+        <li>⭐ Who sets the tops-down headcount budget — Finance, Sales Leadership, or both? At what level of geography do they plan (global, region, sub-region)?</li>
+        <li>⭐ Who enters the bottoms-up hiring plan — territory managers, regional managers, or a central Sales Ops team?</li>
+        <li>Do you currently model revenue contribution by ramp cohort? (If yes, they'll understand the app quickly. If no, plan extra time to explain why it matters.)</li>
+        <li>How many planning scenarios do you need? (Base, conservative, optimistic — or more?)</li>
+        <li>Is your headcount planning currently done in Excel, a legacy tool, or another Anaplan model? What's the biggest pain?</li>
+      </ul>
+
+      <h3>Data &amp; Integration</h3>
+      <ul>
+        <li>⭐ Do you currently track actual hire dates vs. planned hire dates? (Required for meaningful AOP snapshot comparison.)</li>
+        <li>Do you use Operational Workforce Planning (OWP)? If so, is there appetite to connect headcount data between OWP and Capacity?</li>
+        <li>Do you need cost modeling (salary, benefits, recruiting cost per hire) in addition to headcount counts?</li>
+        <li>Are segment counts available from a Segmentation app, or will coverage ratios be configured manually?</li>
+        <li>How does Finance currently provide revenue targets — by region, by sub-region, by product? At what time granularity?</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anaplan Way for Apps — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Anaplan Way for Apps</h1>
+      <p class="subtitle">The 7-step T&amp;Q implementation methodology</p>
+      <div class="badge-row">
+        <span class="content-badge">Section 2</span>
+        <span class="content-badge">45 min</span>
+        <span class="content-badge">Methodology</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <p>The <strong>Anaplan Way for Apps</strong> is the prescribed delivery methodology for implementing RPM applications, including T&amp;Q. Unlike a full custom Anaplan build, the Apps delivery motion is structured around the configurator tool — which means the sequence of activities, the timing of key milestones, and the division of labor between Anaplan specialists and the delivery team are all well-defined. Follow this methodology closely; deviation is the primary cause of rework and project overruns.</p>
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">The 7-Step Methodology</span>
+          <span class="tsd-step-desc">You'll learn the prescribed delivery phases, the role of each milestone, and why deviation causes rework.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Facilitator Walkthrough</span>
+          <span class="tsd-step-desc">Instructor walks through a real project timeline example, showing how each phase maps to calendar weeks.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Project Risk Review</span>
+          <span class="tsd-step-desc">Map a real or hypothetical customer situation to the Anaplan Way phases. Where are the risk points?</span>
+        </div>
+      </div>
+
+      <h2>Implementation Phases</h2>
+
+      <div class="methodology-flow">
+        <figure>
+          <img src="../img/tawa-methodology-flow.jpg" alt="TAWA Methodology Flow Diagram" class="full-width-img">
+          <figcaption>The Anaplan Way for Applications: Pre-Project → Configuration → Test & Deploy / Extension Design → Go-Live</figcaption>
+        </figure>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <h3>Session Zero — Data Readiness</h3>
+          <p>Session Zero is a pre-kickoff engagement focused entirely on data. Before a single configurator setting is touched, you need to understand the customer's data landscape: what systems they use, what data they have, what format it's in, and how clean it is.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Share the <strong>Data Prep Workbook</strong> with the customer as early as possible — ideally before the SOW is signed</li>
+            <li>Walk through the workbook requirements: account hierarchy, territory hierarchy, rep list, historical actuals, target file</li>
+            <li>Identify data gaps, inconsistencies, and transformation needs</li>
+            <li>Confirm which systems of record will feed T&amp;Q (CRM, ERP, HR, manual)</li>
+            <li>Validate sample data — you need real rows, not just schema definitions</li>
+          </ul>
+          <div class="callout-important">
+            <span class="callout-label">🚫 Hard Rule</span>
+            <p><strong>Do not kick off the project without sample data.</strong> If the customer can't provide even a representative sample of accounts, territories, and reps before kickoff, the configuration sessions will be guesswork. Push back on this. Projects that start without data always get stuck later.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <h3>Kickoff</h3>
+          <p>The formal project kickoff with the customer team. Use the Anaplan-provided kickoff template deck (available in the enablement portal). This is not a generic project kickoff — it should orient the customer specifically to the T&amp;Q app and what they're about to go through.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Review the project plan and milestone schedule</li>
+            <li>Introduce the configurator and what it produces</li>
+            <li>Align on the app scope (which pillars, which features)</li>
+            <li>Discuss <strong>yellow tabs vs. red tabs</strong> in the configurator:
+              <ul>
+                <li><strong>Yellow tabs</strong> — configurations that can be adjusted post-generation with moderate effort</li>
+                <li><strong>Red tabs</strong> — configurations that are very difficult or impossible to change after generation; must be finalized during the configuration sessions</li>
+              </ul>
+            </li>
+            <li>Set expectations about the generation process (timing, errors, what comes next)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <h3>Base App Walkthrough</h3>
+          <p>Before configuration sessions begin, walk the customer through the base T&amp;Q app at a high level. This is a demo of what they're going to get — it sets context, manages expectations, and often surfaces requirements that weren't captured in discovery.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Demo the spoke app end-to-end (or show the reference video)</li>
+            <li>Highlight the major functional areas: Territory Management, Target Setup, Quota Setup, Account Assignment, Administration</li>
+            <li>Point out what is and isn't configurable via the configurator</li>
+            <li>Capture questions and requirements that arise — feed these into configuration sessions</li>
+          </ul>
+          <div class="callout-tip">
+            <span class="callout-label">💡 Tip</span>
+            <p>Use this walkthrough to "anchor" the customer's expectations on base functionality before they start asking for extensions. The more familiar they are with what the app already does, the less time you spend building net-new things that are already there.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-content">
+          <h3>Configuration Sessions (1–2 Weeks)</h3>
+          <p>The core of the pre-generation work. These are structured working sessions — typically 2–4 hours each, held daily or every other day — where you walk through the configurator with the customer's decision-makers and complete every setting.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Work through configurator pages 1–14 systematically</li>
+            <li>Bring the right customer stakeholders to each session (Sales Ops for hierarchy/planning measures, Finance for targets, IT for data integration)</li>
+            <li>Document every decision — especially anything that deviates from default settings</li>
+            <li>Validate decisions against the sample data (e.g., how many hierarchy tiers does their data actually have?)</li>
+            <li>Flag red-tab decisions for extra review and sign-off</li>
+          </ul>
+          <div class="callout-warning">
+            <span class="callout-label">⚠ Warning</span>
+            <p>Don't let configuration sessions drag past 2 weeks. Scope creep and analysis paralysis are the main risks. Keep decisions moving. If a customer can't decide on a setting, document the tradeoffs, make a recommendation, and get sign-off. You can't generate an app on a "maybe."</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-content">
+          <h3>App Generation</h3>
+          <p>The configurator generates the T&amp;Q application. This is handled by Chan/John (the App Engineering team) — <strong>do not run generation yourself without their involvement</strong>. Generation is a complex, time-sensitive process that should be treated as a controlled event.</p>
+          <p><strong>What happens during generation:</strong></p>
+          <ul>
+            <li>The configurator reads all completed settings and generates approximately <strong>~8,000 Anaplan objects</strong> (modules, line items, lists, dashboards, actions, etc.)</li>
+            <li>Generation runs for approximately <strong>90 minutes to 2 hours</strong></li>
+            <li><strong>0–200 errors after generation is acceptable</strong> — this is normal and expected. Errors above 200 warrant investigation</li>
+            <li>Generation should be run in a clean, dedicated workspace — not a workspace with existing models</li>
+          </ul>
+          <div class="callout-note">
+            <span class="callout-label">📝 Note</span>
+            <p>The generation errors you see post-run are typically broken formula references due to conditional module generation — some modules only exist if certain features are enabled. The post-gen checklist addresses how to resolve these.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-content">
+          <h3>Model Readiness (1–2 Weeks)</h3>
+          <p>After generation, the app exists but is not ready for the customer. Model Readiness is the period of post-gen work required to get the app to a demonstrable, data-loaded state. With focused effort, this is approximately <strong>1–2 days of actual work</strong>, spread over 1–2 weeks to allow for customer data prep.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Work through the post-gen checklist (see the Post-Generation Steps section)</li>
+            <li>Resolve generation errors and broken formula references</li>
+            <li>Load customer data (accounts, territories, reps, historical actuals, initial targets)</li>
+            <li>Validate data loads — check rollups, check hierarchy integrity</li>
+            <li>Configure ADO pipelines (or existing Data Hub) for ongoing data feeds</li>
+            <li>Demo the loaded app back to the customer — this is the Model Readiness milestone</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">7</div>
+        <div class="step-content">
+          <h3>Extension Design</h3>
+          <p>With the base app live and the customer seeing their own data, now is the right time to revisit the extension list. Customers almost always have a wishlist of custom functionality. Extension Design is about separating what the base app already handles from what genuinely requires new build.</p>
+          <p><strong>Key insight:</strong> When you show customers the loaded base app, <strong>1/3 to 1/2 of their planned extensions often turn out to be unnecessary</strong> — the base app already covers the need, or the customer's requirement was based on a misunderstanding of how Excel worked. Always anchor extension scoping on a demo of the live app, not a requirements list written before they saw the app.</p>
+          <p><strong>Key activities:</strong></p>
+          <ul>
+            <li>Review the extension wishlist against the live app</li>
+            <li>For each item: does the base app do this? Can it be configured? Does it require net-new build?</li>
+            <li>Size and prioritize remaining extensions (see Common Extensions section)</li>
+            <li>Plan extension build into the project timeline</li>
+          </ul>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Configure vs. Extend</h2>
+
+      <div class="callout-note">
+        <span class="callout-label">🔧 Key Concept</span>
+        <p><strong>Configure:</strong> Choices made in the configurator that shape the generated app. No model building required. Examples: number of hierarchy tiers, which planning measures are included, whether the approval workflow is enabled.<br><br>
+        <strong>Extend:</strong> Net-new model building added on top of the generated baseline. Examples: custom dashboards, additional approval stages, non-standard quota components, integrations to non-standard systems.<br><br>
+        The rule of thumb: <strong>exhaust configuration options before scoping extensions.</strong> Extensions are expensive to build and maintain — especially across app upgrades.</p>
+      </div>
+
+      <h2>Two Customer Types</h2>
+      <p>You will encounter two broad customer profiles in T&amp;Q engagements. Understanding which type you're dealing with shapes how you run the project:</p>
+      <div class="two-col">
+        <div class="card">
+          <h3>🆕 Net-New (Greenfield) Customer</h3>
+          <p>No existing Anaplan for SPM. Coming from spreadsheets, a legacy tool, or a custom-built solution. The configurator generates their first T&amp;Q app from scratch.</p>
+          <ul>
+            <li>Data migration/transformation is the biggest risk</li>
+            <li>Change management is critical — users have no Anaplan muscle memory</li>
+            <li>More likely to have a long extension wishlist</li>
+            <li>Session Zero investment is highest here</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>🔄 Upgrade (V2 → V3) Customer</h3>
+          <p>Existing T&amp;Q on an older version (typically V2). Upgrading to V3 to access new functionality, improved performance, or ADO integration.</p>
+          <ul>
+            <li>Has existing data structures that may not map cleanly to V3</li>
+            <li>May have existing extensions that need to be re-scoped for V3</li>
+            <li>Territory hierarchy structure changes between V2 and V3 (flat file vs. per-tier views)</li>
+            <li>User adoption is usually easier — team already knows Anaplan</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Upgrade Path Warning</span>
+        <p><strong>V2 → V3 upgrades are not automatic.</strong> The V3 app is a new generation — there is no in-place upgrade path. You generate a new V3 app and migrate data. Any custom extensions built on V2 will need to be re-evaluated and potentially rebuilt on V3. Set this expectation with customers early. The upgrade should be scoped as a new engagement, not a "version bump."</p>
+      </div>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Project Risk Review</span>
+        <p>Using the Anaplan Way phases you just reviewed:</p>
+        <ul>
+          <li>Sketch out a rough timeline for a 180-rep, 4-tier territory hierarchy customer (like CloudWorks). How many weeks for each phase?</li>
+          <li>Identify the two riskiest phases for a customer who hasn't done data readiness. What would you do to mitigate?</li>
+          <li>What's the most common place projects go off the rails? What's the fix?</li>
+        </ul>
+        <p>Be ready to share your timeline sketch during the debrief.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Delivery Methodology by Application</h2>
+      <p>While the Anaplan Way for Apps provides the overall framework, each RPM application has nuances in how the phases play out. Here's what's different for each app:</p>
+
+      <h3>Account Segmentation &amp; Scoring</h3>
+      <div class="two-col">
+        <div class="card">
+          <h3>Session Zero Differences</h3>
+          <ul>
+            <li>Data focus shifts to <strong>firmographic quality</strong> — employee count, revenue bands, industry classification. Ask: "Do you have banded versions of these fields, or only raw numbers?"</li>
+            <li>Validate that the customer has a <strong>segment definition</strong> they're willing to commit to. "We'll figure it out during config" is a red flag — the segment list is set at generation.</li>
+            <li>If Segmentation will feed T&amp;Q, coordinate data timing: Segmentation outputs need to be ready before T&amp;Q territory carving begins.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Configuration Session Pacing</h3>
+          <ul>
+            <li>Segmentation configurator = ~0.4× the complexity of T&amp;Q. Plan 2–3 hours of focused sessions with a prepared customer.</li>
+            <li>The wallet size configuration is where sessions slow down — customers often want to model multiple methods. Set a decision deadline.</li>
+            <li>Score-based segmentation weights require a stakeholder decision. Don't let this become a committee exercise — recommend weights based on the data and get a single decision-maker to approve.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout-tip">
+        <span class="callout-label">💡 Model Readiness for Segmentation</span>
+        <p>Model Readiness for Segmentation means: accounts are loaded with firmographic attributes, the segmentation calculation has run, and the customer can see their own accounts in the right segments. Schedule a calibration session — customers almost always want to adjust thresholds after seeing the initial distribution. Build that into the timeline.</p>
+      </div>
+
+      <h3>Go-to-Market Capacity Planning</h3>
+      <div class="two-col">
+        <div class="card">
+          <h3>Session Zero Differences</h3>
+          <ul>
+            <li>Data focus is on <strong>role hierarchy structure</strong> — Job Family Groups, Job Families, Sales Roles. Get organizational HR data early: this structure must match how Finance reports headcount.</li>
+            <li>Confirm ramp profile data: what does the customer believe a new AE's month-by-month productivity looks like? This is often an assumption, not a tracked metric — surface that early.</li>
+            <li>If using Segmentation outputs as coverage inputs, confirm the Segmentation timeline. Capacity planning needs segment counts before coverage ratios can be configured.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Configuration Session Pacing</h3>
+          <ul>
+            <li>Capacity configurator = ~0.5× the complexity of T&amp;Q. Plan 2 days of focused sessions with a prepared customer.</li>
+            <li>The tops-down vs. bottoms-up entry level decision requires Finance and Sales in the same room. Don't configure this without both stakeholders present.</li>
+            <li>Dimensionality decisions (sub-region + segment vs. sub-region only) are the #1 source of rework on Capacity projects. Slow down here — get explicit sign-off before generating.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout-tip">
+        <span class="callout-label">💡 Model Readiness for Capacity</span>
+        <p>Model Readiness for Capacity means: ramp profiles are loaded, coverage ratios are set, the tops-down suggested headcount calculation runs without errors, and at least one region's bottoms-up hiring plan has been entered and the "holy grail" revenue gap page shows a result. That page — hire X people on Y dates, close the revenue gap — is the customer sign-off moment. Get there as fast as possible.</p>
+      </div>
+
+      <h3>Sales Forecasting</h3>
+      <div class="two-col">
+        <div class="card">
+          <h3>Implementation Approach</h3>
+          <ul>
+            <li>No configurator — there is no configuration session in the traditional sense. The app ships as-is with limited post-deployment configuration.</li>
+            <li>The primary implementation work is <strong>CRM data integration</strong>: connecting Salesforce (via ADO or Anaplan for Salesforce) and validating that opportunity data is loading correctly with the right fields and stage mapping.</li>
+            <li>T&amp;Q quota data must be available and structured correctly before Sales Forecasting can show meaningful attainment data. Sequence matters: T&amp;Q live before Sales Forecasting launch.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Go-Live Readiness</h3>
+          <ul>
+            <li>MEDDPICC field mapping from Salesforce — confirm which Salesforce fields map to which MEDDPICC components. Missing fields will surface immediately as hygiene alerts.</li>
+            <li>Brief the customer's sales leadership before go-live: the pipeline hygiene page will show data quality problems on day one. Frame this as a feature, not a bug.</li>
+            <li>First forecast cycle is the highest-risk moment — sellers are learning a new process. Plan a check-in session 2 weeks after go-live to catch confusion early.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout-note">
+        <span class="callout-label">📝 No "Model Readiness" Milestone</span>
+        <p>Because there is no configurator and no generation, there is no traditional Model Readiness milestone for Sales Forecasting. The equivalent is a <strong>Data Validation Review</strong> — confirm CRM data is loading correctly, quota data is flowing from T&amp;Q, and at least one forecast submission has been tested end-to-end before rolling out to the full sales team.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Recommended Implementation Sequence</h2>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Workshop vs. Production Sequence</span>
+        <p>This workshop covers T&amp;Q first — and that's correct for learning. T&amp;Q is the most important app, the best landing app, and the one most practitioners will implement first in the field. The sequence below is the recommended order when a customer is implementing <strong>all apps simultaneously</strong> in a production engagement. In most real projects, T&amp;Q goes live first and the other apps follow in subsequent phases.</p>
+      </div>
+
+      <p>When a customer is implementing multiple RPM apps simultaneously, the data dependencies between apps make the sequence matter. Here is the recommended order and the reasoning behind it:</p>
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <strong>Account Segmentation &amp; Scoring</strong> — Run segmentation first to classify the account universe. Segment outputs feed into both T&amp;Q (territory carving, Rule Engine) and Capacity (coverage ratio calculations). Doing this first means T&amp;Q and Capacity are built on accurate data.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <strong>Go-to-Market Capacity Planning</strong> — With segment counts from Segmentation, model headcount needs by role and geography. The output — territories per headcount — informs how many territories to design in T&amp;Q. Doing this before T&amp;Q prevents rebuilding the territory hierarchy after the headcount model runs.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <strong>Territory &amp; Quota</strong> — Design territories informed by segment mix and headcount model. Configure the T&amp;Q app last among the three configurator apps because it depends on outputs from both Segmentation and Capacity. This is still typically the first app go-live because it delivers the most immediate customer value.
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-content">
+          <strong>Sales Forecasting</strong> — Implement after T&amp;Q is live and quota data is structured correctly. Sales Forecasting without quota data is meaningless — attainment tracking requires a baseline. This is the natural second or third engagement with a customer who already has T&amp;Q.
+        </div>
+      </div>
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Reality Check</span>
+        <p>This is the <em>recommended</em> sequence, not the sequence every customer follows. Many customers implement T&amp;Q first and add Segmentation and Capacity later. That's fine — the apps work independently. What matters is that when all three are in scope simultaneously, you run them in this order. And when a customer asks "which should we do first?" — this is your answer.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

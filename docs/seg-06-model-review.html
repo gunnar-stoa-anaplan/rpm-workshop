@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation Model Review — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Segmentation Model Review</h1>
+      <p class="subtitle">Understanding the generated Segmentation model using CoModeler</p>
+      <div class="badge-row">
+        <span class="content-badge">Segmentation Module</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>The Segmentation app is smaller than T&amp;Q but contains some nuanced scoring logic that benefits from CoModeler exploration. Focus on the scoring and segment assignment modules.</p>
+
+      <h2>Key Segmentation Modules</h2>
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Module Name Validation Required</span>
+        <p>The module names listed in this table are <strong>illustrative</strong>. Actual module names in your generated Segmentation model may differ depending on configuration choices and version. <strong>Always verify module names against your specific generated model before navigating or referencing them in a customer session.</strong> If a module name shown below does not match what you see in your workspace, use CoModeler or the model's module list to identify the correct module.</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Module</th><th>Purpose</th></tr></thead>
+          <tbody>
+            <tr><td>SG Account Scoring</td><td>Calculates the numeric score for each account based on weighted metrics</td></tr>
+            <tr><td>SG Segmentation Rules</td><td>Rule-based segment assignment — explicit conditions per segment</td></tr>
+            <tr><td>SG Final Segment</td><td>Combines rule-based and score-based to produce the final segment output</td></tr>
+            <tr><td>SG Wallet Size</td><td>Calculates addressable spend per account using the configured method</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>CoModeler Lab A — Document the Account Scoring Module</h2>
+      <p>Generate a line item dictionary for the SG Account Scoring module to understand how each scoring metric contributes to the final account score.</p>
+
+      <ol class="lab-steps">
+        <li>Open the <strong>Segmentation demo app</strong> in your partner workspace.</li>
+        <li>Navigate to the <strong>SG Account Scoring</strong> module.</li>
+        <li>Open CoModeler and prompt: <em>"Generate a line item dictionary for this module. Include name, formula summary, and how each line item contributes to the final score."</em></li>
+        <li>Identify which line item holds the final weighted score and which holds the segment assignment derived from that score.</li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        How does the app decide whether rule-based or score-based takes precedence when both apply to the same account?
+      </div>
+
+      <h2>CoModeler Lab C — Explain the Score-to-Segment Mapping</h2>
+      <p>Use CoModeler to understand the exact logic that converts a numeric score (0–10) into a segment assignment.</p>
+
+      <ol class="lab-steps">
+        <li>Launch CoModeler in the Segmentation app.</li>
+        <li>Ask: <em>"How does the app map a numeric score to a segment? Walk me through the formula logic that converts a score of 7.2 to the 'Named' segment."</em></li>
+        <li>Follow up: <em>"If I want to change the threshold so that accounts scoring above 8 are Strategic instead of 7, which line item or admin setting do I change?"</em></li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Where in the Segmentation app does an admin change the score thresholds without requiring a re-generation?
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

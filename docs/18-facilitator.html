@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facilitator Guide — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .script-block {
+      background: #f0f7ff;
+      border-left: 4px solid #0066cc;
+      border-radius: 0 6px 6px 0;
+      padding: 1rem 1.25rem;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+    }
+    .script-block p { margin-bottom: 0.5rem; }
+    .script-block p:last-child { margin-bottom: 0; }
+    .slide-ref {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: #1a2332;
+      color: #7eb8f7;
+      font-size: 0.75rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-bottom: 0.5rem;
+    }
+    .click-instruction {
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.83rem;
+      color: #92400e;
+      border-radius: 0 4px 4px 0;
+      margin: 0.5rem 0;
+    }
+    .click-instruction strong { color: #78350f; }
+    .facilitator-note {
+      background: #f0fdf4;
+      border-left: 3px solid #22c55e;
+      padding: 0.5rem 0.75rem;
+      font-size: 0.83rem;
+      color: #166534;
+      border-radius: 0 4px 4px 0;
+      margin: 0.5rem 0;
+    }
+    .section-divider {
+      border: none;
+      border-top: 2px solid #e2e8f0;
+      margin: 2.5rem 0;
+    }
+    .timing-badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      margin-left: 0.5rem;
+      vertical-align: middle;
+    }
+
+    /* Checklist */
+    .checklist { list-style: none; padding: 0; margin: 0.75rem 0; }
+    .checklist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+      padding: 0.35rem 0;
+      font-size: 0.92rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: "☐";
+      font-size: 1.1rem;
+      color: #6b7280;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* Day banner */
+    .day-banner {
+      background: linear-gradient(135deg, #1a2332 0%, #0f3460 100%);
+      color: #fff;
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin: 2rem 0 1.5rem;
+    }
+    .day-banner h2 { color: #fff; margin: 0 0 0.25rem; font-size: 1.3rem; }
+    .day-banner p { color: #93c5fd; margin: 0; font-size: 0.88rem; }
+
+    /* Section heading with badge inline */
+    .section-heading { margin-bottom: 0.25rem; }
+
+    /* Sub-section label */
+    .sub-section {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #6b7280;
+      margin: 1.5rem 0 0.5rem;
+    }
+
+    /* Legend */
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.82rem;
+      color: var(--color-text-muted);
+    }
+    .legend-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
+    .swatch-blue { background: #0066cc; }
+    .swatch-yellow { background: #f59e0b; }
+    .swatch-green { background: #22c55e; }
+    .swatch-dark { background: #1a2332; }
+
+    @media print {
+      .sidebar, .mobile-header, .lang-switcher { display: none !important; }
+      .main-content { margin-left: 0 !important; }
+      .script-block { break-inside: avoid; }
+      .day-banner { break-before: page; }
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Facilitator Guide</h1>
+      <p class="subtitle">Your word-for-word delivery script — T&amp;Q Module &amp; Seg/Capacity Module</p>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-note">
+        <strong>This guide is written for you, Gunnar.</strong> Blue blocks = what to say. Yellow blocks = what to click or show. Green blocks = facilitator notes (don't read aloud). Keep it conversational — you don't need to read word-for-word, but these are the key beats to hit.
+      </div>
+
+      <div class="legend">
+        <div class="legend-item"><div class="legend-swatch swatch-blue"></div> Script — say this</div>
+        <div class="legend-item"><div class="legend-swatch swatch-yellow"></div> Click / Show — do this</div>
+        <div class="legend-item"><div class="legend-swatch swatch-green"></div> Facilitator note — don't read aloud</div>
+        <div class="legend-item"><div class="legend-swatch swatch-dark"></div> Slide reference</div>
+      </div>
+
+      <!-- ============================================================ -->
+      <!-- FACILITATOR VIEW -->
+      <!-- ============================================================ -->
+      <hr class="section-divider">
+      <h2>Facilitator View</h2>
+      <p>The <strong>facilitator view</strong> gives you a real-time pulse on the room. For each enrolled participant, it shows which lab they're in, where they are within it, whether they've hit the key checkpoints, and how active they've been across the session — discussion contributions, completed exercises, and time-on-task per lab.</p>
+
+      <p style="margin:1rem 0;">
+        <img src="../img/facilitator-progress-view.png" alt="Facilitator view of workshop participants — per-person lab progress and participation indicators" style="max-width:100%; border:1px solid #e2e8f0; border-radius:8px; display:block;">
+      </p>
+
+      <p>Treat this as your single source of truth during the workshop. It replaces the unreliable signals you'd otherwise rely on — nods around the room, the same two voices answering every question, and "everyone good?" met with silence.</p>
+
+      <p class="sub-section">How to Use It</p>
+      <ul>
+        <li><strong>Pace the room.</strong> If most participants are still mid-step on a lab, hold the group before advancing. The view tells you when to wait and when to move.</li>
+        <li><strong>Spot stragglers early.</strong> Anyone stuck on the same step for 15+ minutes likely needs help. Intervene quietly during the next break — don't wait for them to fall further behind or self-report.</li>
+        <li><strong>Identify quiet participants.</strong> Low engagement scores flag people who may be lost, disengaged, or just shy. A direct check-in usually surfaces the real reason.</li>
+        <li><strong>Validate completion before moving on.</strong> At the end of each lab, confirm the cohort's checkpoints are green before you start the debrief. If half the room hasn't finished, the debrief lands flat — give them five more minutes instead.</li>
+        <li><strong>Build the post-workshop summary.</strong> The same view exports a per-participant completion record — useful for follow-up and for managers asking "did my person actually finish?"</li>
+      </ul>
+
+      <div class="facilitator-note">📝 Keep the facilitator view open in a second monitor (or a second tab if you're remote) for every lab session. The real-time signal is more reliable than scanning faces or asking "everyone good?" — both fail systematically with senior practitioners who don't want to admit they're behind.</div>
+
+      <!-- ============================================================ -->
+      <!-- PRE-WORKSHOP CHECKLIST -->
+      <!-- ============================================================ -->
+      <hr class="section-divider">
+      <h2>Pre-Workshop Checklist</h2>
+      <p>Run through this before participants arrive.</p>
+      <ul class="checklist">
+        <li>Verify everyone has access to the Anaplan partner workspace with the T&amp;Q V2 Exercise Configurator</li>
+        <li>Confirm the Segmentation and Capacity UX Demo apps are in each partner workspace</li>
+        <li>SharePoint folder shared with all participants (case study, dataset files)</li>
+        <li>Zoom recording on (if virtual or hybrid)</li>
+        <li>Your screen sharing working — test it before the session</li>
+        <li>CloudWorks case study doc open in a tab</li>
+        <li>Configurator app open in Anaplan</li>
+        <li>T&amp;Q Spoke template app open in another tab</li>
+        <li>Slides open: RPM Overview FY26 deck, What's Coming deck</li>
+      </ul>
+
+      <!-- ============================================================ -->
+      <!-- T&Q MODULE -->
+      <!-- ============================================================ -->
+      <div class="day-banner">
+        <h2>T&amp;Q Module — Territory &amp; Quota</h2>
+        <p>Full day covering SPM context, the configurator, the spoke app, and extensions.</p>
+      </div>
+
+      <!-- OPENING -->
+      <h3 class="section-heading">Opening <span class="timing-badge">9:00 — 15 min</span></h3>
+
+      <div class="slide-ref">📊 RPM Overview FY26 — Slide 17 (Chan Duh bio) / Slide 18 (Enablement Objectives)</div>
+
+      <div class="script-block">
+        <p>Good morning everyone — glad you're here. Quick intro: I'm Gunnar, and over the next two days we're going to go deep on the Anaplan RPM applications — specifically Territory and Quota today, and Segmentation and Capacity tomorrow.</p>
+        <p>The goal isn't just to show you features. By the end of this, I want you to feel confident walking into a customer conversation, knowing what to look for, how to configure it, and how to deliver a successful implementation.</p>
+        <p>We're going to mix slides, live demos in Anaplan, and hands-on exercises. Ask questions whenever — don't wait for a designated Q&amp;A moment.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Take attendance. Make sure everyone has Anaplan access before moving on — fix access issues now, not during the exercise.</div>
+
+      <hr class="section-divider">
+
+      <!-- SPM OVERVIEW -->
+      <h3 class="section-heading">SPM Overview <span class="timing-badge">9:15 — 20 min</span></h3>
+
+      <div class="slide-ref">📊 RPM Overview FY26 — Slides 19-20 (SPM Overview)</div>
+
+      <div class="script-block">
+        <p>So let's start with some context. Sales Performance Management — SPM, or as Anaplan calls it, Revenue Performance Management — covers how you plan and manage your sales team. Territory design, quota setting, how many reps you need, how you track forecast.</p>
+        <p>There's no SPM degree. But companies that are mature at this have way more predictable revenue than those who aren't. And most companies are figuring it out in spreadsheets.</p>
+      </div>
+
+      <div class="slide-ref">📊 RPM Overview FY26 — Slides 2-7 (T&amp;Q overview, Territory Management, Quota Management, Challenges, Key Elements)</div>
+
+      <div class="script-block">
+        <p>Anaplan has five SPM apps. Territory and Quota is the cornerstone — it's the most mature, most deployed, and honestly the one you'll land most often. The others — Segmentation, Capacity, Sales Forecasting, and eventually ICM — all connect to it.</p>
+        <p>T&amp;Q is interesting because unlike ICM, where companies are basically stuck without enterprise tooling, T&amp;Q is something companies manage with spreadsheets for a surprisingly long time. That means there's a lot of untapped demand. And when you land it, there's a clear expansion path to the other apps.</p>
+      </div>
+
+      <div class="click-instruction"><strong>Go to slide 6</strong> — "T&amp;Q Key Elements." Point out the two columns: Territories (where to sell) and Quotas (how much to sell). These are distinct concepts in the app and it matters.</div>
+
+      <div class="script-block">
+        <p>One thing I always call out early: in Anaplan, territories and quotas are separate objects. A target is set at the territory level — it's relatively stable. A quota is what an individual rep is measured against — it changes when people move in and out. This distinction trips people up.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- ANAPLAN WAY -->
+      <h3 class="section-heading">Anaplan Way for Apps <span class="timing-badge">9:35 — 20 min</span></h3>
+
+      <div class="slide-ref">📊 RPM Overview FY26 — Slide 8 (High-Level Anaplan Way for Applications)</div>
+
+      <div class="script-block">
+        <p>Before we get into the configurator, let me walk you through how a T&amp;Q implementation actually runs. This is the updated Anaplan Way — specifically for apps.</p>
+        <p>The big change from traditional Anaplan implementations: we split the foundation phase. You configure first, generate the app with the customer's data in it, and THEN do your extension design. The reason is simple — you can anchor every extension conversation on what's already there. About a third to a half of things customers think they need as extensions? They can actually do with the base app.</p>
+      </div>
+
+      <div class="slide-ref">📊 RPM Overview FY26 — Slides 9-11 (Discovery Workshop)</div>
+
+      <div class="script-block">
+        <p>Data readiness is the number one thing that kills project timelines. I can't stress this enough. Don't kick off a project until the customer has provided sample data and you've reviewed it. Once the clock starts, hours burn.</p>
+        <p>Share the Data Prep Workbook with them before the project starts — ideally before you've even agreed on a start date. If they come back with blanks in the mandatory fields, that's a red flag.</p>
+      </div>
+
+      <div class="facilitator-note">📝 This is a good moment to ask the room: "Has anyone had a project go sideways because of data? What happened?" Gets people engaged and surfaces real stories.</div>
+
+      <div class="script-block">
+        <p>There are two types of customers you'll encounter. Type one wants it their way — always their way — and will push for heavy customization. Type two is maturing their planning process and wants you to tell them the right way to do it. Type two is your best partner. And honestly, if you always give type one exactly what they want, you'll burn out fast.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- CONFIGURATOR WALKTHROUGH -->
+      <h3 class="section-heading">Configurator Walkthrough <span class="timing-badge">10:15 — 60 min</span></h3>
+
+      <div class="slide-ref">📊 TnQ v2 Configurator Exercise 2026 — Slide 1 (Title)</div>
+
+      <div class="script-block">
+        <p>Alright, let's get into the configurator. This is the heart of what makes apps different from custom builds. Instead of building everything from scratch, you fill out this configurator — think of it as a really smart form — and Anaplan generates a full T&amp;Q model tailored to the customer.</p>
+        <p>Open up your configurator app in Anaplan. You should all have access. Search for "V2" or "V2 exercise" in your workspace.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Give people 2 minutes to find it. Walk around (or scan the Zoom tiles) and help anyone who's stuck. Don't move on until everyone's in.</div>
+
+      <div class="click-instruction"><strong>Navigate to Category 1 — Application Configurator.</strong> Categories 2 and 3 are back-end — participants don't need to touch those.</div>
+
+      <div class="script-block">
+        <p>Category 1 is everything you'll work with. Categories 2 and 3 are mine to worry about when we actually generate.</p>
+      </div>
+
+      <p class="sub-section">Page 1 — Getting Started</p>
+
+      <div class="click-instruction"><strong>Click Getting Started.</strong> Show the three checkboxes (T&amp;Q, Data Hub, Spoke model). Show the missing inputs counter on the right.</div>
+
+      <div class="script-block">
+        <p>Pre-populated — don't change these. The counter on the right tells you how many required inputs are still missing. Before we generate, that needs to be zero.</p>
+      </div>
+
+      <p class="sub-section">Page 2 — Data Hub Setup</p>
+
+      <div class="click-instruction"><strong>Click Data Hub Setup.</strong></div>
+
+      <div class="script-block">
+        <p>This is the most important page in the entire configurator. Everything downstream flows from what you set up here.</p>
+        <p>These are your data objects — accounts, employees, territories, opportunities, orders. For each one, you define the attributes. Think of it like telling Anaplan what your data looks like.</p>
+        <p>Three booleans for each attribute — and these matter:</p>
+      </div>
+
+      <div class="click-instruction"><strong>Hover over the Enable for Calculate, Auto-Create, and Enable for Validating checkboxes on any row.</strong></div>
+
+      <div class="script-block">
+        <p>Enable for Calculate: Anaplan pre-builds a list-formatted version of that attribute for you. Saves you legwork downstream. Use it freely.</p>
+        <p>Auto-Create: If a new value shows up in your data — say a new account rank — it automatically gets added to the list. Also use it freely.</p>
+        <p>Enable for Validating: Flags records with blank values in that field. Use sparingly — keep it under five attributes, or things get weird post-generation.</p>
+        <p>And here's the rule: after every page, hit Apply or Calculate before you move to the next one. The configurator is designed to be filled out in sequence — each page reflects what you've done so far.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Emphasize the Apply button multiple times. It's the most common mistake in the exercise.</div>
+
+      <p class="sub-section">Page 3 — Hierarchy Setup</p>
+
+      <div class="click-instruction"><strong>Click Hierarchy Setup.</strong></div>
+
+      <div class="script-block">
+        <p>This is where you define the levels of your territory hierarchy and what to call them. Whatever you name them here cascades through the entire app — UX labels, module names, everything. Get the naming right before you generate.</p>
+      </div>
+
+      <p class="sub-section">Page 5 — Planning Measures</p>
+
+      <div class="click-instruction"><strong>Click Planning Measures</strong> (or Scenario Planning depending on your version).</div>
+
+      <div class="script-block">
+        <p>Planning measures are your target types — Bookings, New ARR, Renewals, whatever the customer tracks. These become a core dimension through the entire target cascading process.</p>
+        <p>Here's the one I always warn people about: do not add a product dimension unless the customer absolutely has to have it. If they only set targets for three specific products, make those three planning measures — not a product dimension. A product dimension explodes the complexity of every page the planner touches.</p>
+      </div>
+
+      <div class="facilitator-note">📝 This gets questions. Common one: "What about sparsity in Polaris?" Answer: sparsity isn't a Polaris performance issue, but it's still a UX nightmare. Planners don't want to scroll through 1,000 products.</div>
+
+      <p class="sub-section">Page 9 — Target &amp; Allocation</p>
+
+      <div class="click-instruction"><strong>Navigate to Target &amp; Allocation.</strong></div>
+
+      <div class="script-block">
+        <p>Three-step process. Step one: Finance drops in annual or quarterly targets at a defined hierarchy level. Step two: those targets cascade down using an allocation method — you pick the metric, like prior year actuals or potential spend. Step three: over-allocation and overrides.</p>
+        <p>Over-allocation is a percentage uplift at each level — say 5% — to account for attrition and ramp. Override is a hard number that supersedes everything. In V3, managers can override at every level. In V2, only one configured level.</p>
+      </div>
+
+      <p class="sub-section">Page 14 — Rule Engine</p>
+
+      <div class="click-instruction"><strong>Navigate to Rule Engine Setup.</strong></div>
+
+      <div class="script-block">
+        <p>The rule engine is how you automatically assign accounts to territories based on attributes. Two buckets: geographic attributes — country, state, city — and firmographic attributes — revenue band, segment, industry. Key thing: these must be list-formatted. You can't use a raw number like employee count — it has to be a band like 0-250, 250-1000.</p>
+      </div>
+
+      <p class="sub-section">Completion &amp; Generation</p>
+
+      <div class="script-block">
+        <p>When we're done with the configurator, I'll take it from there. I'll review Categories 2 and 3, run it through the generation platform, and get you a generated app. It takes about 90 minutes to two hours and produces around 8,000 objects. Anywhere from zero to 200 errors in the log is fine — we'll work through those together.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- CONFIGURATOR EXERCISE -->
+      <h3 class="section-heading">Configurator Exercise <span class="timing-badge">11:15 — 75 min</span></h3>
+
+      <div class="slide-ref">📊 TnQ v2 Configurator Exercise 2026 — Slide 1</div>
+
+      <div class="script-block">
+        <p>Alright, your turn. Open the CloudWorks case study — it's in the SharePoint folder. This is your fictional customer. Read through it, then work through the configurator based on what you learn about their setup.</p>
+        <p>The dataset files are also in the folder — accounts, employees, opportunities, territories. Use those to inform your data setup page.</p>
+        <p>I'll be walking around. Ask questions as you go. Remember: Apply after every page.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Let this run for 45-60 minutes. Check in with each person/pair. Common sticking points: hierarchy naming, which attributes to enable for calculate, planning measure vs product dimension debate. At 11:45, start wrapping up and do a group debrief on the key decisions.</div>
+
+      <div class="click-instruction"><strong>At ~11:50, pull up your configurator and walk through the answers for hierarchy setup and scenario planning together as a group.</strong> Reference slide 2 (Hierarchies Mapping) and slide 3 (Scenario Planning) from the exercise deck.</div>
+
+      <hr class="section-divider">
+
+      <!-- LUNCH -->
+      <h3 class="section-heading">Lunch <span class="timing-badge">12:00 — 60 min</span></h3>
+
+      <div class="facilitator-note">📝 Good time to check in with participants informally. Note any questions that came up during the exercise to address in the afternoon.</div>
+
+      <hr class="section-divider">
+
+      <!-- POST-GENERATION STEPS -->
+      <h3 class="section-heading">Post-Generation Steps <span class="timing-badge">1:00 — 30 min</span></h3>
+
+      <div class="slide-ref">📊 DRAFT - T&amp;Q Planning App Post-Generation Updates V2.0 — first few slides</div>
+
+      <div class="script-block">
+        <p>After generation, there's a checklist of post-gen activities before the app is ready to show a customer. It's about 52 pages, but most steps are 5 to 15 minutes. Total time: a day or two of model builder effort.</p>
+        <p>The most important thing to know: there's a known bug where the source model disappears the first time you run an import action. The fix is built into our migration process — when I move the generated app to the customer's workspace, that migration resolves it. So you won't hit it.</p>
+        <p>My recommendation: don't run the big "load everything" action the configurator generates. Parse it out into per-object actions — one for accounts, one for employees, one for opportunities. Way easier to troubleshoot.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- DATA INTEGRATION & ADO -->
+      <h3 class="section-heading">Data Integration &amp; ADO <span class="timing-badge">1:30 — 30 min</span></h3>
+
+      <div class="slide-ref">📊 ADO Overview — first slides</div>
+
+      <div class="script-block">
+        <p>Quick but important section. V3 apps — launching in May — drop the Data Hub entirely and move to ADO, Anaplan Data Orchestrator.</p>
+        <p>The key thing: ADO is inbound-only right now. It pulls from your sources, transforms data, and pushes into Anaplan on a schedule. It can't write back to Salesforce or Snowflake yet — that's coming.</p>
+        <p>If a customer already has a working Hub-Spoke setup, don't touch it. ADO is the path for new implementations and V3 upgrades, not a mid-project migration.</p>
+      </div>
+
+      <div class="click-instruction"><strong>Show ADO Overview slides 1-3.</strong> Keep it brief — this isn't the main focus today.</div>
+
+      <div class="script-block">
+        <p>One structural change for V3: territory data. In V2, one flat file with all tiers in columns. In V3, a separate ADO source view per tier. Five-tier hierarchy means five views. Not complicated, just different — flag it when you're doing data prep conversations.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SPOKE APP WALKTHROUGH -->
+      <h3 class="section-heading">Spoke App Walkthrough <span class="timing-badge">2:00 — 90 min</span></h3>
+
+      <div class="click-instruction"><strong>Open the T&amp;Q Spoke template app in Anaplan. Share your screen.</strong></div>
+
+      <div class="script-block">
+        <p>Now we walk through what the customer actually uses. This is the generated spoke app — what lands in their workspace at the end of model readiness.</p>
+      </div>
+
+      <p class="sub-section">Dashboards</p>
+
+      <div class="click-instruction"><strong>Click the Overview/Dashboard category.</strong></div>
+
+      <div class="script-block">
+        <p>These dashboards are starting points. Don't show a customer these and say "here's your dashboard." Use them to start the conversation: what do you actually want to see here?</p>
+      </div>
+
+      <p class="sub-section">Account Information &amp; Potential Spend</p>
+
+      <div class="click-instruction"><strong>Navigate to Account Information → Potential Spend.</strong></div>
+
+      <div class="script-block">
+        <p>Potential Spend is the default allocation method — targets cascade proportionally based on this. If you're also implementing Segmentation, this is where those segment outputs land. Great talking point for selling the full suite.</p>
+      </div>
+
+      <p class="sub-section">Scenario Planning &amp; Optimizer</p>
+
+      <div class="click-instruction"><strong>Navigate to Scenario Planning → Scenario Comparison.</strong></div>
+
+      <div class="script-block">
+        <p>This is one of the coolest pages. Two scenarios side by side — as you move accounts between territories in scenario B, the delta highlights automatically. And after running the optimizer, you import results into a scenario here and compare before committing.</p>
+      </div>
+
+      <div class="click-instruction"><strong>Navigate to Optimizer Setup.</strong></div>
+
+      <div class="script-block">
+        <p>The optimizer is one of the most powerful things in this app — and one of the least used in the industry because it's hard to set up from scratch. We give it to customers out of the box.</p>
+        <p>It's a balancing algorithm. Ranks accounts by your objective metric, distributes them round-robin across territories, respects your constraints. The result is roughly equal territories — not revenue-maximized, but balanced. And that's usually what customers need.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Common question: "Can it exclude specific territories from being optimized?" Answer: not yet out of the box — known gap, likely coming.</div>
+
+      <p class="sub-section">Target Setup</p>
+
+      <div class="click-instruction"><strong>Navigate to Target Setup → Finance Import.</strong></div>
+
+      <div class="script-block">
+        <p>Three steps. Finance enters targets here at the top. Step two, allocation method cascades them down. Step three, over-allocation and overrides.</p>
+        <p>One important thing: once a target level is approved, it locks. DCA kicks in. Make sure customers understand the approval sequence before they build their workflow.</p>
+      </div>
+
+      <p class="sub-section">Account Assignment — 4 Methods</p>
+
+      <div class="click-instruction"><strong>Navigate to Account Assignment.</strong></div>
+
+      <div class="script-block">
+        <p>Four ways to assign accounts to territories. Manual — drag and drop essentially. Geo mapping lasso — draw a shape on a map, select the accounts inside, assign them. Needs lat/long on account records. Rule engine — define attribute-based rules per territory, system suggests which accounts match, you review and execute. And the optimizer, which we already covered.</p>
+      </div>
+
+      <div class="click-instruction"><strong>Quickly show the Geo Mapping widget.</strong> Draw a lasso if the data is there.</div>
+
+      <div class="script-block">
+        <p>Always test the geo mapping before demoing. Clear the lasso memory first — it can hold on to previous selections and behave weirdly.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- EXTENSIONS -->
+      <h3 class="section-heading">Extensions <span class="timing-badge">4:15 — 30 min</span></h3>
+
+      <div class="slide-ref">📊 TQ Application Extension Estimation Template.xlsx — reference verbally</div>
+
+      <div class="script-block">
+        <p>Last section of the T&amp;Q module: extensions. These are the things customers ask for that the base app doesn't cover. A few things I always tell people:</p>
+        <p>One — never modify base app line items. Create net-new ones. That protects you when upgrades come.</p>
+        <p>Two — document everything. Prefix extension items, leave notes. When upgrade time comes, you need to know exactly what you built.</p>
+        <p>Three — challenge every extension request. About a third of what customers think they need as extensions? They can do it with the base app. Always anchor that conversation on what's already there before you start building.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Walk through the top 5-6 rows of the Extension Estimation Template verbally. Don't read every row — hit Position Management, Currency Conversion, Account Ownership Export, Custom Dashboards, Quota Letter. Those come up constantly.</div>
+
+      <div class="script-block">
+        <p>The discovery questions in your lab guide — the ones marked with stars — use those pre-project. If a customer can't answer those starred questions, you're not ready to start.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- DAY 1 WRAP-UP -->
+      <h3 class="section-heading">T&amp;Q Module Wrap-Up <span class="timing-badge">4:45 — 15 min</span></h3>
+
+      <div class="script-block">
+        <p>That's the T&amp;Q module. We covered a lot — SPM landscape, the implementation approach, the full configurator, the spoke app end-to-end, and extensions.</p>
+        <p>Tomorrow we do Segmentation and Capacity — same pattern. Configurator in the morning, UX walkthrough in the afternoon. And we'll close with what's coming: Sales Forecasting just went GA, T&amp;Q V3 launches in May.</p>
+        <p>Any questions before we break? And — feedback is always welcome. If something wasn't clear or you want me to go deeper on anything tomorrow, let me know tonight.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Share the SharePoint folder link in Zoom chat if you haven't already. Remind them to review the CloudWorks case study Segmentation and Capacity sections tonight.</div>
+
+
+      <!-- ============================================================ -->
+      <!-- SEG & CAPACITY MODULE -->
+      <!-- ============================================================ -->
+      <div class="day-banner">
+        <h2>Segmentation &amp; Capacity Module</h2>
+        <p>Configurator deep-dives, hands-on exercise, UX walkthroughs, and roadmap.</p>
+      </div>
+
+      <!-- SEG & CAP OPENING -->
+      <h3 class="section-heading">Opening <span class="timing-badge">9:00 — 10 min</span></h3>
+
+      <div class="script-block">
+        <p>Good morning. Today is Segmentation and Capacity — two apps that feed directly into T&amp;Q. By the end of this module you should have a clear picture of how all three connect.</p>
+        <p>Same format as the T&amp;Q module: configurator in the morning, hands-on exercise, then UX walkthrough in the afternoon. We'll close with what's coming in the roadmap.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SEGMENTATION CONFIGURATOR -->
+      <h3 class="section-heading">Segmentation Configurator <span class="timing-badge">9:10 — 45 min</span></h3>
+
+      <div class="click-instruction"><strong>Open the Configurator app. Navigate to the Segmentation section</strong> (scroll past the T&amp;Q section in the nav).</div>
+
+      <div class="script-block">
+        <p>Same configurator app, different section. Segmentation configurator is simpler than T&amp;Q — maybe 40% of the effort. But the same principle applies: dimensionality decisions here are painful to change later.</p>
+        <p>The core question you're answering on every page: at what level of detail do you want to manage this assumption?</p>
+      </div>
+
+      <div class="slide-ref">📊 Segmentation Planning Application Functional Overview — Slide 7 (Anaplan Segmentation App)</div>
+
+      <div class="script-block">
+        <p>Quick overview of what the app does. Every account gets a segment — Strategic, Named, Commercial, SMB, whatever the customer uses. That segment then flows into T&amp;Q for territory carving, and into Capacity for headcount planning. So getting segmentation right upstream saves a lot of pain downstream.</p>
+      </div>
+
+      <p class="sub-section">Data Setup</p>
+
+      <div class="script-block">
+        <p>Mirror of the T&amp;Q data setup. Same objects. Key addition: firmographic attributes. Employee count, revenue bands, industry. These need to be list-formatted — banded — because the rule engine can't work with raw numbers. Employee count of 503 doesn't work. Employee band of 250-1000 does.</p>
+      </div>
+
+      <p class="sub-section">Rule-Based Segmentation Setup</p>
+
+      <div class="click-instruction"><strong>Show the Rule-Based Segmentation section in the configurator.</strong></div>
+
+      <div class="script-block">
+        <p>Define which attributes are available as rule dimensions. Configure your segment list. Fewer segments is almost always better — customers want ten, push them toward four or five. More segments means more complexity in every downstream app.</p>
+      </div>
+
+      <p class="sub-section">Score-Based Segmentation Setup</p>
+
+      <div class="script-block">
+        <p>Up to ten scoring metrics, weights must sum to 100%. Score maps to a segment. Score-based gives every account a segment — even ones that don't hit your rules. Rule-based then acts as an override. Use both.</p>
+      </div>
+
+      <p class="sub-section">Wallet Size</p>
+
+      <div class="script-block">
+        <p>Three methods: OpEx, Employee, or Revenue-based. Optional — if the customer won't use wallet size for allocation or segmentation rules, skip it. Don't over-engineer it.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Segmentation configurator typically takes 2-3 hours with a prepared customer. T&amp;Q is a week. Capacity is about 2 days.</div>
+
+      <hr class="section-divider">
+
+      <!-- CAPACITY CONFIGURATOR -->
+      <h3 class="section-heading">Capacity Configurator <span class="timing-badge">9:55 — 45 min</span></h3>
+
+      <div class="click-instruction"><strong>Scroll to the Capacity section of the same configurator.</strong></div>
+
+      <div class="script-block">
+        <p>Capacity is about answering one question: how many people do I need to hire, when, and where, to hit my revenue target?</p>
+        <p>Same dimensionality warning as T&amp;Q. If you configure cost assumptions at the region level and later need sub-region, you're reconnecting a lot of formulas or regenerating. Be thorough.</p>
+      </div>
+
+      <div class="slide-ref">📊 Go-to-Market Capacity Planning Functional Overview v1.1 — Slide 7 (Anaplan GTM Capacity App)</div>
+
+      <p class="sub-section">Role Hierarchy</p>
+
+      <div class="script-block">
+        <p>Job Family Group → Job Family → Sales Role. Three levels. Role grade is optional and adds significant complexity — push back on it unless they genuinely need grade-level headcount planning.</p>
+      </div>
+
+      <p class="sub-section">Coverage &amp; Workload</p>
+
+      <div class="script-block">
+        <p>For direct sellers: account-based ratios. One Strategic AE per five accounts. For overlay and support: derived ratios. One manager per ten AEs. Hours-based workload planning is available but rarely used — revenue-based is the standard.</p>
+      </div>
+
+      <p class="sub-section">Revenue Target</p>
+
+      <div class="script-block">
+        <p>At what level does Finance provide targets? And here's a known gotcha: if you configure revenue targets by account segment, the dimensionality doesn't automatically tie the productivity of roles in that segment to the target. You'll need a post-gen fix to route it properly. Know this before you commit to that configuration.</p>
+      </div>
+
+      <p class="sub-section">Tops-Down &amp; Bottoms-Up</p>
+
+      <div class="script-block">
+        <p>Tops-down sets the Not-to-Exceed guardrails — how many people Finance will fund at each level. Bottoms-up is where planners enter their actual month-by-month hiring plan against those guardrails.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- CONFIGURATOR EXERCISE DAY 2 -->
+      <h3 class="section-heading">Configurator Exercise <span class="timing-badge">10:40 — 80 min</span></h3>
+
+      <div class="slide-ref">📊 SG_CP Post Gen Exercise — Slide 1</div>
+
+      <div class="script-block">
+        <p>Same CloudWorks case study, scroll down to the Segmentation and Capacity sections. Work through both configurators. You only need to do the data setup once — it's shared.</p>
+        <p>Remember: Apply after every page.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Let this run for about an hour. Debrief the key decisions together before lunch — especially coverage ratios, segment list choices, and any wallet size decisions.</div>
+
+      <hr class="section-divider">
+
+      <!-- LUNCH DAY 2 -->
+      <h3 class="section-heading">Lunch <span class="timing-badge">12:00 — 60 min</span></h3>
+
+      <hr class="section-divider">
+
+      <!-- SEGMENTATION UX WALKTHROUGH -->
+      <h3 class="section-heading">Segmentation UX Walkthrough <span class="timing-badge">1:00 — 45 min</span></h3>
+
+      <div class="click-instruction"><strong>Open the Segmentation Demo UX App in Anaplan.</strong></div>
+
+      <div class="slide-ref">📊 Segmentation Planning Application Functional Overview — Slides 8-11</div>
+
+      <div class="script-block">
+        <p>Quick orientation: the app processes all your accounts through scoring and rule-based logic and arrives at a final segment for each. That segment attribute then feeds T&amp;Q and Capacity.</p>
+        <p>If I had 15 minutes to demo this to a customer, I'd spend almost all of it on sections 4.2 through 4.5. That's where the value is.</p>
+      </div>
+
+      <p class="sub-section">UCP Rules</p>
+
+      <div class="click-instruction"><strong>Navigate to the UCP / Eligibility Rules page.</strong></div>
+
+      <div class="script-block">
+        <p>UCP defines which accounts are even in scope for segmentation. You can exclude categories entirely — tiny companies under ten employees, accounts in industries you'll never sell to. Shows you the account count in real time as you build rules.</p>
+        <p>Fair warning: the Exclude Rule checkbox is counterintuitive. When it's checked, the exclusion is active. It reads like a double negative. Just remember: checked means the rule is on.</p>
+      </div>
+
+      <p class="sub-section">Rule-Based Segmentation</p>
+
+      <div class="click-instruction"><strong>Navigate to Rule-Based Segmentation (section 4.2).</strong></div>
+
+      <div class="script-block">
+        <p>This is the one to spend time on. Show them: add a condition, watch the account count update. Add another condition, watch it narrow. It's immediately tangible — customers get it right away.</p>
+      </div>
+
+      <p class="sub-section">Score-Based Segmentation</p>
+
+      <div class="click-instruction"><strong>Navigate to Score-Based (section 4.3/4.4).</strong></div>
+
+      <div class="script-block">
+        <p>Every account gets a score, score maps to a segment. The distribution chart is great — if a customer says they want 10% Strategic, you can show them right now whether your scoring setup gets you there.</p>
+      </div>
+
+      <p class="sub-section">Inflow / Outflow</p>
+
+      <div class="click-instruction"><strong>Navigate to the Inflow/Outflow page.</strong></div>
+
+      <div class="script-block">
+        <p>This is the connection to Capacity. If your segmentation exercise moved 500 accounts from Commercial to SMB, that shows up here. And that change directly affects how many SMB AEs you need. This is how you sell the full suite — one change in Segmentation ripples through to headcount planning.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- CAPACITY UX WALKTHROUGH -->
+      <h3 class="section-heading">Capacity UX Walkthrough <span class="timing-badge">1:45 — 45 min</span></h3>
+
+      <div class="click-instruction"><strong>Open the Capacity UX Demo App in Anaplan.</strong></div>
+
+      <div class="slide-ref">📊 Go-to-Market Capacity Planning Functional Overview v1.1 — Slides 8-12</div>
+
+      <div class="script-block">
+        <p>The Capacity app answers one question: hire X people in January, Y in April — will I hit my target?</p>
+        <p>Everything in this app builds toward one page. I'll show you that page last.</p>
+      </div>
+
+      <p class="sub-section">Ramp Profile</p>
+
+      <div class="click-instruction"><strong>Navigate to Ramp Profile by Sales Role.</strong></div>
+
+      <div class="script-block">
+        <p>This drives everything downstream. Month one: zero productivity. Month two: twenty percent. Month three: fifty. This is how you model what a new hire actually contributes. Get this right — it affects every revenue projection in the model.</p>
+      </div>
+
+      <p class="sub-section">Coverage Ratios</p>
+
+      <div class="click-instruction"><strong>Navigate to Coverage &amp; Ratios.</strong></div>
+
+      <div class="script-block">
+        <p>Remember that Segmentation inflow/outflow table? It shows up here. If segmentation moved accounts, you see it here, and it changes how many AEs of each type you need. This is the live connection between the two apps.</p>
+      </div>
+
+      <p class="sub-section">Tops-Down Planning</p>
+
+      <div class="click-instruction"><strong>Navigate to Tops-Down Planning.</strong></div>
+
+      <div class="script-block">
+        <p>Start at the top — all Americas. How many Core vs Support? Break it down to job family. Break it down to sales role. At each step, the model suggests a number based on your coverage ratios and productivity assumptions. You enter your plan. It flags you if you're out of whack.</p>
+        <p>When you're done, submit and lock. That creates the NTE — the ceiling — for the level below.</p>
+      </div>
+
+      <p class="sub-section">Bottoms-Up — The Holy Grail Page</p>
+
+      <div class="click-instruction"><strong>Navigate to Bottoms-Up Planning — the hiring plan page.</strong></div>
+
+      <div class="script-block">
+        <p>This is it. This is the page that makes the whole model worth it.</p>
+        <p>You can see your current headcount. Your NTE. Your planned hires by month. And a chart that shows — if I hire these people on these dates, with this ramp, will I close the gap to my revenue target?</p>
+        <p>Timing matters enormously. Hire someone in January vs April — months of ramp difference — material revenue impact. This page makes that visible.</p>
+        <p>Show this page when you're demoing. "Hire two AEs in January, three in April, and here's exactly when you'll close the gap." That's the pitch.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- WHAT'S COMING -->
+      <h3 class="section-heading">What's Coming <span class="timing-badge">2:30 — 60 min</span></h3>
+
+      <div class="slide-ref">📊 What is coming to RPM Apps March 2026 — Slide 6 (Sales Forecasting)</div>
+
+      <div class="script-block">
+        <p>Sales Forecasting went GA yesterday. You're some of the first people to see it.</p>
+        <p>No configurator — you get it as-is. It ingests from Salesforce or ADO, batch only — no real-time streaming yet. And it can't write back to Salesforce yet. Those are real limitations to set expectations on. But for structured forecast collection, scenario modeling, and CRM hygiene enforcement, it's solid.</p>
+      </div>
+
+      <div class="slide-ref">📊 What is coming to RPM Apps March 2026 — Slides 8-10 (T&amp;Q V3)</div>
+
+      <div class="script-block">
+        <p>T&amp;Q V3 launches in May. Big things: no more Data Hub — ADO required. Override at every hierarchy level. Split account management is now native. Rule engine inheritance — define a rule at the parent, all children inherit it. That alone eliminates a ton of repetitive work.</p>
+      </div>
+
+      <div class="slide-ref">📊 What is coming to RPM Apps March 2026 — Slides 11-13 (Segmentation V2)</div>
+
+      <div class="script-block">
+        <p>Segmentation V2 is imminent. The GTM hierarchy planning section is completely redesigned — much better. Resource alerts are new — it'll flag if a node in your planned hierarchy is over or under-resourced.</p>
+      </div>
+
+      <div class="slide-ref">📊 What is coming to RPM Apps March 2026 — Slides 4-5 (Capacity V2)</div>
+
+      <div class="script-block">
+        <p>Capacity V2: improved UX, more robust ramp modeling that shows you the payback period on a hire — when do you earn back the cost of bringing someone on, factoring in draw and seasonality. And ICM is coming later this year. When that ships, the full suite is complete.</p>
+      </div>
+
+      <hr class="section-divider">
+
+      <!-- SEG & CAP WRAP-UP -->
+      <h3 class="section-heading">Seg &amp; Capacity Module Wrap-Up <span class="timing-badge">3:30 — 30 min</span></h3>
+
+      <div class="script-block">
+        <p>That's the workshop. Two modules, three apps, a lot of configurator.</p>
+        <p>Here's what I want you to take away: these apps aren't just a faster way to build Anaplan models. They're a structured way to have better customer conversations. The configurator pages tell you exactly what you need to discover. The extension list tells you what to scope. The UX walkthrough tells you what to demo.</p>
+        <p>You have the lab guide, you have the collateral, you have my contact. First three projects, reach out — I want to be involved. After that, you've got this.</p>
+        <p>Questions? And — please give me feedback. What was useful, what was confusing, what do you wish we'd covered.</p>
+      </div>
+
+      <div class="facilitator-note">📝 Collect feedback verbally or share a quick survey link. Note any topics that generated a lot of questions — those are candidates for deeper coverage in the next workshop iteration.</div>
+
+      <hr class="section-divider">
+
+      <h2>Lab Debrief Answer Keys</h2>
+      <p>Reference answers for the debrief questions in each configurator lab. These aren't the only valid answers — use them as a baseline and let discussion surface additional insights.</p>
+
+      <h3>T&amp;Q Configurator Lab — Debrief</h3>
+      <ol>
+        <li><strong>Hardest decision:</strong> Usually Data Hub Setup (ADO vs. flat file, attribute selection) or Planning Measures (adding a measure later is expensive). Push participants to articulate <em>why</em> it was hard — usually it's because they didn't have enough customer information. That's the lesson.</li>
+        <li><strong>Third planning measure (Services ARR):</strong> Add it now, mark it inactive if not immediately needed. Removing an unused measure is trivial; adding one post-generation requires updates across dozens of modules. The cost of adding it now is near zero.</li>
+        <li><strong>Existing V2 deployment:</strong> Check whether the existing Data Hub structure is compatible with V3. Set the "Use Existing Data Hub" flag correctly. Expect the territory file format to differ (flat file vs. per-tier). Budget extra time for data migration.</li>
+        <li><strong>Enable Quota Composition:</strong> Enable it when the customer has multiple quota types per role (e.g., Bookings Quota + New ARR Quota), or when different roles need different quota compositions. If a rep only has one quota type, you technically don't need it — but enabling it adds flexibility at low cost.</li>
+        <li><strong>Real Rule Engine rule for CloudWorks:</strong> Example — Strategic: Industry = "Technology" AND Employee Band = "5K–25K+" AND Revenue Band = "$100M+". This uses the attributes enabled in Data Hub Setup (Industry, Segment).</li>
+      </ol>
+
+      <h3>Segmentation Configurator Lab — Debrief</h3>
+      <ol>
+        <li><strong>Eight segments pushback:</strong> "Every extra segment multiplies complexity in T&amp;Q and Capacity. More territory types, more coverage ratios, more planning rows. What's the actual business need for eight? Can we achieve it with four to five well-defined segments and use the Rule Engine to handle edge cases?" Push toward four or fewer.</li>
+        <li><strong>Adding a fourth scoring factor:</strong> Weights must still sum to 100%. Adding growth rate means reducing other weights proportionally. Confirm the customer has reliable growth rate data — if it's incomplete, it degrades score quality. Add it only if data quality supports it.</li>
+        <li><strong>Thirty percent missing employee count:</strong> Those accounts will have incomplete scoring. Options: (a) exclude from score-based and let them fall back to rule-based, (b) use a default/median value for missing fields, (c) use data enrichment. In production: flag this during Session Zero and don't proceed without a data remediation plan.</li>
+        <li><strong>Segments already in Salesforce:</strong> "Great — we'll import those as the starting point. The Segmentation app gives you a governed, data-driven process to review and refine those classifications every year — not just sales rep judgment. And the output feeds automatically into your territory and headcount planning."</li>
+      </ol>
+
+      <h3>Capacity Configurator Lab — Debrief</h3>
+      <ol>
+        <li><strong>EMEA needs different coverage ratios:</strong> This requires configuring coverage at the sub-region level — not just Americas. Going back to the Coverage &amp; Workload page to change the planning level may require re-generation if the dimensionality is already locked. Flag this as a potential rework scenario if not caught before generation.</li>
+        <li><strong>Revenue target routing risk:</strong> The risk is generating the app with the right dimensionality but without the formula connections between the revenue target and the productivity model. Post-gen routing work takes one to two days and requires someone who understands the Capacity model structure. If not flagged early, it surfaces as a bug during Model Readiness — at the worst time.</li>
+        <li><strong>Third scenario (stretch):</strong> This is a configurator setting — the number of scenarios is set at generation time. Adding post-gen requires extending the scenario list and replicating scenario logic across modules. Estimated effort: small (half a day). Needs careful testing to confirm all pages reflect the new scenario.</li>
+        <li><strong>Ramp profile revenue impact:</strong> The simplified model (full quota from Month three) is less accurate but easier to explain. The nuanced model produces lower projected revenue in the first two months. Over a 12-month horizon for a $1M quota AE hired in January: the simplified model shows roughly $833K projected contribution; the nuanced model shows closer to $700K. The difference is whether Q1 hires are expected to contribute meaningfully. For Finance planning, this matters.</li>
+      </ol>
+
+      <hr class="section-divider">
+
+      <h2>Sales Forecasting Module</h2>
+      <p>Sales Forecasting is covered as a single App Overview session — no configurator, no configurator lab. The primary facilitation challenge is managing expectations: this is a newer, less configurable app. Keep the session focused on what it does well and honest about current limitations.</p>
+
+      <h3 class="section-heading">App Overview <span class="timing-badge">45–60 min</span></h3>
+
+      <div class="script-block">
+        <p>"Sales Forecasting went generally available in March 2026 — the day after the first run of this workshop. We have it now. Let's talk about what it does, how it connects to T&amp;Q, and what the realistic implementation conversation looks like with a customer."</p>
+      </div>
+
+      <div class="script-block">
+        <p>"There is no configurator for this app. You get it as-is — far fewer configuration options than T&amp;Q, Segmentation, or Capacity. That's actually fine, because the complexity here isn't in the configuration — it's in the CRM integration and in getting sellers to actually use it."</p>
+      </div>
+
+      <div class="facilitator-note">📝 Pull up the Sales Forecasting app in a demo environment if available. Walk through the homepage (quota attainment, forecast waterfall), then the pipeline analytics page. These two pages are the core of the demo — the lab guide has screenshots of both.</div>
+
+      <div class="script-block">
+        <p>"The homepage shows quota attainment, forecast call, and the opportunity pipeline in one view. The key numbers: Won Attainment — what's already closed — and Commit Attainment — what's committed to close. The gap between Commit and quota is what needs to come from Upside and Pipeline."</p>
+      </div>
+
+      <div class="script-block">
+        <p>"The pipeline analytics page is where managers live. Week-over-week pipeline change — is our pipeline growing or shrinking? Pipeline hygiene — which deals have stale stages, missing MEDDPICC fields, or close dates in the past? The app enforces CRM hygiene by making it visible. That's either going to be very popular with your Sales Ops team or very unpopular with your sales reps."</p>
+      </div>
+
+      <div class="facilitator-note">📝 Common question: "Can it write forecast decisions back to Salesforce?" Answer: Not currently — inbound data only. This is the most-asked limitation. Frame it honestly: "It's on the roadmap. Right now, Anaplan is the system of record for the forecast, not Salesforce. Some customers are fine with that. Others need bidirectionality before they'll commit."</div>
+
+      <div class="script-block">
+        <p>"The critical dependency: T&amp;Q quota data needs to be live and structured correctly before Sales Forecasting means anything. If reps don't have quotas in Anaplan, there's nothing to measure attainment against. This is why Sales Forecasting is almost always a second engagement — you implement T&amp;Q first, get quotas right, then add Forecasting."</p>
+      </div>
+
+      <div class="script-block">
+        <p>"One thing to prepare customers for: this app will surface their Salesforce data quality problems immediately. Stale opportunity stages, missing close dates, incomplete MEDDPICC — all of it becomes visible on day one. Brief sales leadership before go-live. Frame it as a feature, not a bug. You want to know about dirty pipeline data — that's the point."</p>
+      </div>
+
+      <div class="facilitator-note">📝 Wrap up with the roadmap context: ICM is still on the roadmap. When it ships, the full five-pillar RPM suite will be complete. Sales Forecasting going GA is a signal that the platform is maturing quickly. Keep participants engaged in the roadmap — this is a fast-moving space.</div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appendix: Capacity Answer Key — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Appendix: Capacity Configurator Answer Key</h1>
+      <p class="subtitle">Facilitator reference — review after the lab exercise, not before</p>
+      <div class="badge-row">
+        <span class="content-badge">Appendix</span>
+        <span class="content-badge">Facilitator Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-important">
+        <span class="callout-label">🚫 Participants: Do Not Read Until After the Lab</span>
+        <p>This answer key is intended for facilitator-led debrief after the lab exercise is complete. Review your own answers first, then compare with the key during the group debrief session.</p>
+      </div>
+
+      <p>Each section below shows what the configurator page should look like when the Capacity lab is correctly completed against the CloudWorks case study. Use these reference captures to verify your own configuration during debrief.</p>
+
+      <h2>Page 1.01 — Data Hub Setup</h2>
+      <p>Establishes the dimensions, facts, and attributes the entire app reads from. Step 1 selects which objects (Order, Opportunity, Account, Product, Territory, Employee, Geography, NAICS Industry, Sales Role, etc.) flow into the Data Hub and Spoke models; Step 2 renames each attribute and sets Format, Validation, and <strong>Enable for Calculations</strong> so downstream configurator pages can reference them.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/shared-1-01-data-hub.png" alt="1.01 Data Hub Setup answer key — configurator page showing Step 1 Setup Dimensions and Facts and Step 2 Rename and add additional attributes with all rows correctly configured, dimensions populated, and the Apply button highlighted with a complete badge" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.01 Data Hub Setup — completed answer state (shared with Segmentation lab)</figcaption>
+      </figure>
+
+      <h2>Page 1.2.1 — GTM Headcount Data Guided Setup</h2>
+      <p>Configures the historical headcount and <strong>ramping-profile dimensionality</strong>. Ramp profiles are dimensioned by Region T3 and Sales Role; the employee/position view captures Role Grade and Sales Role as the attributes worth tracking; current-role analysis reports at Region T3 with Tenure Profile.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/cap-1-2-1.png" alt="1.2.1 GTM Headcount Data Guided Setup answer key — section 1.1 Headcount Data with Step 1 Configure Ramping Profile Dimensionality showing Region T3 and Sales Role Flat in first two dimensions and Historical Ramping Profile Assumptions; Step 2 Select Attributes to View by Employee and Position with Role Grade and Sales Role attributes selected; section 1.2 Current Role Analysis with Step 3 Configure Reporting Dimensionality showing Region T3 and Tenure Profile and FTE Reporting Metrics by Sales Role" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.2.1 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1.2.2 — GTM Top-Down HC Target Setting Guided Setup</h2>
+      <p>Configures the <strong>top-down headcount target-setting workflow</strong>. Decides whether to use Role Grade (CloudWorks answer: no — uses the "SC Tops Down HC Planning no RG" method), defines three planning scenarios (Best / Most Likely / Worst), selects which sales-hierarchy levels (Total Territory through Region T3) are available for HC allocation, and sets Job Family L2 as the lowest level for job-family allocation.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/cap-1-2-2.png" alt="1.2.2 GTM Top-Down HC Target Setting Guided Setup answer key — Step 0 Select if not using the Role Grade Dimension with SC Tops Down HC Planning no RG; Step 1 Create Scenarios for Top-Down Process with Scenario 1, Scenario 2, Scenario 3 and a 2.1 Global HC Target Setting board with Best Case, Most Likely, Worst Case columns and Input Global Planned Headcount by Scenario; Step 2 Select Sales Hierarchy Levels for Allocation with Total Territory, Geo T1, Area T2, Region T3 selected through Level 4 and Region T5 unselected; Step 3 Select Lowest level of job family for Allocation set to Level 2 Job Family L2" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.2.2 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1.2.3 — GTM Coverage &amp; Workload Capacity Guided Setup</h2>
+      <p>Sets the <strong>coverage-analysis and workload-planning granularity</strong>. Segment-to-role coverage maps at Geo T1 (Level 1); sales-target imports at Region T3 (Level 3) with Account Segment as the cut; workload coverage inputs are entered at Geo T1.</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/cap-1-2-3.png" alt="1.2.3 GTM Coverage and Workload Capacity Guided Setup answer key — section 2.2 Coverage Analysis with Step 1 Select Segment to Role Mapping Granularity showing Segment to Role Mapping Territory Level set to Level 1 Geo T1 and Role Coverage Analysis board; Step 2 Select Sales Target Dimensions with Account Segment dimension and Sales Target Import Level set to Level 3 Region T3 plus Sales Target Import board; section 2.3 Workload Coverage Capacity Planning with Step 3 Select Workload Coverage Input Granularity set to Level 1 Geo T1" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.2.3 — completed answer state</figcaption>
+      </figure>
+
+      <h2>Page 1.2.4 — GTM Bottom-Up Hiring Plan Guided Setup</h2>
+      <p>Configures the <strong>bottoms-up hiring-plan approval workflow</strong> and the optional <strong>Operational Workforce Planning (OWP) integration</strong> level. Approvals roll up at Area T2 (Level 2); if the customer integrates OWP, headcount data imports at Region T3 (Level 3).</p>
+      <figure class="screenshot">
+        <img src="../img/answer-keys/cap-1-2-4.png" alt="1.2.4 GTM Bottom-Up Hiring Plan Guided Setup answer key — Configure Granularity of Processes for Bottom-Up Hiring Plan with Step 1 Select Level for Review and Approvals showing Approval Level for Bottoms Up set to Level 2 Area T2 plus the corresponding board diagram; OPTIONAL Step 2 Select Level for OWP data Import with OWP Sales Hierarchy Import Level set to Level 3 Region T3. Mark Completed checkbox unchecked, 44% Complete, 0 Missing Mandatory Inputs" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Page 1.2.4 — completed answer state</figcaption>
+      </figure>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

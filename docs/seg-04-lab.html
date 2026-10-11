@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: Segmentation Configurator — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: Segmentation Configurator</h1>
+      <p class="subtitle">CloudWorks case study — Segmentation configurator exercise</p>
+      <div class="badge-row">
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">45 min</span>
+        <span class="content-badge">Hands-On</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-note">
+        <span class="callout-label">📋 Answer Key</span>
+        <p>This lab is an exercise — there are no answers on this page. Review the CloudWorks case study handout, navigate through the configurator pages, and fill in inputs based on the case study data. The answer key is available in the <a href="./seg-appendix-answer-key.html">Appendix →</a> and will be reviewed during the facilitator-led debrief.</p>
+      </div>
+
+      <h2>Exercise Overview</h2>
+      <p>Using the <strong>CloudWorks case study handout</strong>, complete the Segmentation section of the configurator. Work through the pages below in order, making configuration decisions based on the case study data. After each configurator page, hit <strong>Apply / Calculate</strong> before moving on.</p>
+
+      <div class="lab-objectives">
+        <h3>What you'll do</h3>
+        <ul>
+          <li>Capture firmographic account attributes on Page 1.01 Data Hub Setup and enable banded counterparts for every quantitative field</li>
+          <li>Configure rule-based and score-based segmentation on Page 1A.05 — select rule attributes, scoring dimensions, categorical and numerical metrics, and reporting drivers</li>
+          <li>Set up wallet size spend assumption dimensions on Page 1A.03, feeding addressable market into T&amp;Q downstream</li>
+          <li>Apply the <strong>Rule overrides Score</strong> precedence correctly across the configuration</li>
+          <li>Verify each step end-to-end with the inline Check my Work button</li>
+        </ul>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Tip</span>
+        <p>After each configurator page, hit <strong>Apply / Calculate</strong> before moving on. If a step asks you to navigate to a specific page and the page name differs slightly in your instance, use your best judgment — configurator page names may vary slightly between versions.</p>
+      </div>
+
+      <hr>
+
+      <h2>Part 1: Segmentation Configuration</h2>
+      <p>Navigate to the <strong>Segmentation section</strong> of the configurator. Complete these exercises in order.</p>
+
+      <h2>S1 — Data Hub Setup — Page 1.01</h2>
+      <p>Review and capture the firmographic account attributes that will drive segmentation. Ensure all quantitative fields have banded counterparts enabled for the rule engine, and that list-formatted attributes are correctly tagged.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1.01: Data Hub Setup</strong>.</li>
+        <li>Review the key firmographic fields available for the CloudWorks account data: refer to the case study handout for the full attribute list.</li>
+        <li><strong>Capture all relevant segmentation attributes/fields</strong> — identify which attributes will be used for rule dimensions, scoring, and UCP (Unacceptable Customer Profile) exclusion.</li>
+        <li>For each <strong>numeric/quantitative field</strong> you intend to use (e.g., Employee Count, Annual Revenue): ensure an additional attribute exists for <strong>"banding"</strong> (e.g., Employee Band, Revenue Band). Enable the <strong>"Enable to Calculate"</strong> toggle on the banded attribute so the list is generated correctly at application generation.</li>
+        <li>Click <strong>Apply / Calculate</strong> before moving on.</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Tip</span>
+        <p>Raw numeric values (like Employee Count = 1,547) cannot be used as rule dimensions. Only list-formatted banded attributes (like Employee Band = "1K–5K") work. If a banded attribute does not yet exist in the data, flag it — it must be created in the source data before the configurator session.</p>
+      </div>
+
+      <img src="../img/day2/seg-04-data-hub.png" alt="Segmentation Page 1.01 Data Hub Setup with the data objects table populated — SPM Data HUB and SPM Spoke 1 columns visible with object names down the side, attributes populated, and Enable / Duplicate / Multi-List toggles configured for firmographic and banded fields" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which CloudWorks attributes did you capture as rule dimensions vs. scoring inputs vs. UCP-exclusion criteria, and which numeric fields required banded counterparts?
+      </div>
+
+      <div class="lab-check" data-check-id="rpm-seg-configurator-step-1" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've captured the CloudWorks firmographic attributes on Page 1.01 and confirmed banded counterparts exist for every numeric field you intend to use as a rule dimension, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Data Hub Setup captured and banded attributes enabled.</p>
+          <ul class="lab-check-list">
+            <li><strong>Page 1.01 Data Hub Setup opened</strong> &rarr; CloudWorks firmographic attribute list reviewed against the case study handout</li>
+            <li><strong>Segmentation attributes captured</strong> &rarr; rule-dimension, scoring, and UCP-exclusion attributes identified</li>
+            <li><strong>Banded counterparts exist for every numeric field</strong> &rarr; e.g., Employee Count has Employee Band, Annual Revenue has Revenue Band</li>
+            <li><strong>"Enable to Calculate" toggle set on each banded attribute</strong> &rarr; so the list is generated correctly at application generation</li>
+            <li><strong>Apply / Calculate clicked</strong> &rarr; configuration saved before moving on</li>
+          </ul>
+          <p class="lab-check-next">Ready for S2 — configure Rule-Based and Score-Based Segmentation on Page 1A.05.</p>
+        </div>
+      </div>
+
+      <h2>S2 — Segmentation Configuration — Rule-Based &amp; Score-Based</h2>
+      <p>Configure the rule-based and score-based segmentation parameters, selecting account attributes, scoring dimensions, and reporting setup based on the CloudWorks case study.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Note: Segment Names and Count</span>
+        <p>The number of segments and their names (e.g., Strategic, Named, Commercial, SMB) are <strong>not configured here</strong>. They are defined by admins after application generation via placeholder slots. Do not look for a segment naming input on this page.</p>
+      </div>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1A.05 — Segmentation Configuration Guided Setup</strong> in the Segmentation configurator.</li>
+        <li><strong>Select account attributes for Rule-Based Segmentation</strong> — the attribute list available for selection is populated from your S1 Data Hub Setup step. Choose the attributes relevant to CloudWorks's segmentation rules based on the case study.</li>
+        <li><strong>Select Account Score to Segment mapping dimensional drivers</strong> — at what level may the score-to-segment threshold differ? (e.g., thresholds may differ by region or industry). Select the applicable dimensions from the case study.</li>
+        <li><strong>Select Categorical Metrics to score account</strong> — choose the qualitative account attributes (list-formatted) that will be used as scoring inputs.</li>
+        <li><strong>Select Numerical Metrics to score account</strong> — choose the quantitative attributes (banded) that will be used as scoring inputs. These should correspond to the banded attributes you enabled in S1.</li>
+        <li><strong>Select Account Score Metric Drivers</strong> — at what dimensions can attribute weights differ? (e.g., a weight for Employee Band may differ by region). Select the applicable dimensions.</li>
+        <li><strong>Select applicable reporting dimensions for account segment movements</strong> — identify which dimensions should be tracked when accounts move between segments (e.g., year-over-year movement).</li>
+        <li>Click <strong>Apply / Calculate</strong> before moving on.</li>
+      </ol>
+
+      <div class="callout-important">
+        <span class="callout-label">🚨 Rule vs. Score Precedence</span>
+        <p><strong>Rule-Based ALWAYS overrides Score-Based</strong> when both are available for the same account. Score-based acts as a catch-all default only where no rule exists. Design your rules with this in mind — a well-designed rule set should cover your most strategically important accounts; scoring handles the rest.</p>
+      </div>
+
+      <img src="../img/day2/seg-04-rule-based.png" alt="Page 1A.05 Segmentation Configuration Guided Setup showing Step 1 (Decide if Extra Segments are Needed for Scoring), Step 2 (Select Account Attribute for Rule Based Segmentation), Step 3 (Select Account Score to Segment Mapping Drivers), Segment Rule Assignment section with Account Score to Segment grid, 44% complete progress, and Missing Mandatory Inputs panels for Rule Based / Auto Based / Score Based" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which rule attributes, scoring metrics (categorical and numerical), score-metric drivers, and reporting dimensions did you select for CloudWorks — and why does Rule-Based override Score-Based?
+      </div>
+
+      <div class="lab-check" data-check-id="rpm-seg-configurator-step-2" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've selected the rule attributes, scoring dimensions, categorical and numerical metrics, score-metric drivers, and reporting dimensions on Page 1A.05 — and clicked Apply / Calculate — click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Page 1A.05 Segmentation Configuration complete.</p>
+          <ul class="lab-check-list">
+            <li><strong>Rule-Based account attributes selected</strong> &rarr; CloudWorks rule attributes chosen from the S1 attribute pool</li>
+            <li><strong>Account Score to Segment mapping drivers set</strong> &rarr; dimensions where the score-to-segment threshold can differ (e.g., region, industry)</li>
+            <li><strong>Categorical Metrics selected</strong> &rarr; list-formatted qualitative attributes chosen as scoring inputs</li>
+            <li><strong>Numerical Metrics selected</strong> &rarr; banded quantitative attributes from S1 chosen as scoring inputs</li>
+            <li><strong>Account Score Metric Drivers set</strong> &rarr; dimensions where attribute weights can differ</li>
+            <li><strong>Reporting dimensions for segment movements selected</strong> &rarr; e.g., year-over-year movement tracking</li>
+          </ul>
+          <p class="lab-check-next">Ready for S4 — configure spend assumption dimensions for Wallet Size on Page 1A.03.</p>
+        </div>
+      </div>
+
+      <div class="lab-quiz" data-correct="B">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>An account matches a Rule-Based assignment (Strategic) and also receives a Score-Based assignment (Commercial) via the score-to-segment threshold. Which segment does the generated app assign?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-seg-rule-vs-score" value="A"><span class="lab-quiz-letter">A</span><span><strong>Commercial</strong> — score-based is the system of record and wins by default</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-seg-rule-vs-score" value="B"><span class="lab-quiz-letter">B</span><span><strong>Strategic</strong> — Rule-Based always overrides Score-Based when both are available</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-seg-rule-vs-score" value="C"><span class="lab-quiz-letter">C</span><span>Whichever segment has the higher numeric score</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-seg-rule-vs-score" value="D"><span class="lab-quiz-letter">D</span><span>The account is flagged as a conflict and routed to an admin queue</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> Rule-Based always overrides Score-Based when both are available for the same account. Score-Based acts as a catch-all default for accounts where no rule applies. Design your rules to cover strategically important accounts; scoring handles the rest.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>B — Strategic</strong>. Rule-Based always overrides Score-Based when both are present. Score-Based is a catch-all default, not a tiebreaker, and there is no admin conflict queue — precedence is deterministic.</div>
+      </div>
+
+      <h2>S4 — Wallet Size Configuration — Spend Assumption Dimensions</h2>
+      <p>Configure the spend assumption dimensions and reporting setup for wallet size calculation. This feeds directly into T&amp;Q as the basis for addressable market and target allocation.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1A.03 — Wallet Size Calculation Guided Setup</strong> in the Segmentation configurator.</li>
+        <li><strong>Select applicable attributes/dimensions to inform different spending assumptions</strong> — choose which dimensions drive different spend assumptions (e.g., Industry, Revenue Band). Different industries or account sizes may have different addressable market percentages.</li>
+        <li><strong>Select applicable dimension to have a default addressable Market %</strong> — choose the dimension at which a default addressable market percentage is applied when no specific assumption exists.</li>
+        <li><strong>Select applicable territory hierarchy level for spend index driver</strong> — select the hierarchy level at which geographic spend index adjustments are applied (e.g., region-level adjustments to account for market differences).</li>
+        <li>Configure any <strong>reporting setup and selection drivers</strong> applicable for wallet size analysis.</li>
+        <li>Click <strong>Apply / Calculate</strong> before moving on.</li>
+      </ol>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Note</span>
+        <p>Wallet size is optional. If CloudWorks does not have reliable firmographic data to support spend calculations, skip this section. Do not over-engineer a model the customer won't trust or maintain.</p>
+      </div>
+
+      <img src="../img/day2/seg-04-wallet-size.png" alt="Page 1A.03 Wallet Size Calculation Guided Setup showing Step 1 (Spending — the Party Stack Account Demographics Spending), Step 2 (Apply Potential) configuration steps, Reverse Water W&amp;O grid, 44% complete progress, Missing Mandatory Inputs (Spending: 7), and the Spending Generation grid with Scenarios and Use Calculation Drivers — the dashboard answers &quot;how do we calculate wallet size for an account?&quot;" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which spend-assumption dimensions, default addressable Market % dimension, and territory hierarchy level did you set for CloudWorks — and how does this output feed T&amp;Q as addressable market?
+      </div>
+
+      <div class="lab-check" data-check-id="rpm-seg-configurator-step-4" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've configured the spend assumption dimensions, default addressable market %, territory hierarchy level, and any reporting drivers on Page 1A.03 — and clicked Apply / Calculate — click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Wallet Size spend assumption configuration complete.</p>
+          <ul class="lab-check-list">
+            <li><strong>Spend assumption dimensions selected</strong> &rarr; e.g., Industry and Revenue Band drive different addressable-market percentages</li>
+            <li><strong>Default addressable Market % dimension set</strong> &rarr; the dimension at which the default applies when no specific assumption exists</li>
+            <li><strong>Territory hierarchy level for spend index driver selected</strong> &rarr; geographic spend-index adjustments applied at the chosen level (e.g., region)</li>
+            <li><strong>Reporting setup and selection drivers configured</strong> &rarr; wallet-size analysis dimensions in place</li>
+            <li><strong>Apply / Calculate clicked</strong> &rarr; wallet-size output is ready to feed T&amp;Q as addressable market and target-allocation basis</li>
+          </ul>
+          <p class="lab-check-next">Segmentation configurator complete. Proceed to the Debrief Questions below, then compare against the Appendix answer key.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <h2>Debrief Questions — Segmentation</h2>
+      <ol>
+        <li>In S1, you identified both qualitative and quantitative segmentation attributes for CloudWorks. Give one example of each. For your quantitative attribute, what banded version did you need to create — and why does that banded version matter for the rule engine?</li>
+        <li>In S2, you had to distinguish between Categorical Metrics and Numerical Metrics for scoring. What was the difference in how you selected them, and what does each one produce in the generated app for the admin to manage?</li>
+        <li>A colleague says: "We configured score-based segmentation, so we know every account will get a segment — we don't really need rule-based." How do you respond? What is the correct relationship between rule-based and score-based segmentation?</li>
+        <li>In S4, you configured spend assumption dimensions by Industry and Revenue Band. A customer asks: "Can we set different addressable market percentages for each geography as well?" What would you need to configure to support that, and where in the configurator would it apply?</li>
+        <li>UCP stands for Unacceptable Customer Profile. What does it do to accounts that match its criteria? How is this different from what a learner might incorrectly assume it does?</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">✅ Lab Complete</span>
+        <p>When the group reconvenes, refer to the <a href="./seg-appendix-answer-key.html">Answer Key in the Appendix</a> to compare your decisions. There are often multiple valid approaches — the goal is to understand the reasoning behind each choice.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/lab-quiz.js"></script>
+</body>
+</html>

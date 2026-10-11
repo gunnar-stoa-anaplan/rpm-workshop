@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Integration &amp; ADO — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Data Integration &amp; ADO</h1>
+      <p class="subtitle">Anaplan Data Orchestrator — Current State and the V3 Transition</p>
+    </div>
+    <div class="content-body">
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">V2 vs V3 Data Architecture</span>
+          <span class="tsd-step-desc">You'll learn how the data layer is changing with V3, what ADO replaces, and how to advise customers on timing their upgrade.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Architecture Diagram</span>
+          <span class="tsd-step-desc">Instructor walks through the data flow diagrams for both V2 (Data Hub) and V3 (ADO) architectures side by side.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Customer Scenario</span>
+          <span class="tsd-step-desc">Given the CloudWorks scenario, decide: V2 Data Hub or V3 ADO? Justify your answer to the group.</span>
+        </div>
+      </div>
+
+      <h2>Current State vs. Future State</h2>
+      <p>T&amp;Q V2 uses a <strong>Data Hub model</strong> as the data layer between source systems and the spoke model. Starting May 2026, all three SPM apps (T&amp;Q, Capacity Planning, Segmentation) move to <strong>Anaplan Data Orchestrator (ADO)</strong> — eliminating the Data Hub model entirely.</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Aspect</th>
+            <th>V2 (Current)</th>
+            <th>V3 (May 2026+)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Data layer</td>
+            <td>Data Hub model</td>
+            <td>ADO (no Data Hub model)</td>
+          </tr>
+          <tr>
+            <td>Data flow direction</td>
+            <td>Sources push to Data Hub; Spoke models pull from Data Hub</td>
+            <td>ADO pushes directly to Spoke</td>
+          </tr>
+          <tr>
+            <td>Scheduling</td>
+            <td>External ETL or manual</td>
+            <td>ADO Workflows (included with app)</td>
+          </tr>
+          <tr>
+            <td>Workspace cost</td>
+            <td>Data Hub consumes workspace size</td>
+            <td>ADO is a separate entity — no model size cost</td>
+          </tr>
+          <tr>
+            <td>Territory file format</td>
+            <td>One file with all hierarchy levels (parent-child structure)</td>
+            <td>Separate source view per hierarchy tier</td>
+          </tr>
+          <tr>
+            <td>Access requirement</td>
+            <td>Standard model access</td>
+            <td>Requires Workflow entitlement (included with app)</td>
+          </tr>
+          <tr>
+            <td>Large transactional data</td>
+            <td>Stored in Data Hub model</td>
+            <td>Stored in ADO — doesn't bloat spoke model</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>What is ADO?</h2>
+      <p>Anaplan Data Orchestrator is a separate entity — <strong>not a model</strong>. It functions as a central data repository and transformation layer. Think of it like a data warehouse that exists alongside your Anaplan workspace.</p>
+
+      <h3>Key Differences from Data Hub</h3>
+      <div class="callout-note" style="margin-bottom:1rem;">
+        <span class="callout-label">🏗 V2 Hub-Spoke Architecture (Current)</span>
+        <p>In V2, spoke models <strong>pull</strong> data from the central Data Hub. External sources (Salesforce, flat files, etc.) load data into the Data Hub first, and each spoke model then pulls the data it needs via import actions. The Data Hub is the single source of truth — all three spoke apps (T&amp;Q, Capacity, Segmentation) draw from it. This page covers V2 architecture. V3 (ADO) content will be updated when V3 screens are finalized.</p>
+      </div>
+      <ul>
+        <li><strong>Pull vs. Push architecture</strong>: In V2, each spoke model pulls data from the Data Hub on a schedule or manually. With ADO, data is pushed from ADO to all connected models simultaneously — you schedule once, all models update.</li>
+        <li><strong>No workspace size cost</strong>: ADO doesn't consume Anaplan workspace. Customers with large transactional datasets (e.g., 3 years of opportunity data) won't blow up their Polaris spoke model.</li>
+        <li><strong>Native transformation logic</strong>: ADO has its own transformation layer (different from Data Hub formula approach). Data shaping happens before it reaches the spoke.</li>
+        <li><strong>Scheduling via Workflows</strong>: ADO uses Workflows to schedule data pushes. This is why the Workflow entitlement is bundled with app subscriptions.</li>
+        <li><strong>Multi-model push</strong>: If a customer has T&amp;Q, Capacity, and Segmentation, one ADO push can feed all three — no need to manage separate import processes per model.</li>
+      </ul>
+
+      <div class="callout-note">
+        <strong>Polaris + Large Data</strong><br>
+        A Siemens Opportunity Data module with 3 years historical + future data reached 20GB. ADO prevents this kind of bloat by keeping transactional data out of the spoke model and only pushing aggregated or required data through.
+      </div>
+
+      <h2>Why ADO is Required for V3 Apps</h2>
+      <p>All V3 SPM apps are built on Polaris and designed for ADO from the ground up. Starting May 2026, when T&amp;Q V3 ships, partners will need to:</p>
+      <ol>
+        <li>Set up an ADO instance for the customer</li>
+        <li>Create source connections (Salesforce, Snowflake, flat files, etc.)</li>
+        <li>Define transformation views for each key data object (accounts, employees, opportunities, territories)</li>
+        <li>Create links from ADO views to the generated spoke model's import actions</li>
+        <li>Set up ADO Workflows to schedule regular data pushes</li>
+      </ol>
+
+      <p>The Anaplan Apps team is working toward auto-generating ADO links as part of app generation. Target: ADO links for all key spoke imports are generated automatically; partners only need to map the links to the customer's actual source views.</p>
+
+      <div class="callout-tip">
+        <strong>ADO Training</strong><br>
+        ADO training is available on Anaplan Academy and is worth the ~half-day investment before your first V3 project. Both Chan and John have completed it and recommend it. There's a noticeable learning curve, but the architecture is clean once it clicks.
+      </div>
+
+      <h2>Territory Data Structure Change (Important)</h2>
+      <p>This is one of the most impactful changes between V2 and V3 for data preparation:</p>
+
+      <div class="callout-warning">
+        <strong>V2 vs V3 Territory File Format</strong><br>
+        <strong>V2</strong>: Provide one file containing all hierarchy levels. The file uses a parent-child structure — each member is listed alongside its parent — and the Data Hub builds the hierarchy list structure from it. All tiers are included in a single file.<br><br>
+        <strong>V3</strong>: Provide a <em>separate source view per tier</em> in ADO. Each view only needs the member name/ID and its parent. For a 5-tier hierarchy, you provide 5 ADO source views. Do not combine all tiers into one flat file for V3.<br><br>
+        Update your customer data prep conversations and the Data Prep Workbook guidance accordingly.
+      </div>
+
+      <p>For each tier view in V3, you need at minimum:</p>
+      <ul>
+        <li>Member name / ID</li>
+        <li>Parent member name / ID</li>
+        <li>Any additional reporting attributes for that tier</li>
+      </ul>
+
+      <h2>ADO Setup Tips</h2>
+      <ul>
+        <li><strong>Connectors available today</strong>: Flat file, Salesforce, generic REST/JDBC. Snowflake connector is in progress.</li>
+        <li><strong>Bidirectional feeds coming</strong>: Snowflake and Databricks connectors will support writing data back from Anaplan to the source — currently all ADO flows are one-directional (inbound to Anaplan).</li>
+        <li><strong>Batch size limits</strong>: Be aware of record volume limits per push. Larger datasets may require batching strategies.</li>
+        <li><strong>Performance tip</strong>: ADO can be slower than expected when inserting new list members (same as Polaris generally). Plan data load windows accordingly.</li>
+        <li><strong>Workflow entitlement</strong>: Included with app subscription — customers do not need to purchase it separately. Confirm this is provisioned in their tenant before project kickoff.</li>
+      </ul>
+
+      <div style="background:#f8fafc;border:1px solid var(--color-border);border-radius:var(--radius);padding:1.5rem;margin:1.5rem 0;">
+        <p style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.08em;color:var(--color-text-muted);margin-bottom:1.25rem;font-weight:600;">V3 ADO Data Architecture</p>
+        <div style="display:flex;align-items:center;gap:0.75rem;flex-wrap:wrap;justify-content:center;">
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.75rem 1rem;text-align:center;min-width:110px;">
+            <div style="font-size:1.3rem;">🏢</div>
+            <div style="font-size:0.75rem;font-weight:600;margin-top:0.25rem;">Salesforce</div>
+            <div style="font-size:0.68rem;color:#6b7280;">CRM</div>
+          </div>
+          <div style="color:#94a3b8;font-size:1.2rem;">→</div>
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.75rem 1rem;text-align:center;min-width:110px;">
+            <div style="font-size:1.3rem;">❄️</div>
+            <div style="font-size:0.75rem;font-weight:600;margin-top:0.25rem;">Snowflake</div>
+            <div style="font-size:0.68rem;color:#6b7280;">Data Warehouse</div>
+          </div>
+          <div style="color:#94a3b8;font-size:1.2rem;">→</div>
+          <div style="background:#fff;border:1px solid #e2e8f0;border-radius:6px;padding:0.75rem 1rem;text-align:center;min-width:110px;">
+            <div style="font-size:1.3rem;">📄</div>
+            <div style="font-size:0.75rem;font-weight:600;margin-top:0.25rem;">Flat Files</div>
+            <div style="font-size:0.68rem;color:#6b7280;">CSV / Excel</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;padding:0 0.5rem;">
+            <div style="width:2px;height:40px;background:#0066cc;position:relative;">
+              <div style="position:absolute;bottom:-6px;left:-4px;color:#0066cc;font-size:0.9rem;">▼</div>
+            </div>
+            <div style="font-size:0.68rem;color:#0066cc;font-weight:600;text-align:center;margin-top:0.5rem;">Source<br>Connectors</div>
+          </div>
+          <div style="background:#eff6ff;border:2px solid #0066cc;border-radius:8px;padding:1rem 1.25rem;text-align:center;min-width:140px;">
+            <div style="font-size:1.3rem;">🔄</div>
+            <div style="font-size:0.85rem;font-weight:700;color:#0066cc;margin-top:0.25rem;">ADO</div>
+            <div style="font-size:0.7rem;color:#1e40af;">Anaplan Data Orchestrator</div>
+            <div style="font-size:0.68rem;color:#6b7280;margin-top:0.3rem;">Transform → Schedule → Push</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:0.25rem;padding:0 0.5rem;">
+            <div style="width:2px;height:40px;background:#0066cc;position:relative;">
+              <div style="position:absolute;bottom:-6px;left:-4px;color:#0066cc;font-size:0.9rem;">▼</div>
+            </div>
+            <div style="font-size:0.68rem;color:#0066cc;font-weight:600;text-align:center;margin-top:0.5rem;">ADO<br>Workflows</div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:0.5rem;">
+            <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:6px;padding:0.6rem 0.9rem;text-align:center;min-width:110px;">
+              <div style="font-size:0.75rem;font-weight:600;">T&amp;Q Spoke</div>
+              <div style="font-size:0.68rem;color:#6b7280;">Polaris Model</div>
+            </div>
+            <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:6px;padding:0.6rem 0.9rem;text-align:center;min-width:110px;">
+              <div style="font-size:0.75rem;font-weight:600;">Capacity Spoke</div>
+              <div style="font-size:0.68rem;color:#6b7280;">Polaris Model</div>
+            </div>
+            <div style="background:#f0fdf4;border:1px solid #22c55e;border-radius:6px;padding:0.6rem 0.9rem;text-align:center;min-width:110px;">
+              <div style="font-size:0.75rem;font-weight:600;">Segmentation Spoke</div>
+              <div style="font-size:0.68rem;color:#6b7280;">Polaris Model</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.75rem;color:#6b7280;margin-top:1rem;text-align:center;">One ADO push → all three spoke models update simultaneously. No Data Hub model required. No workspace size impact.</p>
+      </div>
+
+      <h2>Existing COE / Data Hub Customers</h2>
+      <p>If a customer already has an established COE with a functioning Data Hub, they are not required to migrate to ADO immediately. The existing Data Hub can continue to feed the V2 spoke. Options to discuss with the customer:</p>
+      <ul>
+        <li><strong>Keep Data Hub (V2)</strong>: Continue using the existing integration pattern. Straightforward, no additional setup. Limited to V2 app.</li>
+        <li><strong>Migrate to ADO (V3)</strong>: Required if they want V3 apps. Plan for a data integration migration project as part of the upgrade.</li>
+        <li><strong>Run in parallel temporarily</strong>: Use Data Hub for current app while planning the ADO transition.</li>
+      </ul>
+
+      <div class="callout-note">
+        <strong>Don't Force ADO</strong><br>
+        Don't push ADO on a customer who has a well-functioning Data Hub setup, especially mid-project. The value proposition is clear for new implementations and V3 upgrades — but for an existing V2 customer, the migration cost may not be worth it until they're ready to upgrade to V3.
+      </div>
+
+      <h2>Data Integration Checklist (Session Zero)</h2>
+      <p>Before project kickoff, confirm the following with the customer:</p>
+      <table>
+        <thead>
+          <tr><th>Item</th><th>V2 (Data Hub)</th><th>V3 (ADO)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Account data source identified</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Employee data source identified</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Territory hierarchy file available</td><td>One flat file</td><td>One view per tier</td></tr>
+          <tr><td>Opportunity / Order source identified</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Unique identifiers confirmed</td><td>✓</td><td>✓</td></tr>
+          <tr><td>Workflow entitlement provisioned</td><td>N/A</td><td>✓ Required</td></tr>
+          <tr><td>ADO instance provisioned</td><td>N/A</td><td>✓ Required</td></tr>
+          <tr><td>Data Prep Workbook completed by customer</td><td>✓</td><td>✓</td></tr>
+        </tbody>
+      </table>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Integration Architecture Decision</span>
+        <p>Apply the V2 vs V3 decision framework to these scenarios:</p>
+        <ul>
+          <li><strong>Scenario A:</strong> A new customer, no prior Anaplan, starting fresh in May 2026. Which data architecture?</li>
+          <li><strong>Scenario B:</strong> An existing V2 customer, live in production, wants to upgrade to V3. What's the risk? When should they do it?</li>
+          <li><strong>Scenario C:</strong> A customer who uses Salesforce as their CRM and wants real-time data sync. What's your recommendation?</li>
+        </ul>
+        <p>Be prepared to walk through your reasoning for each scenario.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

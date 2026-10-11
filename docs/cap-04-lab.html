@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: Capacity Configurator — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: Capacity Configurator</h1>
+      <p class="subtitle">CloudWorks case study — Capacity configurator exercise</p>
+      <div class="badge-row">
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">45 min</span>
+        <span class="content-badge">Hands-On</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-note">
+        <span class="callout-label">📋 Answer Key</span>
+        <p>This lab is an exercise — there are no answers on this page. Review the <strong>CloudWorks case study handout</strong>, navigate through the configurator pages, and fill in inputs based on the case study data. The answer key is available in the <a href="./cap-appendix-answer-key.html">Appendix →</a> and will be reviewed during the facilitator-led debrief.</p>
+      </div>
+
+      <div class="lab-objectives">
+        <h3>What you'll do</h3>
+        <ul>
+          <li>Navigate to <strong>Section 1.2</strong> in the configurator left nav and work pages <strong>1.2.1 → 1.2.4</strong> in order, using the Step XX labels as your guide</li>
+          <li>Configure GTM headcount data inputs (1.2.1) and decide whether <strong>Role Grade</strong> should be enabled for CloudWorks (1.2.2 — Step 0)</li>
+          <li>Set tops-down planning structure and coverage ratios (1.2.2, 1.2.3) using the CloudWorks case study handout</li>
+          <li>Configure the bottoms-up hiring plan entry level, approval level, and OWP connection (1.2.4)</li>
+          <li>Verify each step end-to-end with the inline Check my Work button before the facilitator-led debrief</li>
+        </ul>
+      </div>
+
+      <h2>Exercise Overview</h2>
+      <p>Using the <strong>CloudWorks case study handout</strong>, complete the Capacity section of the configurator. Navigate to <strong>Section 1.2</strong> in the left nav of the configurator app. Work through each page (1.2.1, 1.2.2, 1.2.3, 1.2.4, and any additional pages) in order, making configuration decisions based on the case study data.</p>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 How to Use This Lab</span>
+        <p>For each configurator page: (1) read the page title and Step labels visible to the left of each table in the live configurator — these tell you what each table is for; (2) refer to the CloudWorks case study handout for the customer data relevant to that step; (3) fill in your configuration decisions. After each page, hit <strong>Apply / Calculate</strong> before moving on. If you already completed the Segmentation exercise, data setup is shared — skip it here.</p>
+      </div>
+
+      <hr>
+
+      <h2>Part 2: Capacity Configuration — Section 1.2</h2>
+      <p>Navigate to the <strong>Capacity section (Section 1.2)</strong> in the configurator left nav. Data setup is shared with Segmentation — skip it if you already configured it above.</p>
+
+      <!-- CAP MINI-LAB 1.2.1 -->
+      <h2>C1 — Page 1.2.1 — GTM Headcount Data</h2>
+      <p>Review the CloudWorks case study and configure the headcount data inputs for the Capacity model based on the employee data available.</p>
+
+      <blockquote>
+        <p><strong>Navigate to Page 1.2.1: GTM Headcount Data</strong></p>
+        <p>Review each table on this page. Use the <strong>Step XX labels</strong> on the left side of each table to understand what each table configures. Refer to the CloudWorks case study handout and fill in your inputs based on the case study data.</p>
+      </blockquote>
+
+      <ol class="lab-steps">
+        <li>What historical headcount data does CloudWorks have available? Is it sufficient to inform ramp and productivity baselining?</li>
+        <li>Which employee attributes from the case study data should be mapped at this step?</li>
+      </ol>
+
+      <div class="callout-tip" style="margin-top:0.75rem;">
+        <span class="callout-label">💡 Tip</span>
+        <p>The Step labels in the live configurator are your primary guide. If a table's purpose is unclear from its Step label, read any inline instructions on the page before making a decision.</p>
+      </div>
+
+      <img src="../img/day2/cap-04-1-2-1-headcount-data.png" alt="Capacity Page 1.2.1 GTM Headcount Data Guided Setup — Configure Dimensionality and Attributes for Headcount Data with the Step 1 (Configure Ramping Profile Dimensionality) Select Dimensions table populated, Historical Ramping Profile Assumptions preview chart, Step 2 (Select Attributes to View by Employees and position) attribute selectors, 44% Complete progress indicator, and Missing Mandatory Inputs counter" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Click <strong>Apply / Calculate</strong> before moving on.</p>
+
+      <div class="lab-quiz" data-correct="C">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>On Page 1.2.1, Step 1 (Configure Ramping Profile Dimensionality), what does the <strong>Historical Ramping Profile Assumptions</strong> preview chart depend on to be meaningful?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-ramp-profile" value="A"><span class="lab-quiz-letter">A</span><span>The tops-down NTE configured on Page 1.2.2</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-ramp-profile" value="B"><span class="lab-quiz-letter">B</span><span>The coverage ratios configured on Page 1.2.3</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-ramp-profile" value="C"><span class="lab-quiz-letter">C</span><span>The customer having sufficient historical headcount data for ramp and productivity baselining</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-ramp-profile" value="D"><span class="lab-quiz-letter">D</span><span>Whether Operational Workforce Planning (OWP) is connected</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> Step 1 on this page configures ramping-profile dimensionality, and the preview chart is built from historical headcount data. If the customer doesn't have enough history to inform ramp and productivity baselining, the profile assumptions won't be meaningful — which is exactly the diagnostic question the page is asking you to answer for CloudWorks.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>C</strong>. Page 1.2.1 is about headcount data inputs — the ramping profile preview depends on the customer having enough historical headcount data to baseline ramp and productivity. The NTE, coverage ratios, and OWP connection are configured on later pages and don't drive this preview.</div>
+      </div>
+
+      <!-- CAP MINI-LAB 1.2.2 -->
+      <h2>C2 — Page 1.2.2 — GTM Top-Down HC Target Setting</h2>
+      <p>Configure the sales role hierarchy structure and tops-down planning guardrails based on the CloudWorks case study. Make the Role Grade decision carefully — it has significant downstream implications.</p>
+
+      <blockquote>
+        <p><strong>Navigate to Page 1.2.2: GTM Top-Down HC Target Setting</strong></p>
+        <p>Review each table on this page, using the Step XX labels. Refer to the CloudWorks case study handout and configure the role hierarchy and tops-down planning structure.</p>
+      </blockquote>
+
+      <div class="callout-important" style="margin: 0.75rem 0;">
+        <span class="callout-label">🚨 Step 0 — Role Grade: Make This Decision First</span>
+        <p>Before configuring anything else on this page, locate <strong>Step 0</strong>: the Role Grade enable/disable setting. Review the CloudWorks case study — does CloudWorks require grade-level headcount planning? Decide before proceeding. Enabling Role Grade when it isn't needed significantly increases complexity across the entire app.</p>
+      </div>
+
+      <ol class="lab-steps">
+        <li>Should Role Grade be enabled for CloudWorks? What in the case study informs this decision?</li>
+        <li>How many levels does CloudWorks's sales role hierarchy have? What are the Job Family Groups, Job Families, and Sales Roles?</li>
+        <li>At what geography level should tops-down target setting begin for CloudWorks?</li>
+        <li>How many planning scenarios should be configured?</li>
+      </ol>
+
+      <img src="../img/day2/cap-04-1-2-2-topdown.png" alt="Capacity Page 1.2.2 GTM Top-Down Headcount Target Setting Guided Setup showing Step 0 (Role Grade toggle), the role hierarchy configuration grid, top-down headcount target tables populated, and the side-panel progress indicator" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Click <strong>Apply / Calculate</strong> before moving on.</p>
+
+      <div class="lab-check" data-check-id="rpm-cap-configurator-step-1-2-2" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've made the Role Grade decision, mapped the CloudWorks role hierarchy, and configured the tops-down target structure, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Page 1.2.2 configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Step 0 — Role Grade decision made</strong> &rarr; enabled or disabled based on whether CloudWorks requires grade-level headcount planning, with the case-study evidence noted</li>
+            <li><strong>Role hierarchy mapped</strong> &rarr; Job Family Groups, Job Families, and Sales Roles populated from the CloudWorks case study</li>
+            <li><strong>Tops-down geography level set</strong> &rarr; the level at which Finance / planning leadership provides headcount targets</li>
+            <li><strong>Planning scenarios configured</strong> &rarr; the number of scenarios required for CloudWorks</li>
+            <li><strong>Apply / Calculate run</strong> &rarr; page committed before moving on to 1.2.3</li>
+          </ul>
+          <p class="lab-check-next">Ready for Page 1.2.3 — coverage and workload.</p>
+        </div>
+      </div>
+
+      <!-- CAP MINI-LAB 1.2.3 -->
+      <h2>C3 — Page 1.2.3 — GTM Coverage &amp; Workload</h2>
+      <p>Define how CloudWorks sales roles cover accounts — the fundamental input for calculating how many people are needed.</p>
+
+      <blockquote>
+        <p><strong>Navigate to Page 1.2.3: GTM Coverage &amp; Workload Capacity Guided Setup</strong></p>
+        <p>Review each table, using the Step XX labels. Refer to the CloudWorks case study handout and fill in coverage ratios and segment mapping based on the case study data.</p>
+      </blockquote>
+
+      <ol class="lab-steps">
+        <li>At what geography level does CloudWorks manage coverage assumptions?</li>
+        <li>What are the account-based coverage ratios for each direct seller role?</li>
+        <li>Which segments does each role cover?</li>
+        <li>Are there overlay or support roles? What are their derived coverage ratios?</li>
+      </ol>
+
+      <img src="../img/day2/cap-04-1-2-3-coverage.png" alt="Capacity Page 1.2.3 GTM Coverage &amp; Workload Guided Setup showing the coverage ratio configuration table (e.g. 1 manager per N AEs, 1 generalist per N AEs) and role-to-segment mapping grid with the workload-by-segment breakdown" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Click <strong>Apply / Calculate</strong> before moving on.</p>
+
+      <div class="lab-quiz" data-correct="B">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>On Page 1.2.3, role-to-segment mapping requires segment definitions. Where do those segments come from?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-coverage-segments" value="A"><span class="lab-quiz-letter">A</span><span>They're defined inline on Page 1.2.3 as part of the coverage configuration</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-coverage-segments" value="B"><span class="lab-quiz-letter">B</span><span>From the <strong>Segmentation</strong> configuration — Capacity reuses the same segment inputs, which is why data setup is shared</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-coverage-segments" value="C"><span class="lab-quiz-letter">C</span><span>From the Operational Workforce Planning (OWP) connector</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-cap-coverage-segments" value="D"><span class="lab-quiz-letter">D</span><span>They're auto-derived from the role hierarchy configured on Page 1.2.2</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> Capacity and Segmentation share data setup — segments configured in Segmentation flow into the Capacity coverage page as the mapping targets. That's exactly why the lab tells you to skip the data setup step here if you already configured it in the Segmentation exercise.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>B</strong>. Capacity reuses segment inputs from the Segmentation configuration — the shared data setup is why the lab tells you to skip it here if you already ran the Segmentation exercise. The role hierarchy and OWP connector serve different purposes.</div>
+      </div>
+
+      <!-- CAP MINI-LAB 1.2.4 -->
+      <h2>C4 — Page 1.2.4 — GTM Bottom-Up Hiring Plan</h2>
+      <p>Configure the tactical hiring plan layer — where CloudWorks planners will enter month-by-month hires, constrained by the tops-down NTE.</p>
+
+      <blockquote>
+        <p><strong>Navigate to Page 1.2.4: GTM Bottom-Up Hiring Plan Guided Setup</strong></p>
+        <p>Review each table, using the Step XX labels. Refer to the CloudWorks case study handout and configure the entry level, approval level, and OWP connection.</p>
+      </blockquote>
+
+      <ol class="lab-steps">
+        <li>At what geography level do CloudWorks planners enter bottoms-up hiring plans?</li>
+        <li>At what level do hiring plans get approved?</li>
+        <li>Does CloudWorks use Operational Workforce Planning (OWP)? Should the OWP connection be enabled?</li>
+      </ol>
+
+      <img src="../img/day2/cap-04-1-2-4-bottomup.png" alt="Capacity Page 1.2.4 GTM Bottom-Up Hiring Plan Guided Setup showing the entry-level and approval-level configuration (which hierarchy tier reps enter at, where approvals roll up), and the bottom-up hiring plan input grid populated" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Click <strong>Apply / Calculate</strong> before moving on.</p>
+
+      <div class="lab-check" data-check-id="rpm-cap-configurator-step-1-2-4" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've configured the entry level, approval level, and OWP connection decision for CloudWorks, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Page 1.2.4 configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Bottoms-up entry level set</strong> &rarr; the geography level at which CloudWorks planners enter month-by-month hires</li>
+            <li><strong>Approval level set</strong> &rarr; the hierarchy tier where bottoms-up hiring plans roll up for approval</li>
+            <li><strong>OWP connection decision made</strong> &rarr; Operational Workforce Planning connector enabled or disabled, based on whether CloudWorks uses OWP</li>
+            <li><strong>Apply / Calculate run</strong> &rarr; page committed before moving on</li>
+          </ul>
+          <p class="lab-check-next">Section 1.2 is complete. Head to the debrief questions and compare your decisions against the Appendix answer key.</p>
+        </div>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Additional 1.2.x Pages</span>
+        <p><strong>[PENDING: Lab steps for additional 1.2.x pages beyond 1.2.4 to be added once the full page inventory is confirmed via SME review.]</strong> For any additional pages you encounter in Section 1.2 of the configurator: use the Step XX labels as your guide, reference the CloudWorks case study handout, make your configuration decisions, Apply / Calculate, and move on.</p>
+      </div>
+
+      <hr>
+
+      <h2>Debrief Questions — Capacity</h2>
+      <ol>
+        <li>On Page 1.2.2, you made a Role Grade decision for CloudWorks. What did you decide, and what in the case study data informed that choice? What would have happened to the rest of the configuration if you had made the opposite decision?</li>
+        <li>You configured coverage ratios at the Americas level on Page 1.2.3. A stakeholder says EMEA needs different ratios (EMEA AEs cover fewer accounts due to relationship-based selling). How does this affect your configuration? What would you change?</li>
+        <li>CloudWorks's tops-down planning starts at the Americas level. Finance now says they want to provide targets at the Geo level (i.e., NA and EMEA separately). Is this a configuration change or a post-gen setup? What's the effort if it changes post-generation?</li>
+        <li>You configured a bottoms-up entry level and approval level. A territory manager says their plan keeps getting rejected because it exceeds the NTE. What is the NTE, where does it come from in the app, and how would you explain the constraint to the manager?</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">✅ Lab Complete</span>
+        <p>When the group reconvenes, refer to the <a href="./cap-appendix-answer-key.html">Answer Key in the Appendix</a> to compare your decisions.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/lab-quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inter-App Data Flows — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1.5rem 0;
+      padding: 1.5rem;
+      background: #f8fafc;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+    }
+    .flow-node {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      min-width: 140px;
+      flex: 1;
+    }
+    .flow-node-seg { background: #eff6ff; border: 2px solid #3b82f6; }
+    .flow-node-tq  { background: #f0fdf4; border: 2px solid #22c55e; }
+    .flow-node-cap { background: #fef9c3; border: 2px solid #eab308; }
+    .flow-node-icon { font-size: 1.8rem; margin-bottom: 0.4rem; }
+    .flow-node-label { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .flow-node-desc { font-size: 0.78rem; color: var(--color-text-muted); }
+    .flow-arrow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+      flex-shrink: 0;
+    }
+    .flow-arrow-line {
+      width: 40px;
+      height: 2px;
+      background: #94a3b8;
+      position: relative;
+    }
+    .flow-arrow-line::after {
+      content: "▶";
+      position: absolute;
+      right: -8px;
+      top: -7px;
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .flow-arrow-label { font-size: 0.72rem; color: var(--color-text-muted); text-align: center; max-width: 90px; }
+  </style>
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Inter-App Data Flows</h1>
+      <p class="subtitle">How data moves between T&amp;Q, Segmentation, Capacity, and Sales Forecasting</p>
+      <div class="badge-row">
+        <span class="content-badge">Reference</span>
+        <span class="content-badge">Field Guide</span>
+      </div>
+    </div>
+
+    <div class="content-body">
+
+      <p>All four RPM apps are designed to work together as a suite. This page is a field reference for the data flows between them — what moves, how it moves, when to run it, and what breaks if you get the sequence wrong.</p>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Not Automatic Today</span>
+        <p>None of these connections are automatic. Every data flow described here requires a deliberate manual export/import step or a configured ADO pipeline. Native app-to-app connections are on the roadmap. Until then, plan for these steps explicitly in your project timelines — they are not checkbox items.</p>
+      </div>
+
+      <h2>The Four Apps and What They Exchange</h2>
+
+      <div class="flow-diagram">
+        <div class="flow-node flow-node-seg">
+          <div class="flow-node-icon">🎯</div>
+          <div class="flow-node-label">Account Segmentation</div>
+          <div class="flow-node-desc">Classifies every account into a segment</div>
+        </div>
+        <div class="flow-arrow">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-label">Segments → T&amp;Q<br>Counts → Capacity</div>
+        </div>
+        <div class="flow-node flow-node-tq">
+          <div class="flow-node-icon">🗺</div>
+          <div class="flow-node-label">Territory &amp; Quota</div>
+          <div class="flow-node-desc">Designs territories and calculates rep quotas</div>
+        </div>
+        <div class="flow-arrow">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-label">Quotas → Forecasting</div>
+        </div>
+        <div class="flow-node flow-node-cap">
+          <div class="flow-node-icon">📊</div>
+          <div class="flow-node-label">Capacity Planning</div>
+          <div class="flow-node-desc">Calculates headcount needs by role and geo</div>
+        </div>
+      </div>
+
+      <h2>Flow 1: Segmentation → T&amp;Q</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What moves</strong></td><td>Account segment attribute per account (e.g. Strategic, Named, Commercial, SMB)</td></tr>
+            <tr><td><strong>Why it matters</strong></td><td>T&amp;Q uses the segment attribute in the Rule Engine and in the Addressable Market calculation for target allocation</td></tr>
+            <tr><td><strong>How it moves today</strong></td><td>Export account-level segment data from Segmentation → format as a flat file → import into T&amp;Q Data Hub as an account attribute</td></tr>
+            <tr><td><strong>When to run it</strong></td><td>After finalizing segment definitions, before territory carving in T&amp;Q. Re-run whenever segmentation is re-executed.</td></tr>
+            <tr><td><strong>What breaks if skipped</strong></td><td>Rule Engine rules that reference segment attributes will have no data to match against. Territory carving based on segment mix will be inaccurate.</td></tr>
+            <tr><td><strong>Future state</strong></td><td>Native ADO pipeline — Segmentation output view pushes directly to T&amp;Q account import. Not yet available.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Flow 2: Segmentation → Capacity</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What moves</strong></td><td>Account counts per segment per geography (e.g. 1,200 Strategic accounts in US-West)</td></tr>
+            <tr><td><strong>Why it matters</strong></td><td>Capacity coverage ratios (1 Strategic AE per 5 accounts) are applied against segment account counts to calculate suggested headcount. Wrong counts → wrong headcount recommendations.</td></tr>
+            <tr><td><strong>How it moves today</strong></td><td>Export segment count summary from Segmentation → import into Capacity coverage module as the account universe by segment</td></tr>
+            <tr><td><strong>When to run it</strong></td><td>After finalizing segmentation, before running the Capacity tops-down suggested headcount calculation. Re-run whenever segmentation changes materially.</td></tr>
+            <tr><td><strong>What breaks if skipped</strong></td><td>Capacity coverage ratio calculations use stale or zero account counts. Suggested headcount numbers will be meaningless.</td></tr>
+            <tr><td><strong>Impact of re-segmentation</strong></td><td>Moving 500 accounts from Commercial to SMB directly changes how many Commercial AEs and SMB AEs Capacity says you need.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Flow 3: Capacity → T&amp;Q</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What moves</strong></td><td>Territories-per-headcount (TPH) recommendations — how many territories of each type are needed per geography</td></tr>
+            <tr><td><strong>Why it matters</strong></td><td>T&amp;Q territory hierarchy design should be informed by how many reps Capacity says you need. If Capacity says US-West needs 12 Commercial AEs, design 12 Commercial territories — not 8, not 16.</td></tr>
+            <tr><td><strong>How it moves today</strong></td><td>Manual reference — planners look at Capacity bottoms-up hiring plan output and use those numbers to inform T&amp;Q hierarchy structure. No data export required.</td></tr>
+            <tr><td><strong>When to run it</strong></td><td>Before finalizing the T&amp;Q territory hierarchy. Inform territory design, then lock the hierarchy.</td></tr>
+            <tr><td><strong>What breaks if skipped</strong></td><td>Territory structure is designed before headcount is modeled. Common result: too many or too few territories per region, requiring a hierarchy redesign after the headcount model runs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Flow 4: T&amp;Q → Sales Forecasting</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Item</th><th>Detail</th></tr></thead>
+          <tbody>
+            <tr><td><strong>What moves</strong></td><td>Rep-level quota by quota type by period (output of the Calc Quota by Quota Types module in T&amp;Q)</td></tr>
+            <tr><td><strong>Why it matters</strong></td><td>Sales Forecasting tracks forecast attainment against quota. Without quota data, attainment metrics have no denominator — the app shows pipeline data with no context.</td></tr>
+            <tr><td><strong>How it moves today</strong></td><td>Export quota data from T&amp;Q (Calc Quota by Quota Types module) → import into Sales Forecasting quota module</td></tr>
+            <tr><td><strong>When to run it</strong></td><td>After quotas are finalized and approved in T&amp;Q, before Sales Forecasting goes live with users. Re-run whenever quotas are revised mid-year.</td></tr>
+            <tr><td><strong>What breaks if skipped</strong></td><td>Sales Forecasting shows pipeline data but no attainment tracking. Reps and managers see forecast calls but can't compare them to quota. The primary value of the app is not available.</td></tr>
+            <tr><td><strong>Prerequisite</strong></td><td>T&amp;Q must be live and quotas approved before this flow makes sense. Sales Forecasting is almost always a second engagement for this reason.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Recommended Execution Sequence</h2>
+      <p>When implementing multiple apps simultaneously, follow this sequence to avoid rework:</p>
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content"><strong>Configure and generate Segmentation</strong> — classify the account universe. Validate segment distribution with the customer before moving on.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content"><strong>Export segment counts → load into Capacity</strong> — coverage ratios now have accurate account data to work with.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content"><strong>Run Capacity headcount model</strong> — confirm TPH output by role and geography.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">4</div>
+        <div class="step-content"><strong>Design T&amp;Q territory hierarchy informed by Capacity output</strong> — the right number of territories per region per segment type.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">5</div>
+        <div class="step-content"><strong>Export segment data → load into T&amp;Q</strong> — account segment attribute available for Rule Engine and Addressable Market.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">6</div>
+        <div class="step-content"><strong>Complete T&amp;Q configuration and generate</strong> — hierarchy is right, segment data is loaded, Rule Engine has attributes to work with.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">7</div>
+        <div class="step-content"><strong>Finalize and approve quotas in T&amp;Q</strong> — once quotas are live and approved, the Sales Forecasting integration becomes meaningful.</div>
+      </div>
+      <div class="step">
+        <div class="step-badge">8</div>
+        <div class="step-content"><strong>Export quota data → load into Sales Forecasting</strong> — attainment tracking is now live. Roll out to users.</div>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 In Practice</span>
+        <p>Most customers don't implement all four apps simultaneously. T&amp;Q usually goes live first, Segmentation and Capacity are added in a second phase, and Sales Forecasting follows once T&amp;Q quotas are trusted. Don't force the ideal sequence on a customer who isn't ready for it. Start where the pain is highest — usually T&amp;Q — and expand from there.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

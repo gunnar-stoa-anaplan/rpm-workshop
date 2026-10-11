@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seg &amp; Capacity Overview — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Seg &amp; Capacity Overview</h1>
+      <p class="subtitle">Segmentation, Scoring &amp; Go-to-Market Capacity Planning</p>
+    </div>
+    <div class="content-body">
+
+      <h2>About This Module</h2>
+      <p>This module builds on the T&amp;Q foundation from the previous module. In this module you'll go deeper into two additional SPM apps: <strong>Account Segmentation &amp; Scoring</strong> and <strong>Go-to-Market Capacity Planning</strong>. Both apps share the same configurator entry point but generate separate spoke models — you'll see how they fit together and how they feed back into T&amp;Q.</p>
+
+      <h2>Learning Objectives</h2>
+      <ol>
+        <li>Understand the Segmentation &amp; Scoring configurator and its key configuration decisions</li>
+        <li>Understand the Capacity Planning configurator and the dimensionality tradeoffs involved</li>
+        <li>Walk a customer through the Segmentation app end-to-end</li>
+        <li>Walk a customer through the Capacity app end-to-end — including tops-down and bottoms-up planning</li>
+        <li>Understand the Sales Forecasting app (just launched) and roadmap updates for T&amp;Q V3, Segmentation V2, and Capacity V2</li>
+      </ol>
+
+      <h2>Segmentation &amp; Capacity Module Agenda</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Time</th>
+            <th>Duration</th>
+            <th>Topic</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>9:00</td>
+            <td>45 min</td>
+            <td>Segmentation Configurator Review</td>
+          </tr>
+          <tr>
+            <td>9:45</td>
+            <td>45 min</td>
+            <td>Capacity Configurator Review</td>
+          </tr>
+          <tr>
+            <td>10:30</td>
+            <td>90 min</td>
+            <td>Configurator Exercise (Seg + Cap)</td>
+          </tr>
+          <tr>
+            <td>12:00</td>
+            <td>60 min</td>
+            <td>Lunch</td>
+          </tr>
+          <tr>
+            <td>1:00</td>
+            <td>30 min</td>
+            <td>Post-Generation Prep</td>
+          </tr>
+          <tr>
+            <td>1:30</td>
+            <td>90 min</td>
+            <td>Segmentation &amp; Capacity UX Walkthrough</td>
+          </tr>
+          <tr>
+            <td>3:00</td>
+            <td>60 min</td>
+            <td>What's Coming in Sales Applications</td>
+          </tr>
+          <tr>
+            <td>4:00</td>
+            <td>30 min</td>
+            <td>Module Wrap-up &amp; Feedback</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Key Relationship Between Apps</h2>
+      <p>These three apps don't operate in isolation — they feed each other. Understanding the data flows between them is critical to positioning the full SPM suite.</p>
+
+      <ul>
+        <li><strong>Segmentation → T&amp;Q:</strong> Account segments drive territory carving. Which accounts are Strategic vs. SMB determines how territories should be carved, sized, and assigned.</li>
+        <li><strong>Segmentation → Capacity:</strong> Account mix changes drive headcount needs. If your re-segmentation exercise moves 500 accounts from Commercial to SMB, you need fewer Commercial AEs and more SMB AEs.</li>
+        <li><strong>Capacity → T&amp;Q:</strong> TPH (Territories Per Headcount) counts from Capacity inform territory coverage decisions in T&amp;Q.</li>
+      </ul>
+
+      <div class="callout-note">
+        <strong>Shared Configurator:</strong> Both Segmentation and Capacity share the same configurator app — they're just different sections within it. You configure both in a single set of sessions with the customer, and the data setup is shared between them.
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">⚠ Important: These Connections Are Not Automatic</span>
+        <p>The data flows between Segmentation, Capacity, and T&amp;Q described above are <strong>not automatic</strong> today. Moving data between apps requires a manual export/import step or a custom ADO pipeline. Native app-to-app connections are on the roadmap but not yet available. Plan for this in your project timelines — it's a meaningful implementation step, not a checkbox.</p>
+      </div>
+
+      <h2>Inter-App Data Flow</h2>
+      <p>Here's how data moves through the three apps in a complete SPM implementation:</p>
+
+      <div class="flow-diagram">
+        <div class="flow-node flow-node-seg">
+          <div class="flow-node-icon">🎯</div>
+          <div class="flow-node-label">Segmentation &amp; Scoring</div>
+          <div class="flow-node-desc">Classifies every account into a segment (Strategic, Named, Commercial, SMB)</div>
+        </div>
+        <div class="flow-arrow">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-label">Account segments<br>export → T&amp;Q import</div>
+        </div>
+        <div class="flow-node flow-node-tq">
+          <div class="flow-node-icon">🗺</div>
+          <div class="flow-node-label">Territory &amp; Quota (T&amp;Q)</div>
+          <div class="flow-node-desc">Uses segments for territory carving, rule engine, and account assignment</div>
+        </div>
+        <div class="flow-arrow">
+          <div class="flow-arrow-line"></div>
+          <div class="flow-arrow-label">Territory structure<br>export → Capacity import</div>
+        </div>
+        <div class="flow-node flow-node-cap">
+          <div class="flow-node-icon">📊</div>
+          <div class="flow-node-label">Capacity Planning</div>
+          <div class="flow-node-desc">Uses account mix + territory structure to calculate headcount needs</div>
+        </div>
+      </div>
+
+      <div class="two-col" style="margin-top:1.5rem;">
+        <div class="card">
+          <h3>Segmentation → T&amp;Q</h3>
+          <p><strong>What moves:</strong> Account segment attribute per account</p>
+          <p><strong>How:</strong> Export from Segmentation app → import into T&Q Data Hub as an account attribute</p>
+          <p><strong>Why it matters:</strong> Territory carving and Rule Engine logic in T&amp;Q can reference the segment. "All Strategic accounts in EMEA → Enterprise Territory" only works if the segment is loaded.</p>
+          <p><strong>Timing:</strong> Run after each segmentation exercise, before territory planning begins</p>
+        </div>
+        <div class="card">
+          <h3>Segmentation → Capacity</h3>
+          <p><strong>What moves:</strong> Account counts per segment per geography</p>
+          <p><strong>How:</strong> Export from Segmentation → import into Capacity coverage module</p>
+          <p><strong>Why it matters:</strong> Coverage ratios in Capacity (1 AE per N accounts) depend on knowing how many accounts are in each segment. Change the segmentation → change the required headcount.</p>
+          <p><strong>Timing:</strong> Run after finalizing segmentation, before running headcount models</p>
+        </div>
+      </div>
+      <div class="two-col" style="margin-top:1rem;">
+        <div class="card">
+          <h3>Capacity → T&amp;Q</h3>
+          <p><strong>What moves:</strong> Territories-per-headcount (TPH) recommendations</p>
+          <p><strong>How:</strong> Manual reference — planners use the Capacity output to inform territory structure decisions in T&amp;Q</p>
+          <p><strong>Why it matters:</strong> If Capacity says you need 12 Commercial AEs in US-West, your T&amp;Q territory structure needs 12 Commercial territories in US-West.</p>
+          <p><strong>Timing:</strong> Inform territory design before finalizing the T&amp;Q hierarchy</p>
+        </div>
+        <div class="card">
+          <h3>Ideal Sequence</h3>
+          <ol style="padding-left:1.2rem;font-size:0.9rem;">
+            <li>Run Segmentation → finalize account segments</li>
+            <li>Export segments → load into Capacity coverage</li>
+            <li>Run Capacity → determine headcount needs per role/geo</li>
+            <li>Use headcount model to inform T&amp;Q territory structure</li>
+            <li>Export segments → load into T&amp;Q for rule engine + carving</li>
+            <li>Run T&amp;Q territory planning with fully-informed structure</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="tsd-banner" style="margin-top:2rem;">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">Three Apps, One Suite</span>
+          <span class="tsd-step-desc">You've seen how Segmentation, Capacity, and T&amp;Q fit together and what data flows between them.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Facilitator Demo</span>
+          <span class="tsd-step-desc">Instructor walks through a live example of exporting segment data from Segmentation and loading it into Capacity coverage ratios.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Map the Flow</span>
+          <span class="tsd-step-desc">Using the CloudWorks scenario: sketch out the full data flow. What moves, when, and how? Identify the manual steps you'd need to plan for.</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

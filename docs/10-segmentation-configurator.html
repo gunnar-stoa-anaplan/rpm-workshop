@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Account Segmentation & Scoring Configurator - RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Account Segmentation &amp; Scoring Configurator</h1>
+      <p class="subtitle">Key configuration decisions for the Segmentation app</p>
+    </div>
+    <div class="content-body">
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">Segmentation Configuration</span>
+          <span class="tsd-step-desc">You'll learn the key dimensionality decisions in the Segmentation configurator and how they cascade through the generated app.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Facilitator Demo</span>
+          <span class="tsd-step-desc">Instructor opens the Segmentation configurator and walks through each key setting, explaining the downstream impact of each choice.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Segmentation Lab</span>
+          <span class="tsd-step-desc">Complete the Segmentation section of the CloudWorks configurator exercise on the next lab page.</span>
+        </div>
+      </div>
+
+      <p>The Segmentation configurator shares the same app as Capacity. Navigate to the <strong>Segmentation section</strong> within the configurator. Key principle: you're defining <em>at what level of detail</em> you want to manage various assumptions. The dimensionality choices you make here cascade through the entire app - changing them post-generation is very painful.</p>
+
+      <h2>Overview of Segmentation Configuration Goals</h2>
+      <ul>
+        <li>Define the account universe and what data objects drive segmentation</li>
+        <li>Configure scoring dimensions and wallet size calculation methods</li>
+        <li>Set up rule-based segmentation parameters</li>
+        <li>Define hierarchy planning setup (GTM modeling)</li>
+      </ul>
+
+      <div class="callout-note">
+        <strong>Complexity Reference:</strong> T&amp;Q configurator = 1.0 complexity. Segmentation configurator = ~0.4 complexity. Fewer pages, fewer decisions, less dimensionality - but still requires care.
+      </div>
+
+      <hr>
+
+      <h2>Page: Data Setup</h2>
+      <p>This is a mirror of the T&amp;Q data setup - same data objects (accounts, employees, opportunities). If you're configuring both Segmentation and Capacity, you only need to set this up once.</p>
+      <ul>
+        <li>Additional segmentation-specific attributes: <strong>firmographic data</strong> - employee count bands, revenue bands, industry</li>
+        <li><strong>Key:</strong> Enable list-formatted attributes (<em>Enable for Calculate</em>) for anything you want to use as a segmentation dimension</li>
+        <li>Banded attributes are required for the rule engine - numeric values don't work directly. For example: "employee band: 0-250, 250-1,000, 1,000+" rather than a raw number field</li>
+      </ul>
+      <figure class="screenshot">
+        <img src="../img/day2/10-seg-config-overview.png" alt="Segmentation configurator data setup overview" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Segmentation configurator data setup overview</figcaption>
+      </figure>
+
+      <hr>
+
+      <h2>Page: GTM Performance Analysis</h2>
+      <p>This page defines how historical and ongoing Go-to-Market performance data is structured and reported within the Segmentation app. Decisions made here determine the analytical backbone of the app's reporting capabilities.</p>
+      <ul>
+        <li><strong>Capture reporting dimensions</strong> - identify which dimensions (e.g., account segment, region, product line) GTM performance will be analyzed across. These drive the filter and aggregation options available to planners in the generated app.</li>
+        <li><strong>Hierarchical reporting application</strong> - define how performance data rolls up through the hierarchy. Specify which levels are relevant for performance reporting and how parent levels aggregate child-level data.</li>
+        <li><strong>Applicable record type for opportunity reporting</strong> - specify the Anaplan record type (e.g., Opportunity, Opportunity Line) used to source opportunity data into GTM performance analysis. This must align with the data objects configured in Data Hub Setup.</li>
+        <li><strong>Data source mapping</strong> - document where GTM performance data originates (CRM system, flat file import, or connected Anaplan workspace) and how each source field maps to the Segmentation model's data structure.</li>
+      </ul>
+      <div class="callout-note">
+        <span class="callout-label">📝 <strong>[SME CONFIRMATION NEEDED: GTM Performance Analysis - exact UX page name/path in Segmentation configurator]</strong></span>
+        <p>Confirm the exact page name and location within the configurator for this section before the lab exercise. The data source (CRM, flat file, or connected workspace) for CloudWorks GTM data also needs to be confirmed before this section can be completed in a live session.</p>
+      </div>
+
+      <hr>
+
+      <h2>Page: Customer Profile Setup</h2>
+      <p>The Customer Profile is a foundational input to Account Segmentation. It captures key account characteristics that inform which segment each account is assigned to. Without a correctly configured Customer Profile, the segment outputs will be based on incomplete or incorrect data.</p>
+      <ul>
+        <li><strong>Select drivers for customer profile</strong> - choose which account attributes (qualitative and quantitative, as classified in Sample Data) will drive the customer profile definition. The customer profile is used to <em>inform the account segment</em> - this is the direct input to the scoring and rule engine.</li>
+        <li><strong>Select reporting dimension for customer profile</strong> - at what dimension level is the customer profile analyzed and reported? This determines how profile-level analysis is surfaced in the generated app (e.g., by region, by industry vertical, by account segment).</li>
+      </ul>
+      <div class="callout-note">
+        <span class="callout-label">📝 <strong>[SME CONFIRMATION NEEDED: Customer Profile Setup - exact UX page name/path in Segmentation configurator]</strong></span>
+        <p>Confirm the exact page name and navigation path before the lab exercise. The attribute list available for customer profile drivers will depend on what was enabled in Data Hub Setup.</p>
+      </div>
+
+      <hr>
+
+      <h2>Page: UCP / Account Hierarchy Configuration</h2>
+      <div class="callout-important">
+        <span class="callout-label">🚨 Critical Terminology: UCP = Unacceptable Customer Profile</span>
+        <p><strong>UCP stands for Unacceptable Customer Profile.</strong> Its purpose is to <strong>EXCLUDE</strong> accounts from the segmentation consideration - not to define which accounts are included. Accounts that meet UCP criteria are removed from the segmentation universe entirely and will not receive a segment assignment. Do not confuse UCP with an eligibility or inclusion filter.</p>
+      </div>
+      <ul>
+        <li><strong>Select account attributes relevant to UCP rules</strong> - identify which account attributes trigger exclusion. When an account matches the defined UCP attribute conditions, it is removed from segmentation consideration. Common examples: accounts below a minimum employee threshold, accounts in markets outside the GTM scope, or accounts flagged as inactive in the CRM.</li>
+        <li><strong>Select account hierarchy alignment level</strong> - determine where Territory Hierarchy and Industry hierarchy alignment occurs. Specifically, call out cases where a child account differs from its parent account in hierarchy alignment - these accounts may need to be treated independently rather than inheriting the parent's segment.</li>
+        <li><strong>Capture applicable account hierarchy level #</strong> - document the specific numeric hierarchy level used for alignment (e.g., Level 3 = Region, Level 5 = Territory). This numeric level selection directly affects how account segments flow into T&amp;Q territory carving and Capacity headcount planning downstream.</li>
+      </ul>
+      <div class="callout-note">
+        <span class="callout-label">📝 <strong>[SME CONFIRMATION NEEDED: UCP / Account Hierarchy Configuration - exact UX page name/path in Segmentation configurator; valid account hierarchy level # range]</strong></span>
+        <p>Confirm the exact page name, navigation path, and the valid range of account hierarchy levels available for selection before the lab exercise.</p>
+      </div>
+
+      <hr>
+
+      <h2>Page: Account Hierarchy Setup</h2>
+      <p>Define account hierarchy levels - typically from Global Ultimate Parent down through the subsidiary structure.</p>
+      <p><strong>Critical decision: at what level do you segment?</strong></p>
+      <ul>
+        <li><strong>Parent-level segmentation:</strong> All subsidiaries inherit the parent's segment. Simpler, fewer unique segment assignments.</li>
+        <li><strong>Lowest-level segmentation:</strong> Each entity gets its own segment independently. More granular, but significantly more complex to manage.</li>
+      </ul>
+      <p>This toggle is set in the configurator and is very painful to change post-generation. Be deliberate with the customer before committing.</p>
+
+      <hr>
+
+      <h2>Page: Rule-Based Segmentation Setup</h2>
+      <p>Define which attributes are available as rule dimensions and how the rule-based scoring is structured.</p>
+      <ul>
+        <li>Attributes must be list-formatted (configured in Data Setup) to be available as rule dimensions</li>
+        <li>Select account attributes for Rule-Based Segmentation from the list populated during Data Hub Setup - only enabled, list-formatted attributes will appear</li>
+      </ul>
+      <div class="callout-important">
+        <span class="callout-label">🚨 Important: Segment Names and Count Are Not Configured Here</span>
+        <p>The number of segments and their names (e.g., Strategic, Named, Commercial, SMB) are <strong>not configured in the Configurator</strong>. They are defined by admins <strong>after application generation</strong>, via placeholder slots in the generated admin UX. No configuration action is needed here for segment naming or count.</p>
+      </div>
+      <div class="callout-tip">
+        <strong>Fewer segments is better.</strong> Customers often want 8-10 segments; push back toward 3-5. More segments = more complexity in every downstream app - more territory types, more coverage ratios, more headcount planning rows. Every extra segment you add compounds through T&amp;Q and Capacity.
+      </div>
+      <figure class="screenshot">
+        <img src="../img/day2/10-seg-config-rules.png" alt="Rule-based segmentation configuration" style="width:100%;border-radius:6px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.8rem;color:#6b7280;margin-top:0.4rem;text-align:center;">Rule-based segmentation configuration - defining segments and rule dimensions</figcaption>
+      </figure>
+
+      <hr>
+
+      <h2>Page: Score-Based Segmentation Setup</h2>
+      <p>Configure the scoring model that assigns every account a numeric score, which then maps to a segment.</p>
+      <ul>
+        <li>Define up to 10 scoring metrics and their weights — <strong>weights must sum to 100%</strong></li>
+        <li>Score range: 0–10 by default (can be changed, but all scoring must scale accordingly)</li>
+        <li>Define score-to-segment mapping thresholds (e.g., 7–10 = Strategic, 4–7 = Mid-Market, 0–4 = SMB)</li>
+        <li>Every account gets a score → every account gets a segment (unlike rule-based, which may leave gaps if an account doesn’t match any rule)</li>
+        <li><strong>Rule-Based ALWAYS overrides Score-Based</strong> when both are available for the same account. Score-based acts as the default catch-all and only applies where no rule exists for that account.</li>
+      </ul>
+
+      <hr>
+
+      <h2>Page: Wallet Size Configuration</h2>
+      <p>Wallet size estimates the total addressable spend for each account - your potential revenue from that account. Three methods are available and can be used in combination, selectable per industry:</p>
+      <ol>
+        <li><strong>OpEx method:</strong> Based on company operating expenditure as a percentage of their spend in your category</li>
+        <li><strong>Employee method:</strong> Based on spend per employee × employee count</li>
+        <li><strong>Revenue method:</strong> Based on company revenue × addressable market percentage</li>
+      </ol>
+      <ul>
+        <li><strong>Geo index:</strong> Regional scaling factor - e.g., Americas gets a slight uplift, APAC a slight reduction</li>
+        <li><strong>Remaining wallet</strong> = total wallet - current ARR = your potential / whitespace</li>
+        <li>This feeds directly into T&amp;Q as the default allocation method for target cascading</li>
+      </ul>
+      <div class="callout-note">
+        <strong>Wallet size is optional.</strong> If the customer won't use it for target allocation or segmentation rules, skip the setup entirely. Don't over-engineer it. If they don't have reliable firmographic data and won't buy third-party data, the wallet size model will be directional at best.
+      </div>
+
+      <hr>
+
+      <h2>Page: GTM Hierarchy Planning Setup</h2>
+      <p>Define how many levels of GTM hierarchy planning you want to model. This is the sandbox for modeling next year's territory structure before committing anything to T&amp;Q.</p>
+      <ul>
+        <li>Completely separate from the live hierarchy - changes here don't affect T&amp;Q until explicitly exported</li>
+        <li>The number of levels you configure here determines how the planning hierarchy section of the Segmentation app is built</li>
+        <li>V2 redesign (imminent): significantly more intuitive, with better hierarchy balance reporting</li>
+      </ul>
+
+      <hr>
+
+      <h2>Timing Guidance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Configurator</th>
+            <th>Estimated Time</th>
+            <th>Relative Complexity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>T&amp;Q</td>
+            <td>~1 week</td>
+            <td>1.0×</td>
+          </tr>
+          <tr>
+            <td>Segmentation</td>
+            <td>~2-3 hours</td>
+            <td>~0.4×</td>
+          </tr>
+          <tr>
+            <td>Capacity</td>
+            <td>~2 days</td>
+            <td>~0.5×</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>Segmentation is much simpler than T&amp;Q - fewer pages, less dimensionality. A well-prepared customer with clean firmographic data can move quickly. The biggest time sink is usually the wallet size configuration, which you can skip if it's not needed.</p>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do - Ready for the Segmentation Lab</span>
+        <p>Before you start the configurator exercise:</p>
+        <ul>
+          <li>What's the one dimensionality decision in Segmentation that's hardest to change post-generation?</li>
+          <li>If a customer wants to segment by both industry vertical and company size, how does that affect the configurator choices?</li>
+          <li>What data does the customer need to have ready before you start configuring Segmentation?</li>
+        </ul>
+        <p><strong>Next:</strong> <a href="./12-seg-cap-exercise.html">Complete the Segmentation &amp; Capacity Lab →</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

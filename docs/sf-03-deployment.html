@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Deployment Model — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting Deployment Model</h1>
+      <p class="subtitle">How the app is delivered via the Anaplan Application Framework</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">25 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>If you've already worked through T&amp;Q, Segmentation, and Capacity, you've internalized a specific mental model: open the configurator, answer structured questions, click Generate, the app is born. Sales Forecasting V1 does <strong>not</strong> work that way. It's delivered via the <strong>Anaplan Application Framework</strong> — the platform's standard application packaging and deployment surface. This page walks through what that means in practice.</p>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Not a configurator-driven app</span>
+        <p>Sales Forecasting V1 is delivered as a packaged application via the Anaplan Application Framework. There is no per-implementation configurator UI like T&amp;Q's <code>1.01 Data Hub Setup</code> or Segmentation's wizard. You assemble an application from objects (models, UX apps, workflows, data orchestrator pipelines), version it, and deploy it. That's the model — and it's a meaningful departure from the other three apps.</p>
+      </div>
+
+      <h2>The Application Framework Surface</h2>
+      <p>The Application Framework is the platform area where applications are built, versioned, and deployed. Every SF implementation starts from this overview screen.</p>
+
+      <img src="../screenshots/sf-app/sf-app-framework-overview.png" alt="Anaplan Application Framework overview screen showing the left sidebar with Hierarchies, Data structure, Configurations, Models, UX apps, Workflows, Data Orchestrator, Assets, Analyst, and Versions, plus the main panel with setup tiles for Hierarchies, Data structure, Configurations, Versions, Deployments, and Application objects" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>The left-hand navigation organizes the building blocks of an application:</p>
+      <ul>
+        <li><strong>Hierarchies</strong> — the master hierarchies that anchor the app (see <a href="sf-02-sample-data.html">Sample Data</a>)</li>
+        <li><strong>Data structure</strong> — the data shapes the app expects to ingest</li>
+        <li><strong>Configurations</strong> — packaged configuration sets that can be reused across deployments</li>
+        <li><strong>Models</strong> — the underlying Anaplan models that hold the business logic</li>
+        <li><strong>UX apps</strong> — the published UX surfaces (the pages users see)</li>
+        <li><strong>Workflows</strong> — orchestrated business processes (forecast submission, approval, etc.)</li>
+        <li><strong>Data Orchestrator</strong> — the integration pipelines feeding the app</li>
+        <li><strong>Versions</strong> — versioned snapshots of the application that can be activated and deployed</li>
+      </ul>
+
+      <h2>1. Assemble the Application</h2>
+      <p>The first step is composing the application — naming it and picking the objects it contains. The Create Application dialog lets you select Models, UX apps, Workflows, Data Orchestrator pipelines, Assets, Analyst content, and System data into a single packaged application.</p>
+
+      <img src="../screenshots/sf-app/sf-app-framework-create-app.png" alt="Create application dialog showing application name and description fields, tabs for Models, UX apps, Workflows, Data Orchestrator, Assets, Analyst, and System data, and a list of available models including the Demo T&amp;Q V2, TEMPLATE SF Data Integration Hub, and TESTS UPGRADABILITY SF Model entries from Sales App Dev and Sales App QA workspaces" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Once the objects are selected, the <strong>Generate application</strong> step actually creates the application bundle and assigns each model to a target workspace.</p>
+
+      <img src="../screenshots/sf-app/sf-app-framework-generate.png" alt="Generate application dialog confirming the application will contain the Template Sales Forecasting model and assigning the Sales App Dev POLARIS workspace" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h2>2. Version the Application</h2>
+      <p>Applications are versioned. You create a version (Major / Minor / Patch), attach a description and release notes, and the version is then available to activate.</p>
+
+      <img src="../screenshots/sf-app/sf-app-framework-create-version.png" alt="Create new version dialog with Number and description and Release notes tabs, version type radio buttons for Major, Minor, and Patch, and a description input" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>The Versions screen lists every version of the application with its active state, creation date, owner, and any release-notes issues. Activating a version makes it the one that gets pushed to customers on the next deployment.</p>
+
+      <img src="../screenshots/sf-app/sf-app-framework-versions.png" alt="Versions list screen showing version 0.0.1 with description v1, creation date and owner, and a Change active version confirmation dialog explaining that the version will become the active version and will be deployed during the next deployment" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h2>3. Deploy</h2>
+      <p>The final step is deployment. Once an active version is set, the Deployments tile on the overview page makes that version available to downstream customer workspaces. This is the moment the app becomes visible to the end-user personas: AEs, managers, Sales Ops, sales leadership.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">🔗 What the Application Framework gives you</span>
+        <p>Because deployment goes through the platform's Application Framework rather than a one-off configurator, every SF rollout inherits the framework's guarantees: versioning, rollback to a prior active version, packaged deployments to multiple downstream tenants, and clear separation between the application bundle and the data the bundle reads. This is the value of the templated-application model — it's reusable across customers in a way a per-implementation configurator is not.</p>
+      </div>
+
+      <h2>The Salesforce Connector (V1 Reference Integration)</h2>
+      <p>The V1 reference integration is built around <strong>Salesforce as the CRM</strong>. The connector handles the heavy lifting: opportunities, accounts, opportunity-line-items, and activity sync flow in via a pre-configured Salesforce → Anaplan Data Orchestrator (ADO) pipeline.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>SF Object</th><th>Anaplan Target</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Account</td><td>Account hierarchy + master</td><td>Maps to account hierarchy. Parent account field drives rollup.</td></tr>
+            <tr><td>Opportunity</td><td>Opportunities module</td><td>Stage, amount, close date, owner, account. Forecast type derived from stage probability.</td></tr>
+            <tr><td>OpportunityLineItem</td><td>Product hierarchy mapping</td><td>For product-level forecasting (optional but recommended).</td></tr>
+            <tr><td>User</td><td>Sales hierarchy leaves</td><td>Salesforce User → Anaplan Employee. Manager field drives org structure.</td></tr>
+            <tr><td>Activity / Event / Task</td><td>Activity feeds</td><td>Drives the activity-based pipeline analytics.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Data Orchestrator Pipelines</h3>
+      <p>The Data Orchestrator (ADO) holds the Links between source data and the Anaplan models. For a Salesforce-sourced implementation, the SF Templates ship with pre-built Links for the key inputs — quotas, channel targets, products, meetings, engagements, etc. The screenshot below shows the Links view from the SF Data Integration Hub.</p>
+
+      <img src="../screenshots/sf-app/sf-app-data-orchestrator-links.png" alt="Data Orchestrator Links list showing pre-built SF Templates Links for T&amp;Q Match Quote, T&amp;Q Channel Targets, T&amp;Q Pipeline Targets, T&amp;Q Product Targets, T&amp;Q Sales Meeting Targets, Engagement Channels, and Opportunities, all flowing into the Sales App Dev POLARIS workspace" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <h2>Non-Salesforce CRM (Custom ADO Path)</h2>
+      <p>For customers on HubSpot, Microsoft Dynamics, NetSuite, or a custom CRM, the data shape is the same but the pipeline is bespoke. You build custom ADO Links to the source system, transform into the same target structures, and the rest of the application works identically.</p>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Scoping a non-Salesforce implementation</span>
+        <p>Add roughly <strong>40–80 hours</strong> of implementation effort for the custom ADO pipeline depending on source system maturity. The model itself does not change; only the Links layer in the Data Orchestrator does. Confirm in discovery whether the customer has clean opportunity-level data with a stable identifier — that's the single biggest factor in pipeline effort.</p>
+      </div>
+
+      <h2>Deployment Pre-flight Checklist</h2>
+      <div class="callout-note">
+        <span class="callout-label">📋 Before activating the production version</span>
+        <ul>
+          <li>All five master hierarchies imported, validated, and matched to CRM IDs</li>
+          <li>Salesforce Connector (or custom ADO Links) tested end-to-end with sample opportunities</li>
+          <li>At least 24 months of closed-won actuals loaded for Forecaster training</li>
+          <li>NNACV targets entered per rep × quarter</li>
+          <li>Weekly pipeline snapshot job scheduled</li>
+          <li>Sales Hierarchy leaves verified as individual employees (not positions)</li>
+          <li>Workspace permissions and user provisioning aligned with the sales hierarchy</li>
+          <li>Application version created, release notes filled in, and activated</li>
+          <li>UAT cohort identified (1 rep + 1 manager + 1 Sales Ops user, minimum)</li>
+        </ul>
+      </div>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Walk the Framework</span>
+        <p>Open the Anaplan Application Framework in your partner workspace and locate the SF templated app. Click through the five surfaces shown above — Application Framework overview, Create application, Generate application, Create new version, Versions list. Internalizing this loop is the cleanest way to understand how SF is delivered.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

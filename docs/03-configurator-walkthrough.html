@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Configurator Review - RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Configurator Review</h1>
+      <p class="subtitle">Page-by-page walkthrough of the T&amp;Q Configurator - pages 1.00 through 1.09</p>
+      <div class="badge-row">
+        <span class="content-badge">Section 3</span>
+        <span class="content-badge">90 min</span>
+        <span class="content-badge">Core Content</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <p>The <strong>T&amp;Q Configurator</strong> is a specialized Anaplan app that drives the generation of the T&amp;Q spoke application. You work through a series of numbered configuration pages in order, and when complete, the app engineering team triggers generation - producing a fully functional T&amp;Q application pre-configured to your customer's exact specifications.</p>
+      <p>This section walks through each configurator page in UX order: <strong>1.00 through 1.09</strong>. For each page, you will learn what gets configured there, what decisions need to be made, and what pitfalls to watch for. The focus is on the configurator inputs - not on how the generated app works after generation.</p>
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">Page-by-Page Walkthrough</span>
+          <span class="tsd-step-desc">You'll learn what each configurator page does, which inputs require the biggest decisions, and what to watch out for.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Live Configurator Demo</span>
+          <span class="tsd-step-desc">Instructor opens the T&amp;Q Configurator and walks through each page live - follow along in your own configurator instance.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Configurator Lab</span>
+          <span class="tsd-step-desc">You'll complete the full configurator exercise on the next page using the CloudWorks scenario. Read carefully - you'll need this context.</span>
+        </div>
+      </div>
+
+      <!-- PAGE 1.00 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.00</div>
+          <div class="config-section-title">Getting Started</div>
+        </div>
+        <p>Page 1.00 is the entry point into the configurator. It introduces the overall configuration flow, lists the pages you will work through, and provides high-level guidance on the process. Think of it as the configurator's table of contents and checklist rolled into one.</p>
+        <p>No complex decisions are made here. You will confirm the customer name, verify which modules are in scope (T&amp;Q Planning, SPM Optimizer), and review any pre-configuration notes from the App Engineering team before proceeding.</p>
+        <div class="callout-tip">
+          <span class="callout-label">💡 Tip</span>
+          <p>Always read any instructions or notes on this page before starting. The App Engineering team may have flagged workspace capacity considerations or known issues specific to the version you are working with.</p>
+        </div>
+        <img src="../screenshots/configurator/config-00-getting-started.jpg" alt="Configurator page 1.00 — Getting Started: configuration checklist with missing-input counts per page" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.01 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.01</div>
+          <div class="config-section-title">Data Hub Setup <span class="config-section-star">⭐</span></div>
+        </div>
+        <p>Data Hub Setup is the <strong>most important page in the configurator</strong>. It defines the data architecture of the entire generated app - which data objects exist, which attributes are tracked, and how customer data maps to Anaplan's data model. Mistakes here are expensive to fix post-generation.</p>
+
+        <h4>Mapping Customer Data to Anaplan Objects</h4>
+        <p>The configurator presents a set of standard <strong>Objects</strong> (e.g., Account, Employee, Territory, Opportunity, Opportunity Line) and their associated <strong>Attributes</strong> (descriptive fields). Your job is to compare the customer's source data against these objects and map accordingly:</p>
+        <ul>
+          <li><strong>Rename existing attributes</strong> to match the customer's terminology - if Anaplan calls it "Account Type" but the customer calls it "Customer Tier," rename it. This keeps the generated app familiar to users.</li>
+          <li><strong>Add new attributes at the bottom</strong> of the attribute list when the customer has fields that don't match anything in the standard list. Only add what is genuinely needed.</li>
+          <li><strong>Verify data format expectations</strong> - attributes used in lists or calculations must have clean, consistently formatted values in the source data (e.g., "Enterprise" not "enterprise ", "ENTERPRISE", or "Ent.").</li>
+        </ul>
+
+        <h4>Pre-Implementation Considerations: The Three Booleans</h4>
+        <p>Each attribute has three optional boolean flags. These are not active configurator steps you toggle during a session - they are <strong>decisions to make before implementation begins</strong>, based on how the customer plans to use each attribute:</p>
+        <ul>
+          <li><strong>Enable for Calculations</strong> - Creates a standalone list from that attribute, making it available for use in formulas and module dimensionality. Enable this if the attribute will be used for filtering, reporting aggregations, or as an analysis dimension.</li>
+          <li><strong>Enable for Validation</strong> - Checks incoming data imports against existing list values. If a new value arrives that isn't in the list, the import is flagged. Enable this to catch data quality issues at load time.</li>
+          <li><strong>Enable for Auto Create</strong> - Generates saved views and actions that automatically add new list members when they appear in an import. Enable this if the customer's attribute values change frequently (e.g., new territories, new product lines) and they want the app to self-update rather than requiring manual list maintenance.</li>
+        </ul>
+        <div class="callout-note">
+          <span class="callout-label">📝 Note</span>
+          <p>Discuss these three booleans with the customer's Sales Ops and IT stakeholders before the configuration session - not during it. Coming in with pre-agreed decisions saves significant time and avoids mid-session debate.</p>
+        </div>
+
+        <h4>Common Pitfalls</h4>
+        <ul>
+          <li><strong>Order vs. Order Details / Opportunity vs. Opportunity Line</strong> - Many customers have only one file when the app expects two (a header record and a detail record). <strong>Note: it is perfectly fine if a customer only has one version of the file (e.g., only Order Details / Opportunity Line).</strong> In that case, map all relevant attributes into the detail-level object (Order Details or Opportunity Line) and simply ignore the header-level object (Order / Opportunity) - leave it unconfigured. Do not create dummy records to fill the header object. Make sure it's clear which level attributes belong to: line-level fields on the detail object when only one file exists. Duplicate attributes across both levels cause errors at load time.</li>
+          <li><strong>Too many attributes</strong> - Resist the urge to enable every possible attribute. Each attribute adds size to the Data Hub and slows imports. Only enable attributes the customer will actively use for planning, reporting, or assignment rules.</li>
+          <li><strong>Inconsistent values in source data</strong> - Attributes enabled for Calculations or Validation require clean, consistent values. Spot-check a sample of the source data before committing to these flags.</li>
+        </ul>
+
+        <img src="../screenshots/configurator/config-01-data-hub-setup.jpg" alt="Configurator page 1.01 — Data Hub Setup with objects, attributes, and boolean flags populated" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.02 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.02</div>
+          <div class="config-section-title">Hierarchy Setup</div>
+        </div>
+        <p>Hierarchy Setup defines the structure of <strong>all hierarchies in the app</strong> - not just the territory hierarchy, but any custom hierarchies added during Data Hub Setup as well (e.g., a product hierarchy, a job family hierarchy). This is where you specify how many levels each hierarchy has and what those levels are named.</p>
+        <p>Changes made here are automatically reflected across all relevant models within the T&amp;Q application (both the T&amp;Q Planning model and the SPM Optimizer model), ensuring hierarchy consistency throughout the solution.</p>
+        <p><strong>Key settings on this page:</strong></p>
+        <ul>
+          <li><strong>Number of hierarchy levels</strong> - A hierarchy can have a minimum of 2 levels and a maximum of 10 levels per model. Count levels directly from the customer's data file - not from the org chart.</li>
+          <li><strong>Level names</strong> - What each tier is called at the customer (e.g., Geo → Area → Region → Sub-Region → Territory). It is recommended to add a level suffix (L1, L2, L3, etc.) to make levels unambiguous in module headers and formulas.</li>
+          <li><strong>Attribute mapping</strong> - This table is used to validate that any data fields labeled 'Enable for Calculations' that should be linked to a hierarchy have been properly tagged. Note: this is the same table that appears on Page 1.01 and no action is necessarily required if list-formatted items have already been tagged there. Review to confirm - do not duplicate tagging that was already completed in 1.01.</li>
+        </ul>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ Warning</span>
+          <p>Count hierarchy levels in the actual data file before configuring. It's common for customers to describe a 4-tier hierarchy in a meeting but have 5 tiers when you look at the Territory file. An extra tier adds significant complexity; a missing tier is a structural problem that's very hard to fix post-generation.</p>
+        </div>
+        <img src="../screenshots/configurator/config-02-hierarchy-setup.jpg" alt="Configurator page 1.02 - Hierarchy Setup" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.03 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.03</div>
+          <div class="config-section-title">Scenario Planning &amp; Planning Measures</div>
+        </div>
+        <p>Page 1.03 configures two closely related things: <strong>how transactional data flows into the app</strong> (the source tables, attributes, and time offsets used to calculate actuals and forecasts) and <strong>which planning measures</strong> the app will track.</p>
+
+        <h4>Transactional Data Sources</h4>
+        <p>For each data source (e.g., Opportunity Line for actuals, Pipeline for forecast), you specify:</p>
+        <ul>
+          <li>The <strong>source data table</strong> and <strong>attribute</strong> containing the value (e.g., Amount field on Opportunity Line)</li>
+          <li>The <strong>time scale</strong> (monthly, quarterly, annual) and <strong>time offset</strong> for how dates map to planning periods</li>
+          <li>The <strong>date field</strong> used to place transactions in the right time period (e.g., Close Date)</li>
+        </ul>
+
+        <h4>Planning Measures</h4>
+        <p>Planning measures are the metrics the T&amp;Q app plans against - what reps will be measured and quoted on (e.g., Revenue/ARR, New Logos, Units). For each measure, you configure:</p>
+        <ul>
+          <li><strong>Measure name and label</strong> - use the customer's actual terminology, not generic defaults</li>
+          <li><strong>Measure type</strong> - currency, count, percentage; this drives formatting and aggregation</li>
+          <li><strong>Source attribute</strong> - which attribute in the source data calculates actual values and forecast values for this measure</li>
+        </ul>
+        <div class="callout-important">
+          <span class="callout-label">🚫 Critical Decision Point</span>
+          <p>Adding a planning measure post-generation requires significant manual work across dozens of modules and dashboards. If a customer says "we might want a New Logo measure later," add it now - even as inactive. Removing an unused measure is trivial; adding one after generation is expensive.</p>
+        </div>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ Warning - Dimension Complexity</span>
+          <p>Each planning measure adds a dimension to the app's core modules. Three measures is manageable; five starts to create performance and usability issues. Push back if a customer wants to plan 6+ measures - ask which ones they'll actually enter data for on day one.</p>
+        </div>
+        <img src="../screenshots/configurator/config-03-scenario-planning.jpg" alt="Configurator page 1.03 - Scenario Planning" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.05 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.03.1</div>
+          <div class="config-section-title">Optimizer</div>
+        </div>
+        <p>The Optimizer is an optional feature that uses Anaplan's optimization engine to suggest territory carve-outs and account assignments based on defined balance criteria. Page 1.03.1 controls which objectives the optimizer can balance against and how geography constraints are applied.</p>
+        <p><strong>Key settings on this page:</strong></p>
+        <ul>
+          <li><strong>Objectives</strong> - the metrics the optimizer balances (e.g., Potential Spend, Addressable Market, Pipeline Amount). You can add custom objectives, remove defaults, or rename them to match customer terminology.</li>
+          <li><strong>Geography constraint levels</strong> - select which levels of the territory hierarchy geography constraints apply to during optimization. Check or uncheck levels as appropriate for the customer's territory model.</li>
+          <li><strong>Account attribute for constraints and mix constraints</strong> - the account attribute used to enforce balance constraints during the optimization process. The attribute must be enabled for Calculations (set in 1.01) to be available for selection here.</li>
+        </ul>
+        <div class="callout-note">
+          <span class="callout-label">📝 Note</span>
+          <p>The Optimizer is most valuable for customers with geo-defined territories and a desire to rebalance workload automatically. Customers using named account or relationship-based selling models often find the optimizer less applicable. Confirm the use case is clear before configuring this page.</p>
+        </div>
+        <img src="../screenshots/configurator/config-05-optimizer.jpg" alt="Configurator page 1.03.1 - Optimizer" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.04 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.04</div>
+          <div class="config-section-title">Historical Data Reporting</div>
+        </div>
+        <p>Page 1.04 configures how historical performance data is structured and surfaced within the generated T&amp;Q application. Decisions here determine the reporting dimensions and data sources available for historical analysis across the territory hierarchy.</p>
+        <p>The page walks through three configuration steps:</p>
+        <ul>
+          <li><strong>Step 1: Configure reporting metrics</strong> — name the metric (e.g., CY Sales, PY Number of Accounts, PY Sales), pick the data source, set the attribute (Amount or Count), choose the time scale (Year), and set a time offset for prior-period comparisons.</li>
+          <li><strong>Step 2: Configure growth and average metrics</strong> — pick the metric used as Average KPI, plus the growth numerator and denominator that drive YoY growth %.</li>
+          <li><strong>Step 3: Configure reporting dimensions</strong> — specify the dimension combinations and time selection used for the historical analysis dashboards.</li>
+        </ul>
+        <img src="../screenshots/configurator/config-04-historical-data.jpg" alt="Configurator page 1.04 — Historical Data Reporting with reporting metrics, growth and average metrics, and reporting dimensions all populated" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.05 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.05</div>
+          <div class="config-section-title">Account Value KPIs</div>
+        </div>
+        <p>Page 1.05 configures the key performance indicators used to assess and rank account value within the T&amp;Q application. Decisions here determine which metrics are used to evaluate accounts for assignment prioritization, allocation weighting, and planning analysis.</p>
+        <p>The page walks through two configuration steps:</p>
+        <ul>
+          <li><strong>Step 1: Configure PY Sales for Account Value</strong> — define the prior-period sales metric used to base the account value calculation on. Set the data source, the attribute (Amount), the time scale, and the time offset (e.g., 12 to pull sales from one year ago).</li>
+          <li><strong>Step 2: Select account value assumption defaults</strong> — configure the assumption metrics end users can pick from when calculating or overriding the default account value (Manual Override Value, Industry Average, Predictive Spend Average). Add or remove default-assumption KPIs as needed for the customer.</li>
+        </ul>
+        <img src="../screenshots/configurator/config-05-account-value.jpg" alt="Configurator page 1.05 — Account Value KPIs with PY Sales and assumption defaults configured" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.06 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.06</div>
+          <div class="config-section-title">Target and Allocation <span class="config-section-star">⭐</span></div>
+        </div>
+        <p>Target and Allocation configures how Finance targets flow into the app and how they cascade down the territory hierarchy. This is a critical page - the decisions here define the financial planning spine of the entire T&amp;Q app.</p>
+        <p><strong>Key settings on this page:</strong></p>
+        <ul>
+          <li><strong>Target cascade starting level</strong> - at which level of the territory hierarchy does Finance enter top-down targets? This is typically one of the higher tiers (e.g., Geo or Area level). Targets then cascade down from there.</li>
+          <li><strong>Time granularity</strong> - at what time dimension level are targets planned and imported? This can be annual, quarterly, or monthly depending on the customer's planning cadence. This setting directly affects the planning modules generated.</li>
+          <li><strong>Additional target dimensions</strong> - configure any extra dimensions for target setting (e.g., by product, by segment) when the customer plans at a more granular level than territory alone.</li>
+          <li><strong>Allocation methods</strong> - which methods are available for distributing targets down the hierarchy (e.g., equal split, weighted by actuals, weighted by potential, pipeline-based, manual override).</li>
+        </ul>
+        <div class="callout-important">
+          <span class="callout-label">🚫 Critical</span>
+          <p>Every extra dimension (such as product, industry, etc.) increases model complexity. Only add dimensions the customer will genuinely plan against - not dimensions they "might want someday." The more dimensions, the larger and slower the allocation modules become.</p>
+        </div>
+        <img src="../screenshots/configurator/config-06-target-allocation.jpg" alt="Configurator page 1.06 - Target and Allocation" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.07 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.07</div>
+          <div class="config-section-title">Territory Assignment</div>
+        </div>
+        <p>Page 1.07 configures how accounts are assigned to territories, how sales reps are assigned to territories, and how first-line managers are assigned. It also defines the time dimension level for quota.</p>
+
+        <div class="callout-important">
+          <span class="callout-label">🚫 Important Concept</span>
+          <p><strong>All assignment methods (manual, geographic, rule-based, optimizer) are generated automatically for every customer - you do not choose which methods to enable.</strong> What you are configuring on this page is <strong>at which level of the territory hierarchy</strong> each assignment method operates. This is a fundamentally different question: not "do we have this capability?" but "at what tier of the hierarchy does it apply?"</p>
+        </div>
+
+        <p><strong>Key settings on this page:</strong></p>
+        <ul>
+          <li><strong>Account assignment destination level</strong> - at what level of the hierarchy are accounts assigned? (Typically the lowest tier - Territory level)</li>
+          <li><strong>Sales rep assignment destination level</strong> - at what level of the hierarchy are reps assigned to territories?</li>
+          <li><strong>First-line manager assignment level</strong> - at what level does manager assignment operate?</li>
+          <li><strong>Quota time dimension level</strong> - at what time granularity is rep-level quota set? In practice this is most often monthly, even if targets are entered quarterly at higher levels.</li>
+        </ul>
+        <div class="callout-tip">
+          <span class="callout-label">💡 Tip</span>
+          <p>The in-app instructions on this page are well-written and specific. Read them carefully - they are good guides for understanding exactly what each setting controls. When in doubt, follow the in-app guidance and discuss edge cases with the customer before committing.</p>
+        </div>
+        <img src="../screenshots/configurator/config-07-territory-assignment.jpg" alt="Configurator page 1.07 - Territory Assignment" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.08 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.08</div>
+          <div class="config-section-title">Resource Assignment</div>
+        </div>
+        <p>Page 1.08 configures the levels at which resource (sales rep) assignments and approvals operate within the hierarchy. This determines where in the territory structure managers can assign and approve reps.</p>
+        <p><strong>Key settings on this page:</strong></p>
+        <ul>
+          <li><strong>Sales leader assignment level</strong> — at what tier of the hierarchy do sales leaders get assigned? This is typically one level above the level at which reps are assigned (e.g., if reps are assigned at Territory / Level 5, sales leaders are typically assigned at Sub-Region / Level 4).</li>
+          <li><strong>Overlay rep assignment level</strong> - at what tier do overlay (specialist) reps get assigned? Overlay reps cover multiple territories, so they often assign at a higher tier than field reps.</li>
+          <li><strong>Approval levels</strong> - which hierarchy levels require manager approval for resource assignments to take effect?</li>
+          <li><strong>Sales rep attribute for territory</strong> - the field in the Employee data that maps each rep to their initial territory assignment. This must be populated for the initial rep-to-territory assignment to work correctly at go-live.</li>
+        </ul>
+        <div class="callout-note">
+          <span class="callout-label">📝 Note</span>
+          <p>This page is about <em>where in the hierarchy</em> assignments and approvals happen - not how individual assignment types (full, split, etc.) work. Focus configuration discussions on the organizational structure, not on individual rep assignment mechanics.</p>
+        </div>
+        <img src="../screenshots/configurator/config-08-resource-assignment.jpg" alt="Configurator page 1.08 - Resource Assignment" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.09 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.09</div>
+          <div class="config-section-title">Rule Engine Setup</div>
+        </div>
+        <p>The Rule Engine automatically assigns accounts to territories based on defined attribute-driven rules. Page 1.09 configures which account attributes feed into the rule engine - specifically, which attributes are used to qualify accounts for eligibility and which attributes are used as rule conditions.</p>
+        <p><strong>The two distinct configuration decisions here:</strong></p>
+        <ul>
+          <li><strong>Eligibility attributes</strong> - which account attributes determine whether an account qualifies to be included in rule-based assignment at all. For example: only accounts with Employee Count &gt; 100 are eligible for rule-based assignment; smaller accounts go to a manual pool.</li>
+          <li><strong>Rule condition attributes</strong> - which account attributes can be used to write the actual assignment rules. For example: if Industry = "Healthcare" AND Region = "West," assign to Territory X. Only attributes enabled here can be used when building rules in the generated app.</li>
+        </ul>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ Important</span>
+          <p>All attributes selected here must be <strong>list-formatted line items</strong> - they must have been enabled for Calculations back on page 1.01. Text attributes that are not list-formatted cannot be used as rule conditions. Verify this before the configuration session to avoid backtracking.</p>
+        </div>
+        <div class="callout-note">
+          <span class="callout-label">📝 Note</span>
+          <p>Page 1.09 does <em>not</em> configure rule priority, conflict resolution, or the actual rule logic. Those activities happen in the generated app after generation, not in the configurator. The configurator only determines which attributes are available as building blocks for rules.</p>
+        </div>
+        <img src="../screenshots/configurator/config-09-rule-engine.jpg" alt="Configurator page 1.09 - Rule Engine Setup" class="screenshot" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <hr class="divider">
+
+      <h2>Completion &amp; Generation</h2>
+      <p>Once all configurator pages are completed and reviewed, the configurator provides a summary view showing all configuration choices and any remaining items that need attention before generation.</p>
+      <p><strong>Before generation:</strong></p>
+      <ul>
+        <li>All pages marked complete - no required fields left blank</li>
+        <li>Data Hub Setup, Hierarchy Setup, and Target &amp; Allocation reviewed one final time with the customer</li>
+        <li>Source data files validated against the attribute configuration (column names, value formats)</li>
+        <li>Workspace has sufficient capacity (App Engineering team validates this)</li>
+        <li>A generation time has been scheduled with App Engineering - allow 2-3 hours of their time</li>
+        <li>Customer stakeholders are available immediately post-generation for initial data validation</li>
+      </ul>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do - Ready for the Lab</span>
+        <p>You've reviewed all configurator pages from 1.00 to 1.09. Before moving to the exercise, think through:</p>
+        <ul>
+          <li>Which page do you think will require the most pre-work with a customer stakeholder before the configuration session?</li>
+          <li>What question would you ask a customer <em>before</em> looking at page 1.01?</li>
+          <li>Flag any page where you're unsure about the impact of a setting - write it down and ask during the debrief.</li>
+        </ul>
+        <p><strong>Next:</strong> Complete the <a href="./04-configurator-exercise.html">Configurator Lab Exercise →</a></p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

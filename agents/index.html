@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Network — Gunnar Stoa</title>
+  <style>
+    :root {
+      --bg: #0f1117;
+      --surface: #1a1d27;
+      --surface-2: #22263a;
+      --border: #2e3248;
+      --accent: #4f6ef7;
+      --accent-dim: #1e2a5e;
+      --text: #e8eaf0;
+      --text-muted: #7b82a8;
+      --green: #22c55e;
+      --green-dim: #0f3020;
+      --amber: #f59e0b;
+      --amber-dim: #2d2000;
+      --purple: #a855f7;
+      --purple-dim: #1f0d3a;
+      --blue: #3b82f6;
+      --blue-dim: #0d1f4a;
+      --teal: #14b8a6;
+      --teal-dim: #062a28;
+      --rose: #f43f5e;
+      --rose-dim: #2d0a12;
+      --orange: #f97316;
+      --orange-dim: #2d1200;
+      --cyan: #06b6d4;
+      --cyan-dim: #062028;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --mono: 'SFMono-Regular', Consolas, monospace;
+      --radius: 10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; }
+
+    header {
+      border-bottom: 1px solid var(--border);
+      padding: 1.25rem 2.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+    .header-title { font-size: 1rem; font-weight: 700; }
+    .header-sub { font-size: 0.75rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .status-pill {
+      display: flex; align-items: center; gap: 0.4rem;
+      font-size: 0.73rem; color: var(--green);
+      background: var(--green-dim); border: 1px solid rgba(34,197,94,0.2);
+      border-radius: 20px; padding: 0.2rem 0.65rem;
+    }
+    .status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    /* Layout */
+    main { max-width: 1300px; margin: 0 auto; padding: 2rem 2rem; }
+
+    .section-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--text-muted);
+      margin-bottom: 0.875rem; padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    /* Architecture */
+    .arch-block {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.75rem;
+      margin-bottom: 2.5rem;
+    }
+    .arch-row { display: flex; align-items: center; justify-content: center; gap: 1rem; }
+    .arch-node {
+      padding: 0.5rem 1rem; border-radius: 8px;
+      font-size: 0.8rem; font-weight: 600; border: 1px solid;
+    }
+    .n-coda   { background: var(--accent-dim); border-color: var(--accent); color: var(--accent); }
+    .n-work   { background: var(--teal-dim); border-color: var(--teal); color: var(--teal); }
+    .n-rpm    { background: var(--blue-dim); border-color: var(--blue); color: var(--blue); }
+    .n-ifp    { background: var(--green-dim); border-color: var(--green); color: var(--green); }
+    .n-scm    { background: var(--orange-dim); border-color: var(--orange); color: var(--orange); }
+    .n-owp    { background: var(--purple-dim); border-color: var(--purple); color: var(--purple); }
+    .n-spec   { background: var(--surface-2); border-color: var(--border); color: var(--text-muted); font-size: 0.72rem; }
+    .n-future { background: transparent; border-color: var(--border); color: var(--text-muted); font-size: 0.72rem; border-style: dashed; }
+
+    .arch-v { display: flex; flex-direction: column; align-items: center; color: var(--text-muted); font-size: 0.65rem; gap: 2px; padding: 2px 0; }
+    .arch-vline { width: 1px; height: 18px; background: var(--border); }
+    .arch-hrow { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
+    .arch-divider { width: 100%; height: 1px; background: var(--border); margin: 1.25rem 0 1rem; }
+    .arch-future-label { font-size: 0.68rem; color: var(--text-muted); text-align: center; margin-top: 0.75rem; }
+
+    /* Agent cards */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 0.875rem; margin-bottom: 2.5rem; }
+    .grid-wide { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.875rem; margin-bottom: 2.5rem; }
+
+    .card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.1rem;
+      display: flex; flex-direction: column; gap: 0.65rem;
+      transition: border-color 0.15s;
+      position: relative; overflow: hidden;
+    }
+    .card:hover { border-color: rgba(79,110,247,0.4); }
+    .card::before { content:''; position:absolute; top:0; left:0; width:3px; height:100%; }
+
+    .card-top { display: flex; align-items: flex-start; gap: 0.75rem; }
+    .icon { font-size: 1.3rem; width: 38px; height: 38px; display: flex; align-items: center; justify-content: center; border-radius: 8px; background: var(--surface-2); flex-shrink: 0; }
+    .card-name { font-size: 0.9rem; font-weight: 700; }
+    .card-id { font-family: var(--mono); font-size: 0.68rem; color: var(--text-muted); }
+    .card-role { font-size: 0.73rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .card-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.5; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+    .tag { font-size: 0.67rem; font-weight: 600; padding: 0.15rem 0.45rem; border-radius: 4px; }
+    .t-active  { background: var(--green-dim); color: var(--green); border: 1px solid rgba(34,197,94,0.2); }
+    .t-planned { background: var(--amber-dim); color: var(--amber); border: 1px solid rgba(245,158,11,0.2); }
+    .t-model   { background: var(--accent-dim); color: var(--accent); border: 1px solid rgba(79,110,247,0.2); }
+    .t-skill   { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+    .t-channel { background: var(--surface-2); color: var(--text-muted); border: 1px solid var(--border); }
+
+    /* Color accent strips */
+    .a-coda::before    { background: var(--accent); }
+    .a-workshop::before{ background: var(--teal); }
+    .a-rpm::before     { background: var(--blue); }
+    .a-tq::before      { background: #60a5fa; }
+    .a-seg::before     { background: var(--purple); }
+    .a-cap::before     { background: var(--green); }
+    .a-fore::before    { background: var(--amber); }
+    .a-ifp::before     { background: #22c55e; }
+    .a-scm::before     { background: var(--orange); }
+    .a-owp::before     { background: var(--purple); }
+
+    /* Coordinator card */
+    .coord-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 1.25rem;
+      display: flex; align-items: flex-start; gap: 1rem;
+      margin-bottom: 2.5rem; position: relative; overflow: hidden;
+    }
+    .coord-card::before { content:''; position:absolute; top:0; left:0; right:0; height:2px; background: linear-gradient(90deg, var(--accent), var(--purple)); }
+    .coord-icon { font-size: 1.8rem; width: 50px; height: 50px; display:flex; align-items:center; justify-content:center; border-radius:12px; background: var(--surface-2); flex-shrink:0; }
+    .coord-desc { font-size: 0.85rem; color: var(--text); margin-top: 0.4rem; max-width: 600px; }
+
+    .domain-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.875rem; padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .domain-label { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-muted); }
+    .domain-badge { font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.55rem; border-radius: 20px; }
+
+    footer { border-top: 1px solid var(--border); padding: 1rem 2.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .footer-note { font-size: 0.73rem; color: var(--text-muted); }
+    .footer-updated { font-size: 0.7rem; color: var(--text-muted); font-family: var(--mono); }
+
+    @media(max-width:700px){ header,footer{padding:1rem} main{padding:1.25rem 1rem} .grid,.grid-wide{grid-template-columns:1fr} }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="header-title">AI Agent Network</div>
+    <div class="header-sub">Gunnar Stoa · OpenClaw</div>
+  </div>
+  <div class="status-pill"><div class="status-dot"></div>Gateway Online</div>
+</header>
+
+<main>
+
+  <!-- Architecture -->
+  <div class="section-label" style="margin-bottom:0.875rem;">Architecture</div>
+  <div class="arch-block" style="margin-bottom:2.5rem;">
+    <div class="arch-row">
+      <div class="arch-node n-coda">🎯 Coda — Personal Assistant</div>
+    </div>
+    <div class="arch-v"><div class="arch-vline"></div><span>coordinates</span><div class="arch-vline"></div></div>
+    <div class="arch-row" style="gap:1.5rem;">
+      <div class="arch-node n-work">🛠 Workshop Builder</div>
+      <div class="arch-node n-rpm">📚 RPM Domain Expert</div>
+      <div class="arch-node n-ifp">💹 Finance Domain Expert</div>
+      <div class="arch-node n-scm">🚚 Supply Chain Domain Expert</div>
+      <div class="arch-node n-owp">👥 Workforce Domain Expert</div>
+    </div>
+    <div class="arch-v"><div class="arch-vline"></div><span>routes to specialists</span><div class="arch-vline"></div></div>
+    <div class="arch-hrow">
+      <!-- RPM -->
+      <div class="arch-node n-spec">T&amp;Q</div>
+      <div class="arch-node n-spec">Segmentation</div>
+      <div class="arch-node n-spec">Capacity</div>
+      <div class="arch-node n-spec">Forecasting</div>
+      <div style="width:1px;background:var(--border);height:30px;margin:0 0.25rem;align-self:center;"></div>
+      <!-- Finance -->
+      <div class="arch-node n-spec" style="color:#22c55e;border-color:#22c55e22;">P&amp;L</div>
+      <div class="arch-node n-spec" style="color:#22c55e;border-color:#22c55e22;">Revenue</div>
+      <div class="arch-node n-spec" style="color:#22c55e;border-color:#22c55e22;">CapEx</div>
+      <div class="arch-node n-spec" style="color:#22c55e;border-color:#22c55e22;">+4 more</div>
+      <div style="width:1px;background:var(--border);height:30px;margin:0 0.25rem;align-self:center;"></div>
+      <!-- SCM -->
+      <div class="arch-node n-spec" style="color:var(--orange);border-color:#f9731622;">Demand</div>
+      <div class="arch-node n-spec" style="color:var(--orange);border-color:#f9731622;">Supply</div>
+      <div class="arch-node n-spec" style="color:var(--orange);border-color:#f9731622;">S&amp;OP</div>
+      <div class="arch-node n-spec" style="color:var(--orange);border-color:#f9731622;">+7 more</div>
+      <div style="width:1px;background:var(--border);height:30px;margin:0 0.25rem;align-self:center;"></div>
+      <!-- OWP -->
+      <div class="arch-node n-spec" style="color:var(--purple);border-color:#a855f722;">Resource</div>
+      <div class="arch-node n-spec" style="color:var(--purple);border-color:#a855f722;">Contact Ctr</div>
+      <div class="arch-node n-spec" style="color:var(--purple);border-color:#a855f722;">Operational</div>
+    </div>
+  </div>
+
+  <!-- Coda -->
+  <div class="section-label">Core Agent — Active</div>
+  <div class="coord-card" style="margin-bottom:2.5rem;">
+    <div class="coord-icon">🎯</div>
+    <div>
+      <div style="display:flex;align-items:baseline;gap:0.5rem;">
+        <span style="font-size:1.05rem;font-weight:700;">Coda</span>
+        <span style="font-family:var(--mono);font-size:0.7rem;color:var(--text-muted);">main</span>
+      </div>
+      <div style="font-size:0.8rem;color:var(--text-muted);">Personal Assistant · Coordinator</div>
+      <div class="coord-desc">Everyday personal assistant and top-level coordinator. Handles general questions, homelab, calendar, and routes to specialist agents as needed.</div>
+      <div class="tags" style="margin-top:0.65rem;">
+        <span class="tag t-active">● Active</span>
+        <span class="tag t-model">claude-sonnet-4-6</span>
+        <span class="tag t-channel">Telegram</span>
+        <span class="tag t-channel">Webchat</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Workshop Builder -->
+  <div class="section-label">Functional Agent — Planned</div>
+  <div class="grid" style="margin-bottom:2.5rem;">
+    <div class="card a-workshop">
+      <div class="card-top">
+        <div class="icon">🛠</div>
+        <div>
+          <div class="card-name">Workshop Builder</div>
+          <div class="card-id">workshop</div>
+          <div class="card-role">Suite-agnostic training content generation</div>
+        </div>
+      </div>
+      <div class="card-desc">Builds complete technical enablement workshop lab guides for any Anaplan application suite. Queries domain experts and app specialists to produce structured, consistent training content.</div>
+      <div class="tags">
+        <span class="tag t-skill">workshop-builder skill</span>
+        <span class="skill-tag tag t-skill">screenshot extraction</span>
+        <span class="tag t-skill">inter-agent queries</span>
+        <span class="tag t-skill">HTML generation</span>
+      </div>
+      <div class="tags">
+        <span class="tag t-planned">◌ Planned</span>
+        <span class="tag t-model">claude-sonnet-4-6</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RPM Domain -->
+  <div class="domain-header">
+    <div class="domain-label">Revenue Performance Management (RPM)</div>
+    <span class="domain-badge" style="background:var(--blue-dim);color:var(--blue);border:1px solid rgba(59,130,246,.2);">4 App Specialists</span>
+    <span class="tag t-planned" style="margin-left:auto;">◌ Planned</span>
+  </div>
+  <div class="grid-wide">
+    <div class="card a-rpm">
+      <div class="card-top"><div class="icon">📚</div><div>
+        <div class="card-name">RPM Domain Expert</div>
+        <div class="card-id">rpm-domain</div>
+        <div class="card-role">Cross-app suite expertise</div>
+      </div></div>
+      <div class="card-desc">Suite positioning, inter-app data flows, implementation sequencing, roadmap. Routes deep app questions to the right specialist.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-tq">
+      <div class="card-top"><div class="icon">🗺</div><div>
+        <div class="card-name">T&amp;Q Specialist</div>
+        <div class="card-id">rpm-tq</div>
+        <div class="card-role">Territory &amp; Quota</div>
+      </div></div>
+      <div class="card-desc">Configurator (14 pages), extensions, post-gen steps, ADO integration, V2 vs V3. Self-evaluates knowledge currency.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-seg">
+      <div class="card-top"><div class="icon">🎯</div><div>
+        <div class="card-name">Segmentation Specialist</div>
+        <div class="card-id">rpm-seg</div>
+        <div class="card-role">Account Segmentation &amp; Scoring</div>
+      </div></div>
+      <div class="card-desc">Rule-based and score-based logic, wallet size methods, GTM hierarchy planning, T&amp;Q and Capacity integration.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-cap">
+      <div class="card-top"><div class="icon">📊</div><div>
+        <div class="card-name">Capacity Specialist</div>
+        <div class="card-id">rpm-cap</div>
+        <div class="card-role">Go-to-Market Capacity Planning</div>
+      </div></div>
+      <div class="card-desc">Role hierarchy, ramp profiles, tops-down NTE, bottoms-up hiring plans, revenue gap analysis.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-fore">
+      <div class="card-top"><div class="icon">📈</div><div>
+        <div class="card-name">Forecasting Specialist</div>
+        <div class="card-id">rpm-forecast</div>
+        <div class="card-role">Sales Forecasting</div>
+      </div></div>
+      <div class="card-desc">CRM integration via ADO/A4S, MEDDPICC field mapping, pipeline hygiene, T&amp;Q quota data connection.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+  </div>
+
+  <!-- Finance Domain -->
+  <div class="domain-header">
+    <div class="domain-label">Finance — Integrated Financial Planning (IFP)</div>
+    <span class="domain-badge" style="background:var(--green-dim);color:var(--green);border:1px solid rgba(34,197,94,.2);">7 App Specialists</span>
+    <span class="tag t-planned" style="margin-left:auto;">◌ Planned</span>
+  </div>
+  <div class="grid-wide">
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">💹</div><div>
+        <div class="card-name">Finance Domain Expert</div>
+        <div class="card-id">ifp-domain</div>
+        <div class="card-role">Cross-app Finance suite expertise</div>
+      </div></div>
+      <div class="card-desc">Connected financial planning positioning, inter-app flows across P&amp;L, revenue, CapEx, and cash. Routes specialist queries appropriately.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">📋</div><div>
+        <div class="card-name">P&amp;L Planning Specialist</div>
+        <div class="card-id">ifp-pl</div>
+        <div class="card-role">Profit &amp; Loss Planning</div>
+      </div></div>
+      <div class="card-desc">Income statement planning, driver-based modeling, scenario analysis, and P&amp;L consolidation across business units.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">💰</div><div>
+        <div class="card-name">Revenue Planning Specialist</div>
+        <div class="card-id">ifp-revenue</div>
+        <div class="card-role">Revenue &amp; Profitability Management</div>
+      </div></div>
+      <div class="card-desc">Top-down revenue planning, product/channel revenue mix, profitability analysis, and revenue bridge modeling.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">🏗</div><div>
+        <div class="card-name">CapEx Specialist</div>
+        <div class="card-id">ifp-capex</div>
+        <div class="card-role">Capital Expenditure Planning</div>
+      </div></div>
+      <div class="card-desc">Capital project planning, asset lifecycle management, depreciation modeling, and CapEx vs. OpEx decision support.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">💧</div><div>
+        <div class="card-name">Cash &amp; Treasury Specialist</div>
+        <div class="card-id">ifp-cash</div>
+        <div class="card-role">Cash Flow &amp; Liquidity Planning</div>
+      </div></div>
+      <div class="card-desc">Cash flow forecasting, liquidity management, working capital optimization, and treasury reporting.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">🔗</div><div>
+        <div class="card-name">Account Reconciliation Specialist</div>
+        <div class="card-id">ifp-recon</div>
+        <div class="card-role">Account Reconciliation</div>
+      </div></div>
+      <div class="card-desc">Balance sheet reconciliation, close process automation, variance analysis, and audit trail management.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-ifp">
+      <div class="card-top"><div class="icon">🎯</div><div>
+        <div class="card-name">Strategic Finance Specialist</div>
+        <div class="card-id">ifp-strategic</div>
+        <div class="card-role">Strategic &amp; Long-Range Planning</div>
+      </div></div>
+      <div class="card-desc">Multi-year financial planning, M&amp;A scenario modeling, strategic initiative planning, and board-level reporting.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+  </div>
+
+  <!-- Supply Chain Domain -->
+  <div class="domain-header">
+    <div class="domain-label">Supply Chain Management (SCM)</div>
+    <span class="domain-badge" style="background:var(--orange-dim);color:var(--orange);border:1px solid rgba(249,115,22,.2);">10 App Specialists</span>
+    <span class="tag t-planned" style="margin-left:auto;">◌ Planned</span>
+  </div>
+  <div class="grid-wide">
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🚚</div><div>
+        <div class="card-name">SCM Domain Expert</div>
+        <div class="card-id">scm-domain</div>
+        <div class="card-role">Cross-app Supply Chain suite expertise</div>
+      </div></div>
+      <div class="card-desc">End-to-end supply chain positioning, integrated business planning, inter-app data flows from demand to delivery.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">📉</div><div>
+        <div class="card-name">Demand Planning Specialist</div>
+        <div class="card-id">scm-demand</div>
+        <div class="card-role">Demand Planning &amp; Sensing</div>
+      </div></div>
+      <div class="card-desc">Statistical forecasting, demand sensing, consensus planning, and new product introduction planning.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🏭</div><div>
+        <div class="card-name">Supply Planning Specialist</div>
+        <div class="card-id">scm-supply</div>
+        <div class="card-role">Supply Planning</div>
+      </div></div>
+      <div class="card-desc">Constrained supply planning, capacity matching, production scheduling, and supply network optimization.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🔄</div><div>
+        <div class="card-name">S&amp;OP Specialist</div>
+        <div class="card-id">scm-sop</div>
+        <div class="card-role">Sales &amp; Operations Planning / IBP</div>
+      </div></div>
+      <div class="card-desc">Integrated business planning, executive S&amp;OP, cross-functional alignment, and scenario-based decision making.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">📦</div><div>
+        <div class="card-name">Inventory Specialist</div>
+        <div class="card-id">scm-inventory</div>
+        <div class="card-role">Inventory Optimization</div>
+      </div></div>
+      <div class="card-desc">Safety stock optimization, multi-echelon inventory, service level balancing, and inventory deployment.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🔧</div><div>
+        <div class="card-name">Production Specialist</div>
+        <div class="card-id">scm-production</div>
+        <div class="card-role">Production Planning</div>
+      </div></div>
+      <div class="card-desc">Master production scheduling, work order management, capacity planning, and manufacturing execution alignment.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🛒</div><div>
+        <div class="card-name">Procurement Specialist</div>
+        <div class="card-id">scm-procurement</div>
+        <div class="card-role">Procurement &amp; Sourcing Planning</div>
+      </div></div>
+      <div class="card-desc">Spend planning, supplier capacity, purchase order planning, and procurement cost optimization.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🚀</div><div>
+        <div class="card-name">Distribution Specialist</div>
+        <div class="card-id">scm-distribution</div>
+        <div class="card-role">Distribution &amp; Logistics Planning</div>
+      </div></div>
+      <div class="card-desc">Distribution network design, transportation planning, warehouse capacity, and last-mile optimization.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">🌱</div><div>
+        <div class="card-name">Sustainability Specialist</div>
+        <div class="card-id">scm-sustainability</div>
+        <div class="card-role">Sustainable Supply Chain Planning</div>
+      </div></div>
+      <div class="card-desc">Carbon footprint planning, ESG reporting integration, circular economy modeling, and green procurement.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-scm">
+      <div class="card-top"><div class="icon">⚠️</div><div>
+        <div class="card-name">Risk &amp; Resilience Specialist</div>
+        <div class="card-id">scm-risk</div>
+        <div class="card-role">Supply Chain Risk &amp; Resilience</div>
+      </div></div>
+      <div class="card-desc">Supply disruption scenario planning, supplier risk scoring, buffer strategy, and resilience modeling.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+  </div>
+
+  <!-- Workforce Domain -->
+  <div class="domain-header">
+    <div class="domain-label">Organizational Workforce Planning (OWP)</div>
+    <span class="domain-badge" style="background:var(--purple-dim);color:var(--purple);border:1px solid rgba(168,85,247,.2);">3 App Specialists</span>
+    <span class="tag t-planned" style="margin-left:auto;">◌ Planned</span>
+  </div>
+  <div class="grid-wide">
+    <div class="card a-owp">
+      <div class="card-top"><div class="icon">👥</div><div>
+        <div class="card-name">Workforce Domain Expert</div>
+        <div class="card-id">owp-domain</div>
+        <div class="card-role">Cross-app Workforce suite expertise</div>
+      </div></div>
+      <div class="card-desc">Workforce planning strategy, headcount cost integration with Finance, inter-app flows, and suite positioning.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span><span class="tag t-model">claude-sonnet-4-6</span></div>
+    </div>
+    <div class="card a-owp">
+      <div class="card-top"><div class="icon">📐</div><div>
+        <div class="card-name">Project Resource Specialist</div>
+        <div class="card-id">owp-project</div>
+        <div class="card-role">Project Resource Planning</div>
+      </div></div>
+      <div class="card-desc">AI-driven project resource capacity planning, skill-based allocation, utilization forecasting, and resource demand vs. supply balancing.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-owp">
+      <div class="card-top"><div class="icon">📞</div><div>
+        <div class="card-name">Contact Center Specialist</div>
+        <div class="card-id">owp-contact</div>
+        <div class="card-role">Contact Center Planning</div>
+      </div></div>
+      <div class="card-desc">Workforce capacity aligned to customer demand, service level planning, agent scheduling, cost management, and retention planning.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+    <div class="card a-owp">
+      <div class="card-top"><div class="icon">🏢</div><div>
+        <div class="card-name">Operational Workforce Specialist</div>
+        <div class="card-id">owp-operational</div>
+        <div class="card-role">Operational Workforce Planning</div>
+      </div></div>
+      <div class="card-desc">Integrated HR and Finance headcount planning, hire-to-retire modeling, workforce cost, and organizational design scenarios.</div>
+      <div class="tags"><span class="tag t-planned">◌ Planned</span></div>
+    </div>
+  </div>
+
+  <!-- Summary -->
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;display:flex;gap:2.5rem;flex-wrap:wrap;">
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--accent);">25</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">Total Agents Planned</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--green);">1</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">Active Now</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--blue);">5</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">RPM Specialists</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--green);">8</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">Finance Specialists</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--orange);">11</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">SCM Specialists</div>
+    </div>
+    <div>
+      <div style="font-size:1.5rem;font-weight:700;color:var(--purple);">4</div>
+      <div style="font-size:0.75rem;color:var(--text-muted);">Workforce Specialists</div>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-note">OpenClaw · 192.168.6.35 · RPM specialist build in progress</div>
+  <div class="footer-updated">Updated 2026-03-29</div>
+</footer>
+
+</body>
+</html>

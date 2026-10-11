@@ -1,0 +1,8 @@
+# Large recording files
+*.mp4
+*.vtt
+collateral.zip
+
+# OS files
+.DS_Store
+Thumbs.db

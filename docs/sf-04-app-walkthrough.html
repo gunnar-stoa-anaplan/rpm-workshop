@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Application Review — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting Application Review</h1>
+      <p class="subtitle">The 6 top-level pages of the app, what each does, and how their sub-pages fit together</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">60 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Sales Forecasting is a connected analytics workspace that gives sales teams a complete, real-time view of their revenue — from individual deals and pipeline health to team forecasts, account growth opportunities, and performance trends. The app consolidates pipeline management, revenue prediction, account intelligence, and team performance tracking in a single interface, so users can make informed decisions based on actual numbers rather than assumptions, identify pipeline gaps early, submit reliable forecasts, surface accounts with growth potential, and understand what's actually driving team performance.</p>
+
+      <p>The application supports three user types — each sees a subset of the data and tools below based on their assigned role and stage in the sales cycle:</p>
+      <ul>
+        <li><strong>Sales representatives</strong> — manage deals and pipeline activities</li>
+        <li><strong>Sales managers</strong> — align and review team forecasts</li>
+        <li><strong>RevOps leaders</strong> — configure processes and monitor accuracy</li>
+      </ul>
+
+      <p>The app is organized into <strong>6 top-level pages</strong>. Each is a "hub" that either renders its own dashboard or routes the user to a small set of focused sub-pages. The rest of this walkthrough goes hub-by-hub, embeds the screenshots we have, and lists what's actually on each surface.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Top-level page</th><th>What it covers</th></tr></thead>
+          <tbody>
+            <tr><td><strong><a href="#homepage">Homepage</a></strong></td><td>Track sales performance, including pipeline health and revenue forecasting.</td></tr>
+            <tr><td><strong><a href="#sales-forecast">Sales Forecast</a></strong></td><td>Review, adjust, and submit forecasts with full visibility into quota performance, team rollups, and pipeline composition. Compare manual inputs against AI-powered Anaplan predictions to sharpen forecast accuracy over time.</td></tr>
+            <tr><td><strong><a href="#sales-pipeline">Sales Pipeline</a></strong></td><td>Monitor current pipeline health and coverage, track new-deal-creation against generation targets, fix data quality issues before they impact forecasts, and analyze how deals have moved over historical periods.</td></tr>
+            <tr><td><strong><a href="#sales-accounts">Sales Accounts</a></strong></td><td>Get a complete view of each strategic account — ARR, ACV, product adoption, white space, and engagement activity — to identify upsell and cross-sell opportunities.</td></tr>
+            <tr><td><strong><a href="#sales-insights">Sales Insights</a></strong></td><td>Understand the reasons behind your sales results. Analyze six rolling quarters of business trends to find patterns and make decisions. Compare team performance across key metrics to guide coaching and development.</td></tr>
+            <tr><td><strong><a href="#sales-overlays">Sales Overlays</a></strong></td><td>Review sales performance and activity related to your channel partners and products — track partner-sourced revenue, analyze their pipeline, and manage their opportunities.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2 id="homepage">1. Homepage</h2>
+      <p>The Homepage is the command center for every persona. It tracks sales performance, including pipeline health and revenue forecasting, and shows where the user stands against quotas, how the pipeline is performing, what risks and opportunities exist, and the overall state of the business. Reps see their own data; managers see team rollup; RevOps see organization-wide.</p>
+
+      <img src="../screenshots/sf-app/sf-app-homepage.png" alt="Sales Forecasting Homepage showing the current period quota tracking bar, six KPI cards across the top (Quota, Forecast Call, Anaplan Prediction, Stage 3+ Pipeline, Stage 2+ Pipeline, Total Pipeline), a key opportunities grid with stage, owner, MEDDPICC score, CRM and T4 NNACV, close date, and forecast attainment columns, and a forecast summary bar chart on the right" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>The Homepage answers a curated set of questions, in order:</p>
+      <ul>
+        <li><strong>How's my quota tracking?</strong> — Won Attainment %, Commit Attainment %, Bridge to Forecast Call %, To Be Attainment %</li>
+        <li><strong>What are my key opportunities?</strong> — the priority opportunities grid with stage, owner, MEDDPICC, NNACV, close date</li>
+        <li><strong>What's my forecast summary?</strong> — top-down forecast composition</li>
+        <li><strong>How did my pipeline change from last week?</strong> — week-over-week movement</li>
+        <li><strong>What are the pipelines that need to be cleaned up?</strong> — hygiene flags on stale or incomplete pipeline</li>
+        <li><strong>How am I tracking towards my target under different scenarios?</strong> — Worst / Most Likely / Best Case attainment</li>
+        <li><strong>How is my pipeline tracking?</strong> — stage-by-stage pipeline trend</li>
+        <li><strong>How is my team performing?</strong> — team-rollup performance (manager view)</li>
+        <li><strong>What is my pipeline generation momentum?</strong> — Pipeline Generation NNACV, Committed, Target, Count of Opportunities</li>
+        <li><strong>How are my accounts performing?</strong> — ARR &amp; ACV Performance, Relevant Opportunities, White Space Inspection</li>
+        <li><strong>How is my business performing?</strong> — Business Trend across 6 Rolling Quarters, Win Rate %, ASP, Velocity, Conversion Rate, Days in Stage</li>
+      </ul>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 The Homepage IS the demo</span>
+        <p>When demoing the app, lead with this page. It answers 11 of the most common forecast and pipeline questions in a single scrollable surface — no other page of the app shows the audience this much at once.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2 id="sales-forecast">2. Sales Forecast</h2>
+      <p>Sales Forecast brings together everything needed to review, adjust, and submit the forecast — from individual deal-level data to team rollups and AI-powered predictions. It's a <strong>hub</strong> that routes the user to five focused sub-pages, each peeling back a different layer of the forecast.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sub-page</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Forecast</strong></td><td>Review quota performance, pipeline composition, and team rollups. Submit and adjust forecast numbers.</td></tr>
+            <tr><td><strong>Opportunities</strong></td><td>Manage every open deal in the pipeline. Update details, log notes, track close plans, and review product-level data.</td></tr>
+            <tr><td><strong>Scenarios</strong></td><td>Model different pipeline outcomes without changing the official forecast or CRM. Explore best-case and worst-case attainment side by side.</td></tr>
+            <tr><td><strong>Anaplan Prediction</strong></td><td>Compare the team's submitted forecast against Anaplan model predictions. Understand forecast quality and track variance over time. (See <a href="sf-05-prediction-lab.html">AI Prediction Lab</a>.)</td></tr>
+            <tr><td><strong>Anaplan Prediction — Sales Ops</strong></td><td>Evaluate multiple forecasting algorithms, compare their historical accuracy, and select the model applied across the organization. (See <a href="sf-05-prediction-lab.html">AI Prediction Lab</a>.)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Forecast (sub-page)</h3>
+      <p>The Forecast sub-page is the top-level dashboard for the active forecast period. It brings together the user's own forecast numbers, the team's input, and the underlying pipeline data.</p>
+
+      <img src="../screenshots/sf-app/sf-app-forecast-dashboard.png" alt="Forecast dashboard for Q3 FY26 with the status banner Forecast to be Submitted, six KPI cards (Forecast Period Q3 FY26, Quota $18,400, Won $17,277 with 94% attainment, Forecast Call $13,475 with 73% attainment, Opportunity Rollups $17,930 with 97% attainment, Anaplan Prediction $16,000 with 87% attainment), a waterfall chart showing Won, Commit, Upside, Pipeline, Excluded Pipeline, Opportunity Rollups, Delta to Forecast Call, Forecast call, To Go to Quota, and Quota bars, and a monthly breakdown chart for Aug, Sep, Oct, and Q3 totals" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Sections on this sub-page:</p>
+      <ul>
+        <li><strong>Top-level view</strong> — Forecast Period, Quota, Won, Forecast Call, Opportunity Rollups, Anaplan Prediction with attainment %</li>
+        <li><strong>Waterfall Chart</strong> — Won → Commit → Upside → Pipeline → Excluded Pipeline → Opportunity Rollups → Delta to Forecast Call → Forecast Call → To Go to Quota → Quota</li>
+        <li><strong>Monthly Breakdown</strong> — forecast call broken out by month within the period</li>
+        <li><strong>Review Forecast Summary</strong> — comparison of My Forecast vs. My Team's Rollup vs. Variance from My Team across the same KPIs</li>
+        <li><strong>Enter My Forecast</strong> — month-by-month input grid (Quota, Won, Open In-Forecast Opportunities, Adjust Forecast Call, Forecast Call w/o Manager Adjustment, My Forecast Call, attainment %)</li>
+        <li><strong>Forecast Trend</strong> — weekly history of Won, Commit, Upside, Pipeline, Forecast Call, Forecast Attainment %, Quota, Day-1 Forecast</li>
+        <li><strong>Review My Team</strong> (manager view) — team rollup with Enter My Forecast control</li>
+        <li><strong>Adjust My Team's Forecast</strong> (manager view) — nudge an individual rep's number; the manager override takes precedence over the rep commit</li>
+        <li><strong>Key Forecast Trend</strong> — narrative trend of the team's submitted forecast over time</li>
+      </ul>
+
+      <img src="../screenshots/sf-app/sf-app-review-forecast-summary.png" alt="Review Forecast Summary screen with the current quarter forecast status Forecast to be Submitted, top comparison grid showing My Forecast, My Team's Rollup, and Variance from My Team rows across Won, Commit, Upside, Pipeline, Opportunity Rollups, Forecast w/o Manager Adj, Forecast Call, Quota, Forecast Attainment %, S3+ Coverage to Target, and YoY growth% columns, bottom-left Enter My Forecast grid with month-by-month inputs, and bottom-right Forecast Trend chart with weekly lines from Week-1 through Week-13, plus a Submit Forecast button at the bottom" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <div class="callout-note">
+        <span class="callout-label">🔗 Why this is the most important page</span>
+        <p>Every other page in the app exists to inform what gets typed into the Enter My Forecast grid. The weekly loop ends here: review the rollup, compare against the trend, adjust the call, hit Submit. When demoing, this is where the audience should feel "OK, that's the heartbeat."</p>
+      </div>
+
+      <h3>Opportunities (sub-page)</h3>
+      <p>The Opportunities sub-page is the shared workspace for reviewing, editing, and acting on the team's open deals. Reps manage their day-to-day pipeline here; managers use it to review team deals at scale.</p>
+
+      <p>Sections on this sub-page:</p>
+      <ul>
+        <li><strong>Top-level view</strong> — count of open opportunities, total ACV, average deal size</li>
+        <li><strong>Opportunity Table Filters</strong> — Close Date, Forecast Category, Stage, and others</li>
+        <li><strong>Opportunity Details</strong> — the per-opp inspection panel: Account, Opportunity Name, Stage, Close Date, Amount, Forecast Category, Anaplan Prediction, Last Modified Date</li>
+        <li><strong>Deal Qualification (MEDDPICC)</strong> — Metrics, Economic Buyer, Decision Criteria, Decision Process, Paper Process, Identify Pain, Champion, Competition</li>
+        <li><strong>3 Whys</strong> — Why do (we win), Why this (solution), Why now</li>
+        <li><strong>Comments</strong> — threaded notes</li>
+        <li><strong>Close Plan Tracking</strong> — milestones up to close date</li>
+        <li><strong>Product Details</strong> — product-line breakdown including ARR and ACV</li>
+        <li><strong>Close Plan Quick Chart</strong> — upcoming-milestone visualization</li>
+        <li><strong>Additional Insights</strong> — supplementary opportunity-level diagnostics</li>
+        <li><strong>Enter My Forecast</strong> + <strong>Adjust My Team's Forecast</strong> — same inputs as on the Forecast sub-page</li>
+      </ul>
+
+      <h3>Scenarios (sub-page)</h3>
+      <p>Scenarios lets reps and managers explore what-if pipeline outcomes without changing the official forecast or CRM. The cascading rule — Worst ⊆ Most Likely ⊆ Best — keeps the three scenarios coherent so a rep can't accidentally include an opportunity in worst-case but exclude it from best-case.</p>
+
+      <img src="../screenshots/sf-app/sf-app-scenario-planning-flow.png" alt="Scenario Planning decision flowchart titled Build out different scenarios to ensure you have multiple paths to close strong on your goals, starting from a Start node into Review Opportunity, branching into three parallel decisions — Include in Worst, Include in Most Likely, and Include in Best, each routing through an Override Forecast Category NNACV Close Date step then a Reviews its impact on Commit Upside Pipeline Total Pipeline and In-forecast Opps step, merging at a Take the best judgement node and ending at Update Opportunity Include Exclude and make best forecast call judgement" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>Sections on this sub-page:</p>
+      <ul>
+        <li><strong>Top-level view</strong> — scenario summary cards</li>
+        <li><strong>Scenario Waterfall Comparison</strong> — side-by-side Worst / Most Likely / Best Case</li>
+        <li><strong>Bridging Deals from Worst Case to Most Likely Case</strong> — the deals that move between the two scenarios</li>
+        <li><strong>Bridging Deals from Most Likely Case to Best Case</strong> — same view for the next step up</li>
+        <li><strong>Create Scenarios</strong> — flow to assign specific opportunities to a case</li>
+        <li><strong>Opportunity Filters</strong> — Close Date, Forecast Category, Stage</li>
+        <li><strong>Opportunity Details</strong>, <strong>MEDDPICC</strong>, <strong>3 Whys</strong>, <strong>Comments</strong>, <strong>Deal Execution Tracking</strong> — same patterns as Opportunities</li>
+      </ul>
+
+      <h3>The Cross-System Flow Behind Submit</h3>
+      <p>Behind the Submit Forecast button is a cross-system process tying Anaplan to Salesforce via the Data Orchestrator (ADO). The diagram below — from the SF Tech Overview V1.0 deck — shows how a forecast submission propagates: the rep reviews each opportunity, the manager reviews and adjusts (manager override takes precedence), and the final forecast call flows back through ADO to Salesforce as opportunity-level updates. Pipeline Analytics reads off the same opportunity-detail stream to compute weekly pipeline change.</p>
+
+      <img src="../screenshots/sf-app/sf-app-forecast-call-process.png" alt="Forecast Call Submission Process architecture diagram showing three swimlanes: the top swimlane has the rep reviewing the forecast summary, submitting, the manager reviewing and adjusting, and the final forecast call with a note that Commit and Won are included by default and that Manager Forecast Call Override takes precedence; the middle swimlane shows the opportunity stream with AE reviews each opportunity, Included branching to Override Forecast Category NNACV Close Date, then Reviews its impact on Commit Upside Pipeline Total Pipeline and In-forecast Opps; the bottom-left Pipeline Analytics box covers Opportunity Details (Stage, Forecast Category, NNACV, Close Date), Weekly Snapshot at every hierarchy, Analyze pipeline changes over a defined period; the bottom-right Integration box shows the Salesforce-Anaplan ADO bridge — Updates Opportunity data via SFDC Connector and Writes back Opportunity data via SFDC Connector" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <hr class="divider">
+
+      <h2 id="sales-pipeline">3. Sales Pipeline</h2>
+      <p>Sales Pipeline gives a complete view of the pipeline — from current health and coverage gaps to generation rates, data quality, and historical trends. It's a hub for four focused sub-pages.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Sub-page</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Pipeline</strong></td><td>Central hub for current pipeline health. Track progress against targets, identify coverage gaps, see which opportunities are contributing.</td></tr>
+            <tr><td><strong>Pipeline Generation</strong></td><td>Track how effectively the team is creating new opportunities. Monitor new-deal-creation rates against generation targets.</td></tr>
+            <tr><td><strong>Hygiene</strong></td><td>Pipeline quality control. Surface deals with missing quotes, incomplete MEDDPICC, or stalled stages before they affect forecast accuracy.</td></tr>
+            <tr><td><strong>Pipeline Analytics</strong></td><td>Look back at how the pipeline evolved over a defined period. Analyze deal movement, velocity, and funnel health.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Pipeline (sub-page)</h3>
+      <p>The central hub for pipeline health. Lets you track progress against quota and coverage targets.</p>
+      <ul>
+        <li><strong>Pipeline Target Tracking</strong> — Won, Quota, Quota To Go, Weighted Pipeline (Stage 3+), Weighted Pipeline, Day 1 Quota, Coverage</li>
+        <li><strong>Pipeline Summary</strong> — pipeline by sales stage</li>
+        <li><strong>Pipeline Details</strong> — opportunities listed by Forecast Category, Decile Range, etc.</li>
+        <li><strong>Pipeline Aging in Stage</strong> — how much pipeline sits at various ages within each stage (Stage 0–4)</li>
+        <li><strong>Pipeline Conversion</strong> — stage-to-stage conversion</li>
+        <li><strong>In-Quarter Pipeline Moving Trend</strong> — value of pipeline at each stage through the quarter</li>
+        <li><strong>What's my team's pipeline?</strong> — team-rollup variant of the same view (manager / RevOps)</li>
+      </ul>
+
+      <h3>Pipeline Generation (sub-page)</h3>
+      <p>Tracks how effectively the team is creating new opportunities against generation targets — the leading indicator for future-quarter forecast.</p>
+      <ul>
+        <li><strong>Pipeline Generation Details</strong> — CQ Pipeline Generated NNACV (total new pipeline created this quarter), Day 1 Pipeline Generation NNACV, Meeting NNACV %</li>
+        <li><strong>What's my pipeline generation momentum?</strong> — Pipeline Target Tracking, Pipeline Generation Committed, Pipeline Generation Target, Count of Opportunities</li>
+        <li><strong>Pipeline Tracking by Source</strong> — Inbound, Outbound, Partner, Referral</li>
+        <li><strong>Meetings Tracking</strong> — number of meetings held by the sales team</li>
+        <li><strong>What's my team's momentum in pipeline generation?</strong> — manager rollup of the above</li>
+      </ul>
+
+      <h3>Hygiene (sub-page)</h3>
+      <p>The pipeline quality control center. Identifies deals that need attention due to data quality issues, stagnation, or missing information. Each top KPI is defined in the in-app documentation:</p>
+      <ul>
+        <li><strong>Stage 3+ Not in Commit</strong> — late-stage deals not in the commit forecast</li>
+        <li><strong>Stage 3+ Missing Quote</strong> — late-stage deals with no primary quote attached</li>
+        <li><strong>CQ Gaps in Early Stages</strong> — opps with a close date this quarter still in an early stage (a risk to the quarterly forecast)</li>
+        <li><strong>Stale Sales Stages</strong> — opps sitting in the same stage for more than 60 days</li>
+        <li><strong>Stuck Next Steps</strong> — deals whose next step hasn't been updated in 15 days</li>
+        <li><strong>Missing MEDDPICC</strong> — opps with incomplete MEDDPICC fields</li>
+      </ul>
+      <p>The Hygiene Lists section underneath summarizes deal counts by selected hygiene metric — Total Hygiene Count, Stage 3+ Not in Commit, CQ Gaps in Early Stages, and others — and a drill-down table shows the individual deals requiring attention with the stage, owner, and why each was tagged.</p>
+
+      <h3>Pipeline Analytics (sub-page)</h3>
+      <p>Pipeline Analytics is the look-back view. Unlike the Pipeline page (current snapshot), this one shows how deals moved between two historical dates — the change waterfall that everyone wants on Monday morning.</p>
+
+      <img src="../screenshots/sf-app/sf-app-pipeline-analytics.png" alt="Pipeline Analytics screen with four quadrants — top-left waterfall titled How did my pipeline change from last week showing Starting Pipeline, Adjusted Up, Lost, Moved Out, Adjusted Down, Won, Ending Pipeline, and Pipeline Total Changes bars; top-right grid titled What are the pipelines that need to be cleaned up with reps and columns for Stage 3+ Not in Commit AE, CQ Opps in Early Stages AE, Stale Sales Stages, Stale Next Steps, Missing Primary Quote, Missing MEDDPICC, Missing 3 Whys, and Incomplete Close Plan; middle-left scenario attainment bars showing Worst Case Attainment%, Most Likely Case Attainment%, and Best Case Attainment%; bottom-right In-Quarter Pipeline Moving Trend line chart by week with Stage 1, 2, 3, 4 Pipeline, Won, Quota, and Forecast call lines" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <p>The filter set drives the entire page:</p>
+      <ol>
+        <li>Pick a quarter to analyze in <strong>Close Quarter</strong></li>
+        <li>Set the <strong>Pipeline Inspection Start / End Date</strong> — the historical window for the analysis</li>
+        <li>Set <strong>Stage Filter</strong> + optional <strong>Use Exact Stage Match</strong> (uncheck to include the stage and higher)</li>
+        <li>Set <strong>Forecast Category</strong> at start of the inspection window</li>
+        <li>Optional toggles: <strong>Change from Last Week</strong>, <strong>Deals Included in Forecast Only</strong></li>
+      </ol>
+      <p>The Pipeline Change Categories waterfall summarizes: <em>starting pipeline → additions (new deals or value increases) → losses (dropped deals or value decreases) → stage movements → ending pipeline</em>. The Pipeline Details table provides the opportunity-level drill-down.</p>
+
+      <hr class="divider">
+
+      <h2 id="sales-accounts">4. Sales Accounts</h2>
+      <p>Sales Accounts gives a deep, data-driven view of all strategic accounts — revenue, product adoption, white space gaps, and engagement patterns. It surfaces a single sub-page (<strong>Accounts</strong>) that holds the full detail.</p>
+
+      <h3>Accounts (sub-page)</h3>
+      <p>The Accounts page is where reps and managers do account-by-account inspection. The page's sections, verbatim from the in-app docs:</p>
+      <ul>
+        <li><strong>Account Overview</strong> — Account Owner, Existing Customer?, ARR, Account Match Size, Remaining Account Match Size, Open Opportunities Pipeline (Stage 3+), Renewal Opportunities (Stage 2+ Renewal), CQ Won &amp; Pipeline, 5 Year Plan Won, Inbound Engagement Score, Outreach Activities</li>
+        <li><strong>ARR &amp; ACV Performance</strong> + <strong>Account Direction</strong> — revenue trajectory</li>
+        <li><strong>Relevant Opportunities</strong> — Won / Open / Renewal cards</li>
+        <li><strong>Account Details</strong> — full account profile</li>
+        <li><strong>White Space Inspection</strong> — gaps in product adoption</li>
+        <li><strong>Product/Solution White Space</strong> — White Space ?, # of Business, ARR, # of Business Won, Remaining White Space, Inbound Engagement Score</li>
+        <li><strong>Product/Solution ARR Distribution</strong> — ARR by product across solution categories</li>
+        <li><strong>Account Inbound Engagement</strong> + <strong>Details</strong> — inbound activity log</li>
+        <li><strong>Outreach Activity</strong> — outbound activity log</li>
+        <li><strong>What product/solution sells well?</strong> — CRM Reach / CRM Pipeline / CRM Won across product categories</li>
+      </ul>
+
+      <hr class="divider">
+
+      <h2 id="sales-insights">5. Sales Insights</h2>
+      <p>Sales Insights is the strategic command center for understanding the reasons behind your results. Two sub-pages: <strong>Insights</strong> (the trend / win-loss / conversion analytics) and <strong>Leaderboard</strong> (the rep ranking and coaching surface).</p>
+
+      <h3>Insights (sub-page)</h3>
+      <p>The Insights page analyzes business trends over the past six rolling quarters to identify patterns. Sections:</p>
+      <ul>
+        <li><strong>Business Performance Summary</strong></li>
+        <li><strong>Business Trend 6 Rolling Quarters</strong> — # Won Deals, Won NNACV, Win Rate %, ASP, Velocity (contextual selector switches the metric and re-filters the page)</li>
+        <li><strong>Why We Win</strong> — won deals by primary winning reason: Product/Solution Fit, Sales Execution, Pricing/Value, Relationship/Trust, Brand/Credibility</li>
+        <li><strong>Why We Lose</strong> — lost deals by primary losing reason: Price/Budget, Competition, Product Gaps, Fit/Scope, Internal/Process, Timing/Priority</li>
+        <li><strong>Pipeline Conversion Insights</strong></li>
+        <li><strong>Win Rate %, ASP, Velocity</strong> — by sales stage</li>
+        <li><strong>Conversion Rate to Next Stage</strong> — stage-to-stage advancement rate</li>
+        <li><strong>Days in Stage</strong> — where deals get stuck on average</li>
+        <li><strong>Deal Size Performance Insights</strong> — performance by deal-size bucket</li>
+        <li><strong>Pipeline Source Performance Insights</strong> — by source: AE / SDR / CS / Partner</li>
+        <li><strong>Opportunity Type Performance Insights</strong> — New Business, Add-on, Renewal, Services, Partner Opportunity, Renewal Expand, Supersede</li>
+        <li><strong>LOB Performance Insights</strong> — by line of business (Finance, Supply Chain, Workforce, Sales Performance)</li>
+      </ul>
+
+      <h3>Leaderboard (sub-page)</h3>
+      <p>Leaderboard compares team performance across key metrics — for coaching and ranking. Two metric groups, each with Top-3 cards plus full bar charts:</p>
+      <ul>
+        <li><strong>Performance Metrics Leaderboard</strong> — Quota Attainment % (Won + Commit vs. quota), Stage 1+ Win Rate %, Stage 3+ Pipeline</li>
+        <li><strong>Forecast &amp; Pipeline Metrics Leaderboard</strong> — Forecast Accuracy % (lowest forecast error wins), Activities (calls, emails, meetings logged), Stage 2+ Pipe Gen</li>
+        <li><strong>Full Team Metrics</strong> — every individual's NNACV Quota, Quota to Go, Won, Commit, attainment percentages in one detailed table; regional rollup at the bottom for quarter-by-quarter trends</li>
+      </ul>
+
+      <hr class="divider">
+
+      <h2 id="sales-overlays">6. Sales Overlays</h2>
+      <p>Sales Overlays is the analytic surface for specialist teams. Two sub-pages with parallel structure: <strong>Channels</strong> (partner-sourced performance) and <strong>Products</strong> (product-level performance). Both follow the same shape so they can be learned together.</p>
+
+      <h3>Channels (sub-page)</h3>
+      <p>The central hub for channel partner performance. Track partner-sourced revenue, analyze partner pipeline, and manage opportunities tied to channel relationships. A context selector in the top-right narrows the view to a region, channel, and time period.</p>
+      <ul>
+        <li><strong>Channel Sales Overview</strong> — number of channel partners contributing in the period</li>
+        <li><strong>Channel Business Performance</strong> — selecting a channel updates this section: Target, Won, Win Rate, Target Attainment %, Current Pipeline, Total Pipeline</li>
+        <li><strong>Channel Summaries</strong> — two sub-tables: performance by sales stage (left) and by deal stage (right)</li>
+        <li><strong>Opportunity Table Filters</strong> + <strong>Opportunity Details</strong> + <strong>MEDDPICC</strong> + <strong>3 Whys</strong> + <strong>Comments</strong> + <strong>Close Plan Tracking</strong> + <strong>Product Details</strong> + <strong>Close Plan Quick Chart</strong> — same opp-inspection pattern as the Opportunities sub-page</li>
+      </ul>
+
+      <h3>Products (sub-page)</h3>
+      <p>Same shape, scoped to product-level performance instead of channel:</p>
+      <ul>
+        <li><strong>Product Sales Overview</strong> — number of products contributing to revenue in the period</li>
+        <li><strong>Product Business Performance</strong> — selecting a product updates: Target, Won, Win Rate, Target Attainment %, Current Pipeline, Total Pipeline</li>
+        <li><strong>Product Summaries</strong> — two sub-tables: by sales stage and by deal stage</li>
+        <li>Then the standard opp-inspection pattern (Filters, Details, MEDDPICC, 3 Whys, Comments, Close Plan Tracking, Product Details, Close Plan Quick Chart)</li>
+      </ul>
+
+      <hr class="divider">
+
+      <h2>Under the Hood — the modeling backend</h2>
+      <p>For partners and Sales Ops who need to extend or debug the app, the underlying Anaplan workspace shows the model dictionary. The Modules view lists every <code>DAT:</code>, <code>SYS:</code>, <code>CALC:</code>, and reporting module along with its functional area. This is the surface for extension and integration work, covered in <a href="sf-06-extensions.html">Common Extensions</a>.</p>
+
+      <img src="../screenshots/sf-app/sf-app-modules-list.png" alt="Anaplan workspace Modules view in the Template Sales Forecasting model showing the DAT prefixed module list including DAT Order, DAT Order Details, DAT Opportunity, DAT Opportunity Details, DAT T5 NNACV Quota, DAT T3 NNACV Quota, DAT T5 Pipeline Target, DAT T3 Pipeline Target, DAT T1 NNACV Quota, DAT T1 Pipeline Target, DAT Meeting Targets, DAT Meeting Count, DAT Call Count, DAT Email Activity, DAT Attendee, DAT Engagement, DAT Engagement and Attendee, DAT Account and LOB, DAT T4 Channel Targets, DAT T3 Channel Targets, DAT T1 Channel Targets, DAT T4 Product Targets, DAT T3 Product Targets, DAT T1 Product Targets, DAT Account Flat, DAT Territory Flat, and DAT Dashboard Icons rows" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <hr class="divider">
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Trace one forecast end-to-end</span>
+        <p>Open the demo SF app and trace a single opportunity through the loop: find it on the <strong>Homepage</strong> key opportunities grid → open its detail on <strong>Sales Forecast → Opportunities</strong> → see its rollup on <strong>Sales Forecast → Forecast</strong> → adjust it in the Enter My Forecast grid → check that the change appears in <strong>Sales Pipeline → Pipeline Analytics</strong> next week. If anything in that chain doesn't line up, that's the failure mode you need to be able to explain to customers.</p>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Persona-based gating</span>
+        <p>Every page in the app carries the note "Your user role determines what data displays on the page." A rep sees their own data; a manager sees the team rollup with override controls; RevOps sees the organization-wide views and the Sales Ops AI Prediction surface. When demoing to a mixed audience, log in as the role most relevant to the conversation — the same page will look different per persona.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

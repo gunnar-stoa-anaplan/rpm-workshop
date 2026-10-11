@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Sample Data — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting Sample Data</h1>
+      <p class="subtitle">The hierarchies and data feeds you need before the app does anything useful</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">20 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>The Sales Forecasting app is data-hungry. Unlike the other RPM apps, almost every page in the application reads from live CRM-sourced data — opportunities, pipeline, actuals, targets. If the data isn't right, the forecast isn't right, and reps lose trust in the app on day one. This page lays out what feeds the app and what shape the data needs to be in.</p>
+
+      <h2>Master Hierarchies</h2>
+      <p>Five hierarchies anchor everything in the model. Get these right before importing transactional data — every downstream input maps to these dimensions.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Hierarchy</th><th>Purpose</th><th>Source</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Sales Hierarchy</strong></td><td>Org chart with <em>employees at the lowest level</em>. Drives team rollup, manager views, leaderboard.</td><td>HRIS or T&amp;Q sales hierarchy export. Employee leaves are mandatory.</td></tr>
+            <tr><td><strong>Account Hierarchy</strong></td><td>Customer accounts grouped by parent / global account. Used for account potential value, account-level scenarios.</td><td>CRM (Salesforce Account object) or master data hub.</td></tr>
+            <tr><td><strong>Product Hierarchy</strong></td><td>Product / SKU groupings. Used for forecast by product, overlay attribution.</td><td>Product master in CRM or ERP.</td></tr>
+            <tr><td><strong>Territory Hierarchy</strong></td><td>Sales territory structure. Bridges opportunities to the right rep when CRM ownership is ambiguous.</td><td>T&amp;Q territory hierarchy (preferred) or CRM territory model.</td></tr>
+            <tr><td><strong>Sales Role Hierarchy</strong></td><td>Role taxonomy (Job Family Group → Job Family → Sales Role). Drives role-specific UX gating and overlay logic.</td><td>HRIS or T&amp;Q role hierarchy.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Sales hierarchy must have employees at the leaf</span>
+        <p>The Sales Forecasting app expects each leaf node of the sales hierarchy to be an individual employee, not a position or a placeholder. This drives the "My Forecast" / "My Pipeline" rep-level pages. If your hierarchy currently uses positions or open headcount, that's a meaningful pre-work item — see the <a href="sf-06-extensions.html">Common Extensions</a> page for the workaround.</p>
+      </div>
+
+      <h2>Transactional Data Feeds</h2>
+      <p>These are the recurring inputs the app needs — most flow in continuously via CRM integration once live.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Feed</th><th>Granularity</th><th>What It Drives</th><th>Refresh Cadence</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Actuals (Closed-Won Revenue)</strong></td><td>Per opportunity, by close date</td><td>Forecaster training data, attainment, leaderboard. Trailing 3 years recommended.</td><td>Weekly (or near-real-time via CRM)</td></tr>
+            <tr><td><strong>Opportunities</strong></td><td>Per open opportunity</td><td>Pipeline value, commits, scenarios. Includes stage, amount, close date, owner, account.</td><td>Daily / near-real-time</td></tr>
+            <tr><td><strong>NNACV Targets</strong></td><td>Per rep × period</td><td>Pipeline Generation page, coverage ratio benchmarks.</td><td>Quarterly (or whenever targets change)</td></tr>
+            <tr><td><strong>Source &amp; Opp Type</strong></td><td>Per opportunity attribute</td><td>Pipeline source attribution (Marketing, Outbound, Renewal, Expansion). Drives Pipeline Analytics.</td><td>Daily, with opportunities</td></tr>
+            <tr><td><strong>Meetings / Activities</strong></td><td>Per account or opportunity</td><td>Hygiene page (account engagement signal), Activity-based pipeline analytics.</td><td>Weekly</td></tr>
+            <tr><td><strong>Pipeline Snapshots</strong></td><td>Weekly cut of pipeline state</td><td>Pipeline Analytics trend lines (week-over-week movement, slips, churn).</td><td>Weekly snapshot job</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Pre-flight Checklist</h2>
+      <div class="callout-note">
+        <span class="callout-label">📋 Before deployment</span>
+        <ul>
+          <li>All five hierarchies imported and validated (employees at leaf of Sales Hierarchy)</li>
+          <li>At least 24 months of closed-won actuals loaded (Forecaster needs history to train)</li>
+          <li>Opportunity feed live with stage, amount, close date, owner mapped to Sales Hierarchy</li>
+          <li>NNACV targets entered per rep × quarter (or your equivalent period)</li>
+          <li>Pipeline snapshot job scheduled (weekly cut into the snapshot module)</li>
+        </ul>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Where this comes from</span>
+        <p>For a Salesforce-sourced implementation, most of the above is handled by the built-in Salesforce Connector — see <a href="sf-03-deployment.html">Deployment Model</a>. For other CRMs (HubSpot, Dynamics, custom CRM), the same data shape is required but you'll build custom ADO pipelines instead.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

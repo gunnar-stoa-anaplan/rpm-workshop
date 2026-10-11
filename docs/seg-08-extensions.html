@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation Common Extensions — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Segmentation Common Extensions</h1>
+      <p class="subtitle">Typical customizations and how to scope them</p>
+      <div class="badge-row">
+        <span class="content-badge">Segmentation Module</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Segmentation has fewer extensions than T&amp;Q, but several come up consistently. Most involve adding scoring dimensions, customizing segment definitions, or enhancing the GTM planning sandbox.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Extension</th><th>Size</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Custom Scoring Dimensions</td><td>S</td><td>Adding a scoring metric not in the base app (e.g. "number of products purchased"). Requires a new attribute in the account data and a new scoring line item. Small effort, high value for customers with differentiated scoring criteria.</td></tr>
+            <tr><td>Additional Segments</td><td>S–M</td><td>The base app supports a configurable number of segments. Adding segments post-gen requires updating segment lists, rules, thresholds, and dashboards. Challenge: every extra segment adds complexity in T&amp;Q and Capacity — push back to 4 or fewer.</td></tr>
+            <tr><td>Custom Wallet Size Method</td><td>M</td><td>When none of the three built-in methods (OpEx, Employee, Revenue) fits the customer's TAM model. Requires a net-new calculation module. Common for SaaS companies with usage-based pricing models.</td></tr>
+            <tr><td>Segment Override Workflow</td><td>M</td><td>Allows sales reps or managers to request a segment override for specific accounts, with approval. The base app allows admin overrides; this adds a structured request/approve workflow.</td></tr>
+            <tr><td>T&amp;Q Integration Automation</td><td>S</td><td>The segment-to-T&amp;Q data flow is currently manual export/import. Adding a scheduled ADO pipeline or action to automate the transfer. Small effort once ADO is set up, high operational value.</td></tr>
+            <tr><td>Enhanced GTM Hierarchy Reporting</td><td>M</td><td>Custom dashboards showing hierarchy balance (accounts per territory, wallet size distribution) before committing the new structure to T&amp;Q. V2 improves this significantly out of the box.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Positioning Tip</span>
+        <p>The most common objection to the Segmentation app: "We already have segments in Salesforce." Your response: "Great — let's import those as the starting point. The Segmentation app gives you a governed, data-driven process to review and refine those segments every year, and feeds the output automatically into your territory and headcount planning." That's the value-add.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Pre-Project Discovery Questions</h2>
+      <p>Use these questions before or during kickoff to assess Segmentation fit and identify likely extensions early. ⭐ marks the highest-priority questions.</p>
+
+      <h3>Account Universe &amp; Data</h3>
+      <ul>
+        <li>⭐ What data do you currently use to classify accounts? Is it in your CRM, or maintained separately?</li>
+        <li>⭐ Do you have employee count and annual revenue data on your accounts? Are these banded (ranges) or raw numbers?</li>
+        <li>Do you have a Global Ultimate Parent hierarchy on your accounts? At what level do you want to segment — parent or subsidiary?</li>
+        <li>How many accounts are in your universe? Do you have accounts that should be explicitly excluded from segmentation (e.g., internal accounts, test accounts)?</li>
+        <li>Do you purchase third-party firmographic data (e.g., Dun &amp; Bradstreet, ZoomInfo)? Is it clean enough to use as a scoring input?</li>
+      </ul>
+
+      <h3>Segment Definition</h3>
+      <ul>
+        <li>⭐ How many segments do you have today? What are they called? (Challenge anything above 4–5.)</li>
+        <li>⭐ Do you have explicit rules that define each segment, or is segmentation currently ad-hoc / sales rep judgment?</li>
+        <li>Is your segment definition stable, or does it change year over year? (Unstable definitions increase maintenance burden significantly.)</li>
+        <li>Who owns the segment definition — Sales Ops, Finance, or Sales Leadership? Is there a single decision-maker?</li>
+        <li>Are there accounts that should always be in a specific segment regardless of scoring (named accounts, strategic accounts)?</li>
+      </ul>
+
+      <h3>Process &amp; Integration</h3>
+      <ul>
+        <li>⭐ Do you already have segment attributes in Salesforce? Would you import those as a starting point, or start fresh?</li>
+        <li>Will segment outputs flow into T&amp;Q for territory carving? Into Capacity for headcount planning? (Answers drive integration priority.)</li>
+        <li>How frequently do you need to re-run segmentation? Annually, quarterly, on-demand?</li>
+        <li>Do you use wallet size / addressable market data today? Where does it come from?</li>
+        <li>Who needs to approve segment changes before they flow into T&amp;Q? Is there a workflow needed, or is admin-level access sufficient?</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Segmentation Sample Data Structures — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Segmentation Sample Data Structures</h1>
+      <p class="subtitle">Required data objects and the CloudWorks exercise dataset</p>
+      <div class="badge-row">
+        <span class="content-badge">Segmentation Module</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Segmentation shares its core data objects with T&amp;Q — accounts, employees, opportunities, and territories. The key differences are the <strong>firmographic attributes</strong> required for scoring and the <strong>banded format</strong> needed for rule dimensions.</p>
+
+      <h2>Required Data Objects</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Object</th><th>Purpose</th><th>Key Difference from T&amp;Q</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Account</strong></td><td>Universe of accounts to be segmented</td><td>Requires firmographic data: Industry (list), Employee Band (list), Revenue Band (list), Annual Revenue (number)</td></tr>
+            <tr><td><strong>Employee</strong></td><td>Sales reps — used for historical performance context</td><td>Same as T&amp;Q</td></tr>
+            <tr><td><strong>Opportunity</strong></td><td>Historical performance data per account</td><td>Same as T&amp;Q</td></tr>
+            <tr><td><strong>Territory</strong></td><td>Hierarchy for GTM planning sandbox</td><td>Same as T&amp;Q</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Attribute Types: Qualitative vs. Quantitative</h2>
+      <p>When identifying segmentation attributes, it is essential to distinguish between <strong>qualitative</strong> and <strong>quantitative</strong> attributes. This distinction determines what admin management framework the configurator generates — and getting it wrong means the wrong tooling is built for the admin team to maintain.</p>
+      <div class="two-col">
+        <div class="card">
+          <h3>Qualitative Attributes</h3>
+          <p>Categorical/descriptive attributes with a defined list of values.</p>
+          <ul>
+            <li><strong>Format:</strong> List (text-based)</li>
+            <li><strong>Examples:</strong> Industry, Region, Customer Tier, Account Type</li>
+            <li><strong>Generated framework:</strong> Qualitative scoring lists — admins manage a list of values and assign scores to each (e.g., Healthcare = 8, Technology = 7, Retail = 4)</li>
+            <li><strong>Use in rules:</strong> Available directly as rule dimensions without transformation</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Quantitative Attributes</h3>
+          <p>Numeric attributes that require banding before use in rules or scoring.</p>
+          <ul>
+            <li><strong>Format:</strong> Number or Currency (raw); List (banded)</li>
+            <li><strong>Examples:</strong> Employee Count, Annual Revenue, ARR Spend</li>
+            <li><strong>Generated framework:</strong> Numeric band scoring tables — admins manage bands (e.g., 0–250 employees = Score 2, 250–1K = Score 5) and the system maps raw values to bands automatically</li>
+            <li><strong>Use in rules:</strong> Raw numbers cannot be used directly — a banded (list-formatted) version must be created and enabled</li>
+          </ul>
+        </div>
+      </div>
+      <div class="callout-important">
+        <span class="callout-label">🚫 Raw Numbers Don't Work as Rule Dimensions</span>
+        <p>The Segmentation rule engine only accepts <strong>list-formatted attributes</strong> as rule dimensions. For each numeric/quantitative field you want to use, you must create a corresponding <strong>banded attribute</strong> (e.g., "Employee Band: 0–250, 250–1K, 1K–5K") and enable it in the Data Hub Setup step. Enable the <strong>"Enable to Calculate"</strong> toggle on the banded attribute so the list is generated at application generation. Always Apply / Calculate after completing this step before moving on.</p>
+      </div>
+
+      <h2>Firmographic Fields for CloudWorks</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Field</th><th>Format</th><th>Used For</th><th>Example Values</th></tr></thead>
+          <tbody>
+            <tr><td>Industry</td><td>List</td><td>Rule dimension, scoring metric</td><td>Technology, Financial Services, Healthcare, Manufacturing</td></tr>
+            <tr><td>No. of Employees (raw)</td><td>Number</td><td>Source for banding</td><td>1547, 23000, 450</td></tr>
+            <tr><td>Employee Band</td><td>List</td><td>Rule dimension</td><td>0–250, 250–1K, 1K–5K, 5K–25K, 25K+</td></tr>
+            <tr><td>Annual Revenue (raw)</td><td>Currency</td><td>Source for banding, wallet size</td><td>$2.4M, $180M</td></tr>
+            <tr><td>Revenue Band</td><td>List</td><td>Rule dimension</td><td>&lt;$10M, $10M–$100M, $100M–$1B, $1B+</td></tr>
+            <tr><td>Account Segment</td><td>List</td><td>Output field — written by the app</td><td>Strategic, Named, Commercial, SMB</td></tr>
+            <tr><td>ARR Spend</td><td>Currency</td><td>Wallet size input</td><td>Current ARR from Salesforce</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Data Prep Tip</span>
+        <p>If the customer's CRM only has raw employee count, you'll need to create the employee band as a derived field during data transformation. Build this into your Session Zero data assessment — ask: "Do you have a segment tier or size band already in your CRM, or will we need to derive it?"</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

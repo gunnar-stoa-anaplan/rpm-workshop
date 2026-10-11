@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Study: CloudWorks Technologies — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Case Study: CloudWorks Technologies</h1>
+      <p class="subtitle">The fictional company used as the lab scenario throughout this workshop</p>
+      <div class="badge-row">
+        <span class="content-badge">Getting Started</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <p>Every lab exercise in this workshop uses <strong>CloudWorks Technologies</strong> as the customer scenario. Using a consistent fictional company across all modules means the data, decisions, and context carry forward — by the time you finish the Capacity lab, you'll know CloudWorks well enough to answer edge-case questions without looking them up.</p>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Keep This Page Open</span>
+        <p>Refer back here whenever a lab asks you to make a decision based on the customer's situation. The company profile, hierarchy, and data details here are the source of truth for all CloudWorks configuration decisions.</p>
+      </div>
+
+      <h2>Company Overview</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>About CloudWorks</h3>
+          <ul>
+            <li><strong>Type:</strong> Fictional B2B SaaS company</li>
+            <li><strong>Products:</strong> Cloud infrastructure and developer tools</li>
+            <li><strong>Markets:</strong> Mid-Market (&lt;1,000 employees) and Enterprise (1,000+ employees)</li>
+            <li><strong>Geography:</strong> North America and EMEA</li>
+            <li><strong>CRM:</strong> Salesforce</li>
+            <li><strong>Current State:</strong> Managing territory planning and quota-setting in Excel — moving to Anaplan RPM Apps</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Sales Organization</h3>
+          <ul>
+            <li><strong>Sales Reps (AEs):</strong> 180 across NA and EMEA</li>
+            <li><strong>Overlay Reps:</strong> 25 Pre-Sales Engineers (SEs)</li>
+            <li><strong>Hierarchy:</strong> 5-tier territory structure</li>
+            <li><strong>Fiscal Year:</strong> February – January (FY starts Feb 1)</li>
+            <li><strong>Planning Granularity:</strong> Quarterly</li>
+            <li><strong>Historical Actuals:</strong> 2 years (FY23, FY24)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Territory Hierarchy</h2>
+      <p>CloudWorks uses a 5-tier territory hierarchy. This is the structure you'll configure in the T&amp;Q Hierarchy Setup page:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Tier</th><th>Name</th><th>Example Values</th></tr></thead>
+          <tbody>
+            <tr><td>Tier 1</td><td><strong>Geo</strong></td><td>CloudWorks Global</td></tr>
+            <tr><td>Tier 2</td><td><strong>Area</strong></td><td>NA, EMEA</td></tr>
+            <tr><td>Tier 3</td><td><strong>Region</strong></td><td>US-West, US-East, UK, DACH</td></tr>
+            <tr><td>Tier 4</td><td><strong>Sub-Region</strong></td><td>Pacific NW, Mid-Atlantic, Benelux</td></tr>
+            <tr><td>Tier 5</td><td><strong>Territory</strong></td><td>Individual rep territories (~220 total)</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Planning Measures</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Measure</th><th>Type</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ARR</strong> (Annual Recurring Revenue)</td><td>Currency (USD)</td><td>Primary planning measure — all targets and quotas are set against ARR</td></tr>
+            <tr><td><strong>New Logos</strong></td><td>Count (Integer)</td><td>Secondary measure — tracks net-new customer acquisition</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Data &amp; Integration</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Data Sources</h3>
+          <ul>
+            <li><strong>CRM:</strong> Salesforce — source of actuals and account data</li>
+            <li><strong>Actuals level:</strong> Account level (Account ID + Quarter + ARR)</li>
+            <li><strong>Data Hub:</strong> New — no existing Anaplan for SPM</li>
+            <li><strong>Integration:</strong> ADO (IT team confirmed readiness)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Finance &amp; Targets</h3>
+          <ul>
+            <li><strong>Target entry level:</strong> Area (Finance provides targets at the NA / EMEA level)</li>
+            <li><strong>Allocation methods:</strong> Weighted by Historical Actuals + Manual Override</li>
+            <li><strong>Over-allocation:</strong> Enabled — max 115%</li>
+            <li><strong>Approval workflow:</strong> 2-stage — Regional Manager → Area VP</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Account Assignment</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Assignment Methods</h3>
+          <ul>
+            <li><strong>Manual Assignment:</strong> Enabled — used for named enterprise accounts</li>
+            <li><strong>Geographic Mapping:</strong> Disabled — territories are not geo-defined</li>
+            <li><strong>Rule Engine:</strong> Enabled — used for mid-market accounts</li>
+            <li><strong>Optimizer:</strong> Disabled — not in scope for this implementation</li>
+            <li><strong>Split Accounts:</strong> Enabled — enterprise accounts can span territories</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Rule Engine Attributes</h3>
+          <p>The Rule Engine uses these account attributes for assignment logic:</p>
+          <ul>
+            <li><strong>Industry</strong> (list)</li>
+            <li><strong>Account Segment</strong> (Strategic / Named / Commercial / SMB)</li>
+            <li><strong>Employee Count</strong> (banded)</li>
+          </ul>
+          <p>Example rule: <em>Industry = "Technology" AND Segment = "Commercial" → US-West Commercial Territory</em></p>
+        </div>
+      </div>
+
+      <h2>Segmentation Profile</h2>
+      <p>CloudWorks uses four account segments. These are defined during the Segmentation configurator exercise:</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Segment</th><th>Criteria (Rule-Based)</th><th>AE Coverage Ratio</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Strategic</strong></td><td>High wallet tier + enterprise industry + revenue band &gt;$100M</td><td>1 AE : 5 accounts</td></tr>
+            <tr><td><strong>Named</strong></td><td>Large employee count + key target industry (below Strategic threshold)</td><td>1 AE : 5 accounts (shared with Strategic)</td></tr>
+            <tr><td><strong>Commercial</strong></td><td>Mid-size accounts — employee count 250–1,000</td><td>1 AE : 30 accounts</td></tr>
+            <tr><td><strong>SMB</strong></td><td>Smaller accounts — employee count &lt;250</td><td>1 AE : 100 accounts</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Score-based segmentation uses three weighted metrics: Employee Band (40%), Revenue Band (35%), Industry (25%). Score thresholds: 7–10 = Strategic, 5–7 = Named, 3–5 = Commercial, 0–3 = SMB.</p>
+
+      <h2>Capacity Planning Profile</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Role Hierarchy</h3>
+          <ul>
+            <li><strong>Job Family Groups:</strong> Core, Support</li>
+            <li><strong>Job Families:</strong> AE, CS, Pre-Sales, Management</li>
+            <li><strong>Sales Roles:</strong> Strategic AE, Commercial AE, SMB AE, Customer Success Manager, Pre-Sales Engineer, Regional Manager</li>
+            <li><strong>Role Grade:</strong> Not used — 3-level hierarchy only</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Planning Setup</h3>
+          <ul>
+            <li><strong>Revenue targets:</strong> Provided at sub-region level by account segment</li>
+            <li><strong>Tops-down level:</strong> Americas</li>
+            <li><strong>Scenarios:</strong> Base + Conservative</li>
+            <li><strong>Bottoms-up entry:</strong> Territory level</li>
+            <li><strong>Approval level:</strong> Region</li>
+            <li><strong>Overlay coverage:</strong> 1 generalist per 8 AEs; 1 manager per 10 AEs</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Lab Dataset Files</h2>
+      <p>The following files are provided in the exercise zip and used in the T&amp;Q configurator lab. Distributed via the shared drive folder before the workshop.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>File</th><th>Rows</th><th>Key Fields</th></tr></thead>
+          <tbody>
+            <tr><td><code>Configurator Exercise Account_Flat File.csv</code></td><td>~4,200</td><td>Account ID, Name, Industry, Segment, Employee Count, Annual Revenue, Territory, Lat/Long, ARR Spend</td></tr>
+            <tr><td><code>Configurator Exercise Territory_Flat File.csv</code></td><td>~220</td><td>Territory ID, Territory Name, Territory Parent, Territory Manager</td></tr>
+            <tr><td><code>Configurator Exercise Employee File.xlsx</code></td><td>~205</td><td>Employee ID, Employee Name, Sales Role, Job Family, Hire Date, Source Territory, Manager</td></tr>
+            <tr><td><code>Configurator Exercise Opportunity line File.csv</code></td><td>~18,000</td><td>Opportunity Line ID, Opportunity ID (parent), Account, Amount, Planning Measure, Service Date</td></tr>
+            <tr><td><strong>Opportunity</strong> <em>(parent record)</em></td><td>—</td><td>The Opportunity record is the parent of Opportunity Line. Depending on how the customer’s CRM exports data, both files may be required. Opportunity carries header-level fields (close date, stage, owner) while Opportunity Line carries the line-item amounts. Confirm with the customer whether their actuals export is at the Opportunity or Opportunity Line level.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Your Role in the Labs</h2>
+      <p>In every lab exercise, you are playing the role of the <strong>Anaplan delivery lead</strong> on the CloudWorks implementation. CloudWorks has completed Session Zero and provided sample data. The stakeholders have signed off on the key decisions listed on this page. Your job is to translate those decisions into the correct configurator settings — and to catch anything that doesn't add up.</p>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Before Starting the Labs</span>
+        <p>Spend 5 minutes reading this page before your first configurator lab. Then, as you work through each lab, refer back here whenever you need to make a decision. Ask yourself: "Would this setting make sense for CloudWorks based on what I know about them?" That's the right instinct to develop.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

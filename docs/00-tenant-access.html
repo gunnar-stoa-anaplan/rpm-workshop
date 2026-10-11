@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tenant Access & Prerequisites — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Tenant Access &amp; Prerequisites</h1>
+      <p class="subtitle">What you need confirmed before you can do any of the labs</p>
+      <div class="badge-row">
+        <span class="content-badge">Getting Started</span>
+        <span class="content-badge">⏱ 10 min</span>
+        <span class="content-badge">Action Required</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <h2>Before You Begin</h2>
+      <p>Every hands-on lab in this workshop runs in a shared Anaplan training tenant with pre-staged RPM template apps. Before you can complete any lab, you need a confirmed login, the right role, and access to your assigned dataspace. Walk through the three checks below — if any one of them fails, stop and reach out before continuing.</p>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Important — Confirm Access First</span>
+        <p>Trying to do the labs without verified tenant access wastes time you'd rather spend on the actual content. If you can't log in, can't see the workspace, or your role is wrong, get it fixed before the first lab — not during it. Flag it in the workshop Slack channel and the Apps Team will get you sorted.</p>
+      </div>
+
+      <h2>Step 1 — Log In</h2>
+      <div class="step">
+        <div class="step-badge">1</div>
+        <div class="step-content">
+          <strong>Open the training tenant URL</strong> shared in your workshop access email.
+        </div>
+      </div>
+
+      <div class="step">
+        <div class="step-badge">2</div>
+        <div class="step-content">
+          <strong>Use the login credentials (username/password)</strong> issued for the workshop.
+        </div>
+      </div>
+
+      <h2>Step 2 — Confirm You're in the Correct Tenant and Workspace</h2>
+      <div class="step">
+        <div class="step-badge">3</div>
+        <div class="step-content">
+          <strong>Verify the tenant name and workspace</strong> after sign-in. The tenant header should show the partner enablement tenant (not your customer's tenant, not your sandbox). The workspace should be the one assigned to you in your workshop access email.
+        </div>
+      </div>
+
+      <h2>Step 3 — Verify Your Role and Dataspace Access</h2>
+      <p>Confirm you can see and open the three template apps that drive every module in this workshop:</p>
+      <ul class="checklist">
+        <li><strong>Territory &amp; Quota (TRAIN)</strong> — pre-staged T&amp;Q template app</li>
+        <li><strong>Account Segmentation (TRAIN)</strong> — pre-staged segmentation template app</li>
+        <li><strong>Capacity Planning (TRAIN)</strong> — pre-staged capacity template app</li>
+      </ul>
+      <p>You'll also need to confirm your role assignment:</p>
+      <ul class="checklist">
+        <li>You can open each template app in <strong>read-only</strong> mode (to follow the configurator walkthroughs)</li>
+        <li>You can <strong>generate</strong> new applications from each configurator (for the hands-on labs)</li>
+        <li>You have access to a <strong>dataspace</strong> assigned to you where the generated apps and models will live</li>
+        <li>You have the <strong>Apps Admin</strong> role (or equivalent) — required for configurator changes</li>
+      </ul>
+
+      <h2>If Something's Wrong</h2>
+      <ul>
+        <li><strong>Can't log in</strong> — confirm the URL and credentials in your workshop access email; if still stuck, flag in the workshop Slack channel</li>
+        <li><strong>Logged in but can't see the workspace</strong> — your role assignment hasn't been provisioned yet; flag in the workshop Slack channel</li>
+        <li><strong>Can see the workspace but can't open the template apps</strong> — same answer: role provisioning issue, flag in Slack</li>
+        <li><strong>Can open the apps but can't generate from the configurator</strong> — Apps Admin role missing, flag in Slack</li>
+      </ul>
+      <p>Whichever case applies, don't try to work around it. Get it fixed before the first lab — the labs assume verified access from this point forward.</p>
+
+      <div class="prevnext-nav">
+        <a class="prevnext-btn" href="./00-overview.html">← Previous</a>
+        <a class="prevnext-btn" href="./01-spm-overview.html">Next →</a>
+      </div>
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

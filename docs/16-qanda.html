@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questions & Answers from Workshop Sessions — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Questions &amp; Answers from Workshop Sessions</h1>
+      <p class="subtitle">Real questions from workshop sessions — organized by topic</p>
+    </div>
+    <div class="content-body">
+
+      <h2>How to Use This Page</h2>
+      <p>These are real questions from workshop participants, answered in real time by the Anaplan Apps team. Questions are grouped by topic and module. Use this as a reference when preparing for customer conversations, discovery sessions, or implementation planning.</p>
+
+      <h2>Territory &amp; Quota (T&amp;Q)</h2>
+      <p>Questions raised during the T&amp;Q sessions — overview, configurator walkthrough, and spoke app demo. Answered by the Anaplan Apps Team.</p>
+
+      <h3>Apps Philosophy &amp; Approach</h3>
+
+      <div class="callout-note">
+        <p><strong>Q: What is Anaplan's philosophy behind generating applications vs. building custom models?</strong></p>
+        <p><strong>A:</strong> The idea is to be more consultative — push best practice rather than just building whatever the customer wants. Push customers toward the Anaplan application process as much as possible, meet in the middle. This is how you scale. If you always cater to exactly what customers want, you won't have your Friday evenings.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: Has anyone worked on T&amp;Q projects before? What's the experience been like?</strong></p>
+        <p><strong>A:</strong> T&amp;Q is the most robust SPM app and the most common landing use case. ICM is so important that companies are "kind of screwed" without enterprise tooling, so it gets prioritised quickly. T&amp;Q, by contrast, is a pain point that lingers longer — companies manage with spreadsheets for a while. That's why T&amp;Q is often where we still land.</p>
+      </div>
+
+      <h3>Upgrade Path &amp; Extensions</h3>
+
+      <div class="callout-note">
+        <p><strong>Q: Do you have recommended standardisations for building extensions that improve the upgrade path?</strong></p>
+        <p><strong>A:</strong> Sort of. We have a list of extension recommendations based on what we've encountered. The key is: after you understand what's in the base app, anticipate common extensions as discovery happens. The big thing is keeping extensions documented and as separate as possible from the baseline — create net-new line items rather than modifying base ones. After 3 projects, you should be doing this independently.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: Is upgradeability truly achievable? Other configurable software can't do seamless upgrades either.</strong></p>
+        <p><strong>A:</strong> Honestly, no — not truly seamlessly. The vision with Path/AAF is there but we're not there yet. What you're buying is Anaplan best practice and support. Every upgrade is currently a faster re-implementation. Well-documented, cleanly separated extensions make it much faster — you know exactly what to move. Set realistic expectations with customers: upgrades are included, and there may be a small project to implement each one.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: Can you give an example of a configurator choice that made life difficult later?</strong></p>
+        <p><strong>A:</strong> Dimensionality. If you set targets at too granular a level — like by product when you don't need it — that complexity is baked into the generated model. We've had to regenerate before because the dimensionality was too high. Setting targets at a really granular level makes everything complicated. Catch this before post-gen work starts.</p>
+      </div>
+
+      <h3>Configurator &amp; Generation</h3>
+
+      <div class="callout-note">
+        <p><strong>Q: Why not just use Co-Modeler to build extensions?</strong></p>
+        <p><strong>A:</strong> Great concept, but current state it's not a replacement for a model builder — it's an enhancer. It may not work well every time. It's good for repetitive tasks like renaming 100 line items, not for building complex extension logic. Treat it as an accelerator, not a substitute.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: Is sparsity actually a concern in Polaris for target setting dimensions?</strong></p>
+        <p><strong>A:</strong> Less so than Classic — Polaris handles sparse data better architecturally. But adding excessive dimensionality still creates UX complexity problems. Do you really want planners filling out targets for every one of 1,000 products? Even if Polaris can handle it technically, the UX becomes a nightmare. The human factor matters as much as the technical factor.</p>
+      </div>
+
+      <h3>Customer Scenarios</h3>
+
+      <div class="callout-note">
+        <p><strong>Q: What do you do with customers who don't have a territory hierarchy — just "people own accounts"?</strong></p>
+        <p><strong>A:</strong> Surprisingly common, and it still surprises us every time. These are actually your BEST candidates — they need the app the most. You help them establish territory management best practice from scratch. We've done it: customer had no territory hierarchy, we built one with them, they used it, and it's great. Don't disqualify them; qualify them harder.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: What if the customer's territorial hierarchy isn't finalised when you start?</strong></p>
+        <p><strong>A:</strong> Major risk. We had a marquee customer where Americas had 4 tiers, EMEA had 3, APAC had 4 — they couldn't get exec decision-makers to agree, it dragged out, and they blamed us. Get executive alignment on hierarchy levels BEFORE the project starts, or at minimum before finalising the configurator. We had a customer change their mind 2 weeks post-generation — we gave them the list of everything that needed updating and they said "we'll stick with what we have."</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: What if the customer doesn't have a defined process for in-year changes?</strong></p>
+        <p><strong>A:</strong> Get ahead of this. The app supports effective dating for account-territory and resource-territory assignments, but the customer needs to define: how does leave of absence work? How does proration apply? What are the rules for mid-year account moves? Get this agreed before building — otherwise you're designing extension logic against a moving target.</p>
+      </div>
+
+      <h3>T&amp;Q App — Specific Questions</h3>
+
+      <div class="callout-note">
+        <p><strong>Q: Is there a native connection between Segmentation outputs and T&amp;Q?</strong></p>
+        <p><strong>A:</strong> Semi-native. There's a page in T&amp;Q for Segmentation outputs — in theory it's a table taking Segmentation output as input. In practice it's ETL/ADO only at the moment. Not super integrated right now. The connection point exists in the app design but isn't automatically wired.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: What options exist for quota acknowledgement?</strong></p>
+        <p><strong>A:</strong> Two approaches: (1) Basic — enable sellers to see their quota on a designated page in the app, using a user selector to show their specific quota data. (2) Advanced — DocuSign connector. Maps quota values to a DocuSign template and captures a digital signature. This is a common extension request and a meaningful value-add for customers with formal comp acknowledgement requirements.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: What about employees who leave and come back mid-year (boomerang employees)?</strong></p>
+        <p><strong>A:</strong> Known limitation in V3. The new intersection model (territory × employee × time) uses monthly granularity. If someone leaves March 23rd and comes back June 15th, you can handle the LOA, but day-level precision within a month requires an extension. Challenge whether customers truly need day-level precision vs. month-level — most of the time they don't.</p>
+      </div>
+
+      <div class="callout-note">
+        <p><strong>Q: What's the partner support model — how long is Anaplan involved?</strong></p>
+        <p><strong>A:</strong> First 3 projects — the Anaplan Apps Team is heavily involved as a non-chargeable resource. After 3 projects, partners run independently. The Apps team becomes more advisory: available for questions, feedback loops to product, but not hands-on in every project.</p>
+      </div>
+
+
+      <p>These are real questions asked during the workshop, with answers from the <strong>Anaplan Apps Team</strong>. Organized by topic for easy reference.</p>
+
+      <hr>
+
+      <h2>Implementation &amp; Upgrade Path</h2>
+
+      <div class="callout-note">
+        <strong>Q: Is there a recommended approach for building extensions to minimize upgrade effort?</strong><br><br>
+        <strong>A:</strong> Yes. The core principle is to keep extensions as separate from the baseline as possible. (1) Never modify base app line items — create net-new line items instead. (2) Document every extension with a naming convention (e.g., prefix with <code>EXT_</code>). (3) When a new version ships, review the release notes to understand what changed. If a base item you referenced got updated, compare the old and new formula and decide if you need to merge. If your extension is a net-new module, it's untouched by upgrades. Until Anaplan's Path/AAF matures, upgrades are essentially faster re-implementations — but well-documented extensions make this significantly faster.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Does the release documentation tell you which specific line items were updated in an upgrade?</strong><br><br>
+        <strong>A:</strong> This is expected — release notes should call out what's changing. In practice, this is still maturing. The recommendation is to use the template app (new version) side-by-side with the customer model to manually compare what changed.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Is upgradeability truly achievable? Other software that's configurable and customer-adapted can't really do seamless upgrades either.</strong><br><br>
+        <strong>A:</strong> Honest answer: no, not truly seamlessly. The vision (Path/AAF) is to have modular upgrades that don't disrupt extensions, but we're not there yet. What you're buying with the app subscription is Anaplan best practice, support from the Apps team, and entitlement to new versions — with the realistic expectation that upgrades may require a mini-project to implement and test.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: When you have extensions that customers are keen on, can you sometimes use base app functionality in a different way instead of building net-new?</strong><br><br>
+        <strong>A:</strong> Yes — this is actually one of the most important conversations to have during extension design. When you show customers what's already in the app, 1/3 to 1/2 of initially scoped extensions often turn out to be addressable with base functionality used differently, or the customer changes their mind once they see the base app doing something similar. Always anchor extension design sessions on what the app already does.
+      </div>
+
+      <hr>
+
+      <h2>Configurator &amp; Generation</h2>
+
+      <div class="callout-note">
+        <strong>Q: What are the most important things to get right in the configurator before generating?</strong><br><br>
+        <strong>A:</strong> Three things are especially painful to change post-generation: (1) <strong>Planning measures</strong> — they're a core dimension across the entire target cascading process. (2) <strong>Hierarchy levels</strong> — changing the number of tiers after generation requires updating almost everything. (3) <strong>Dimensionality</strong> — adding or removing dimensions like product or BU after generation is very painful. Get these right with the customer before generating.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Can you just regenerate if you get something wrong?</strong><br><br>
+        <strong>A:</strong> Yes, but with caveats. If you've already done a bunch of custom work (loading data, building extensions), regeneration resets that work. If you catch the issue early (before post-gen steps are done), regeneration is straightforward. The key is: catch dimensionality errors before you start post-gen work.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What errors in the generation log are acceptable?</strong><br><br>
+        <strong>A:</strong> 0–200 errors is generally fine to proceed. Most are formula references to things that are either not applicable for the customer or can be fixed post-generation. Above 200, investigate more carefully — there may be systemic issues.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Why isn't the backend generation platform open to partners yet?</strong><br><br>
+        <strong>A:</strong> It's not yet robust and bulletproof enough. The goal is to open it eventually — similar to how Page Builder has an "App Owner" role in user administration. For now, the Anaplan Apps Team handles generation to ensure quality and catch issues before handoff.
+      </div>
+
+      <hr>
+
+      <h2>T&amp;Q Specific</h2>
+
+      <div class="callout-note">
+        <strong>Q: Should we avoid adding a product dimension to target setting?</strong><br><br>
+        <strong>A:</strong> Strongly recommended to avoid unless absolutely required. Instead, use additional planning measures (e.g., "Product A Bookings" as a separate measure). This avoids sparsity and complexity in the UX. If a customer says they only set targets for 3 specific products out of 20, that's 3 planning measures — not a product dimension.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: How does the optimizer actually work?</strong><br><br>
+        <strong>A:</strong> It's a balancing algorithm, not true mathematical optimization. It ranks all accounts within the scope by the objective metric (e.g., potential spend), then distributes them across territories in round-robin fashion while respecting constraints. The result is roughly equal territories by the objective metric — it doesn't maximize revenue, it balances distribution. Feedback from the field: the ability to weight or combine multiple objectives, and the ability to exclude specific territories from optimization, would be valuable improvements.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What's the difference between Geography Constraint and Balance Level in the Optimizer?</strong><br><br>
+        <strong>A:</strong> <strong>Geography Constraint</strong> = the tier within which accounts are allowed to move (e.g., accounts can cross sub-regions but not cross regions). <strong>Balance Level</strong> = the tier at which territories should be balanced relative to each other (e.g., territories within the same sub-region should be roughly equal). Balance level should never be set higher than the geography constraint level.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What happens with a customer who doesn't have a territory hierarchy — just "people own accounts"?</strong><br><br>
+        <strong>A:</strong> These are actually your best T&amp;Q candidates. They need the app the most. You help them build a territory hierarchy from scratch, and the app becomes transformational for them. Customers who had no territory concept went through T&amp;Q implementation and now have a mature enterprise territory management practice. Don't disqualify customers without territories — qualify them harder.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Can the Optimizer handle a "placeholder bucket" territory where I want to redistribute accounts out but not optimize that territory itself?</strong><br><br>
+        <strong>A:</strong> Not currently out of the box. You can preserve existing assignments or exclude accounts from optimizer consideration, but you can't exclude a specific territory from being "optimized against." This is a known gap — likely coming in future versions.
+      </div>
+
+      <hr>
+
+      <h2>Segmentation Specific</h2>
+
+      <div class="callout-note">
+        <strong>Q: What's the difference between rule-based and score-based segmentation? When do you use each?</strong><br><br>
+        <strong>A:</strong> <strong>Score-based</strong> = every account gets a segment (based on weighted score across metrics). <strong>Rule-based</strong> = specific accounts get explicitly mapped to a segment if they meet defined conditions. Use both together: score-based as the default assignment (every account gets something), rule-based as an override (specific conditions force an account into a particular segment regardless of score). If you only use rule-based, some accounts may not get a segment if they don't meet any rules.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: The UCP "exclude rule" checkbox is counterintuitive — can you explain it?</strong><br><br>
+        <strong>A:</strong> Yes — this tripped up the instructor too. When the "exclude rule" checkbox is <em>checked</em>, the rule is active and will exclude accounts that match the conditions. When unchecked, the rule is inactive. The label reads like a double negative. Just remember: <strong>checked = the exclusion rule is ON and will remove matching accounts</strong>.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Is there a native connection between the Segmentation GTM hierarchy planning and T&amp;Q?</strong><br><br>
+        <strong>A:</strong> No, not currently. When you finalize your planning hierarchy in Segmentation, it creates a separate hierarchy structure in the Segmentation model. You can integrate that to T&amp;Q, but it's a manual export/import step — there's no automatic sync. This is on the roadmap to improve.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: How do you handle wallet size when customers don't have the third-party data?</strong><br><br>
+        <strong>A:</strong> Common answer: they make assumptions. The app is a modeling exercise. You can use industry benchmarks or customer estimates for the firmographic inputs. Alternatively, some customers buy third-party data from providers like ZoomInfo or Sixth Sense. If the customer won't use wallet size for target allocation or segmentation rules, skip the setup entirely — it's optional.
+      </div>
+
+      <hr>
+
+      <h2>Capacity Specific</h2>
+
+      <div class="callout-note">
+        <strong>Q: What's the difference between tops-down and bottoms-up in the Capacity app?</strong><br><br>
+        <strong>A:</strong> <strong>Tops-down</strong> = finance-driven guardrails. Starting from the top of the geo hierarchy, you allocate a Not-to-Exceed (NTE) headcount budget down through the hierarchy based on coverage ratios and productivity assumptions. This tells you the maximum you can hire at each level. <strong>Bottoms-up</strong> = tactical planning. Planners at the territory/sub-region level enter their actual month-by-month hiring plan, constrained by the NTE. The model shows whether that hiring plan, combined with ramp assumptions, will close the gap to the revenue target.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Is sparsity a concern for target setting dimensions in Polaris?</strong><br><br>
+        <strong>A:</strong> Less so than in Classic — Polaris handles sparse data better architecturally. However, adding excessive dimensionality still creates UX complexity problems: planners have to navigate more columns and tables, and it's harder to maintain. The recommendation to limit dimensions is as much about usability as it is about model performance.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: The capacity model was too complex even when Anaplan used it internally — what did you strip out?</strong><br><br>
+        <strong>A:</strong> Anaplan's internal capacity planning team found the full app too complex for their own use. They removed: role grade (too granular), some of the workload/hours-based planning, and several of the more advanced reporting dimensions. Lesson: start with minimum viable configuration for the customer, then add complexity only if there's clear demand and value.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What's NTE (Not to Exceed)?</strong><br><br>
+        <strong>A:</strong> NTE = Not to Exceed. It's the headcount ceiling set during tops-down planning. Once the tops-down workflow is submitted and locked at a given level, the NTE for that level is set. The bottoms-up planning at the level below cannot exceed it. If a regional manager wants to hire more people than the NTE allows, they need to go back and request a change to the tops-down plan.
+      </div>
+
+      <hr>
+
+      <h2>ADO &amp; Data Integration</h2>
+
+      <div class="callout-note">
+        <strong>Q: Is ADO streaming or batch?</strong><br><br>
+        <strong>A:</strong> Batch currently. There's no real-time streaming. Data pushes from source systems into ADO on a scheduled basis (via ADO Workflows). For sales forecasting specifically, this means reps won't see pipeline updates instantly — there's a refresh lag. Salespeople who want immediate visibility may find this frustrating. Streaming capability is on the roadmap.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: Can ADO write data back to Salesforce?</strong><br><br>
+        <strong>A:</strong> Not currently. All ADO data flows are inbound (from source systems into Anaplan). Bidirectional support (Anaplan → Salesforce, Anaplan → Snowflake, Anaplan → Databricks) is on the roadmap. This is a meaningful limitation for use cases like sales forecasting where you'd want forecast category decisions made in Anaplan to sync back to Salesforce.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What are the ADO batch size limits?</strong><br><br>
+        <strong>A:</strong> There are limits, but the exact numbers are still being refined by the platform team. Be aware that large transactional datasets (e.g., 3 years of opportunity data for an enterprise customer can hit 20GB in one module) need to be managed carefully. Work with Anaplan on large-data strategies for enterprise customers.
+      </div>
+
+      <hr>
+
+      <h2>AI &amp; Co-Modeler</h2>
+
+      <div class="callout-note">
+        <strong>Q: Can Co-Modeler build extensions for us?</strong><br><br>
+        <strong>A:</strong> Not reliably yet. It's directionally useful for repetitive tasks (renaming 100 line items, generating similar modules from a pattern) but doesn't produce production-quality extension logic consistently. The same prompt on Monday vs. Friday may give different results. Treat it as an accelerator, not a replacement for a model builder.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: What's the difference between Co-Modeler and Sales Analyst (co-planner)?</strong><br><br>
+        <strong>A:</strong> <strong>Co-Modeler</strong> = for model builders. Helps build and modify model structure, write formulas, create modules. Targets technical users.<br><br>
+        <strong>Sales Analyst (co-planner)</strong> = for business users. A chatbot attached to the application that answers questions in natural language ("which territories are under-covered?", "what's my gap to target?"). Requires good module descriptions and naming conventions to work well. Anaplan is working on pre-configured Agent Studio setups for each app so the baseline questions work out of the box.
+      </div>
+
+      <div class="callout-note">
+        <strong>Q: How well does Sales Analyst work today?</strong><br><br>
+        <strong>A:</strong> It's improving but inconsistent. It works well for simple, well-described data queries. It sometimes can't find modules it just answered a question about, or gives different answers to the same question. The practical guidance: use it for simple, bounded questions with well-documented models. Don't present it as a full-featured BI tool to customers yet.
+      </div>
+
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

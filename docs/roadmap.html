@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap Snapshot — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Roadmap Snapshot</h1>
+      <p class="subtitle">RPM Apps release status and near-term releases — frozen to March 2026 training session</p>
+      <div class="badge-row">
+        <span class="content-badge">Reference</span>
+        <span class="content-badge">Frozen: March 2026</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-important">
+        <span class="callout-label">⚠ Important — Verify Before Quoting</span>
+        <p>These dates and statuses are from the <strong>March 2026 training session</strong>. Confirm current timelines with the Apps team before quoting any dates to a prospect or customer. Roadmaps shift. This page is a planning reference, not a commitment.</p>
+      </div>
+
+      <h2>App Status Overview</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>App</th>
+              <th>Current Status</th>
+              <th>What's in Next Version</th>
+              <th>Expected Timing</th>
+              <th>Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Territory &amp; Quota (T&amp;Q)</strong></td>
+              <td>✅ GA — V2 current</td>
+              <td>
+                V3 (Polaris): ADO required (no Data Hub), new territory intersection model, target overrides at every level, split account management native, rule engine inheritance, GTM hierarchy comparison, coverage optimization
+              </td>
+              <td><strong>May 2026</strong></td>
+              <td>Breaking change. V3 territory format is not compatible with V2. Plan migration project. Boomerang employee limitation remains at monthly granularity in V3.</td>
+            </tr>
+            <tr>
+              <td><strong>Account Segmentation</strong></td>
+              <td>✅ GA — V1 current</td>
+              <td>
+                V2: Redesigned GTM Hierarchy Planning, resource alerts for over/under-staffed nodes, improved rule conflict resolution, cleaner workflow for activating planning hierarchy
+              </td>
+              <td><strong>Imminent</strong> (as of March 2026)</td>
+              <td>V2 release expected very shortly after the workshop date. Confirm exact date with Apps team.</td>
+            </tr>
+            <tr>
+              <td><strong>Capacity Planning</strong></td>
+              <td>✅ GA — V1 current</td>
+              <td>
+                V2: Improved UX design and workflow status indicators, more robust ramp modeling with financial liability calculations, enhanced scenario comparison and variance reporting
+              </td>
+              <td><strong>Imminent</strong> (as of March 2026)</td>
+              <td>V2 release expected very shortly after the workshop date. Confirm exact date with Apps team.</td>
+            </tr>
+            <tr>
+              <td><strong>Sales Forecasting</strong></td>
+              <td>✅ GA — March 2026</td>
+              <td>
+                No configurator in current version. Bidirectional data flow (write-back to Salesforce/CRM) is on the roadmap. ADO streaming (real-time vs. batch) also planned.
+              </td>
+              <td>Write-back: <strong>TBD 2026</strong></td>
+              <td>Went GA at the time of the workshop. No versioned release cycle announced yet. Watch for write-back announcement — it unlocks key use cases.</td>
+            </tr>
+            <tr>
+              <td><strong>Incentive Compensation (ICM)</strong></td>
+              <td>🔜 On roadmap</td>
+              <td>
+                Full ICM suite: comp plan administration, calculation engine, crediting. Split Allocation (partial ICM capability) may ship earlier as a standalone feature.
+              </td>
+              <td><strong>TBD 2026</strong></td>
+              <td>No confirmed date. Do not quote a date to customers. Split Allocation may come before full ICM — ask the Apps team for current status before any customer conversation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Platform-Level Roadmap Items</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th>Current State</th>
+              <th>Planned</th>
+              <th>Timing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>App-to-App Native Connections</strong></td>
+              <td>Manual export/import or ETL required between all apps</td>
+              <td>Native connections: Segmentation → T&amp;Q → Capacity that update automatically when a planning exercise is finalized</td>
+              <td>Not yet built. No confirmed date.</td>
+            </tr>
+            <tr>
+              <td><strong>ADO Bidirectional</strong></td>
+              <td>All ADO flows are inbound only (source systems → Anaplan)</td>
+              <td>Write-back support: Anaplan → Salesforce, Snowflake, Databricks</td>
+              <td>On roadmap. Unlocks Sales Forecasting write-back use case.</td>
+            </tr>
+            <tr>
+              <td><strong>ADO Streaming</strong></td>
+              <td>Batch data refresh only — no real-time</td>
+              <td>Real-time or near-real-time pipeline data ingestion</td>
+              <td>On roadmap. No confirmed date.</td>
+            </tr>
+            <tr>
+              <td><strong>Split Allocation</strong></td>
+              <td>Not supported in current apps (V2 T&amp;Q requires extension)</td>
+              <td>Native in T&amp;Q V3 (May 2026). Split Allocation may also ship as a standalone capability earlier.</td>
+              <td>V3 T&amp;Q: May 2026. Standalone: ask Apps team.</td>
+            </tr>
+            <tr>
+              <td><strong>CoModeler — Broader Access</strong></td>
+              <td>Access gated to Apps team only</td>
+              <td>Broader partner and customer access as the feature matures</td>
+              <td>No confirmed timeline. Polaris compatibility in T&amp;Q V3 is a prerequisite for useful CoModeler work in T&amp;Q.</td>
+            </tr>
+            <tr>
+              <td><strong>Configurator — Partner Access</strong></td>
+              <td>Gated to Apps team (Chan/Jon). Partners run independently after 3 projects.</td>
+              <td>Broader configurator access similar to Page Builder "App Owner" role. Goal: partners self-serve.</td>
+              <td>Not yet bulletproof enough for general access. No confirmed date.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>How to Use This in Customer Conversations</h2>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 ICM Positioning</span>
+        <p>ICM has no confirmed date — do not quote one. The safe framing: <em>"ICM is on the roadmap. Once T&amp;Q is live and your quota data is structured correctly, you'll be first in line when it ships."</em> This keeps the conversation open without making a commitment you can't keep.</p>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 T&amp;Q V3 — May 2026</span>
+        <p>May 2026 is the current target for T&amp;Q V3. This is the most specific date on the roadmap — but it's still a target. Confirm with the Apps team before using it in any customer proposal or SOW. V3 is a breaking change — factor in migration effort for any customer currently on V2.</p>
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Roadmap Policy</span>
+        <p>Anaplan's roadmap is directional. Feature timing can shift based on engineering priorities, customer feedback, and platform dependencies. Never use roadmap items to close a deal. Use them to frame the long-term vision and keep the customer engaged post-go-live.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

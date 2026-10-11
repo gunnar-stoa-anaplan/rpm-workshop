@@ -1,0 +1,948 @@
+// question: 3001
+::::[choice]<p>True or False\: The RPM Apps suite consists of four applications — Territory &amp; Quota, Account Segmentation &amp; Scoring, Go-to-Market Capacity Planning, and Sales Forecasting.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3002
+::::[choice]<p>Which RPM application primarily answers the question "what is each rep on the hook for"?</p>{
+	~%0%<p>Sales Forecasting</p>#
+	~%0%<p>Go-to-Market Capacity Planning</p>#
+	=%1000%<p>Territory &amp; Quota</p>#
+	~%0%<p>Account Segmentation &amp; Scoring</p>#
+}
+
+// question: 3003
+::::[choice]<p>Which RPM application primarily answers "which accounts matter and why"?</p>{
+	=%1000%<p>Account Segmentation &amp; Scoring</p>#
+	~%0%<p>Sales Forecasting</p>#
+	~%0%<p>Territory &amp; Quota</p>#
+	~%0%<p>Go-to-Market Capacity Planning</p>#
+}
+
+// question: 3004
+::::[choice]<p>Which RPM application primarily answers "do we have enough headcount with the right ramp to cover the plan"?</p>{
+	~%0%<p>Account Segmentation &amp; Scoring</p>#
+	=%1000%<p>Go-to-Market Capacity Planning</p>#
+	~%0%<p>Sales Forecasting</p>#
+	~%0%<p>Territory &amp; Quota</p>#
+}
+
+// question: 3005
+::::[choice]<p>Which RPM application primarily answers "what are we actually going to land this quarter, and where are the risks"?</p>{
+	~%0%<p>Account Segmentation &amp; Scoring</p>#
+	~%0%<p>Go-to-Market Capacity Planning</p>#
+	~%0%<p>Territory &amp; Quota</p>#
+	=%1000%<p>Sales Forecasting</p>#
+}
+
+// question: 3006
+::::[choice]<p>True or False\: T&amp;Q, Account Segmentation, and Capacity Planning are each delivered via a configurator UI, while Sales Forecasting V1 is delivered as a templated application via the Anaplan Application Framework.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3007
+::::[choice]<p>Account Segmentation outputs flow downstream into which two other RPM apps?</p>{
+	~%0%<p>Capacity Planning only</p>#
+	~%0%<p>Territory &amp; Quota only</p>#
+	=%1000%<p>Territory &amp; Quota and Capacity Planning</p>#
+	~%0%<p>Sales Forecasting and the Anaplan Data Orchestrator</p>#
+}
+
+// question: 3008
+::::[choice]<p>True or False\: Sales Forecasting consumes account segments from the Segmentation app as the attainment denominator on the Leaderboard.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3009
+::::[choice]<p>The Anaplan Way for Apps (TAWA for Applications) is built around what core delivery idea?</p>{
+	~%0%<p>Configure the entire customer model in a single one-day workshop</p>#
+	=%1000%<p>Start with a baseline configured application, then identify and build extensions iteratively</p>#
+	~%0%<p>Use only standard objects with no extensions ever allowed</p>#
+	~%0%<p>Build every application from scratch on every implementation</p>#
+}
+
+// question: 3010
+::::[choice]<p>True or False\: In TAWA, the "Application-Led Design" phase happens BEFORE the baseline application has been configured.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3011
+::::[choice]<p>The Anaplan Application Framework solves which strategic problem?</p>{
+	~%0%<p>Lack of trained model builders in the partner ecosystem</p>#
+	~%0%<p>Poor data quality in customer source systems</p>#
+	~%0%<p>Insufficient workspace capacity</p>#
+	=%1000%<p>Upgradability and Applications as a Service</p>#
+}
+
+// question: 3012
+::::[choice]<p>The Application Framework has five key characteristics. Which of the following is NOT one of them?</p>{
+	~%0%<p>Configure</p>#
+	=%1000%<p>Integrate</p>#
+	~%0%<p>Package</p>#
+	~%0%<p>Version</p>#
+}
+
+// question: 3013
+::::[choice]<p>True or False\: The Anaplan Data Orchestrator (ADO) is the recommended strategic direction for integration in V2/V3 of the RPM apps, replacing the legacy data hub pattern.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3014
+::::[choice]<p>What does the "Deploy" characteristic of the Application Framework enable a builder to do?</p>{
+	~%0%<p>Bundle models, apps, and integrations into a use case package</p>#
+	~%0%<p>Modify the application within defined boundaries</p>#
+	~%0%<p>Track and offer new versions of the application</p>#
+	=%1000%<p>Push the application to the customer tenant to kick off setup</p>#
+}
+
+// question: 3015
+::::[choice]<p>Which of the following are the five key characteristics of the Anaplan Application Framework? (Select 5)</p>{
+	~%200%<p>Deploy</p>#
+	~%200%<p>Package</p>#
+	~%-500%<p>Integrate</p>#
+	~%200%<p>Version</p>#
+	~%-500%<p>Optimize</p>#
+	~%200%<p>Configure</p>#
+	~%200%<p>Upgrade</p>#
+}
+
+// question: 3016
+::::[choice]<p>Which of the following RPM apps are delivered via a configurator UI (as opposed to a templated application)? (Select 3)</p>{
+	~%-500%<p>Integrated Financial Planning (IFP)</p>#
+	~%334%<p>Go-to-Market Capacity Planning</p>#
+	~%333%<p>Territory &amp; Quota</p>#
+	~%333%<p>Account Segmentation &amp; Scoring</p>#
+	~%-500%<p>Sales Forecasting</p>#
+	~%-500%<p>Anaplan Workforce Planning (OWP)</p>#
+}
+
+// question: 3017
+::::[choice]<p>Which of the following are pre-flight prerequisites every RPM implementation needs in place before configurator runs can begin? (Select 2)</p>{
+	~%-500%<p>A chosen Forecaster algorithm</p>#
+	~%500%<p>A sales hierarchy with employees at the leaf level</p>#
+	~%-500%<p>An ICM target system selected</p>#
+	~%-500%<p>CoModeler enabled on the workspace</p>#
+	~%-500%<p>Salesforce Connector configured</p>#
+	~%500%<p>The customer's GTM hierarchy data prepared and validated</p>#
+}
+
+// question: 3018
+::::[choice]<p>What is the single core question Territory &amp; Quota is designed to answer?</p>{
+	~%0%<p>Which deals are at risk of slipping</p>#
+	~%0%<p>How many reps do we need to cover the territory</p>#
+	=%1000%<p>What is each rep's quota, and how is it calculated</p>#
+	~%0%<p>Which accounts have the highest potential value</p>#
+}
+
+// question: 3019
+::::[choice]<p>True or False\: T&amp;Q's quota outputs stay internal to Anaplan — they are not typically pushed to downstream systems like Incentive Compensation Management (ICM).</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3020
+::::[choice]<p>What is the canonical T&amp;Q quota calculation pattern?</p>{
+	=%1000%<p>Base Target × Assignment % × Ramp Factor</p>#
+	~%0%<p>Region GDP × Market Share × Growth Rate</p>#
+	~%0%<p>Account Potential × Coverage Ratio × Headcount</p>#
+	~%0%<p>Pipeline × Win Rate × Forecast Category</p>#
+}
+
+// question: 3021
+::::[choice]<p>What is CoModeler used for during the T&amp;Q model review?</p>{
+	=%1000%<p>Generating line item dictionaries and explaining formula logic in natural language</p>#
+	~%0%<p>Generating SQL queries against the Anaplan model</p>#
+	~%0%<p>Replacing the Anaplan model with a Python equivalent</p>#
+	~%0%<p>Connecting the model to Salesforce automatically</p>#
+}
+
+// question: 3022
+::::[choice]<p>True or False\: CoModeler is enabled on every Anaplan tenant and workspace by default.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3023
+::::[choice]<p>If a single rep covers multiple territories at different assignment percentages, which module consolidates their quota for downstream ICM export?</p>{
+	~%0%<p>SYS Target Allocation</p>#
+	=%1000%<p>The Calc Quota by Quota Types consolidation module</p>#
+	~%0%<p>SYS Account Assignment</p>#
+	~%0%<p>SYS Resource Assignment</p>#
+}
+
+// question: 3024
+::::[choice]<p>True or False\: The DCA modules in T&amp;Q control which users can edit which data and are critical to a working approval flow.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3025
+::::[choice]<p>The "Custom Ramp Profiles" T&amp;Q extension is most often driven by which customer condition?</p>{
+	=%1000%<p>Different geographies (e.g. APAC vs EMEA) have materially different ramp times</p>#
+	~%0%<p>The customer is on a non-Salesforce CRM</p>#
+	~%0%<p>The customer's hierarchy uses positions instead of employees</p>#
+	~%0%<p>CoModeler is unavailable on the tenant</p>#
+}
+
+// question: 3026
+::::[choice]<p>What is the primary purpose of the SYS Resource Assignment module?</p>{
+	~%0%<p>Track top-down target cascade</p>#
+	=%1000%<p>Map reps to territories with effective dates</p>#
+	~%0%<p>Map accounts to territories</p>#
+	~%0%<p>Calculate the rep's quota</p>#
+}
+
+// question: 3027
+::::[choice]<p>True or False\: The T&amp;Q Spoke App map view (geo mapping) is primarily a Finance-facing dashboard intended for the CFO and CFO-staff reporting.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3028
+::::[choice]<p>During the T&amp;Q post-generation phase, what should an implementer verify FIRST?</p>{
+	~%0%<p>Set up CoModeler for the customer</p>#
+	=%1000%<p>That the base model is correct before performing data loads</p>#
+	~%0%<p>Run the configurator lab a second time for practice</p>#
+	~%0%<p>Connect the model to ADO</p>#
+}
+
+// question: 3029
+::::[choice]<p>Which T&amp;Q resource should be shared with the customer at or before Session Zero?</p>{
+	=%1000%<p>T&amp;Q Planning App Data Prep Workbook V2.0</p>#
+	~%0%<p>Configurator CloudWorks Case Study Handout</p>#
+	~%0%<p>T&amp;Q Application Extension Estimation Template</p>#
+	~%0%<p>TnQ Extension Suggestions</p>#
+}
+
+// question: 3030
+::::[choice]<p>The CloudWorks Case Study Handout is used in the workshop as\:</p>{
+	~%0%<p>The platform integration tool for connecting Anaplan to AWS</p>#
+	~%0%<p>A replacement for the configurator</p>#
+	~%0%<p>A glossary of T&amp;Q technical terms</p>#
+	=%1000%<p>The reference scenario used throughout the configurator and post-gen labs</p>#
+}
+
+// question: 3031
+::::[choice]<p>True or False\: Account-segment inputs used in T&amp;Q for territory carving and the Rule Engine are typically pulled directly from the CRM, bypassing the Account Segmentation &amp; Scoring app.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3032
+::::[choice]<p>Which T&amp;Q extension typically adds the MOST complexity because it introduces a new model dimension?</p>{
+	~%0%<p>Custom Ramp Profiles</p>#
+	~%0%<p>Renaming a line item</p>#
+	=%1000%<p>Revenue Target by Product Line</p>#
+	~%0%<p>Additional Scenario Management</p>#
+}
+
+// question: 3033
+::::[choice]<p>What is the primary purpose of the "1.01 Data Hub Setup" step in the T&amp;Q Configurator?</p>{
+	~%0%<p>Choose which Anaplan workspaces will host the generated model</p>#
+	~%0%<p>Define the rep-level quotas before generation</p>#
+	=%1000%<p>Configure the connection to the upstream data source(s) that feed the T&amp;Q model</p>#
+	~%0%<p>Set the time horizon for the territory plan</p>#
+}
+
+// question: 3034
+::::[choice]<p>In T&amp;Q, which module is responsible for cascading top-down targets through the territory hierarchy?</p>{
+	~%0%<p>SYS Account Assignment</p>#
+	=%1000%<p>SYS Target Allocation</p>#
+	~%0%<p>SYS Territory Quota</p>#
+	~%0%<p>SYS Resource Assignment</p>#
+}
+
+// question: 3035
+::::[choice]<p>In T&amp;Q, what information must be captured for a sales rep's resource assignment to be valid?</p>{
+	~%0%<p>Rep, territory, and quota amount</p>#
+	~%0%<p>Rep, territory, quota amount, and tenure</p>#
+	~%0%<p>Just the rep's name and territory</p>#
+	=%1000%<p>Rep, territory, and assignment percentage with effective dates</p>#
+}
+
+// question: 3036
+::::[choice]<p>Which T&amp;Q quota type captures "new business" only (excluding renewals)?</p>{
+	~%0%<p>Pipeline target</p>#
+	~%0%<p>ARR target</p>#
+	=%1000%<p>NNACV (Net New ACV) target</p>#
+	~%0%<p>Total revenue target</p>#
+}
+
+// question: 3037
+::::[choice]<p>What is the typical time granularity for rep quotas in T&amp;Q?</p>{
+	=%1000%<p>Monthly or quarterly</p>#
+	~%0%<p>Weekly</p>#
+	~%0%<p>Daily</p>#
+	~%0%<p>Annual only</p>#
+}
+
+// question: 3038
+::::[choice]<p>In T&amp;Q, what does the "Enable for Calculations" flag on an attribute control?</p>{
+	~%0%<p>Whether the attribute appears in UX pages</p>#
+	~%0%<p>Whether the attribute can be edited by reps</p>#
+	~%0%<p>Whether the attribute syncs to Salesforce</p>#
+	=%1000%<p>Whether the attribute is included in downstream calculations and rules</p>#
+}
+
+// question: 3039
+::::[choice]<p>What dimensional structure is recommended for a customer's T&amp;Q territory hierarchy?</p>{
+	=%1000%<p>Multi-level composite hierarchy matching the customer's GTM structure</p>#
+	~%0%<p>Time-versioned single level</p>#
+	~%0%<p>Flat list with no levels</p>#
+	~%0%<p>Two-level (territory and region) only</p>#
+}
+
+// question: 3040
+::::[choice]<p>In T&amp;Q, what is the cleanest way to handle territory boundary changes that take effect mid-year?</p>{
+	~%0%<p>Re-run the entire configurator at mid-year</p>#
+	~%0%<p>Manually adjust each affected rep's quota</p>#
+	~%0%<p>Create a parallel territory hierarchy for the new boundaries</p>#
+	=%1000%<p>Use effective-dated resource assignments to reflect the change at the boundary date</p>#
+}
+
+// question: 3041
+::::[choice]<p>In a typical T&amp;Q implementation, account-to-territory assignment most often comes from:</p>{
+	=%1000%<p>The Account Segmentation app or upstream CRM data</p>#
+	~%0%<p>The Capacity Planning app</p>#
+	~%0%<p>Direct entry into T&amp;Q by territory managers</p>#
+	~%0%<p>A manual spreadsheet maintained by Sales Ops</p>#
+}
+
+// question: 3042
+::::[choice]<p>Which downstream system most commonly consumes T&amp;Q quota outputs as the basis for commission calculations?</p>{
+	~%0%<p>Anaplan Workforce Planning (OWP)</p>#
+	=%1000%<p>Incentive Compensation Management (ICM)</p>#
+	~%0%<p>Salesforce Forecast module</p>#
+	~%0%<p>Anaplan Sales Forecasting</p>#
+}
+
+// question: 3043
+::::[choice]<p>Which T&amp;Q configurator step typically defines the Quota Types the customer needs to track?</p>{
+	=%1000%<p>1.06 Target and Allocation</p>#
+	~%0%<p>1.09 Rule Engine</p>#
+	~%0%<p>1.02 Hierarchy Setup</p>#
+	~%0%<p>1.01 Data Hub Setup</p>#
+}
+
+// question: 3044
+::::[choice]<p>True or False\: The T&amp;Q answer-key appendix is designed to show what each configurator step's output should look like once complete.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3045
+::::[choice]<p>True or False\: T&amp;Q's territory hierarchy must always have exactly three levels (Region → Sub-Region → Territory) for the configurator to generate correctly.</p>{
+	=%1000%<p>False</p>#
+	~%0%<p>True</p>#
+}
+
+// question: 3046
+::::[choice]<p>Which of the following are T&amp;Q modules directly involved in calculating the rep quota pipeline that flows to downstream ICM? (Select 3)</p>{
+	~%-500%<p>SYS Account Assignment</p>#
+	~%334%<p>SYS Territory Quota</p>#
+	~%333%<p>Calc Quota by Quota Types</p>#
+	~%333%<p>SYS Resource Assignment</p>#
+	~%-500%<p>CoModeler</p>#
+	~%-500%<p>DCA modules</p>#
+}
+
+// question: 3047
+::::[choice]<p>Which of the following are common T&amp;Q implementation extensions partners deliver? (Select all that apply)</p>{
+	~%250%<p>Custom Ramp Profiles</p>#
+	~%-500%<p>Salesforce Connector swap-out</p>#
+	~%-500%<p>Forecaster engine replacement</p>#
+	~%250%<p>Revenue Target by Product Line</p>#
+	~%250%<p>Multi-Currency Forecasting</p>#
+	~%250%<p>ICM Integration</p>#
+}
+
+// question: 3048
+::::[choice]<p>Which of the following directly drive the quota calculated for a rep on a given territory? (Select 4)</p>{
+	~%250%<p>Quota Type (NNACV, Pipeline, etc.)</p>#
+	~%250%<p>Ramp Factor (tenure-based)</p>#
+	~%-500%<p>The rep's CRM forecast category</p>#
+	~%-500%<p>Number of accounts in the territory</p>#
+	~%250%<p>Base Target from top-down allocation</p>#
+	~%250%<p>Assignment percentage (effective-dated)</p>#
+	~%-500%<p>The customer's industry vertical</p>#
+}
+
+// question: 3049
+::::[choice]<p>Which of the following changes typically require re-running the T&amp;Q configurator (as opposed to being handled as an extension)? (Select 3)</p>{
+	~%-500%<p>Adding a new rep to the resource assignment</p>#
+	~%334%<p>Toggling the multi-currency configuration</p>#
+	~%333%<p>Changing the number of hierarchy levels on a dimension</p>#
+	~%-500%<p>Updating a quota target value for an existing rep</p>#
+	~%-500%<p>Renaming an existing module</p>#
+	~%-500%<p>Adding a new ramp profile</p>#
+	~%333%<p>Adding a new top-level standard dimension</p>#
+}
+
+// question: 3050
+::::[choice]<p>Which of the following are downstream consumers of T&amp;Q outputs in a typical RPM implementation? (Select 3)</p>{
+	~%-500%<p>Account Segmentation &amp; Scoring</p>#
+	~%334%<p>CRM (territory assignments written back to Salesforce)</p>#
+	~%333%<p>Sales Forecasting (Leaderboard attainment denominator)</p>#
+	~%333%<p>Incentive Compensation Management (ICM)</p>#
+	~%-500%<p>Anaplan Workforce Planning (OWP)</p>#
+	~%-500%<p>Customer's data warehouse</p>#
+}
+
+// question: 3051
+::::[choice]<p>Which of the following documents should partners share with the customer at or before Session Zero? (Select 3)</p>{
+	~%-500%<p>Forecaster Algorithm Selection Guide</p>#
+	~%334%<p>Configurator CloudWorks Case Study Handout</p>#
+	~%-500%<p>ICM Integration Manual</p>#
+	~%-500%<p>Capacity Implementation Guide</p>#
+	~%333%<p>T&amp;Q Planning App Data Prep Workbook V2.0</p>#
+	~%333%<p>Discovery Template — T&amp;Q V3</p>#
+}
+
+// question: 3052
+::::[choice]<p>What is the core question that the Account Segmentation app answers?</p>{
+	~%0%<p>How many reps do we need next quarter</p>#
+	=%1000%<p>Which segment does each account belong to, and why</p>#
+	~%0%<p>Which deals are most likely to close</p>#
+	~%0%<p>What is each rep's quota</p>#
+}
+
+// question: 3053
+::::[choice]<p>Account Segmentation supports two segmentation methods. They are\:</p>{
+	~%0%<p>Manual and Automated</p>#
+	=%1000%<p>Rule-Based and Score-Based</p>#
+	~%0%<p>Internal and External</p>#
+	~%0%<p>Top-down and bottom-up</p>#
+}
+
+// question: 3054
+::::[choice]<p>True or False\: In Rule-Based segmentation, accounts matching explicit attribute criteria are assigned to a segment.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3055
+::::[choice]<p>In Score-Based segmentation, what determines an account's segment assignment?</p>{
+	~%0%<p>The account's geographic location alone</p>#
+	=%1000%<p>A numeric score that maps to a segment band</p>#
+	~%0%<p>A random number generator</p>#
+	~%0%<p>The account's industry alone</p>#
+}
+
+// question: 3056
+::::[choice]<p>Score-Based segmentation is typically used as\:</p>{
+	~%0%<p>A pricing engine</p>#
+	~%0%<p>A complete replacement for rule-based segmentation</p>#
+	~%0%<p>A scoring system for sales reps' performance</p>#
+	=%1000%<p>A catch-all for accounts that don't cleanly match any explicit rule</p>#
+}
+
+// question: 3057
+::::[choice]<p>True or False\: Segment outputs from the Segmentation app flow directly into both T&amp;Q (for territory carving) and Capacity Planning (for coverage ratios).</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3058
+::::[choice]<p>Changes in account segmentation typically have what effect on Capacity Planning?</p>{
+	~%0%<p>Force a full re-implementation of Capacity</p>#
+	=%1000%<p>Change headcount requirements because segment counts drive coverage ratios</p>#
+	~%0%<p>No effect; the two apps are fully independent</p>#
+	~%0%<p>Increase the number of available sales scenarios</p>#
+}
+
+// question: 3059
+::::[choice]<p>Beyond the segment attribute per account, what other key output does Account Segmentation produce?</p>{
+	=%1000%<p>Wallet size / addressable spend per account</p>#
+	~%0%<p>Pipeline coverage ratio</p>#
+	~%0%<p>Ramp profile per role</p>#
+	~%0%<p>Quota per rep</p>#
+}
+
+// question: 3060
+::::[choice]<p>True or False\: The Account Segmentation app provides a sandbox for designing CRM data structures and Salesforce object hierarchies.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3061
+::::[choice]<p>"Segment inflow/outflow analysis" in the Segmentation app refers to\:</p>{
+	~%0%<p>The volume of CRM data flowing in via ADO</p>#
+	=%1000%<p>A comparison of current segmentation against the prior segmentation</p>#
+	~%0%<p>The number of new accounts created each quarter</p>#
+	~%0%<p>The pipeline movement between sales stages</p>#
+}
+
+// question: 3062
+::::[choice]<p>Which dimension is required across the Segmentation model for the app to function?</p>{
+	=%1000%<p>Account hierarchy</p>#
+	~%0%<p>Product hierarchy</p>#
+	~%0%<p>Time only</p>#
+	~%0%<p>Sales role hierarchy</p>#
+}
+
+// question: 3063
+::::[choice]<p>True or False\: Segment counts have no impact on Capacity Planning — coverage-ratio calculations in Capacity are computed independently from headcount data only.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3064
+::::[choice]<p>In Segmentation, what is a "wallet" in the context of wallet-size estimation?</p>{
+	=%1000%<p>The total addressable spend a customer could direct to your category of products</p>#
+	~%0%<p>A customer's annual revenue</p>#
+	~%0%<p>A customer's bank account balance</p>#
+	~%0%<p>The amount allocated for marketing spend</p>#
+}
+
+// question: 3065
+::::[choice]<p>A score-based segmentation typically uses what kind of inputs?</p>{
+	=%1000%<p>A weighted combination of firmographic, behavioral, and engagement attributes</p>#
+	~%0%<p>Only firmographic attributes (industry, size)</p>#
+	~%0%<p>Only intent data from third-party sources</p>#
+	~%0%<p>Manual ranking by Sales Ops only</p>#
+}
+
+// question: 3066
+::::[choice]<p>How is the "Strategic" segment most commonly defined in Account Segmentation?</p>{
+	~%0%<p>Accounts with the most pipeline in the current quarter</p>#
+	~%0%<p>All accounts above a fixed annual revenue threshold (e.g. $1B)</p>#
+	=%1000%<p>Accounts in a top wallet-size band that also match the highest-priority attribute criteria</p>#
+	~%0%<p>Accounts personally flagged by the CEO</p>#
+}
+
+// question: 3067
+::::[choice]<p>What does "segment inflow/outflow analysis" tell you?</p>{
+	~%0%<p>Sales rep movement between teams</p>#
+	~%0%<p>Pipeline movement between sales stages</p>#
+	=%1000%<p>Which accounts have moved between segments between segmentation runs</p>#
+	~%0%<p>How many new accounts were created in the period</p>#
+}
+
+// question: 3068
+::::[choice]<p>How frequently do most customers refresh their account segmentation?</p>{
+	~%0%<p>Annually only</p>#
+	~%0%<p>Daily</p>#
+	=%1000%<p>Quarterly or annually, with mid-period overrides as needed</p>#
+	~%0%<p>In real time on every CRM update</p>#
+}
+
+// question: 3069
+::::[choice]<p>Why is the GTM hierarchy sandbox feature of Segmentation valuable?</p>{
+	~%0%<p>It connects directly to Incentive Compensation Management</p>#
+	~%0%<p>It exports segmented data directly to the data warehouse</p>#
+	=%1000%<p>It lets Sales Ops test alternative segment definitions before committing them</p>#
+	~%0%<p>It generates marketing email lists from segmented accounts</p>#
+}
+
+// question: 3070
+::::[choice]<p>Which of the following are core outputs of the Account Segmentation &amp; Scoring app? (Select 3)</p>{
+	~%-500%<p>Rep-level quota assignment</p>#
+	~%-500%<p>Pipeline coverage ratio</p>#
+	~%-500%<p>Ramp profile per role</p>#
+	~%334%<p>Wallet size / addressable spend per account</p>#
+	~%333%<p>Segment inflow/outflow analysis</p>#
+	~%333%<p>Segment attribute per account</p>#
+}
+
+// question: 3071
+::::[choice]<p>Which of the following are typical attributes used in score-based account segmentation? (Select 3)</p>{
+	~%334%<p>Annual revenue / size band</p>#
+	~%333%<p>Industry vertical</p>#
+	~%-500%<p>Sales rep tenure</p>#
+	~%-500%<p>Anaplan workspace size</p>#
+	~%-500%<p>Pipeline value last quarter</p>#
+	~%333%<p>Account engagement / activity signal</p>#
+}
+
+// question: 3072
+::::[choice]<p>When account segmentation is refreshed, which of the following downstream outputs change as a consequence? (Select 4)</p>{
+	~%250%<p>Capacity Planning coverage ratios per segment</p>#
+	~%250%<p>Account potential value seen on the Sales Forecasting Accounts page</p>#
+	~%-500%<p>Salesforce User records</p>#
+	~%-500%<p>Closed-won opportunity records in CRM</p>#
+	~%-500%<p>Workshop knowledge-check question bank</p>#
+	~%250%<p>T&amp;Q territory carving (segments as account attributes)</p>#
+	~%250%<p>Account-level wallet sizes</p>#
+}
+
+// question: 3073
+::::[choice]<p>Capacity Planning's core question is\:</p>{
+	~%0%<p>What is each rep's quota</p>#
+	~%0%<p>Which accounts are most strategic</p>#
+	~%0%<p>How accurate is our forecast</p>#
+	=%1000%<p>Do we have enough headcount, with the right ramp, to cover the plan</p>#
+}
+
+// question: 3074
+::::[choice]<p>The "holy grail" Capacity demo moment is\:</p>{
+	~%0%<p>Running CoModeler for the first time</p>#
+	~%0%<p>Showing the Application Framework versions screen</p>#
+	=%1000%<p>Telling a VP of Sales Finance "hire 2 AEs in January, 3 in April — here's when you close the revenue gap"</p>#
+	~%0%<p>Connecting the model to Salesforce</p>#
+}
+
+// question: 3075
+::::[choice]<p>True or False\: Capacity Planning supports different ramp profiles for different sales roles.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3076
+::::[choice]<p>Which Capacity Planning extension typically requires connecting to a separate Anaplan application?</p>{
+	~%0%<p>Custom Ramp Profiles</p>#
+	=%1000%<p>OWP Integration</p>#
+	~%0%<p>Segmentation Auto-Sync</p>#
+	~%0%<p>Additional Scenario Management</p>#
+}
+
+// question: 3077
+::::[choice]<p>What does OWP stand for in the Capacity Planning context?</p>{
+	=%1000%<p>Operational Workforce Planning</p>#
+	~%0%<p>Open Workforce Pipeline</p>#
+	~%0%<p>Optimized Workforce Plan</p>#
+	~%0%<p>Anaplan Workforce Planning</p>#
+}
+
+// question: 3078
+::::[choice]<p>True or False\: The Capacity Planning base offering provides five ramp profiles, and adding more is treated as a medium-sized extension.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3079
+::::[choice]<p>"Custom Cost Modeling" in Capacity adds what to the financial picture?</p>{
+	~%0%<p>CRM license cost</p>#
+	=%1000%<p>Fully-loaded cost per hire (base + benefits + equipment + recruiting cost)</p>#
+	~%0%<p>Workspace cost optimization</p>#
+	~%0%<p>Configurator licensing cost</p>#
+}
+
+// question: 3080
+::::[choice]<p>The default Capacity configurator fixes the number of scenarios at which point?</p>{
+	~%0%<p>Runtime, dynamically based on user input</p>#
+	~%0%<p>Quarterly, via a scheduled job</p>#
+	~%0%<p>Compile time</p>#
+	=%1000%<p>Generation time, with adding more scenarios post-gen treated as an extension</p>#
+}
+
+// question: 3081
+::::[choice]<p>True or False\: Capacity Planning has more common extensions than T&amp;Q, mostly small in size and quick to deliver.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3082
+::::[choice]<p>Which discovery question carries the highest priority when scoping a Capacity Planning project?</p>{
+	~%0%<p>Whether CoModeler is enabled on the tenant</p>#
+	~%0%<p>Which CRM the customer is currently using</p>#
+	=%1000%<p>Who sets the top-down headcount budget — Finance, Sales Leadership, or both — and at what geographic level</p>#
+	~%0%<p>Whether the customer uses Slack or Teams</p>#
+}
+
+// question: 3083
+::::[choice]<p>"Revenue Target by Product Line" is a Medium-sized Capacity extension. What makes it Medium?</p>{
+	~%0%<p>It requires CoModeler access</p>#
+	~%0%<p>Finance always pays for it</p>#
+	~%0%<p>It requires modifying the configurator</p>#
+	=%1000%<p>It requires adding a product dimension to revenue target and coverage modules</p>#
+}
+
+// question: 3084
+::::[choice]<p>True or False\: Capacity Planning natively handles position management (open headcount positions tied to org structure), so a customer's choice between position-based and people-based planning does not change how Capacity is configured or extended.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3085
+::::[choice]<p>"Segmentation Auto-Sync" is a small Capacity extension that does what?</p>{
+	~%0%<p>Renames the Capacity app to "Segmentation"</p>#
+	~%0%<p>Replaces Capacity with the Segmentation app entirely</p>#
+	~%0%<p>Generates a brand-new app from the configurator</p>#
+	=%1000%<p>Automates the segment-count feed from Segmentation to Capacity coverage ratios via ADO</p>#
+}
+
+// question: 3086
+::::[choice]<p>"Actual hire dates vs. planned hire dates" data is required to enable which Capacity feature?</p>{
+	~%0%<p>Renaming dimensions</p>#
+	~%0%<p>Configurator initial setup</p>#
+	=%1000%<p>Meaningful AOP snapshot comparison</p>#
+	~%0%<p>ADO connectivity</p>#
+}
+
+// question: 3087
+::::[choice]<p>What is the primary purpose of "ramp profiles" in Capacity Planning?</p>{
+	~%0%<p>Modeling sales rep attrition rates</p>#
+	~%0%<p>Tracking promotions through the sales hierarchy</p>#
+	~%0%<p>Forecasting commission payouts</p>#
+	=%1000%<p>Modeling the time it takes a new hire to reach full productivity</p>#
+}
+
+// question: 3088
+::::[choice]<p>In Capacity Planning, what does "coverage ratio" describe?</p>{
+	~%0%<p>The percentage of territories that have rep quota assignments</p>#
+	=%1000%<p>The ratio of sales reps assigned to a segment relative to the account count in that segment</p>#
+	~%0%<p>The ratio of sales reps to managers in the hierarchy</p>#
+	~%0%<p>The percentage of pipeline covered by closed-won deals</p>#
+}
+
+// question: 3089
+::::[choice]<p>Why does Capacity Planning need actual hire dates (not just planned ones)?</p>{
+	~%0%<p>For onboarding workflow triggers</p>#
+	=%1000%<p>For the AOP snapshot comparison — tracking planned vs actual hiring against forecast</p>#
+	~%0%<p>For badge and system access provisioning</p>#
+	~%0%<p>For payroll system integration</p>#
+}
+
+// question: 3090
+::::[choice]<p>Which input typically drives the bottoms-up hiring plan in Capacity Planning?</p>{
+	~%0%<p>HR's annual budget submission to Finance</p>#
+	=%1000%<p>Territory- or team-level manager input on required headcount</p>#
+	~%0%<p>Marketing's MQL forecast for the year</p>#
+	~%0%<p>The CEO's annual planning kickoff memo</p>#
+}
+
+// question: 3091
+::::[choice]<p>Which of the following are required inputs to Capacity Planning? (Select 4)</p>{
+	~%250%<p>Sales hierarchy with employees at the leaf</p>#
+	~%-500%<p>Salesforce Connector configuration</p>#
+	~%-500%<p>Anaplan Prediction confidence levels</p>#
+	~%250%<p>Role-based ramp profiles</p>#
+	~%250%<p>Coverage ratios by segment</p>#
+	~%-500%<p>Closed-won opportunity history</p>#
+	~%250%<p>Top-down revenue or NNACV targets</p>#
+}
+
+// question: 3092
+::::[choice]<p>Which of the following are properties of a sales rep ramp profile in Capacity Planning? (Select 3)</p>{
+	~%334%<p>Productivity percentage per month of tenure</p>#
+	~%-500%<p>The rep's quota for the year</p>#
+	~%333%<p>Role-specific (different ramps per sales role)</p>#
+	~%-500%<p>Account count assigned to the rep</p>#
+	~%333%<p>Duration (in months) until full productivity</p>#
+	~%-500%<p>The rep's territory assignment</p>#
+}
+
+// question: 3093
+::::[choice]<p>Which of the following changes typically require regenerating the Capacity Planning app via the configurator (vs. being handled as a routine data update)? (Select 3)</p>{
+	~%334%<p>Adding a new sales role with a distinct ramp profile</p>#
+	~%-500%<p>Updating individual rep hire dates</p>#
+	~%-500%<p>Adjusting Q3 quota targets in the dataset</p>#
+	~%333%<p>Changing the role hierarchy structure</p>#
+	~%333%<p>Toggling whether to use Anaplan Workforce Planning (OWP) integration</p>#
+	~%-500%<p>Adding a new account to the data hub</p>#
+}
+
+// question: 3094
+::::[choice]<p>Sales Forecasting V1 is delivered as\:</p>{
+	=%1000%<p>A templated application via the Anaplan Application Framework</p>#
+	~%0%<p>A blank model the customer builds from scratch</p>#
+	~%0%<p>A Salesforce AppExchange package</p>#
+	~%0%<p>A per-implementation configurator UI like T&amp;Q</p>#
+}
+
+// question: 3095
+::::[choice]<p>Sales Forecasting supports three user types. They are\:</p>{
+	=%1000%<p>Sales representatives, Sales managers, RevOps leaders</p>#
+	~%0%<p>Sales rep, Sales VP, Anaplan Admin</p>#
+	~%0%<p>AE, Manager, RevOps Engineer</p>#
+	~%0%<p>Configurator, Generator, Implementer</p>#
+}
+
+// question: 3096
+::::[choice]<p>How many top-level pages does the Sales Forecasting application have?</p>{
+	~%0%<p>22</p>#
+	~%0%<p>5</p>#
+	~%0%<p>3</p>#
+	=%1000%<p>6</p>#
+}
+
+// question: 3097
+::::[choice]<p>Which Sales Forecast sub-page is the rep / manager-facing AI baseline comparison view?</p>{
+	~%0%<p>Opportunities</p>#
+	~%0%<p>Forecast</p>#
+	=%1000%<p>Anaplan Prediction</p>#
+	~%0%<p>Scenarios</p>#
+}
+
+// question: 3098
+::::[choice]<p>True or False\: The Anaplan Prediction — Sales Ops page is where Sales Ops chooses which algorithm and confidence level the organization runs on.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3099
+::::[choice]<p>The Scenarios sub-page enforces a cascading inclusion rule across the three scenarios. What is it?</p>{
+	=%1000%<p>Worst ⊆ Most Likely ⊆ Best (inclusion cascades upward)</p>#
+	~%0%<p>Worst = Most Likely = Best (the three scenarios are identical)</p>#
+	~%0%<p>The three scenarios are completely independent of each other</p>#
+	~%0%<p>Best ⊆ Most Likely ⊆ Worst (inclusion cascades downward)</p>#
+}
+
+// question: 3100
+::::[choice]<p>The Sales Forecasting V1 reference integration is built around which CRM?</p>{
+	~%0%<p>Microsoft Dynamics</p>#
+	~%0%<p>NetSuite</p>#
+	=%1000%<p>Salesforce</p>#
+	~%0%<p>HubSpot</p>#
+}
+
+// question: 3101
+::::[choice]<p>Which list correctly names algorithms in the Forecaster panel surfaced in Sales Forecasting V1?</p>{
+	~%0%<p>Random Forest, KNN, SVM, AdaBoost</p>#
+	=%1000%<p>ETS, SARIMAX, Prophet, TimesFM, LightGBM, MULR/MVLR, DeepAR</p>#
+	~%0%<p>Decision Tree, Logistic Regression, Naive Bayes</p>#
+	~%0%<p>BERT, GPT, Llama, Mistral</p>#
+}
+
+// question: 3102
+::::[choice]<p>True or False\: P1 / P2 / P3 in the Forecaster context are confidence-interval percentile bands, where P1 is the tightest (narrowest) band and P3 is the widest (most cautious).</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3103
+::::[choice]<p>What is the two-step Sales Ops workflow to override the active forecasting methodology?</p>{
+	~%0%<p>Click Generate, then Deploy</p>#
+	=%1000%<p>Select an algorithm in Override Algorithm, then select a confidence level in Override Confidence Level</p>#
+	~%0%<p>Click Rebuild, then Publish</p>#
+	~%0%<p>Click Reset, then Retrain</p>#
+}
+
+// question: 3104
+::::[choice]<p>Which Sales Forecasting KPI directly compares Anaplan model accuracy vs. the manual forecast?</p>{
+	~%0%<p>Forecast Call</p>#
+	~%0%<p>Day-1 Forecast</p>#
+	~%0%<p>Anaplan Prediction Methodology Applied</p>#
+	=%1000%<p>Prediction Variance Comparison</p>#
+}
+
+// question: 3105
+::::[choice]<p>True or False\: Anaplan Prediction's confidence interval width is a fixed parameter Sales Ops sets manually during model training — wider settings produce more cautious forecasts.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3106
+::::[choice]<p>Which of the following are top-level pages in the Sales Forecasting application? (Select 6)</p>{
+	~%170%<p>Sales Insights</p>#
+	~%166%<p>Sales Pipeline</p>#
+	~%166%<p>Sales Overlays</p>#
+	~%-500%<p>Configurator</p>#
+	~%166%<p>Homepage</p>#
+	~%166%<p>Sales Forecast</p>#
+	~%-500%<p>Forecaster Configuration</p>#
+	~%-500%<p>Anaplan Way</p>#
+	~%166%<p>Sales Accounts</p>#
+}
+
+// question: 3107
+::::[choice]<p>Which of the following are the five sub-pages under the Sales Forecast top-level page in Sales Forecasting? (Select 5)</p>{
+	~%200%<p>Forecast</p>#
+	~%-500%<p>Channels</p>#
+	~%-500%<p>Hygiene</p>#
+	~%200%<p>Opportunities</p>#
+	~%200%<p>Anaplan Prediction — Sales Ops</p>#
+	~%200%<p>Anaplan Prediction</p>#
+	~%-500%<p>Leaderboard</p>#
+	~%200%<p>Scenarios</p>#
+	~%-500%<p>Accounts</p>#
+}
+
+// question: 3108
+::::[choice]<p>True or False\: Inter-app data flows in the RPM suite include T&amp;Q quotas flowing into Sales Forecasting as the attainment denominator on the Leaderboard.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3109
+::::[choice]<p>Where in the RPM workshop navigation does the "Inter-App Data Flows" reference page live?</p>{
+	=%1000%<p>Reference</p>#
+	~%0%<p>Getting Started</p>#
+	~%0%<p>Territory &amp; Quota</p>#
+	~%0%<p>Sales Forecasting</p>#
+}
+
+// question: 3110
+::::[choice]<p>True or False\: The "Common Extensions" page in each RPM app track catalogs typical customizations with size estimates (S / M / L) to help scope projects.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3111
+::::[choice]<p>Which inter-app dependency is correct?</p>{
+	~%0%<p>Sales Forecasting reads ramp profiles from T&amp;Q</p>#
+	~%0%<p>Capacity Planning publishes quotas to T&amp;Q</p>#
+	=%1000%<p>Sales Forecasting reads rep-level quotas from T&amp;Q and account segments / potential values from Segmentation</p>#
+	~%0%<p>Segmentation publishes quotas to Sales Forecasting</p>#
+}
+
+// question: 3112
+::::[choice]<p>True or False\: "Discovery questions" in each app's Common Extensions page are color-coded — red for highest priority, yellow for medium, green for nice-to-have — to mark which to ask first in scoping conversations.</p>{
+	~%0%<p>True</p>#
+	=%1000%<p>False</p>#
+}
+
+// question: 3113
+::::[choice]<p>Within the Application Framework "Create Application" dialog, which categories of objects can be packaged into a single application?</p>{
+	=%1000%<p>Models, UX apps, Workflows, Data Orchestrator, Assets, Analyst, System data</p>#
+	~%0%<p>Models and UX apps only</p>#
+	~%0%<p>Models, Workflows, Assets</p>#
+	~%0%<p>Workflows only</p>#
+}
+
+// question: 3114
+::::[choice]<p>True or False\: The Forecaster output should be positioned to customers as a baseline / coaching signal, not as an automatic override of rep commits, because automatic overrides collapse rep trust in the app.</p>{
+	=%1000%<p>True</p>#
+	~%0%<p>False</p>#
+}
+
+// question: 3115
+::::[choice]<p>Which sequence best reflects the typical inter-app data flow in the RPM suite?</p>{
+	=%1000%<p>Segmentation → T&amp;Q → Capacity → Sales Forecasting</p>#
+	~%0%<p>Capacity → Sales Forecasting → Segmentation → T&amp;Q</p>#
+	~%0%<p>T&amp;Q → Capacity → Segmentation → Sales Forecasting</p>#
+	~%0%<p>Sales Forecasting → T&amp;Q → Segmentation → Capacity</p>#
+}
+
+// question: 3116
+::::[choice]<p>The Anaplan Data Orchestrator (ADO) is the recommended replacement for what older RPM integration pattern?</p>{
+	~%0%<p>Email-based file transfer to the customer</p>#
+	~%0%<p>Excel exports between Anaplan workspaces</p>#
+	~%0%<p>Direct Salesforce API calls from each Anaplan model</p>#
+	=%1000%<p>Custom-built data hub models that other models read from</p>#
+}
+
+// question: 3117
+::::[choice]<p>Where in the RPM workshop site can you find the catalog of source documents (PPTs, Data Prep Workbooks, Implementation Guides)?</p>{
+	~%0%<p>Inter-App Data Flows</p>#
+	~%0%<p>Workshop Wrap-up</p>#
+	=%1000%<p>Resources &amp; Downloads</p>#
+	~%0%<p>Q&amp;A from Sessions</p>#
+}
+
+// question: 3118
+::::[choice]<p>Which of the following are applications in the RPM Apps suite? (Select 4)</p>{
+	~%-500%<p>Operational Workforce Planning (OWP)</p>#
+	~%-500%<p>Demand Planning</p>#
+	~%250%<p>Sales Forecasting</p>#
+	~%250%<p>Go-to-Market Capacity Planning</p>#
+	~%-500%<p>Integrated Financial Planning (IFP)</p>#
+	~%250%<p>Territory &amp; Quota</p>#
+	~%250%<p>Account Segmentation &amp; Scoring</p>#
+}
+
+// question: 3119
+::::[choice]<p>Which of the following are common data sources the Anaplan Data Orchestrator (ADO) connects into the RPM apps? (Select 4)</p>{
+	~%250%<p>External market data feeds</p>#
+	~%250%<p>Salesforce (or other CRM)</p>#
+	~%250%<p>HRIS for sales hierarchy data</p>#
+	~%250%<p>Customer ERP for account / financial data</p>#
+	~%-500%<p>Microsoft Teams chat history</p>#
+	~%-500%<p>GitHub issue tracker</p>#
+	~%-500%<p>Customer's Google Analytics</p>#
+}

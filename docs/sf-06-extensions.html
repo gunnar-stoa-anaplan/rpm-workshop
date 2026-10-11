@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Common Extensions — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting Common Extensions</h1>
+      <p class="subtitle">Typical customizations and how to scope them</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">Reference</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Because Sales Forecasting is delivered as a templated app rather than a configurator-generated one, almost every real implementation involves some extension work. The list below covers what comes up most often and how to scope each one early.</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Extension</th><th>Size</th><th>Notes</th></tr></thead>
+          <tbody>
+            <tr><td>Non-Salesforce CRM (HubSpot / Dynamics / Custom)</td><td>M</td><td>The data model stays the same; only the integration layer changes. Build a custom ADO pipeline that lands data in the same target structures the Salesforce Connector produces. Add ~40–80 hours depending on source maturity.</td></tr>
+            <tr><td>Non-Employee Leaf Hierarchies (Positions / Open Reqs)</td><td>M</td><td>The base app expects employees at the leaf of the Sales Hierarchy. If the customer plans against positions or open headcount, add a synthetic-employee mapping layer or refactor the hierarchy. Sequence-critical — do this before any rep-facing UAT.</td></tr>
+            <tr><td>Additional Opportunity Attributes</td><td>S–M</td><td>Custom opp fields (industry vertical, deal type, lead source detail) flowing through to forecast pages and analytics. Small if the field already exists in CRM; medium if it requires a new dimension on the opportunity module.</td></tr>
+            <tr><td>Custom Overlay Roles</td><td>M</td><td>Specialist, SE, partner-rep, and industry-overlay roles with bespoke split-credit rules. Extends the Overlays page and the attainment rollup. High-value for SaaS / security / industry-vertical orgs.</td></tr>
+            <tr><td>Alternate Account Hierarchies</td><td>S</td><td>Customers with multiple legitimate account groupings (global parent vs. billing parent vs. industry segment). Add the alternate as a parallel hierarchy and expose it as a switch on rollup pages.</td></tr>
+            <tr><td>Multi-Currency Forecasting</td><td>M</td><td>FX rate handling, local-currency rep views, USD-consolidated leadership views. Common for global orgs. Plan FX rate refresh cadence carefully — wrong rates make forecast deltas misleading.</td></tr>
+            <tr><td>Forecast Categories Beyond Default</td><td>S</td><td>If the customer uses non-standard forecast categories (e.g. "Strongest Commit", "Stretch Upside") with custom roll-up logic, extend the commit module and the rollup formulas. Small effort but needs careful UAT.</td></tr>
+            <tr><td>Custom Pipeline Snapshot Cadence</td><td>S</td><td>The default snapshot is weekly. Daily snapshots are possible but materially increase data volume. Confirm with customer whether weekly is sufficient for their forecast cadence.</td></tr>
+            <tr><td>Cross-Sell / Upsell Forecasting</td><td>M–L</td><td>Separating new-logo forecast from expansion / renewal forecast as distinct pipelines with their own coverage benchmarks. Requires opportunity tagging and parallel forecast rollups.</td></tr>
+            <tr><td>Forecaster Output Override Layer</td><td>S</td><td>Some customers want to gate published baseline updates behind a Sales Ops approval workflow. Small extension to the publish action with an approval state.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 Positioning Tip</span>
+        <p>The cleanest demo arc is: <strong>"This is the templated app out of the box. Here's a 60-day-extension that adds your overlay roles and your forecast categories. By day 90, your forecast call is running on a baseline trained on your own data."</strong> Customers buy the journey, not the static feature list.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Pre-Project Discovery Questions</h2>
+      <p>Use these before or during kickoff to assess Sales Forecasting fit and identify likely extensions early. ⭐ marks the highest-priority questions.</p>
+
+      <h3>CRM &amp; Data Foundation</h3>
+      <ul>
+        <li>⭐ What CRM is the source of truth for opportunities? If Salesforce, are you on the latest API version? If not, what custom CRM or system do you use?</li>
+        <li>⭐ Do you have at least 24 months of clean closed-won actuals at the opportunity level? Is the close-date field reliable?</li>
+        <li>How frequently does opportunity data need to flow into the forecasting app — daily, hourly, near-real-time?</li>
+        <li>Do you use opportunity-line-item data (product-level deal composition)? Is it reliable enough to drive product-level forecasting?</li>
+        <li>Do you currently capture forecast category at the opportunity level, or only at the rep aggregate level?</li>
+      </ul>
+
+      <h3>Hierarchies &amp; People</h3>
+      <ul>
+        <li>⭐ Does the sales hierarchy have actual individual employees at the leaf, or do you plan against positions / open reqs?</li>
+        <li>⭐ Do you have a stable territory hierarchy that maps opportunities to the right owning rep, or is ownership defined only on the CRM opportunity record?</li>
+        <li>How is the sales role taxonomy structured? Do you separate overlay roles (SE, specialist, partner) from primary AE roles cleanly?</li>
+        <li>Are sales hierarchies sourced from HRIS, T&amp;Q, or maintained separately for forecasting?</li>
+        <li>How often does the sales hierarchy change — quarterly, monthly, ad-hoc?</li>
+      </ul>
+
+      <h3>Forecast Process</h3>
+      <ul>
+        <li>⭐ What is the current weekly forecast cadence? Who runs the call — sales leader, sales ops, regional managers?</li>
+        <li>⭐ Do you currently use any statistical or ML forecast as a comparison signal, or is the forecast purely bottom-up commit?</li>
+        <li>What forecast categories do you use? Do they roll up to a consolidated single number, or do leadership and finance see different cuts?</li>
+        <li>How do you handle multi-rep deals (split credit) today? Is that data captured cleanly in CRM?</li>
+        <li>Do you forecast pipeline generation (NNACV) separately from closed-revenue forecast? Who owns NNACV targets?</li>
+      </ul>
+
+      <h3>Integration &amp; Operational</h3>
+      <ul>
+        <li>⭐ Is T&amp;Q live (or planned) as the source of rep-level quotas, or will quotas be imported manually?</li>
+        <li>Is Segmentation live as the source of account segments and potential values?</li>
+        <li>Do you plan in multiple currencies? What's your FX rate source and refresh cadence?</li>
+        <li>Who will operate the Forecaster engine on an ongoing basis — Sales Ops, Data Science, or a hybrid team?</li>
+        <li>What's the appetite for an approval gate on Forecaster publish actions versus auto-publish?</li>
+      </ul>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

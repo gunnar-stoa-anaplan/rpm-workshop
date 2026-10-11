@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacity Post-Generation Steps — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Capacity Post-Generation Steps</h1>
+      <p class="subtitle">From generation to a working Capacity Planning app</p>
+      <div class="badge-row">
+        <span class="content-badge">Capacity Module</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Capacity post-gen is comparable to Segmentation in complexity — simpler than T&amp;Q but with some specific validation steps around the tops-down/bottoms-up connection and ramp profile loading.</p>
+
+      <h2>Post-Gen Checklist</h2>
+      <ul class="checklist">
+        <li>Review generation error log (0–50 errors expected)</li>
+        <li>Fix formula reference errors in Capacity spoke modules</li>
+        <li>Load employee data with role hierarchy (Job Family Group → Job Family → Sales Role)</li>
+        <li>Load account data with segment attribute (from Segmentation output)</li>
+        <li>Configure ramp profiles per sales role</li>
+        <li>Validate ramp profile calculations — spot-check: hire an AE in month 1, confirm month-2 revenue output matches profile</li>
+        <li>Load coverage ratios per role per segment</li>
+        <li>Run tops-down suggested headcount calculation — confirm numbers look reasonable</li>
+        <li>Enter a test bottoms-up hiring plan for one region</li>
+        <li>Validate revenue projection output on the "holy grail" page</li>
+        <li>Demo app to customer — show the revenue gap closing as hires are added</li>
+      </ul>
+
+      <h2>Watch Out For</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Revenue Target Routing</h3>
+          <p>If you configured revenue targets at sub-region + segment level in the configurator, you need post-gen work to route the productivity model correctly. This is the #1 source of Capacity post-gen issues — flag it early.</p>
+        </div>
+        <div class="card">
+          <h3>Scenario Locking</h3>
+          <p>Always check workflow status before making changes. Locked scenarios are read-only. If a scenario is locked unexpectedly, check who submitted it and at what level — you may need to re-open it from the tops-down section.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pre-Sales Demo Playbook — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Pre-Sales Demo Playbook</h1>
+      <p class="subtitle">What to show, what to skip, and how to handle tough questions — by app</p>
+      <div class="badge-row">
+        <span class="content-badge">Reference</span>
+        <span class="content-badge">Pre-Sales</span>
+        <span class="content-badge">March 2026</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-note">
+        <span class="callout-label">📝 How to Use This Playbook</span>
+        <p>This page is sourced from real Q&amp;A and app walkthrough content from the March 2026 workshop. It tells you what to show in each app, what to avoid, how to run discovery, and how to handle capability questions honestly. Run discovery <em>before</em> the demo — the right screens depend on what the customer cares about.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Territory &amp; Quota (T&amp;Q)</h2>
+
+      <h3>Discovery Questions — Ask Before Demoing</h3>
+      <p>Run these in discovery to know which parts of the demo will land hardest:</p>
+      <ul>
+        <li>How do you currently carve territories? Is it done in Excel, a legacy tool, or something else?</li>
+        <li>How many territory hierarchy levels do you have (e.g., rep → sub-region → region → area)?</li>
+        <li>Do you currently set targets at the territory level or only at the rep level?</li>
+        <li>How do you handle mid-year changes — new hire, LOA, territory reassignment?</li>
+        <li>Do you need quota acknowledgement (seller sign-off) as part of the process?</li>
+        <li>Do you have an ICM system today? Does your quota data need to feed it?</li>
+        <li>Have you ever had reps dispute their quota — and how did you resolve it?</li>
+      </ul>
+
+      <h3>What to Show (in Order)</h3>
+      <ol>
+        <li>
+          <strong>Configurator — not the full walkthrough, just the concept.</strong> Show the configurator form briefly — the point is that the entire model is generated from answers to structured questions. "You don't build this model from scratch. You answer questions and the app generates it." This is the key differentiator vs. custom builds.
+        </li>
+        <li>
+          <strong>Target allocation cascade.</strong> Show how a top-down revenue target flows from the company level down through regions, areas, and territories. The visual hierarchy and the allocation percentages make this land. Tie it to the customer's own hierarchy if you know it.
+        </li>
+        <li>
+          <strong>Account assignment and the optimizer.</strong> Show account-to-territory mapping and the optimizer running — the before/after of balanced vs. imbalanced territories. This is where Sales Ops stakeholders lean in.
+        </li>
+        <li>
+          <strong>Resource assignment and quota calculation.</strong> Show a rep assigned to two territories at different percentages, with a ramp profile, and the resulting quota. This is the money shot for Sales Ops leaders who've fought quota disputes. "The formula is transparent — the rep can see exactly how their quota was calculated."
+        </li>
+        <li>
+          <strong>Approval workflow.</strong> Show the manager approval step — quota is locked once submitted, can't be retroactively changed. Addresses the "I didn't know about this change" problem. Keep it brief.
+        </li>
+      </ol>
+
+      <h3>What NOT to Show</h3>
+      <ul>
+        <li><strong>The backend generation logs.</strong> Error counts during generation look bad to non-technical audiences. 0–200 errors is normal but explaining that is a distraction.</li>
+        <li><strong>DCA (Data Configuration Architecture) pages.</strong> Access control is invisible to users by design. Showing it creates confusion about complexity.</li>
+        <li><strong>In-progress configurator settings you haven't filled out.</strong> Demo from a completed configuration, not a work-in-progress. Empty configurator pages look unfinished.</li>
+        <li><strong>The boomerang employee workaround</strong> unless they ask specifically. Monthly granularity is the correct answer; only get into extensions if they push.</li>
+      </ul>
+
+      <h3>Proof Points</h3>
+      <ul>
+        <li>Territory and quota setting is a recurring, annual pain — not a one-time project. The ROI compounds every year.</li>
+        <li>A well-configured T&amp;Q app can be generated in a day. This is the fastest path from zero to a working SPM model.</li>
+        <li>Customers without a territory hierarchy at all are strong candidates — the app helps them build the practice from scratch, not just automate an existing one.</li>
+        <li>T&amp;Q data is the foundation for Sales Forecasting and (eventually) ICM. Getting quota data structured correctly now sets up every future engagement.</li>
+      </ul>
+
+      <h3>Handling "Can It Do X?" Questions</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>"Can it handle mid-year territory changes?"</td>
+              <td>Yes — effective-dated assignments for both accounts and reps. A change takes effect on the date you set, and quota recalculates accordingly.</td>
+            </tr>
+            <tr>
+              <td>"Can a rep cover multiple territories?"</td>
+              <td>Yes — with assignment percentages. Rep A can be 50% North Bay and 50% South Bay, with quota calculated proportionally.</td>
+            </tr>
+            <tr>
+              <td>"Can it connect to Salesforce?"</td>
+              <td>Yes — via ADO or A4S for data ingestion. Note that write-back to Salesforce is not yet available; that's on the roadmap.</td>
+            </tr>
+            <tr>
+              <td>"Can it handle day-level tracking for leaves of absence?"</td>
+              <td>At monthly granularity in V3 base app. Day-level precision requires an extension — worth discussing whether that level of detail is actually needed vs. monthly rounding.</td>
+            </tr>
+            <tr>
+              <td>"Can partners access the configurator independently?"</td>
+              <td>After 3 projects with Apps team support, yes. The first 3 projects include non-chargeable Apps team involvement for generation and go-live support.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Account Segmentation</h2>
+
+      <h3>Discovery Questions — Ask Before Demoing</h3>
+      <ul>
+        <li>How do you currently segment accounts — by industry, employee count, potential spend, or a combination?</li>
+        <li>Do you use rule-based segmentation (explicit conditions), score-based (weighted metrics), or both?</li>
+        <li>Do you have third-party data (ZoomInfo, Sixth Sense, D&amp;B) available for scoring? Or are you working from CRM data only?</li>
+        <li>Is segmentation done before territory planning, or is territory and segmentation currently mixed together?</li>
+        <li>What do you do with accounts that don't have enough data to score reliably?</li>
+        <li>Does your segmentation need to feed T&amp;Q, or is it standalone?</li>
+      </ul>
+
+      <h3>What to Show (in Order)</h3>
+      <ol>
+        <li>
+          <strong>The configurator concept — same as T&amp;Q.</strong> Briefly: the model is generated from configuration decisions. The important ones for Segmentation are how many segments, what scoring metrics, what account hierarchy levels.
+        </li>
+        <li>
+          <strong>Account scoring page.</strong> Show a set of accounts with scores and the resulting segment assignments. The key visual is accounts getting different segments based on different score profiles. This resonates with Sales Ops teams who currently do this in Excel.
+        </li>
+        <li>
+          <strong>Rule-based segmentation.</strong> Show an explicit rule — "any account with 10,000+ employees in Financial Services is automatically Strategic." Contrast this with the score-based default. This is intuitive to audiences who've dealt with the "our top 50 accounts should always be Strategic regardless of score" problem.
+        </li>
+        <li>
+          <strong>UCP exclusion rules.</strong> Show filtering out accounts that are too small to be relevant. Brief — just establish that junk data doesn't pollute the planning model.
+        </li>
+        <li>
+          <strong>GTM hierarchy planning page.</strong> Show the connection between segmentation output and the proposed territory structure. This is the handoff point to T&amp;Q — and where Segmentation justifies its existence as a distinct app.
+        </li>
+      </ol>
+
+      <h3>What NOT to Show</h3>
+      <ul>
+        <li><strong>The UCP checkbox behavior</strong> without narrating it. The "exclude rule = checked = active = accounts excluded" double negative is easy to misread. If you show it, narrate carefully.</li>
+        <li><strong>Wallet size setup</strong> if the customer doesn't have the data. Don't show a feature they can't immediately use — it creates a "how do we get that data?" conversation that derails the demo.</li>
+        <li><strong>The full scoring weight configuration</strong> in admin. This is a detail that will confuse non-technical audiences. Show the output (accounts with segments), not the weight sliders.</li>
+      </ul>
+
+      <h3>Proof Points</h3>
+      <ul>
+        <li>Segmentation done in Excel is recalculated once a year, if that. Accounts drift in and out of segments without anyone noticing. The app gives you a live, formula-driven segment for every account.</li>
+        <li>Customers without a territory hierarchy are your best Segmentation candidates — they need to define how they tier accounts before they can design territories at all.</li>
+        <li>The connection to T&amp;Q (even if manual today) creates a planning workflow that doesn't exist in spreadsheets: segment → design territories → set targets → assign reps → calculate quota.</li>
+      </ul>
+
+      <h3>Handling "Can It Do X?" Questions</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>"Does it automatically update T&amp;Q when segmentation changes?"</td>
+              <td>Not automatically today — it's a manual export/import step or ADO pipeline. App-to-app native connections are on the roadmap but not yet built.</td>
+            </tr>
+            <tr>
+              <td>"What if we don't have firmographic data to score accounts?"</td>
+              <td>You can use CRM data, industry benchmarks, or customer estimates as scoring inputs. The app is a modeling exercise — the quality of the output depends on the quality of the inputs. Wallet size is optional if you don't have the data.</td>
+            </tr>
+            <tr>
+              <td>"Can it handle accounts that should always be in a specific segment?"</td>
+              <td>Yes — that's the rule-based layer. Named rules override the score-based default. Specific accounts or groups of accounts can be locked to a segment regardless of their score.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Capacity Planning</h2>
+
+      <h3>Discovery Questions — Ask Before Demoing</h3>
+      <ul>
+        <li>Who currently owns the headcount plan — Finance, Sales Leadership, or both? Do they start top-down (budget) or bottom-up (manager requests)?</li>
+        <li>Do you have defined ramp profiles by role? Do you have data to back them up, or are they estimates?</li>
+        <li>At what level of geography do you manage hiring — sub-region, region, or global?</li>
+        <li>Do you model revenue contribution from headcount, or just headcount counts?</li>
+        <li>How many planning scenarios do you need (base, conservative, optimistic, etc.)?</li>
+        <li>Do you use position management or purely people-based planning?</li>
+        <li>Is there appetite to connect this to Operational Workforce Planning (OWP) if it's live?</li>
+      </ul>
+
+      <h3>What to Show (in Order)</h3>
+      <ol>
+        <li>
+          <strong>Tops-down NTE page.</strong> Show Finance setting a headcount ceiling by region. This is a frame any CFO or Sales Finance VP immediately recognizes — "this is where we enforce the budget."
+        </li>
+        <li>
+          <strong>Ramp profile configuration.</strong> Show what a ramp profile looks like: 0% month 1, 30% month 2, 70% month 3, 100% month 4+. Brief — just establish that the app knows what a new hire is worth by month.
+        </li>
+        <li>
+          <strong>Bottoms-up hiring plan entry.</strong> Show a manager entering month-by-month hiring targets by role and geo. The NTE guardrail turns red if they exceed the Finance ceiling. This visual creates an immediate "aha" for customers who currently fight the Finance vs. Sales Ops spreadsheet war.
+        </li>
+        <li>
+          <strong>Revenue projection output.</strong> Show what happens when you commit that hiring plan: the model projects when revenue contribution kicks in based on ramp profiles and hire dates. This is the key demo moment — "hire 2 AEs in January, 3 in April, here's your projected revenue ramp and when you close the gap."
+        </li>
+        <li>
+          <strong>Scenario comparison.</strong> Show two scenarios side by side — aggressive hiring vs. conservative. The delta in projected revenue makes the planning value tangible.
+        </li>
+      </ol>
+
+      <h3>What NOT to Show</h3>
+      <ul>
+        <li><strong>Workload/hours-based planning</strong> unless the customer explicitly models capacity by hours. This feature is rarely used and creates confusion about whether the app is for sales reps or shift workers.</li>
+        <li><strong>Role grade configuration</strong> (P1–P5 levels) unless the customer has explicit grade-level planning needs. Anaplan's own internal team removed role grades as too granular. Most customers don't need it either.</li>
+        <li><strong>All reporting pages.</strong> Pick one or two. Showing every report page makes the demo feel like a feature tour, not a problem-solving conversation.</li>
+      </ul>
+
+      <h3>Proof Points</h3>
+      <ul>
+        <li>Capacity planning in Excel means Finance and Sales have separate spreadsheets that never reconcile. The app gives both a shared model with guardrails.</li>
+        <li>The ramp model quantifies something every Sales Finance VP worries about but has never modeled properly: the revenue impact of hiring in January vs. April. This is unique to Anaplan's approach.</li>
+        <li>Capacity planning is a natural second engagement after T&amp;Q — the customer already has territory and quota data structured, and adding headcount planning to the same platform is a straightforward expansion.</li>
+      </ul>
+
+      <h3>Handling "Can It Do X?" Questions</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Question</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr>
+              <td>"Can it connect to our HRIS for actual hire data?"</td>
+              <td>Yes — via ADO. Actual hire dates from HRIS feed in and are compared to the planned hire schedule. This enables AOP snapshot vs. actual analysis.</td>
+            </tr>
+            <tr>
+              <td>"Can it connect to our OWP (Workforce Planning) model?"</td>
+              <td>Yes — as an extension. If both OWP and Capacity are live, connecting position data between them is a well-understood integration. Worth scoping if the customer has both.</td>
+            </tr>
+            <tr>
+              <td>"Can we add more scenarios later?"</td>
+              <td>Yes, but it requires extending the scenario list post-generation — it's a small amount of work. Decide on the number of scenarios before generating to avoid this.</td>
+            </tr>
+            <tr>
+              <td>"Can it model cost per hire, not just headcount?"</td>
+              <td>Custom cost modeling (base + benefits + recruiting cost) is a common extension. Not in the base app, but well-understood and scoped as a medium effort.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

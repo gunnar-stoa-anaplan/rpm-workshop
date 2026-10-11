@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting AI Prediction Lab — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting AI Prediction Lab</h1>
+      <p class="subtitle">The Anaplan Prediction surfaces, the Forecaster algorithm panel, and how Sales Ops chooses the model that runs the org</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">45 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Anaplan Prediction is the AI layer of Sales Forecasting. The platform ships with the <strong>Forecaster</strong> sub-engine, which trains a panel of statistical and machine-learning algorithms on the organization's own historical sales data, generates a baseline forecast at a chosen confidence level, and exposes the result back into the planning loop. Reps and managers see the baseline next to their commit. Sales Ops controls which algorithm and confidence level the organization runs on. This page walks through the two in-app surfaces, the actual algorithm catalog, and the lab exercises for calibrating both.</p>
+
+      <div class="lab-objectives">
+        <h3>What you'll do</h3>
+        <ul>
+          <li>Recognize the two Anaplan Prediction surfaces and which persona uses each</li>
+          <li>Read the <strong>Prediction Variance</strong> table and identify the winning <em>algorithm × confidence level</em> pair from the SPM Foundational panel (ETS, SARIMAX, Prophet, TimesFM, LightGBM, MULR/MVLR, DeepAR)</li>
+          <li>Run the <code>BT</code> backtest actions to validate accuracy <em>before</em> activating a live algorithm</li>
+          <li>Apply an override via <strong>Override Algorithm</strong> + <strong>Override Confidence Level</strong> (P1 / P2 / P3) and confirm it propagates to the rep / manager dashboard</li>
+          <li>Verify each lab end-to-end with the inline Check my Work button</li>
+        </ul>
+      </div>
+
+      <h2>Two Surfaces, Two Personas</h2>
+      <p>The app has two distinct AI Prediction pages — one for reps and managers, one for Sales Ops / RevOps. They show overlapping data but support different actions.</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>Anaplan Prediction (rep / manager view)</h3>
+          <p>The forecast-accuracy comparison view. Compares the team's submitted forecast against the Anaplan model's predictions and tracks variance over time. Read-only for reps and managers; this is where they understand the quality of their own forecast against the model's.</p>
+        </div>
+        <div class="card">
+          <h3>Anaplan Prediction — Sales Ops</h3>
+          <p>The algorithm control surface. Evaluates multiple forecasting algorithms, compares their historical accuracy, drills into the specific factors driving each prediction, and selects the model applied across the organization. Sales Ops / RevOps only.</p>
+        </div>
+      </div>
+
+      <div class="lab-quiz" data-correct="B">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>Sales Ops wants to change which algorithm is currently active across the organization's forecast. Which surface do they use?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-prediction-surface" value="A"><span class="lab-quiz-letter">A</span><span>The rep-facing <strong>Anaplan Prediction</strong> page</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-prediction-surface" value="B"><span class="lab-quiz-letter">B</span><span>The <strong>Anaplan Prediction — Sales Ops</strong> page</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-prediction-surface" value="C"><span class="lab-quiz-letter">C</span><span>The <strong>Sales Forecast → Forecast</strong> dashboard</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-prediction-surface" value="D"><span class="lab-quiz-letter">D</span><span>The Salesforce Connector configuration screen</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> Only the <strong>Anaplan Prediction — Sales Ops</strong> surface exposes <em>Override Algorithm</em> + <em>Override Confidence Level</em>. The rep-facing Anaplan Prediction page is read-only consumption of the published baseline.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>B</strong>. The rep-facing Anaplan Prediction page is read-only; the Sales Ops surface is the only one with the Override Algorithm + Override Confidence Level controls. The Forecast dashboard and the Salesforce Connector are unrelated to algorithm selection.</div>
+      </div>
+
+      <h2>The Forecaster Architecture</h2>
+      <p>The Forecaster reads from a Historical Data by Hierarchy module (the trailing actuals plus open opportunity inputs), runs each candidate algorithm against that data, and writes back into a set of Forecast Results modules. Sales Ops reviews the suggested algorithm and confidence level for each entity; if they accept the suggestion, results flow into the rep / manager Anaplan Prediction dashboard. If Sales Ops overrides the algorithm or confidence level for a given entity, the override path routes through the Sales Ops dashboard first.</p>
+
+      <img src="../screenshots/sf-app/sf-app-forecaster-architecture.png" alt="Forecaster architecture diagram showing the Data Historical + Actual input feeding into Module Historical Data by hierarchy, then into the Forecaster engine, branching into three parallel Module Forecast Results outputs, then to a Sales Ops node that reviews the Algorithms and confidence level, with two paths — an Overrides path labelled Overrides the Anaplan Suggested Algorithm and Confidence Level leading to the Dashboard Anaplan Prediction Sales Ops, and a No Overrides path leading directly to the Dashboard Anaplan Prediction, both ultimately surfacing the result back to the rep / manager view" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <hr class="divider">
+
+      <h2>Anaplan Prediction — the rep / manager surface</h2>
+      <p>This is the forecast-accuracy view. The page shows the difference between what the team submitted as a forecast and what the Anaplan model calculated as the most likely outcome — and tracks how accurate each has been historically. Sections on this page:</p>
+
+      <h3>Top-level view (KPIs)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>KPI</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Anaplan Prediction</strong></td><td>The model's predicted close amount for the selected period.</td></tr>
+            <tr><td><strong>Forecast Call</strong></td><td>The team's submitted Forecast Call for the same period.</td></tr>
+            <tr><td><strong>Day-1 Forecast</strong></td><td>The forecast that was submitted on the very first day of the selected time period.</td></tr>
+            <tr><td><strong>Avg. Anaplan Prediction Variance</strong></td><td>The average variance rate of the Anaplan model's prediction over the last four quarters, compared to actual results. Lower = higher accuracy.</td></tr>
+            <tr><td><strong>Avg. Day-1 Forecast Variance</strong></td><td>The average variance rate of the team's Day-1 forecast over the last four quarters, compared to actual results.</td></tr>
+            <tr><td><strong>Prediction Variance Comparison</strong></td><td>Direct comparison showing how accurate the Anaplan forecast has been versus the manual forecast.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Forecast Trend</h3>
+      <p>A chart showing how the forecast measures are changing month by month across the year — Anaplan Prediction vs. Forecast Call vs. Day-1 Forecast on the same axis.</p>
+
+      <h3>Forecast Details</h3>
+      <p>The underlying data table behind the trend chart, with corresponding error percentages per period. This is where a manager checks "did we beat the model last quarter, or did the model beat us?"</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Context selector</span>
+        <p>The contextual selector in the top-right of the page lets you narrow the data to your region and time period. Reps see their own data; managers see team rollup; RevOps see organization-wide — the same selector, different scope.</p>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Anaplan Prediction — Sales Ops</h2>
+      <p>The Sales Ops surface is where the algorithm panel is evaluated and the active model is chosen. The page sequence walks Sales Ops from "what's running today" → "what would be running if we picked differently" → "why is it picking what it's picking."</p>
+
+      <h3>Top-level view (KPIs)</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>KPI</th><th>What it means</th></tr></thead>
+          <tbody>
+            <tr><td><strong>Avg. Anaplan Prediction Variance</strong></td><td>Average variance rate of the current Anaplan prediction over the last four quarters, vs. actuals. Lower = higher accuracy.</td></tr>
+            <tr><td><strong>Avg. Day-1 Forecast Variance</strong></td><td>Average variance rate of the sales team's Day-1 forecast over the last four quarters, vs. actuals.</td></tr>
+            <tr><td><strong>Prediction Variance Comparison</strong></td><td>Direct comparison showing how accurate the Anaplan forecast is vs. the manual forecast. A <em>negative</em> number means Anaplan is more accurate than manual.</td></tr>
+            <tr><td><strong>Anaplan Prediction Methodology Applied</strong></td><td>Shows which algorithm and which confidence level is currently active for the organization's forecast.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Anaplan Prediction Methodology — how to override</h3>
+      <p>From the in-app docs, the override workflow is exactly two steps:</p>
+      <ol>
+        <li>In <strong>Override Algorithm</strong>, select an algorithm.</li>
+        <li>In <strong>Override Confidence Level</strong>, select a confidence level (P1, P2, P3).</li>
+      </ol>
+      <p>Confidence levels P1 / P2 / P3 correspond to the percentile bands the Forecaster outputs — P1 is the tightest (most-likely) band, P3 the widest. Sales Ops pick the level appropriate to how aggressive vs. conservative the org wants its baseline to be.</p>
+
+      <h3>Actuals vs Anaplan Forecast Comparison</h3>
+      <p>A historical view that overlays prior-period actuals against what each candidate algorithm <em>would have</em> predicted. This is the visual that drives algorithm choice: pick the line that tracks closest to actuals over a stable history.</p>
+
+      <h3>Prediction Variance — the algorithm comparison table</h3>
+      <p>The headline table for this page. Every available forecasting algorithm gets a row; every confidence level (P1, P2, P3) gets a column; each cell shows the algorithm's forecast variance percentage over the last four quarters at that confidence level. From the in-app documentation, the algorithm panel currently surfaced is:</p>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Algorithm</th><th>Type</th><th>Strengths</th><th>When to pick it</th></tr></thead>
+          <tbody>
+            <tr><td><strong>ETS</strong></td><td>Exponential Smoothing</td><td>Handles trend and seasonality cleanly. Lightweight, fast, interpretable. The Holt-Winters family.</td><td>Default starting point for stable businesses with clear seasonality.</td></tr>
+            <tr><td><strong>SARIMAX</strong></td><td>Seasonal ARIMA with exogenous regressors</td><td>Statistically rigorous baseline. Lets you feed in external drivers (marketing spend, macro indicators).</td><td>When you have additional regressors you want the forecast to respond to.</td></tr>
+            <tr><td><strong>Prophet</strong></td><td>Decomposable additive model (Meta)</td><td>Robust to missing data and outliers. Native handling of holidays and trend changepoints. Highly interpretable components.</td><td>Businesses with messy or irregular data, or strong holiday / event seasonality.</td></tr>
+            <tr><td><strong>TimesFM</strong></td><td>Time-series foundation model (Google)</td><td>Pretrained foundation model — produces strong forecasts with very little custom tuning. State-of-the-art on many time-series benchmarks.</td><td>When you have limited training history or want a strong zero-shot baseline.</td></tr>
+            <tr><td><strong>LightGBM</strong></td><td>Gradient-boosted decision trees</td><td>Captures non-linear patterns and feature interactions. High accuracy when you have rich opportunity-attribute history.</td><td>Mature data environment with strong feature engineering. Highest ceiling, requires the most care.</td></tr>
+            <tr><td><strong>MULR / MVLR</strong></td><td>Multivariate Linear Regression</td><td>Simple, transparent, easy to explain to finance / leadership.</td><td>As an explainability baseline or when stakeholders need a model they can audit line-by-line.</td></tr>
+            <tr><td><strong>DeepAR</strong></td><td>Deep autoregressive recurrent neural net</td><td>Trains a single model jointly across many related time-series (e.g. all teams or all segments). Probabilistic output natively.</td><td>When forecasting many entities (reps, segments) with related but distinct patterns; benefits from cross-series learning.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 BT = Backtest</span>
+        <p>Each algorithm also ships in a <code>BT</code> variant in the Forecaster Actions list (e.g. <code>Prophet T1 BT</code>) — the same algorithm run on a rolling historical window so accuracy can be measured before it's used in production. Standard practice: run the <code>BT</code> variants first, read the Prediction Variance table, enable the live action only for what wins.</p>
+      </div>
+
+      <img src="../screenshots/sf-app/sf-app-forecaster-actions.png" alt="Forecaster Forecast actions list with items in the SPM Foundational family — ETS T1 BT, SARIMAX T1 BT, TimesFM T1 BT, LightGBM T1 BT, MVLR T1, Prophet T1, ETS T1, SARIMAX T1, TimesFM T1, MVLR T1 BT, LightGBM T1 BT, Prophet T1 BT, and an IFP Ensemble OpEx Targets GSP action — each with date created, last run, and schedule status columns, plus Prediction Tracker and New forecast action buttons" class="screenshot" style="width:100%;border-radius:6px;margin:0.5rem 0 1.5rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <div class="lab-quiz" data-correct="A">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>Your customer's data is stable, with clear quarterly seasonality and no major historical disruptions. Which algorithm is the recommended default starting point?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-algo-default" value="A"><span class="lab-quiz-letter">A</span><span><strong>ETS</strong> — exponential smoothing, lightweight and interpretable</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-algo-default" value="B"><span class="lab-quiz-letter">B</span><span><strong>LightGBM</strong> — gradient-boosted decision trees, highest accuracy ceiling</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-algo-default" value="C"><span class="lab-quiz-letter">C</span><span><strong>TimesFM</strong> — Google's pretrained time-series foundation model</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-sf-algo-default" value="D"><span class="lab-quiz-letter">D</span><span><strong>DeepAR</strong> — Amazon's deep autoregressive recurrent network</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> ETS is the default starting point for stable businesses with clear seasonality — it handles trend and seasonality cleanly, is interpretable, and is fast. The other algorithms have higher ceilings but each shines in a different shape: LightGBM with rich opportunity-attribute history, TimesFM with limited training history, DeepAR with many related entities you want to learn jointly.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>A — ETS</strong>. Exponential smoothing handles trend and seasonality cleanly and is the default starting point for stable businesses. LightGBM has a higher accuracy ceiling but needs rich features; TimesFM and DeepAR each fit a different data shape.</div>
+      </div>
+
+      <h3>Algorithm Explained</h3>
+      <p>A drill-down narrative for the currently selected algorithm — what it does, what assumptions it makes, and when it tends to win or lose against the rest of the panel. Useful for Sales Ops who need to explain a model choice to Finance or Sales Leadership without hand-waving.</p>
+
+      <h3>Forecaster Algorithm Details</h3>
+      <p>A table showing each algorithm's forecast values across multiple time periods, alongside historical completed periods and future projected periods. This is the surface where you check that an algorithm's forecast curve is shaped right before activating it.</p>
+
+      <h3>Prediction Factors Considered</h3>
+      <p>To the right of the algorithm-details table, a panel listing the specific signals and patterns the selected algorithm is using to generate its forecasts — seasonality, trend changepoints, regressor coefficients, feature importances, etc. This is the explainability surface for the active model.</p>
+
+      <hr class="divider">
+
+      <h2>The Operating Loop</h2>
+      <div class="three-col">
+        <div class="card">
+          <h3>1. Backtest</h3>
+          <p>Sales Ops runs the <code>BT</code> Forecaster Actions across the algorithm panel and reads the Prediction Variance table to identify which algorithm wins at which confidence level (P1 / P2 / P3) for each entity.</p>
+        </div>
+        <div class="card">
+          <h3>2. Override &amp; Activate</h3>
+          <p>For each entity where the winning algorithm differs from the panel default, Sales Ops uses Override Algorithm + Override Confidence Level to set the right model. The live (non-BT) Forecaster Action then runs forward.</p>
+        </div>
+        <div class="card">
+          <h3>3. Review &amp; Publish</h3>
+          <p>The baseline flows into the rep / manager Anaplan Prediction dashboard. Reps and managers see it alongside their commit. Sales Ops monitors Avg. Prediction Variance vs. Avg. Day-1 Forecast Variance to validate the choice is working.</p>
+        </div>
+      </div>
+
+      <h2>Lab A — Backtest the algorithm panel</h2>
+      <p>Run the backtest variants of each Forecaster algorithm against the demo dataset and identify which algorithm wins per entity and per confidence level.</p>
+
+      <ol class="lab-steps">
+        <li>Open the SF demo workspace and navigate to <strong>Sales Forecast → Anaplan Prediction — Sales Ops</strong>.</li>
+        <li>From the underlying Anaplan Prediction Forecaster, identify the <strong>SPM Foundational BT variants</strong> (ETS T1 BT, SARIMAX T1 BT, Prophet T1 BT, TimesFM T1 BT, LightGBM T1 BT, MVLR T1 BT).</li>
+        <li>Run each BT action against the trailing-24-month actuals window.</li>
+        <li>Back on the Sales Ops dashboard, read the <strong>Prediction Variance</strong> table. For each algorithm row, note the variance at P1, P2, and P3.</li>
+        <li>Identify the <em>winning algorithm × confidence level pair</em> — the cell with the smallest variance.</li>
+        <li>Compare your choice to the <strong>Anaplan Prediction Methodology Applied</strong> KPI. Is the org already running on it, or is there a meaningful change to recommend?</li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which algorithm × confidence level pair won, by how many variance percentage points, and what's the one-sentence reason it won?
+      </div>
+
+      <div class="lab-check" data-check-id="rpm-sf-prediction-lab-a" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've run all six SPM Foundational <code>BT</code> actions on the trailing-24-month window and identified the winning algorithm × confidence-level pair from the Prediction Variance table, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Backtest panel run and winning combination identified.</p>
+          <ul class="lab-check-list">
+            <li><strong>All six SPM Foundational BT actions run</strong> &rarr; ETS T1 BT, SARIMAX T1 BT, Prophet T1 BT, TimesFM T1 BT, LightGBM T1 BT, MVLR T1 BT</li>
+            <li><strong>Prediction Variance table read</strong> &rarr; variance recorded across P1, P2, P3 columns for each algorithm row</li>
+            <li><strong>Winning algorithm × confidence-level pair identified</strong> &rarr; cell with the smallest backtest variance</li>
+            <li><strong>Comparison made to current Anaplan Prediction Methodology Applied</strong> &rarr; you know whether the org is already running on the winner or there's a meaningful change to recommend</li>
+          </ul>
+          <p class="lab-check-next">Ready for Lab B — apply your override and publish the baseline.</p>
+        </div>
+      </div>
+
+      <h2>Lab B — Override and publish a new baseline</h2>
+      <p>Apply the algorithm + confidence-level winner from Lab A as the active methodology, publish the baseline, and validate it lands on the rep / manager dashboard.</p>
+
+      <ol class="lab-steps">
+        <li>On the <strong>Anaplan Prediction — Sales Ops</strong> page, go to <strong>Anaplan Prediction Methodology</strong>.</li>
+        <li>In <strong>Override Algorithm</strong>, select the winner from Lab A.</li>
+        <li>In <strong>Override Confidence Level</strong>, select the winning P-level.</li>
+        <li>Confirm the <strong>Anaplan Prediction Methodology Applied</strong> KPI updates to show your selection.</li>
+        <li>Open <strong>Algorithm Explained</strong> and read the narrative — make sure you can repeat the reasoning out loud in plain English.</li>
+        <li>Open <strong>Prediction Factors Considered</strong> and identify the top 3 signals the algorithm is using.</li>
+        <li>Switch to the <strong>Anaplan Prediction</strong> (rep / manager) page and confirm: the Anaplan Prediction KPI updated, the trend chart now reflects the new baseline, and Prediction Variance Comparison shows the expected delta vs. the manual forecast.</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 What "confidence" actually means</span>
+        <p>P1 / P2 / P3 are percentile bands of the algorithm's predicted distribution. P1 is the tightest band (narrowest forecast range); P3 is the widest (most cautious forecast range). The confidence-level choice is a business decision as much as an accuracy decision — pick P1 when leadership wants a sharp baseline they'll defend; pick P3 when leadership wants headroom and the freedom to land above the model.</p>
+      </div>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        After your override: what was the change in the Prediction Variance Comparison KPI on the rep / manager page, and what does that change tell you about whether the new baseline is more or less accurate than the manual forecast?
+      </div>
+
+      <div class="lab-check" data-check-id="rpm-sf-prediction-lab-b" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've applied the override on the Sales Ops surface, confirmed the methodology updated, and verified the new baseline flowing through to the rep / manager Anaplan Prediction page, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Methodology override applied and verified end-to-end.</p>
+          <ul class="lab-check-list">
+            <li><strong>Override Algorithm</strong> &rarr; winning algorithm from Lab A selected</li>
+            <li><strong>Override Confidence Level</strong> &rarr; winning P-level (P1 / P2 / P3) selected</li>
+            <li><strong>Anaplan Prediction Methodology Applied KPI</strong> &rarr; updated to reflect your selection</li>
+            <li><strong>Algorithm Explained</strong> &rarr; you can repeat the narrative in plain English</li>
+            <li><strong>Prediction Factors Considered</strong> &rarr; top 3 driving signals identified</li>
+            <li><strong>Rep / manager Anaplan Prediction page</strong> &rarr; Anaplan Prediction KPI updated, Forecast Trend reflects new baseline, Prediction Variance Comparison shows expected delta vs. manual forecast</li>
+          </ul>
+          <p class="lab-check-next">AI Prediction lab is complete. The baseline is now published and visible to reps and managers.</p>
+        </div>
+      </div>
+
+      <h2>Operating Cadence</h2>
+      <ul>
+        <li><strong>Weekly</strong> — re-run the live Forecaster Actions and confirm Avg. Prediction Variance is still in a healthy range on the Sales Ops dashboard.</li>
+        <li><strong>Monthly</strong> — re-run the BT variants, re-read the Prediction Variance table, rotate the active algorithm if a different one is now winning.</li>
+        <li><strong>Quarterly</strong> — full retrain with refreshed actuals, audit Prediction Variance Comparison vs. landed numbers, and validate any standing overrides are still justified.</li>
+      </ul>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ Human-in-the-loop, always</span>
+        <p>The Anaplan Prediction output is a <em>baseline</em>, not the final forecast. Reps and managers still own the commit. Positioning this in customer conversations matters: if Sales Ops uses Forecaster output as an automatic override of rep commits, trust in the app collapses immediately. Sell it as a coaching and triage tool, not a replacement for the call.</p>
+      </div>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Calibrate</span>
+        <p>Before demoing this to a customer, run both labs above on the demo data and make sure you can speak fluently to: (a) what each algorithm in the Prediction Variance table does and when it tends to win, (b) what the P1 / P2 / P3 confidence levels mean as a business choice, and (c) what an override does to the rep / manager page after publish. These are the three questions customers always ask.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/lab-quiz.js"></script>
+</body>
+</html>

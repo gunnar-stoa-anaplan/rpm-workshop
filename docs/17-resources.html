@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Resources & Downloads — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .resource-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 768px) { .resource-grid { grid-template-columns: 1fr; } }
+    .resource-card {
+      background: #fff;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 1.25rem;
+      transition: box-shadow 0.15s;
+    }
+    .resource-card:hover { box-shadow: var(--shadow-md); }
+    .resource-card h3 { font-size: 0.95rem; color: var(--color-primary); margin-bottom: 0.5rem; }
+    .resource-card p { font-size: 0.82rem; color: var(--color-text-muted); margin-bottom: 0.75rem; }
+    .resource-list { list-style: none; padding: 0; }
+    .resource-list li { margin-bottom: 0.4rem; }
+    .resource-list a {
+      font-size: 0.85rem;
+      color: var(--color-primary);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .resource-list a:hover { text-decoration: underline; }
+    .file-icon { font-size: 1rem; flex-shrink: 0; }
+    .section-label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--color-text-muted);
+      margin: 2rem 0 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--color-border);
+    }
+  </style>
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Resources &amp; Downloads</h1>
+      <p class="subtitle">Official Anaplan Apps team collateral from the NY Connect 2026 Workshop</p>
+    </div>
+    <div class="content-body">
+
+      <p>All materials below are bundled with this workshop guide. <strong>Click each document name to download.</strong> Use this page as a reference index — find the right document for each phase of an implementation.</p>
+
+      <div class="callout-tip">
+        <span class="callout-label">💡 How to Use These Resources</span>
+        <p>The <strong>Data Prep Workbooks</strong> should go to the customer as early as possible — ideally before the SOW is signed. The <strong>Discovery Templates</strong> are for pre-project scoping conversations. The <strong>User Stories</strong> documents help set scope and manage expectations. The <strong>Post-Generation</strong> guides are your field references during model readiness.</p>
+      </div>
+
+      <h2>Suite-Level Resources</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/suite/RPM%20Overview%20FY26%20-%20TQ%20App%20Enablement.pptx" download><strong>RPM Overview FY26 — T&amp;Q App Enablement</strong></a></td><td>PPTX</td><td>Positioning the full RPM suite with a customer or partner. Slide 15 has the T&amp;Q capabilities overview.</td></tr>
+            <tr><td><a href="../data/resources/suite/What%20is%20coming%20to%20RPM%20Apps%20March%202026.pptx" download><strong>What is Coming to RPM Apps (March 2026)</strong></a></td><td>PPTX</td><td>Roadmap conversations — T&amp;Q V3, Segmentation V2, Capacity V2, Sales Forecasting GA. Slides 2–3 cover Sales Forecasting specifically.</td></tr>
+            <tr><td><a href="../data/resources/suite/ADO%20Overview.pptx" download><strong>ADO Overview</strong></a></td><td>PPTX</td><td>Explaining the V3 data architecture (ADO vs. Data Hub) to a customer's IT team or Sales Ops lead.</td></tr>
+            <tr><td><a href="../data/resources/cloudworks/Configurator%20CloudWorks_Case_Study_Handout.docx" download><strong>CloudWorks Case Study Handout</strong></a></td><td>DOCX</td><td>The full CloudWorks scenario used throughout the configurator and post-gen labs. Reference doc for the case study facts (company profile, hierarchy, data files).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Territory &amp; Quota (T&amp;Q)</h2>
+
+      <h3>Pre-Project — Discovery &amp; Scoping</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/tq/Discovery%20Template%20-%20TnQ%20v3.xlsx" download><strong>Discovery Template — T&amp;Q V3</strong></a></td><td>XLSX</td><td>Pre-sales and pre-kickoff discovery conversations. Structured question set covering territory structure, quota setup, data sources, and process maturity.</td></tr>
+            <tr><td><a href="../data/resources/tq/T%26Q%20Planning%20App%20Data%20Prep%20Workbook%20V2.0.xlsx" download><strong>T&amp;Q Planning App Data Prep Workbook V2.0</strong></a></td><td>XLSX</td><td>Share with the customer at or before Session Zero. Defines exactly what format each data file needs to be in. One sheet per data object (Account, Territory, Employee, Opportunity, etc.).</td></tr>
+            <tr><td><a href="../data/resources/tq/TQ%20Application%20Extension%20Estimation%20Template.xlsx" download><strong>T&amp;Q Application Extension Estimation Template</strong></a></td><td>XLSX</td><td>Scoping extensions during or after the configurator lab. T-shirt sizing reference with effort estimates.</td></tr>
+            <tr><td><a href="../data/resources/tq/TnQ%20Extension%20Suggestions.xlsx" download><strong>T&amp;Q Extension Suggestions</strong></a></td><td>XLSX</td><td>Reference list of common extension patterns — use during extension design sessions with the customer.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Implementation Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/tq/T%26Q%20Planning%20App%20OOTB%20User%20Stories%20V2.0.xlsx" download><strong>T&amp;Q Planning App OOTB User Stories V2.0</strong></a></td><td>XLSX</td><td>Scope management — shows exactly what the base app covers out of the box. Use to push back on extension requests that are already in the base app.</td></tr>
+            <tr><td><a href="../data/resources/tq/T%26Q%20Planning%20App%20Implementation%20Guide%20V2.0.docx" download><strong>T&amp;Q Planning App Implementation Guide V2.0</strong></a></td><td>DOCX</td><td>The canonical implementation guide for T&amp;Q V2 — read this end-to-end before your first engagement.</td></tr>
+            <tr><td><a href="../data/resources/tq/Territory%20and%20Quota%20Planning%20Application%20Functional%20Overview.pptx" download><strong>Territory and Quota Planning Application Functional Overview</strong></a></td><td>PPTX</td><td>Customer-facing overview of T&amp;Q capabilities. Use in kickoff or pre-sales presentations.</td></tr>
+            <tr><td><a href="../data/resources/tq/T%26Q%20Planning%20App%20Technical%20Overview%20V2.0.pptx" download><strong>T&amp;Q Planning App Technical Overview V2.0</strong></a></td><td>PPTX</td><td>Technical deep-dive for IT stakeholders or architects. Covers data model, integration patterns, and Polaris architecture.</td></tr>
+            <tr><td><a href="../data/resources/tq/Sales%20Territories%20Optimizer%20Admin%20RunBook%20V2.0.docx" download><strong>Sales Territories Optimizer Admin RunBook V2.0</strong></a></td><td>DOCX</td><td>Operational runbook for the Optimizer — scopes, runs, troubleshooting, and admin actions. Field reference during go-live and BAU support.</td></tr>
+            <tr><td><a href="../data/resources/tq/Application%20Specific%20Configuration%20Kickoff%20Template.pptx" download><strong>Application Specific Configuration Kickoff Template</strong></a></td><td>PPTX</td><td>Kickoff deck template for the configuration sessions with the customer. Customize with customer name and project details.</td></tr>
+            <tr><td><a href="../data/resources/tq/Deployment%20Cutover%20Plan%20and%20Tasks%20(UAT%20_%20PROD).xlsx" download><strong>Deployment Cutover Plan and Tasks (UAT / PROD)</strong></a></td><td>XLSX</td><td>Pre-go-live planning — use to manage UAT and production cutover tasks with the customer's project team.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Post-Generation &amp; Model Readiness</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/tq/DRAFT%20-%20T%26Q%20Planning%20App%20Post-Generation%20Updates%20V2.0.pptx" download><strong>DRAFT — T&amp;Q Planning App Post-Generation Updates V2.0</strong></a></td><td>PPTX</td><td>Field reference for post-generation steps. Covers known issues, formula fixes, and model readiness checklist items.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Lab Exercise Files</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/tq/TnQ%20v2%20Configurator%20Exercise%20%202026.pptx" download><strong>T&amp;Q Configurator Exercise 2026</strong></a></td><td>PPTX</td><td>Reference deck for the configurator exercise.</td></tr>
+            <tr><td><a href="../data/configurator-exercise/Configurator%20Exercise%20Account_Flat%20File.xlsx" download><strong>Configurator Exercise Account Flat File</strong></a> · <a href="../data/configurator-exercise/Configurator%20Exercise%20Account_Flat%20File.csv" download style="font-size:0.85em;color:#6b7280;">CSV</a></td><td>XLSX / CSV</td><td>CloudWorks account data for the configurator lab exercise.</td></tr>
+            <tr><td><a href="../data/configurator-exercise/Configurator%20Exercise%20Territory_Flat%20File.csv" download><strong>Configurator Exercise Territory Flat File</strong></a></td><td>CSV</td><td>CloudWorks territory hierarchy for the configurator lab exercise.</td></tr>
+            <tr><td><a href="../data/configurator-exercise/Configurator%20Exercise%20Employee%20File.xlsx" download><strong>Configurator Exercise Employee File</strong></a></td><td>XLSX</td><td>CloudWorks sales rep roster for the configurator lab exercise.</td></tr>
+            <tr><td><a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20File.xlsx" download><strong>Configurator Exercise Opportunity File</strong></a></td><td>XLSX</td><td>CloudWorks opportunity list for the configurator lab exercise — corresponds to the Opportunity Line and Account files.</td></tr>
+            <tr><td><a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20line%20File.xlsx" download><strong>Configurator Exercise Opportunity Line File</strong></a> · <a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20line%20File.csv" download style="font-size:0.85em;color:#6b7280;">CSV</a></td><td>XLSX / CSV</td><td>CloudWorks historical actuals for the configurator lab exercise.</td></tr>
+            <tr><td><a href="../data/resources/post-gen-exercises/TnQ%20Post-Gen%20Exercise%20Draft%20Winter%202026.pptx" download><strong>T&amp;Q Post-Gen Exercise (Winter 2026)</strong></a></td><td>PPTX</td><td>Guided post-generation exercise for practicing model readiness steps.</td></tr>
+            <tr><td><a href="../data/resources/post-gen-exercises/DE_Area%20Targets.csv" download><strong>DE_Area Targets</strong></a></td><td>CSV</td><td>Sample Finance target file used in the post-gen exercise.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Account Segmentation &amp; Scoring</h2>
+
+      <h3>Pre-Project — Discovery &amp; Scoping</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/segmentation/Segmentation%20and%20Scoring%20App%20Data%20Prep%20Workbook.xlsx" download><strong>Segmentation and Scoring App Data Prep Workbook</strong></a></td><td>XLSX</td><td>Share with the customer before the Segmentation configurator session. Covers account firmographic requirements, banded attribute formatting, and data source guidance.</td></tr>
+            <tr><td><a href="../data/resources/segmentation/Seg%20%26%20Scoring%20App%20Scoping%20%26%20Sizing%20Questionnaire.xlsx" download><strong>Seg &amp; Scoring App Scoping &amp; Sizing Questionnaire</strong></a></td><td>XLSX</td><td>Pre-project scoping questionnaire — use to assess fit, estimate effort, and identify likely extensions before the engagement starts.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Implementation Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/segmentation/Account%20Seg%26Score%20App%20OOTB%20User%20Stories%20V0.9.xlsx" download><strong>Account Seg &amp; Score App OOTB User Stories V0.9</strong></a></td><td>XLSX</td><td>Scope management — what's in the base app. Use to validate extension requests.</td></tr>
+            <tr><td><a href="../data/resources/segmentation/Account%20Seg%26Score%20App%20Implementation%20Guide%20V1.docx" download><strong>Account Seg &amp; Score App Implementation Guide V1</strong></a></td><td>DOCX</td><td>The canonical implementation guide for Segmentation V1 — read end-to-end before your first engagement.</td></tr>
+            <tr><td><a href="../data/resources/segmentation/Segmentation%20Planning%20Application%20Functional%20Overview.pptx" download><strong>Segmentation Planning Application Functional Overview</strong></a></td><td>PPTX</td><td>Customer-facing capabilities overview for Segmentation. Use in kickoff or pre-sales.</td></tr>
+            <tr><td><a href="../data/resources/segmentation/Segmentation%20and%20Scoring%20App%20Technical%20Overview.pptx" download><strong>Segmentation and Scoring App Technical Overview</strong></a></td><td>PPTX</td><td>Technical deep-dive for IT stakeholders.</td></tr>
+            <tr><td><a href="../data/resources/segmentation/Segmenation%20and%20Scoring%20App%20Admin%20RunBook.docx" download><strong>Segmentation and Scoring App Admin RunBook</strong></a></td><td>DOCX</td><td>Operational runbook for ongoing admin of the Segmentation app — used post-go-live for BAU support.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Post-Generation &amp; Lab Exercise</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/segmentation/Segmentation%20App%20Post-Generation%20Updates.pptx" download><strong>Segmentation App Post-Generation Updates</strong></a></td><td>PPTX</td><td>Field reference for Segmentation post-gen steps and known issues.</td></tr>
+            <tr><td><a href="../data/resources/post-gen-exercises/SG_CP%20Post%20Gen%20Exercise.pptx" download><strong>SG + CP Post-Gen Exercise</strong></a></td><td>PPTX</td><td>Combined Segmentation and Capacity post-generation exercise for workshop labs.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Go-to-Market Capacity Planning</h2>
+
+      <h3>Pre-Project — Discovery &amp; Scoping</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/capacity/GTM%20Capacity%20Planning%20App%20Data%20Prep%20Workbook.xlsx" download><strong>GTM Capacity Planning App Data Prep Workbook</strong></a></td><td>XLSX</td><td>Share with the customer before the Capacity configurator session. Covers role hierarchy structure, ramp profile inputs, and data source requirements.</td></tr>
+            <tr><td><a href="../data/resources/capacity/Capacity%20App%20Scoping%20%26%20Sizing%20Questionnaire.xlsx" download><strong>Capacity App Scoping &amp; Sizing Questionnaire</strong></a></td><td>XLSX</td><td>Pre-project scoping questionnaire — use to assess fit and identify likely extensions.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Implementation Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/capacity/GTM%20Capacity%20App%20OOTB%20User%20Stories%20V0.9.xlsx" download><strong>GTM Capacity App OOTB User Stories V0.9</strong></a></td><td>XLSX</td><td>Scope management — what's in the base Capacity app.</td></tr>
+            <tr><td><a href="../data/resources/capacity/GTM%20Capacity%20Planning%20App%20Implementation%20Guide%20V1.docx" download><strong>GTM Capacity Planning App Implementation Guide V1</strong></a></td><td>DOCX</td><td>The canonical implementation guide for Capacity V1 — read end-to-end before your first engagement.</td></tr>
+            <tr><td><a href="../data/resources/capacity/Go-to-Market%20Capacity%20Planning%20Functional%20Overview%20v1.1.0.pptx" download><strong>Go-to-Market Capacity Planning Functional Overview v1.1.0</strong></a></td><td>PPTX</td><td>Customer-facing capabilities overview for Capacity Planning.</td></tr>
+            <tr><td><a href="../data/resources/capacity/Go-to-Market%20Capacity%20App%20Technical%20Overview.pptx" download><strong>Go-to-Market Capacity App Technical Overview</strong></a></td><td>PPTX</td><td>Technical deep-dive covering the Capacity data model, tops-down/bottoms-up architecture, and ramp calculation logic.</td></tr>
+            <tr><td><a href="../data/resources/capacity/GTM%20Capacity%20Planning%20App%20Admin%20Run%20Book.docx" download><strong>GTM Capacity Planning App Admin Run Book</strong></a></td><td>DOCX</td><td>Operational runbook for ongoing admin of the Capacity app — used post-go-live for BAU support.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>Post-Generation</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/capacity/GTM%20Capacity%20Planning%20App%20Post-Generation%20Updates.pptx" download><strong>GTM Capacity Planning App Post-Generation Updates</strong></a></td><td>PPTX</td><td>Field reference for Capacity post-gen steps, known issues, and validation checklist.</td></tr>
+            <tr><td><a href="../data/resources/post-gen-exercises/SG_CP%20Post%20Gen%20Exercise.pptx" download><strong>SG + CP Post-Gen Exercise</strong></a></td><td>PPTX</td><td>Combined Segmentation and Capacity post-generation exercise (shared with Segmentation section above).</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Sales Forecasting</h2>
+
+      <h3>Product &amp; Technical Reference</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Document</th><th>Format</th><th>Use When</th></tr></thead>
+          <tbody>
+            <tr><td><a href="../data/resources/sales-forecasting/SF%20Planning%20App%20Technical%20Overview%20V1.0.pptx" download><strong>SF Planning App Technical Overview V1.0</strong></a></td><td>PPTX</td><td>The primary technical reference for Sales Forecasting V1 — Application Framework deployment model, data flows, Forecaster engine, and integration patterns. Start here when scoping an SF implementation.</td></tr>
+            <tr><td><a href="../data/resources/sales-forecasting/SF%20App%20Process%20Definition%20Doc.pptx" download><strong>SF App Process Definition Doc</strong></a></td><td>PPTX</td><td>Page-by-page walkthrough of the deployed application — forecast, pipeline, AI prediction, leaderboard, overlays. Use during application review and to brief customer SMEs.</td></tr>
+            <tr><td><a href="../data/resources/sales-forecasting/sales-forecasting-application-datasheet.pdf" download><strong>Sales Forecasting Application Datasheet</strong></a></td><td>PDF</td><td>Customer-facing one-pager — capabilities, personas, business outcomes. Share during pre-sales or to introduce the app to a new stakeholder.</td></tr>
+            <tr><td><a href="../data/resources/suite/What%20is%20coming%20to%20RPM%20Apps%20March%202026.pptx" download><strong>What is Coming to RPM Apps (March 2026)</strong></a></td><td>PPTX</td><td>Roadmap context — slides 2–3 cover Sales Forecasting positioning within the broader RPM roadmap.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>External References</h3>
+      <ul>
+        <li><a href="https://www.anaplan.com/blog/strategies-to-streamline-sales-forecasting" target="_blank" rel="noopener">Strategies to Streamline Sales Forecasting</a> — Anaplan blog with business-context framing of the forecasting challenge.</li>
+        <li><a href="https://www.anaplan.com/products/sales-forecasting" target="_blank" rel="noopener">Sales Forecasting Product Page</a> — Customer-facing product overview, demo videos, and feature highlights.</li>
+      </ul>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Note</span>
+        <p>Sales Forecasting V1 is delivered as a templated application rather than via a configurator. There is no Data Prep Workbook or Discovery Template in the T&amp;Q / Segmentation / Capacity sense — refer instead to the <a href="sf-02-sample-data.html">Sample Data</a> and <a href="sf-03-deployment.html">Deployment Model</a> pages of this guide for the data shape and deployment story.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

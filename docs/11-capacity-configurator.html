@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Go-to-Market Capacity Planning Configurator — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Go-to-Market Capacity Planning Configurator</h1>
+      <p class="subtitle">Page-by-page walkthrough of the Capacity section (1.2.x) of the configurator</p>
+    </div>
+    <div class="content-body">
+
+      <div class="tsd-banner">
+        <div class="tsd-step tsd-step-tell">
+          <span class="tsd-step-label">📖 Tell</span>
+          <span class="tsd-step-heading">Capacity Configuration</span>
+          <span class="tsd-step-desc">You'll learn the key decisions in the Capacity configurator — role hierarchy, coverage assumptions, productivity modeling, and planning structure.</span>
+        </div>
+        <div class="tsd-step tsd-step-show">
+          <span class="tsd-step-label">👁 Show</span>
+          <span class="tsd-step-heading">Facilitator Demo</span>
+          <span class="tsd-step-desc">Instructor walks through the Capacity configurator page by page, highlighting the tops-down vs bottoms-up planning tradeoffs and key dimensionality decisions.</span>
+        </div>
+        <div class="tsd-step tsd-step-do">
+          <span class="tsd-step-label">✅ Do</span>
+          <span class="tsd-step-heading">Capacity Lab</span>
+          <span class="tsd-step-desc">Complete the Capacity section of the CloudWorks configurator exercise on the lab page.</span>
+        </div>
+      </div>
+
+      <p>The Capacity configurator is in the <strong>same app as Segmentation</strong> — navigate to <strong>Section 1.2</strong> in the left nav. Same principle as all configurators: decisions here define dimensionality that is very painful to change post-generation. Capacity configurator = ~0.5× complexity vs. T&amp;Q (~2 days with a prepared customer vs. ~1 week for T&amp;Q).</p>
+
+      <div class="callout-note">
+        <strong>Shared data setup:</strong> If you are configuring both Segmentation and Capacity in the same sessions, the data setup is shared — you only need to configure accounts, employees, and opportunities once (in Section 1.01 / 1.02).
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 How to Read This Page</span>
+        <p>Each subsection below corresponds to one UX page in the Capacity section of the configurator (1.2.x). For each page, this guide describes the tables present and what the user is being asked to configure. The <strong>"Step XX"</strong> labels visible on the left side of each table in the live configurator are the authoritative guide to what each table does — use them to confirm your understanding when in a live session.</p>
+      </div>
+
+      <hr>
+
+      <div class="callout-warning">
+        <strong>⚠ Critical Dimensionality Warning</strong><br><br>
+        Dimensionality decisions in the Capacity configurator are <strong>extremely difficult to change post-generation</strong>. If you configure cost assumptions at the region level and later decide you need sub-region, you will need to disconnect and reconnect many formulaic references — or regenerate and lose any custom work.<br><br>
+        Be thorough and deliberate with your customer. Validate every dimensionality choice before generating. <strong>This is the #1 source of rework on Capacity implementations.</strong>
+      </div>
+
+      <hr>
+
+      <!-- PAGE 1.2.1 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.2.1</div>
+          <div class="config-section-title">GTM Headcount Data <span class="config-section-star">⭐</span></div>
+        </div>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ <strong>[PENDING: 1.2.1 GTM Headcount Data — page description pending SME review]</strong></span>
+          <p>The description below is based on available knowledge. An SME should still review and confirm the exact Step labels for each table, the full list of configuration options, and any page-specific pitfalls. The screenshot below was captured from the live Capacity configurator during the Jun 15 SME walkthrough.</p>
+        </div>
+        <p>Page 1.2.1 is the entry point for the Capacity configurator section. It establishes the foundational data setup for capacity planning — defining what headcount data exists and how it maps into the Capacity model.</p>
+        <p><strong>Key tables and configuration decisions (verify Step labels in live UX):</strong></p>
+        <ul>
+          <li><strong>Data objects mapping</strong> — confirm which employee data objects from the Data Hub feed into the Capacity model. These should already be configured in 1.01 / 1.02, but this page verifies the connection is correct for Capacity-specific use.</li>
+          <li><strong>Historical headcount data</strong> — indicate whether historical headcount data (actuals from prior periods) is available and should be loaded. This feeds into ramp and productivity baselining.</li>
+          <li><strong>Employee attribute mapping</strong> — map employee attributes (Job Family, Sales Role, Hire Date) to the Capacity model's headcount structure. These drive ramp profile assignment and role-level planning.</li>
+        </ul>
+        <img src="../img/day2/cap-04-1-2-1-headcount-data.png" alt="Capacity Page 1.2.1 GTM Headcount Data Guided Setup — Configure Dimensionality and Attributes for Headcount Data with the Step 1 (Configure Ramping Profile Dimensionality) Select Dimensions table populated, Historical Ramping Profile Assumptions preview chart, Step 2 (Select Attributes to View by Employees and position) attribute selectors, 44% Complete progress indicator, and Missing Mandatory Inputs counter" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.2.2 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.2.2</div>
+          <div class="config-section-title">GTM Top-Down HC Target Setting <span class="config-section-star">⭐</span></div>
+        </div>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ <strong>[PENDING: 1.2.2 GTM Top-Down HC Target Setting — page description pending SME review]</strong></span>
+          <p>Confirm exact Step labels, full configuration options, and page-specific pitfalls via live UX review. The screenshot below was captured from the live Capacity configurator during the Jun 15 SME walkthrough.</p>
+        </div>
+
+        <div class="callout-important">
+          <span class="callout-label">🚨 Step 0 — Role Grade: Critical Decision</span>
+          <p><strong>Step 0 on this page is where Role Grade is enabled or turned off. This is one of the most consequential decisions in the entire Capacity configurator.</strong></p>
+          <p>Role Grade is an optional additional dimension (e.g., grade levels P1–P5 within a Sales Role). Enabling it adds substantial complexity — every coverage, productivity, and hiring table gains an additional dimension for every grade level. This multiplies the number of planning rows across the entire app.</p>
+          <p><strong>Only enable Role Grade if the customer genuinely needs grade-level headcount planning and has the data to support it.</strong> Challenge this requirement rigorously with the customer before enabling. If Role Grade is enabled when it isn't needed, significant re-work is required to remove it post-generation.</p>
+        </div>
+
+        <p>Page 1.2.2 configures the guardrail structure for finance-driven headcount planning — the tops-down Not-to-Exceed (NTE) ceiling that constrains all bottoms-up plans submitted at lower levels.</p>
+        <p><strong>Key tables and configuration decisions (verify Step labels in live UX):</strong></p>
+        <ul>
+          <li><strong>Step 0 — Role Grade</strong> — Enable or disable role grade dimension. See critical callout above.</li>
+          <li><strong>Sales role / job family hierarchy</strong> — define the structure of the sales role hierarchy: up to 3 levels (Job Family Group → Job Family → Sales Role). How many levels do you actually need? More levels = more granular planning and more maintenance overhead.</li>
+          <li><strong>Tops-down planning level</strong> — at what level of the geo hierarchy does tops-down target setting begin? (Usually the top — all Americas, or global). This sets the NTE guardrails that constrain bottoms-up planning at every level below.</li>
+          <li><strong>Scenario planning</strong> — how many planning scenarios does the customer want to model? (Typically 2–3: conservative, base, optimistic).</li>
+        </ul>
+        <img src="../img/day2/cap-04-1-2-2-topdown.png" alt="Capacity Page 1.2.2 GTM Top-Down Headcount Target Setting Guided Setup showing Step 0 (Role Grade toggle), the role hierarchy configuration grid, top-down headcount target tables populated, and the side-panel progress indicator" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.2.3 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.2.3</div>
+          <div class="config-section-title">GTM Coverage &amp; Workload Capacity</div>
+        </div>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ <strong>[PENDING: 1.2.3 GTM Coverage &amp; Workload Capacity — page description pending SME review]</strong></span>
+          <p>Confirm exact Step labels, full configuration options, and page-specific pitfalls via live UX review. The screenshot below was captured from the live Capacity configurator during the Jun 15 SME walkthrough.</p>
+        </div>
+        <p>Page 1.2.3 defines how roles cover accounts — the fundamental input for calculating how many people are needed. This is where the customer's coverage model is translated into the planning framework.</p>
+        <p><strong>Key tables and configuration decisions (verify Step labels in live UX):</strong></p>
+        <ul>
+          <li><strong>Geography level for coverage assumptions</strong> — configure at what level of geography coverage assumptions are managed (e.g., all Americas at once, or per sub-region). More granular = more flexibility but more maintenance.</li>
+          <li><strong>Direct seller coverage (account-based)</strong> — 1 AE per N accounts. Configure the ratio per role and per account segment (e.g., Strategic AE → 1:5 accounts covering Strategic + Named segments).</li>
+          <li><strong>Overlay / support role coverage (derived)</strong> — 1 generalist per N AEs, 1 manager per N AEs. Coverage is derived from the direct seller headcount rather than directly from account counts.</li>
+          <li><strong>Segment mapping</strong> — which roles cover which account segments (e.g., Strategic AEs cover Strategic + Named accounts only). This is the direct connection point to Segmentation app outputs.</li>
+          <li><strong>Hours-based planning</strong> — optional workload model for non-revenue roles (e.g., 1 specialist handles 32 hours/week of customer requests). Rarely used — revenue-based coverage is the standard approach.</li>
+        </ul>
+        <img src="../img/day2/cap-04-1-2-3-coverage.png" alt="Capacity Page 1.2.3 GTM Coverage &amp; Workload Guided Setup showing the coverage ratio configuration table (e.g. 1 manager per N AEs, 1 generalist per N AEs) and role-to-segment mapping grid with the workload-by-segment breakdown" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <!-- PAGE 1.2.4 -->
+      <div class="config-section">
+        <div class="config-section-header">
+          <div class="config-section-num">1.2.4</div>
+          <div class="config-section-title">GTM Bottom-Up Hiring Plan</div>
+        </div>
+        <div class="callout-warning">
+          <span class="callout-label">⚠ <strong>[PENDING: 1.2.4 GTM Bottom-Up Hiring Plan — page description pending SME review]</strong></span>
+          <p>Confirm exact Step labels, full configuration options, and page-specific pitfalls via live UX review. The screenshot below was captured from the live Capacity configurator during the Jun 15 SME walkthrough.</p>
+        </div>
+        <p>Page 1.2.4 configures the tactical hiring planning layer — where planners actually enter month-by-month hire plans. This is the bottoms-up counterpart to the tops-down NTE set in 1.2.2.</p>
+        <p><strong>Key tables and configuration decisions (verify Step labels in live UX):</strong></p>
+        <ul>
+          <li><strong>Bottoms-up entry level</strong> — at what level are bottoms-up hiring plans entered? (Typically territory or leaf level of the geo hierarchy.)</li>
+          <li><strong>Approval levels</strong> — once submitted, at what level does the plan get approved? (e.g., submitted at sub-region, approved at region). The approved plan cannot exceed the NTE from tops-down.</li>
+          <li><strong>OWP connection</strong> — optional import of data from Operational Workforce Planning (OWP) — ramping profiles, historical headcount data. Define at what level this data comes in if the customer uses OWP. Leave disabled if not applicable.</li>
+        </ul>
+        <img src="../img/day2/cap-04-1-2-4-bottomup.png" alt="Capacity Page 1.2.4 GTM Bottom-Up Hiring Plan Guided Setup showing the entry-level and approval-level configuration (which hierarchy tier reps enter at, where approvals roll up), and the bottom-up hiring plan input grid populated" style="width:100%;border-radius:6px;margin:16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+      </div>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Additional 1.2.x Pages</span>
+        <p>The Jun 15 SME walkthrough covered 1.2.1 – 1.2.4 as the core pages of the Capacity configurator (after 1.2.4, Gunnar: "and that's all I need" — Jon agreed). If additional 1.2.x pages exist in newer app versions, document each here following the same pattern: page name/number, tables present (using Step XX labels as the guide), configuration decisions required, and a screenshot. Flag as PENDING SME audit until walked through.</p>
+      </div>
+
+      <hr>
+
+      <h2>Timing Guidance</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Configurator</th>
+            <th>Estimated Time</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>T&amp;Q</td>
+            <td>~1 week</td>
+            <td>Full data setup + all config pages</td>
+          </tr>
+          <tr>
+            <td>Segmentation</td>
+            <td>~2–3 hours</td>
+            <td>Data setup shared with Capacity</td>
+          </tr>
+          <tr>
+            <td>Capacity</td>
+            <td>~2 days</td>
+            <td>Data setup shared with Segmentation</td>
+          </tr>
+        </tbody>
+      </table>
+      <p>If doing both Segmentation and Capacity together, the data setup is shared — you don't repeat it. Both configurators live in the same app, so you can run them in the same set of customer sessions without switching context.</p>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Ready for the Capacity Lab</span>
+        <p>Before the exercise, make sure you can answer:</p>
+        <ul>
+          <li>What's the difference between a tops-down and bottoms-up hiring plan — and when does a customer use each?</li>
+          <li>Why is the Role Grade decision (Step 0 on 1.2.2) so critical? What happens if you enable it when the customer doesn't actually need it?</li>
+          <li>How many job families does CloudWorks have, and how does that affect the configuration of 1.2.2?</li>
+        </ul>
+        <p><strong>Next:</strong> <a href="./cap-04-lab.html">Complete the Capacity Configurator Lab →</a></p>
+      </div>
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

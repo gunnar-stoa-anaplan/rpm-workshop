@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: Configurator Exercise — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: Configurator Exercise</h1>
+      <p class="subtitle">Work through the CloudWorks case study and make real configuration decisions for each page</p>
+      <div class="badge-row">
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">90 min</span>
+        <span class="content-badge">Hands-On</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-note">
+        <span class="callout-label">📋 Answer Key</span>
+        <p>This lab is an exercise — there are no answers on this page. Interpret the CloudWorks case study data yourself and make your own configuration decisions. Answer key available in the <a href="./tq-appendix-answer-key.html">Appendix →</a></p>
+      </div>
+
+      <h2>Scenario: CloudWorks Technologies</h2>
+      <p><strong>CloudWorks Technologies</strong> is a fictional B2B SaaS company that sells cloud infrastructure and developer tools to mid-market and enterprise customers. They have approximately 180 sales reps across North America and EMEA, organized into a <strong>5-tier territory hierarchy</strong>. They currently manage territory planning and quota-setting in Excel and are moving to Anaplan T&amp;Q for the coming fiscal year.</p>
+      <p>You have been brought in as the Anaplan delivery lead to complete the T&amp;Q configuration for CloudWorks. The customer has completed Session Zero and provided sample data files. Your job is to work through each configurator page and make real decisions based on the information provided.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📋 Lab Format</span>
+        <p>For each configurator page: review the case study data provided, then go to that page in your configurator instance and make your configuration decisions. There is no step-by-step answer guide here — you are making the call. Facilitator-led debrief follows at the end.</p>
+      </div>
+
+      <div class="lab-objectives">
+        <h3>What you'll do</h3>
+        <ul>
+          <li>Read the CloudWorks case study and map its data files (Account, Employee, Opportunity, Opportunity Line, Territory) onto the configurator's standard Objects and Attributes</li>
+          <li>Make configuration decisions for each page from <strong>1.00 Getting Started</strong> through <strong>1.09 Rule Engine Setup</strong>, including the <strong>1.03.1 Optimizer</strong> page</li>
+          <li>Decide which attributes to enable, and for each enabled attribute choose <em>Enable for Calculations</em>, <em>Enable for Validation</em>, and <em>Enable for Auto Create</em></li>
+          <li>Set the 5-tier territory hierarchy, the planning measures (ARR + New Logos), the target cascade level, and the level at which each assignment type operates</li>
+          <li>Verify each substantive page with the inline Check my Work button before moving to the next page</li>
+          <li>Be ready to defend each decision at the facilitator-led debrief</li>
+        </ul>
+      </div>
+
+      <h2>CloudWorks — Company Profile</h2>
+      <div class="two-col">
+        <div class="card">
+          <h3>Organization</h3>
+          <ul>
+            <li><strong>Sales reps:</strong> ~180 AEs across NA and EMEA</li>
+            <li><strong>Overlay reps:</strong> ~25 SEs (pre-sales engineers)</li>
+            <li><strong>Markets:</strong> Mid-Market and Enterprise</li>
+            <li><strong>Products:</strong> Compute Platform (primary), Developer Suite (secondary)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Hierarchy (5 tiers)</h3>
+          <ul>
+            <li><strong>Level 1:</strong> Geo (e.g., NA, EMEA)</li>
+            <li><strong>Level 2:</strong> Area (e.g., US-East, US-West, UK, DACH)</li>
+            <li><strong>Level 3:</strong> Region (e.g., Northeast, Pacific, Benelux)</li>
+            <li><strong>Level 4:</strong> Sub-Region (e.g., NY Metro, Pacific NW, Germany)</li>
+            <li><strong>Level 5:</strong> Territory (individual rep territories)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="card">
+          <h3>Finance &amp; Planning</h3>
+          <ul>
+            <li>Planning measures: ARR (primary) and New Logos (secondary)</li>
+            <li>Fiscal year: February – January</li>
+            <li>Finance enters targets at the Geo level</li>
+            <li>Historical actuals: 2 years</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Data &amp; Integration</h3>
+          <ul>
+            <li>CRM: Salesforce</li>
+            <li>Data Hub: New (no existing Anaplan workspace)</li>
+            <li>Integration: ADO confirmed by IT</li>
+            <li>Account attributes in source data: Account Type, Industry, Employee Count, Country, Current ARR, Potential Spend</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Dataset Files</h2>
+      <p>The following sample data files have been provided by CloudWorks. <strong>Click each filename to download.</strong> Review the column headers and sample values — they inform every configuration decision you'll make below.</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>File</th>
+              <th>Description</th>
+              <th>Key Columns</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><a href="../data/configurator-exercise/Configurator%20Exercise%20Account_Flat%20File.xlsx" download><code>Account.xlsx</code></a></td>
+              <td>Full account list with firmographic attributes</td>
+              <td>Account ID, Account Name, Account Type, Industry, Employee Count, Country, HQ State, Current ARR, Potential Spend</td>
+            </tr>
+            <tr>
+              <td><a href="../data/configurator-exercise/Configurator%20Exercise%20Employee%20File.xlsx" download><code>Employee.xlsx</code></a></td>
+              <td>Sales rep and manager roster</td>
+              <td>Employee ID, Employee Name, Job Family, Job Category, Business Unit, Cost Center, Territory Code, Start Date</td>
+            </tr>
+            <tr>
+              <td><a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20File.xlsx" download><code>Opportunity.xlsx</code></a></td>
+              <td>Opportunity header records</td>
+              <td>Opportunity ID, Account, Stage, Forecast Category, Planning Measure, Estimated Close Date, Is Won?, Is Closed?</td>
+            </tr>
+            <tr>
+              <td><a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20line%20File.xlsx" download><code>Opportunity Line.xlsx</code></a></td>
+              <td>Closed-won opportunity lines (actuals)</td>
+              <td>Opportunity ID, Opportunity Line ID, Account ID, Product, Amount, Close Date, New Logo Flag</td>
+            </tr>
+            <tr>
+              <td><a href="../data/configurator-exercise/Configurator%20Exercise%20Territory_Flat%20File.csv" download><code>Territory.csv</code></a></td>
+              <td>Full territory hierarchy — all 5 levels</td>
+              <td>Territory Code, Territory Name, Sub-Region, Region, Area, Geo, Territory Type</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <!-- EXERCISE 1.00 -->
+      <h2>1.00 — Getting Started</h2>
+
+      <img src="../screenshots/configurator/config-00-getting-started.jpg" alt="Configurator page 1.00 — Getting Started with module selection and configuration checklist" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.00: Getting Started</strong></p>
+        <p>Review the CloudWorks case study data above and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>The Getting Started page confirms the project scope before configuration begins. Review the page contents and verify you are in the correct workspace and working with the right configurator version.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <ul>
+        <li>CloudWorks is a new Anaplan customer — no prior T&amp;Q workspace exists</li>
+        <li>Modules in scope: T&amp;Q Planning and SPM Optimizer</li>
+        <li>You are working in the V2 configurator</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>Review the Getting Started page. Note any pre-configuration instructions or flags from the App Engineering team.</li>
+        <li>What do you need to confirm or gather before you can proceed to page 1.01?</li>
+        <li>What questions would you ask the customer at the very start of a configuration session?</li>
+      </ul>
+
+      <hr>
+
+      <!-- EXERCISE 1.01 -->
+      <h2>1.01 — Data Hub Setup</h2>
+
+      <img src="../screenshots/configurator/config-01-data-hub-setup.jpg" alt="Configurator page 1.01 — Data Hub Setup with data objects and attributes fully populated (answer-key reference)" class="screenshot" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.01: Data Hub Setup</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>This is the most critical page. You are mapping CloudWorks's customer data objects to Anaplan's data model and deciding which attributes to enable and how to configure the three boolean flags for each.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <p>Open <a href="../data/configurator-exercise/Configurator%20Exercise%20Account_Flat%20File.xlsx" download><code>Account.xlsx</code></a> and <a href="../data/configurator-exercise/Configurator%20Exercise%20Employee%20File.xlsx" download><code>Employee.xlsx</code></a> and review the column headers. The following attributes are present in the CloudWorks data:</p>
+      <ul>
+        <li><strong>Account.xlsx columns:</strong> Account ID, Account Name, Account Type, Industry, Employee Count, Country, HQ State, Current ARR, Potential Spend</li>
+        <li><strong>Employee.xlsx columns:</strong> Employee ID, Employee Name, Job Family, Job Category, Business Unit, Cost Center, Territory Code, Start Date</li>
+        <li><strong>Opportunity Line.xlsx columns:</strong> Opportunity ID, Opportunity Line ID, Account ID, Product, Amount, Close Date, New Logo Flag</li>
+      </ul>
+      <p>Additional context from Session Zero:</p>
+      <ul>
+        <li>CloudWorks plans to filter accounts by Industry and Account Type when building territory assignment rules</li>
+        <li>Job Family will be used in reporting dashboards to compare quota attainment by role type</li>
+        <li>New product lines are added a few times per year — the team wants the app to handle new values automatically</li>
+        <li>CloudWorks does not currently use Order or Order Line data — their actuals flow entirely through Opportunities</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>Review the standard Objects and Attributes in the configurator. Which attributes from the CloudWorks data match standard attributes? Which need to be renamed? Which require adding a new attribute?</li>
+        <li>For each attribute you enable, decide: should it have Enable for Calculations? Enable for Validation? Enable for Auto Create? Be ready to explain your reasoning for each.</li>
+        <li>CloudWorks has no Order or Order Line data. How does that affect what you configure here?</li>
+        <li>Which attributes should <em>not</em> be enabled, and why?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-01" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've mapped the CloudWorks Account, Employee, and Opportunity Line attributes onto the configurator's standard Objects and Attributes and set the three boolean flags for each, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Data Hub objects and attributes mapped for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Account attributes reviewed</strong> &rarr; Account Type, Industry, Country, Current ARR, Potential Spend mapped to standard or custom attributes as appropriate</li>
+            <li><strong>Employee attributes reviewed</strong> &rarr; Job Family, Job Category, Business Unit, Territory Code mapped; Job Family kept as a list attribute for downstream reporting</li>
+            <li><strong>Opportunity Line attributes reviewed</strong> &rarr; Product handled with auto-create so new product values flow in automatically</li>
+            <li><strong>Three-flag decision recorded per enabled attribute</strong> &rarr; Enable for Calculations, Enable for Validation, Enable for Auto Create</li>
+            <li><strong>Order / Order Line objects left disabled</strong> &rarr; CloudWorks has no Order data; actuals flow through Opportunities only</li>
+            <li><strong>Attributes excluded from enablement noted</strong> &rarr; with a one-line reason for each</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.02 — define the territory hierarchy and map the Calculations-enabled attributes to the right level.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EXERCISE 1.02 -->
+      <h2>1.02 — Hierarchy Setup</h2>
+
+      <img src="../screenshots/configurator/config-02-hierarchy-setup.jpg" alt="Configurator 1.02 — Hierarchy Setup" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.02: Hierarchy Setup</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Define the hierarchy structure for all hierarchies in the CloudWorks app. Start with the territory hierarchy. After applying level counts and names, map any attributes flagged "Enable for Calculations" to the appropriate hierarchy level.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <p>Open <code>Territory.xlsx</code> and review the columns. The file contains the following distinct levels:</p>
+      <ul>
+        <li><strong>Column: Geo</strong> — examples: NA, EMEA</li>
+        <li><strong>Column: Area</strong> — examples: US-East, US-West, UK, DACH, Nordics</li>
+        <li><strong>Column: Region</strong> — examples: Northeast, Southeast, Pacific, Benelux, Germany</li>
+        <li><strong>Column: Sub-Region</strong> — examples: NY Metro, New England, Pacific NW, Bavaria</li>
+        <li><strong>Column: Territory</strong> — individual rep territory codes and names</li>
+      </ul>
+      <p>Additionally, Job Family was configured in 1.01 as a custom hierarchy list for employee reporting.</p>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>How many levels does the CloudWorks territory hierarchy have? Set the level count accordingly.</li>
+        <li>Enter the exact names for each tier as they appear in the CloudWorks data. Should you add a level suffix (L1, L2, etc.)? Why or why not?</li>
+        <li>After applying, the configurator will ask you to map attributes enabled for Calculations to applicable hierarchies. Which attributes need to be mapped, and to which hierarchy level?</li>
+        <li>Is there a second hierarchy (beyond territory) to configure? What would it look like for CloudWorks?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-02" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've set the level count, named each tier, and mapped your Calculations-enabled attributes to the right hierarchy levels, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Hierarchy structure configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Territory hierarchy level count</strong> &rarr; 5 (Geo, Area, Region, Sub-Region, Territory)</li>
+            <li><strong>Tier names match the source columns</strong> &rarr; spelled exactly as they appear in Territory.csv</li>
+            <li><strong>Level-suffix decision recorded</strong> &rarr; with a one-line reason</li>
+            <li><strong>Calculations-enabled attributes mapped to the right level</strong> &rarr; e.g., Country at the level it identifies, Industry / Account Type at the account level they apply to</li>
+            <li><strong>Second hierarchy decision</strong> &rarr; whether Job Family becomes its own hierarchy for employee reporting, with a reason</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.03 — wire up the actuals source and define the planning measures.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="lab-quiz" data-correct="C">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>On page 1.09 you'll want to use Country as a rule condition. Which boolean flag on page 1.01 makes an attribute available for selection there?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-flags" value="A"><span class="lab-quiz-letter">A</span><span><strong>Enable for Validation</strong> — it lets the configurator validate the value at load time</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-flags" value="B"><span class="lab-quiz-letter">B</span><span><strong>Enable for Auto Create</strong> — it lets new values flow into the app automatically</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-flags" value="C"><span class="lab-quiz-letter">C</span><span><strong>Enable for Calculations</strong> — it makes the attribute list-formatted and selectable in downstream pages</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-flags" value="D"><span class="lab-quiz-letter">D</span><span>None of the three flags — Country is always available regardless</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> <em>Enable for Calculations</em> is what makes an attribute list-formatted and selectable as a rule condition on 1.09, a hierarchy mapping on 1.02, and an Optimizer constraint on 1.03.1. The Employee Count example in the page text shows the inverse: it isn't list-formatted, so it can't be used as a rule condition.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>C — Enable for Calculations</strong>. That's the flag that turns an attribute into a list-formatted dimension that downstream pages can pick from. Validation governs load-time checks; Auto Create governs whether new values flow in automatically.</div>
+      </div>
+
+      <!-- EXERCISE 1.03 -->
+      <h2>1.03 — Scenario Planning &amp; Planning Measures</h2>
+
+      <img src="../screenshots/configurator/config-03-scenario-planning.jpg" alt="Configurator 1.03 — Scenario Planning" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.03: Scenario Planning</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure the transactional data sources that feed actuals and forecasts into the app, and define the planning measures CloudWorks will plan and quota against.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <p>Open <a href="../data/configurator-exercise/Configurator%20Exercise%20Opportunity%20line%20File.xlsx" download><code>Opportunity Line.xlsx</code></a> and review the columns:</p>
+      <ul>
+        <li>Actuals value field: <strong>Amount</strong></li>
+        <li>Date field for time placement: <strong>Close Date</strong></li>
+        <li>New Logo actuals: <strong>New Logo Flag</strong> (boolean — 1 = new logo, 0 = expansion)</li>
+      </ul>
+      <p>Planning context from Session Zero:</p>
+      <ul>
+        <li>CloudWorks plans <strong>ARR</strong> as the primary measure (currency, USD)</li>
+        <li>CloudWorks also plans <strong>New Logos</strong> as a count measure</li>
+        <li>Fiscal year: February – January</li>
+        <li>Planning time scale: quarterly</li>
+        <li>CloudWorks is not planning a pipeline/forecast measure at this time</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>Configure the actuals data source: which table, which field, which time scale, which date field?</li>
+        <li>Add your two planning measures. What are the measure names, types, and source attributes for actuals and forecast values?</li>
+        <li>Should you add a seasonality configuration for either measure? What information would you need from the customer to decide?</li>
+        <li>CloudWorks mentioned they might want to add a Services ARR measure "in a few months." How does this affect your decision today?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-03" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've configured the actuals source and added the two planning measures (ARR and New Logos), click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Actuals source and planning measures configured.</p>
+          <ul class="lab-check-list">
+            <li><strong>Actuals data source</strong> &rarr; Opportunity Line, Amount field, Close Date for time placement, quarterly time scale</li>
+            <li><strong>Planning measure: ARR</strong> &rarr; currency (USD), primary planning measure</li>
+            <li><strong>Planning measure: New Logos</strong> &rarr; count, driven by the New Logo Flag on Opportunity Line</li>
+            <li><strong>Fiscal year</strong> &rarr; February through January, matching CloudWorks's calendar</li>
+            <li><strong>Seasonality decision recorded</strong> &rarr; with the open question you'd take back to the customer</li>
+            <li><strong>Services ARR question handled</strong> &rarr; explicit decision to add now or defer, with a reason</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.04 — Historical Data Reporting (pending SME content).</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EXERCISE 1.04 -->
+      <h2>1.04 — Historical Data Reporting</h2>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ <strong>[PENDING: 1.04 Historical Data Reporting — lab steps pending SME input and configurator review]</strong></span>
+        <p>Lab steps for this page are pending. Once the Configurator Review section 1.04 content is confirmed by an SME, exercise steps will be added here. For now, navigate to Page 1.04 in your configurator instance and review its contents, noting what configuration decisions are available.</p>
+      </div>
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.04: Historical Data Reporting</strong></p>
+        <p>Review the case study handout and the in-app Step labels (left side of each table) to understand what each table configures. Make your configuration decisions based on CloudWorks data.</p>
+      </blockquote>
+
+      <hr>
+
+      <!-- EXERCISE 1.05 -->
+      <h2>1.05 — Account Value KPIs</h2>
+
+      <div class="callout-warning">
+        <span class="callout-label">⚠ <strong>[PENDING: 1.05 Account Value KPIs — lab steps pending SME input and configurator review]</strong></span>
+        <p>Lab steps for this page are pending. Once the Configurator Review section 1.05 content is confirmed by an SME, exercise steps will be added here. For now, navigate to Page 1.05 in your configurator instance and review its contents, noting what configuration decisions are available.</p>
+      </div>
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.05: Account Value KPIs</strong></p>
+        <p>Review the case study handout and the in-app Step labels (left side of each table) to understand what each table configures. Make your configuration decisions based on CloudWorks data.</p>
+      </blockquote>
+
+      <hr>
+
+      <!-- EXERCISE 1.03.1 -->
+      <h2>1.03.1 — Optimizer</h2>
+
+      <img src="../screenshots/configurator/config-05-optimizer.jpg" alt="Configurator 1.03.1 — Optimizer" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.03.1: Optimizer</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure the objectives, geography constraint levels, and account attributes for the Optimizer. Remember: all attributes used here must have been enabled for Calculations in page 1.01.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <ul>
+        <li>CloudWorks wants to use the Optimizer to help balance territory workload by Potential Spend</li>
+        <li>They also want to add Pipeline Amount as an objective for future balancing scenarios</li>
+        <li>CloudWorks territories are distributed across two Geos (NA, EMEA) and five Areas — they want geography constraints to apply at the Area level</li>
+        <li>Account attribute available for constraints: <strong>Potential Spend</strong> (enabled for Calculations in 1.01)</li>
+        <li>Territory Type (e.g., Mid-Market, Enterprise) is a potential mix constraint</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>What objectives will you configure? Review the default objectives and decide what to keep, rename, or add.</li>
+        <li>At what hierarchy level(s) should geography constraints be applied for CloudWorks?</li>
+        <li>Which account attribute should be selected for constraints? Is it available for selection? Why or why not?</li>
+        <li>What mix constraint attribute would you choose, and what does that mean for how the optimizer will balance territories?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-03-1" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've selected objectives, set geography constraint levels, and chosen the account and mix constraint attributes, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Optimizer configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Objectives configured</strong> &rarr; Potential Spend as the primary balancing objective; Pipeline Amount added as a future scenario where appropriate</li>
+            <li><strong>Geography constraint level</strong> &rarr; Area (Level 2), per CloudWorks's requirement</li>
+            <li><strong>Account attribute for constraints</strong> &rarr; Potential Spend, available because it was enabled for Calculations on 1.01</li>
+            <li><strong>Mix constraint attribute</strong> &rarr; Territory Type (Mid-Market vs. Enterprise), with a one-line explanation of how the balance reads</li>
+            <li><strong>Cross-check against 1.01</strong> &rarr; every attribute referenced here has Enable for Calculations switched on</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.06 — define how Finance targets enter the app and cascade down the hierarchy.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="lab-quiz" data-correct="B">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>Finance gives CloudWorks annual targets at the Geo level and quarterly seasonality percentages. Which combination of cascade level and time granularity matches what 1.06 asks for?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-target-cascade" value="A"><span class="lab-quiz-letter">A</span><span>Cascade from Territory (Level 5), time granularity = monthly</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-target-cascade" value="B"><span class="lab-quiz-letter">B</span><span>Cascade from Geo (Level 1), time granularity = quarterly</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-target-cascade" value="C"><span class="lab-quiz-letter">C</span><span>Cascade from Region (Level 3), time granularity = annual</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-target-cascade" value="D"><span class="lab-quiz-letter">D</span><span>Cascade from Sub-Region (Level 4), time granularity = monthly</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> Finance enters targets at the Geo level, so the cascade starts there and flows down through the 5 tiers. The case study explicitly says CloudWorks plans quarterly, so the target time granularity is quarterly. Quota tracking on 1.07 is a separate decision — that lives at the monthly level for individual reps even though targets enter quarterly.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>B — Geo, quarterly</strong>. Finance enters targets at the Geo level and provides quarterly seasonality. Watch out for the monthly answers: those are about quota tracking on page 1.07, not target planning on 1.06.</div>
+      </div>
+
+      <!-- EXERCISE 1.06 -->
+      <h2>1.06 — Target and Allocation</h2>
+
+      <img src="../screenshots/configurator/config-06-target-allocation.jpg" alt="Configurator 1.06 — Target and Allocation" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.06: Target and Allocation</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure how Finance targets enter the app and how they cascade down the 5-tier CloudWorks hierarchy. Also set the time granularity for target planning and decide on allocation methods.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <ul>
+        <li>Finance provides annual targets broken out by Geo (NA and EMEA totals)</li>
+        <li>CloudWorks plans quarterly — Finance provides quarterly seasonality percentages</li>
+        <li>Sales leadership wants to allocate targets using historical actuals as the primary weighting method</li>
+        <li>Pipeline Amount should be available as an optional allocation method</li>
+        <li>Sales Ops may need to apply manual overrides at any level below Geo</li>
+        <li>No additional target dimensions beyond territory (no product or segment splits at this time)</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>At which hierarchy level does Finance enter targets for CloudWorks? Set the cascade starting level accordingly.</li>
+        <li>What time granularity should be set for target planning? What does that mean for how targets are imported?</li>
+        <li>Which allocation methods will you enable? Should Pipeline Amount be added? What does it require from the data?</li>
+        <li>CloudWorks's head of Sales Strategy mentioned they might want to split targets by product line (Compute Platform vs. Developer Suite) next year. How does that affect your configuration today?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-06" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've set the cascade starting level, the time granularity, and the allocation methods, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Target and Allocation configured.</p>
+          <ul class="lab-check-list">
+            <li><strong>Cascade starting level</strong> &rarr; Geo (Level 1), per Finance's input pattern</li>
+            <li><strong>Target time granularity</strong> &rarr; quarterly, matching CloudWorks's planning cadence</li>
+            <li><strong>Allocation methods enabled</strong> &rarr; historical actuals as primary; Pipeline Amount available as optional</li>
+            <li><strong>Manual override capability</strong> &rarr; Sales Ops can override at any level below Geo</li>
+            <li><strong>No additional target dimensions</strong> &rarr; no product or segment splits configured today</li>
+            <li><strong>Product-split question handled</strong> &rarr; explicit decision on whether to lay groundwork now or revisit next year, with a reason</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.07 — set the hierarchy level for account, rep, and manager assignments.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EXERCISE 1.07 -->
+      <h2>1.07 — Territory Assignment</h2>
+
+      <img src="../screenshots/configurator/config-07-territory-assignment.jpg" alt="Configurator 1.07 — Territory Assignment" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.07: Territory Assignment</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure at which level of the 5-tier hierarchy each type of assignment operates — for accounts, for sales reps, and for first-line managers. Also set the quota time dimension. Note: all assignment methods are generated automatically; you are configuring the level at which each operates, not whether to enable them.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <ul>
+        <li>CloudWorks territory hierarchy: Geo → Area → Region → Sub-Region → Territory</li>
+        <li>Individual accounts are assigned to the Territory level (Level 5)</li>
+        <li>Sales reps are assigned to specific Territories (Level 5)</li>
+        <li>First-line managers oversee Sub-Regions (Level 4) — each manager covers 3–6 territories</li>
+        <li>Quota will be tracked at the monthly level for individual reps, even though Finance enters targets quarterly</li>
+        <li>Employee.xlsx contains a Territory Code column that maps each rep to their current territory</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>At what hierarchy level should account assignment operate for CloudWorks?</li>
+        <li>At what hierarchy level should sales rep assignment operate?</li>
+        <li>At what hierarchy level should first-line manager assignment operate?</li>
+        <li>What time dimension level should quota be set at? Why does this differ from the target planning granularity set in 1.06?</li>
+        <li>Read the in-app instructions for this page carefully — do they change any of your initial decisions above?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-07" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've set the operating level for each assignment type and the quota time dimension, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Territory assignment levels set for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Account assignment level</strong> &rarr; Territory (Level 5)</li>
+            <li><strong>Sales rep assignment level</strong> &rarr; Territory (Level 5)</li>
+            <li><strong>First-line manager assignment level</strong> &rarr; Sub-Region (Level 4)</li>
+            <li><strong>Quota time dimension</strong> &rarr; monthly, finer-grained than the quarterly target cadence on 1.06</li>
+            <li><strong>Reason for the time-grain mismatch recorded</strong> &rarr; targets are planned quarterly, but rep quotas track monthly for in-period management</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.08 — configure leader and overlay resource assignments and the initial rep-to-territory mapping.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EXERCISE 1.08 -->
+      <h2>1.08 — Resource Assignment</h2>
+
+      <img src="../screenshots/configurator/config-08-resource-assignment.jpg" alt="Configurator 1.08 — Resource Assignment" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.08: Resource Assignment</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure at which hierarchy levels sales leader and overlay rep assignments operate, which hierarchy levels require approval for resource assignments, and which employee attribute is used to initialize rep-to-territory mapping.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <ul>
+        <li>CloudWorks has ~180 field AEs assigned at the Territory level</li>
+        <li>~25 SE (pre-sales engineer) overlay reps each cover an entire Area (Level 2)</li>
+        <li>Sales leaders at the Region level (Level 3) are responsible for approving resource assignments within their Regions</li>
+        <li>Assignments below the Region level do not require a separate approval — they flow directly</li>
+        <li>Employee.xlsx has a <strong>Territory Code</strong> column that identifies each rep's current territory — this should be used for the initial rep-to-territory assignment at go-live</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>At what hierarchy level should sales leader resource management operate?</li>
+        <li>At what hierarchy level should SE overlay rep assignments operate?</li>
+        <li>Which hierarchy levels require approval for resource assignment changes?</li>
+        <li>Which attribute from Employee.xlsx should be mapped as the "Sales Rep Attribute for Territory" for the initial assignment? Why is this important?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-08" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've set the resource assignment levels, the approval levels, and the initial rep-to-territory attribute, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Resource assignment configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Sales leader resource management level</strong> &rarr; Region (Level 3), per CloudWorks's approval structure</li>
+            <li><strong>SE overlay rep assignment level</strong> &rarr; Area (Level 2)</li>
+            <li><strong>Approval-required levels</strong> &rarr; Region and above; assignments below Region flow without separate approval</li>
+            <li><strong>Sales Rep Attribute for Territory</strong> &rarr; Territory Code from Employee.xlsx, used for the initial rep-to-territory assignment at go-live</li>
+            <li><strong>Reason for that attribute choice recorded</strong> &rarr; one-line explanation of why this attribute drives the initial mapping</li>
+          </ul>
+          <p class="lab-check-next">Ready for 1.09 — set eligibility and rule condition attributes for the Rule Engine.</p>
+        </div>
+      </div>
+
+      <hr>
+
+      <!-- EXERCISE 1.09 -->
+      <h2>1.09 — Rule Engine Setup</h2>
+
+      <img src="../screenshots/configurator/config-09-rule-engine.jpg" alt="Configurator 1.09 — Rule Engine" style="width:100%;border-radius:6px;margin:0 0 16px 0;box-shadow:0 2px 8px rgba(0,0,0,0.15);">
+
+      <blockquote>
+        <p><strong>Go to configurator page 1.09: Rule Engine Setup</strong></p>
+        <p>Review the CloudWorks case study data below and complete the configuration for this page.</p>
+      </blockquote>
+
+      <p>Configure which account attributes define eligibility for rule-based assignment, and which account attributes can be used as rule conditions. Remember: all attributes used here must be list-formatted — they must have been enabled for Calculations in page 1.01.</p>
+
+      <p><strong>Case Study Data:</strong></p>
+      <p>From Session Zero, CloudWorks described the following approach to rule-based account assignment:</p>
+      <ul>
+        <li>Only accounts with <strong>Employee Count &gt; 50</strong> are eligible for rule-based assignment — smaller accounts go to a manual pool managed by Sales Ops</li>
+        <li>The primary rule logic is based on <strong>Industry</strong> and <strong>Account Type</strong> — e.g., "Healthcare accounts with Account Type = Enterprise → EMEA Enterprise Territory"</li>
+        <li>A secondary rule dimension is <strong>Country</strong> — some territories are country-specific</li>
+        <li>CloudWorks does not want to use Employee Count as a rule condition (only as an eligibility filter)</li>
+      </ul>
+      <p>Attributes enabled for Calculations in 1.01 (available for selection here):</p>
+      <ul>
+        <li>Account Type ✓</li>
+        <li>Industry ✓</li>
+        <li>Country ✓</li>
+      </ul>
+      <p>Attributes <em>not</em> enabled for Calculations (not available for selection):</p>
+      <ul>
+        <li>Employee Count (stored as a number, not a list)</li>
+        <li>HQ State (not enabled in 1.01)</li>
+      </ul>
+
+      <p><strong>Your Task:</strong></p>
+      <ul>
+        <li>Which attribute(s) should be selected as eligibility attributes? What does selecting an eligibility attribute mean for accounts that don't match?</li>
+        <li>Which attributes should be selected as rule condition attributes? Which should be excluded and why?</li>
+        <li>CloudWorks wants to use Employee Count as an eligibility filter — but it's not a list-formatted attribute. What would you do? What options are available?</li>
+        <li>After completing this page, what would be a concrete first rule you'd suggest CloudWorks write in the generated app?</li>
+      </ul>
+
+      <div class="lab-check" data-check-id="rpm-tq-configurator-step-1-09" data-workshop-slug="rpm">
+        <p class="lab-check-prompt">When you've selected eligibility attributes, rule condition attributes, handled the Employee Count question, and drafted a first concrete rule, click below to verify.</p>
+        <button type="button" class="lab-check-button">Check my work</button>
+        <div class="lab-check-results" hidden>
+          <p class="lab-check-summary">Rule Engine configured for CloudWorks.</p>
+          <ul class="lab-check-list">
+            <li><strong>Eligibility attributes selected</strong> &rarr; with a note on what it means for accounts that fail eligibility (manual pool managed by Sales Ops)</li>
+            <li><strong>Rule condition attributes selected</strong> &rarr; Account Type, Industry, Country — all confirmed list-formatted from 1.01</li>
+            <li><strong>Excluded attributes noted</strong> &rarr; Employee Count and HQ State, with the one-line reason for each</li>
+            <li><strong>Employee Count handling decided</strong> &rarr; concrete approach for using it as eligibility despite not being list-formatted (e.g., recommended change back on 1.01, or a workaround)</li>
+            <li><strong>First concrete rule drafted</strong> &rarr; example like "Industry = Healthcare AND Account Type = Enterprise &rarr; EMEA Enterprise Territory"</li>
+          </ul>
+          <p class="lab-check-next">All configurator pages complete. Head to the Debrief Questions below and compare your decisions against the Answer Key in the Appendix.</p>
+        </div>
+      </div>
+
+      <hr class="divider">
+
+      <div class="lab-quiz" data-correct="A">
+        <span class="lab-quiz-label">Quick check</span>
+        <h3>CloudWorks wants Employee Count to act as a rule-eligibility filter on page 1.09, but it appeared in the Account.xlsx data as a number and was never enabled for Calculations on 1.01. What's the cleanest fix?</h3>
+        <div class="lab-quiz-options">
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-rule-eligibility" value="A"><span class="lab-quiz-letter">A</span><span>Go back to 1.01, add Employee Count as a list-formatted attribute (bucketed if needed) and enable it for Calculations, then return to 1.09</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-rule-eligibility" value="B"><span class="lab-quiz-letter">B</span><span>Leave 1.01 alone and write a custom calculation on 1.09 that converts the number into a list at rule-evaluation time</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-rule-eligibility" value="C"><span class="lab-quiz-letter">C</span><span>Skip the eligibility filter entirely — accept that all accounts will be in scope for rule-based assignment</span></label>
+          <label class="lab-quiz-option"><input type="radio" name="quiz-tq-configurator-rule-eligibility" value="D"><span class="lab-quiz-letter">D</span><span>Enable Employee Count for Auto Create on 1.01 — that flag will make it available to the Rule Engine</span></label>
+        </div>
+        <button type="button" class="lab-quiz-check">Check answer</button>
+        <div class="lab-quiz-feedback lab-quiz-feedback-correct"><strong>Correct.</strong> The configurator's dependency direction is upstream-first: 1.09 can only pick from what 1.01 made list-formatted and enabled for Calculations. The clean fix is to go back to 1.01 and configure the attribute the way 1.09 needs it. This is also why the debrief asks "what pre-work in 1.01 would have made it available" — the lesson is that 1.01 decisions ripple through every later page.</div>
+        <div class="lab-quiz-feedback lab-quiz-feedback-wrong"><strong>Not quite.</strong> The right answer is <strong>A</strong>. The Rule Engine can only pick from attributes that were already enabled for Calculations on 1.01 — the configurator's pages depend on each other in order. Auto Create is about whether new values flow in automatically, not about availability on later pages, and skipping eligibility breaks CloudWorks's actual requirement.</div>
+      </div>
+
+      <h2>Debrief Questions</h2>
+      <p>When the group reconvenes, the facilitator will walk through the answer key and discuss decision points and tradeoffs. Before the debrief, think through the following:</p>
+      <ol>
+        <li>Which configuration page required the most judgment? What additional information would you want from a real customer before making that call?</li>
+        <li>CloudWorks asked about adding a Services ARR measure "next year." What's your recommendation — add it now or wait? What's the cost of each choice?</li>
+        <li>On page 1.01, what happens if a customer has duplicate attribute names across Opportunity and Opportunity Line? How do you handle it?</li>
+        <li>You configured a 5-tier hierarchy. What would change in pages 1.06, 1.07, and 1.08 if CloudWorks had decided to flatten to 4 tiers?</li>
+        <li>On page 1.09, CloudWorks couldn't use Employee Count as a rule condition because it's not list-formatted. What pre-work could you have done in 1.01 to make it available?</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">✅ Lab Complete</span>
+        <p>When the group reconvenes, refer to the <a href="./tq-appendix-answer-key.html">Answer Key in the Appendix</a> to compare your decisions. There are often multiple valid approaches — the goal is to understand the reasoning behind each choice, not to match the answer key exactly.</p>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+  <script src="../js/lab-quiz.js"></script>
+</body>
+</html>

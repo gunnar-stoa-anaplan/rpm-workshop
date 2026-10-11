@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Limitations Quick Reference — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+    <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Limitations Quick Reference</h1>
+      <p class="subtitle">What each RPM app can and cannot do today — as of March 2026</p>
+      <div class="badge-row">
+        <span class="content-badge">Reference</span>
+        <span class="content-badge">March 2026</span>
+      </div>
+    </div>
+    <div class="content-body">
+
+      <div class="callout-important">
+        <span class="callout-label">⚠ Use This Honestly</span>
+        <p>This page documents real limitations from the March 2026 training session. Use it to set accurate expectations with customers before they ask. A limitation surfaced proactively builds trust; the same limitation discovered mid-project damages it.</p>
+      </div>
+
+      <h2>Suite-Wide Limitations</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability Area</th>
+              <th>What It CAN Do</th>
+              <th>What It CANNOT Do Today</th>
+              <th>Workaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>App-to-App Connections</strong></td>
+              <td>Data connection points exist in the app design (e.g., Segmentation output table in T&amp;Q)</td>
+              <td>No automatic data sync between apps. Finalized Segmentation data does not automatically flow into T&amp;Q.</td>
+              <td>Manual export/import or ADO pipeline between apps. Plan for this as an integration step in the project.</td>
+            </tr>
+            <tr>
+              <td><strong>CoModeler Access</strong></td>
+              <td>CoModeler can read model structure, generate line item dictionaries, explain formula logic</td>
+              <td>Not self-serve for customers or partners. Access is gated — requires the Apps team to enable it.</td>
+              <td>Coordinate with the Apps team (Chan/Jon) to enable CoModeler for a specific customer workspace before demos or labs.</td>
+            </tr>
+            <tr>
+              <td><strong>Configurator Access</strong></td>
+              <td>Configurator produces a fully configured, generated model</td>
+              <td>Not self-serve for customers. Configurator access is gated to the Apps team currently.</td>
+              <td>Chan and Jon handle generation for the first 3 partner projects. After that, partners run independently with Apps team oversight.</td>
+            </tr>
+            <tr>
+              <td><strong>ADO Data Flows</strong></td>
+              <td>Inbound data from source systems (Salesforce, Snowflake, HRIS) into Anaplan via ADO</td>
+              <td>No bidirectional ADO currently. Data flows one way: source systems → Anaplan. No write-back.</td>
+              <td>None yet. Bidirectional ADO (Anaplan → Salesforce, Snowflake, Databricks) is on the roadmap.</td>
+            </tr>
+            <tr>
+              <td><strong>ADO Streaming</strong></td>
+              <td>Scheduled batch data refresh from source systems</td>
+              <td>Not real-time. Batch only — data has a refresh lag.</td>
+              <td>Set expectations with customers that pipeline data will not be instant. Agree on a refresh cadence.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Territory &amp; Quota (T&amp;Q)</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability Area</th>
+              <th>What It CAN Do</th>
+              <th>What It CANNOT Do Today</th>
+              <th>Workaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Boomerang Employees</strong></td>
+              <td>Handle employee LOA and return using effective-dated assignments at monthly granularity</td>
+              <td>V3 assignment model uses monthly granularity only. Cannot track day-level precision for employees who leave and return within the same month.</td>
+              <td>Extension required for day-level precision. First, challenge whether the customer truly needs day-level vs. month-level — most don't.</td>
+            </tr>
+            <tr>
+              <td><strong>Territory Format (V3 Migration)</strong></td>
+              <td>V3 uses an improved intersection model (territory × employee × time)</td>
+              <td>V3 territory format is a breaking change from V2. Existing V2 configurations and data structures are not directly compatible with V3.</td>
+              <td>Plan a V2 → V3 migration project. Treat it like a faster re-implementation, not an upgrade. Well-documented V2 extensions make this significantly faster.</td>
+            </tr>
+            <tr>
+              <td><strong>In-Year Hierarchy Changes</strong></td>
+              <td>Supports effective-dated territory and resource assignments to handle mid-year changes</td>
+              <td>Changing the <em>dimensionality</em> of the hierarchy (number of tiers, planning measures) after generation requires a configurator re-run. This resets post-gen work.</td>
+              <td>Get hierarchy decisions right before generating. Document the configurator settings and do not change dimensionality post-gen without planning for a re-run.</td>
+            </tr>
+            <tr>
+              <td><strong>Optimizer — Territory Exclusion</strong></td>
+              <td>Preserve existing account assignments; exclude specific accounts from optimizer consideration</td>
+              <td>Cannot exclude a specific territory from being optimized against (e.g., a placeholder "bucket" territory).</td>
+              <td>Known gap. Track in the backlog. Advise customers to run optimization before populating placeholder territories.</td>
+            </tr>
+            <tr>
+              <td><strong>Split Allocation (V2)</strong></td>
+              <td>V2 T&amp;Q supports basic split account management via extensions</td>
+              <td>Split Allocation is not natively supported in V2 base app. Requires an extension.</td>
+              <td>Native in V3 (May 2026). If customer needs this in V2, scope it as an extension. Consider waiting for V3 if timeline allows.</td>
+            </tr>
+            <tr>
+              <td><strong>Quota Acknowledgement</strong></td>
+              <td>Two options: (1) In-app seller view of their quota. (2) DocuSign connector for digital signature.</td>
+              <td>DocuSign integration is an extension — not included out of the box.</td>
+              <td>Scope as a common extension. Well-understood effort. High value for customers with formal comp acknowledgement requirements.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Account Segmentation</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability Area</th>
+              <th>What It CAN Do</th>
+              <th>What It CANNOT Do Today</th>
+              <th>Workaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>T&amp;Q Integration</strong></td>
+              <td>A Segmentation output table exists in the T&amp;Q model for receiving segment data</td>
+              <td>No automatic sync. Finalizing the planning hierarchy in Segmentation does not push data to T&amp;Q automatically.</td>
+              <td>Manual export/import or ADO pipeline. Plan this as an explicit integration step in the delivery.</td>
+            </tr>
+            <tr>
+              <td><strong>UCP Exclusion Logic</strong></td>
+              <td>Supports complex exclusion rules by firmographic criteria; account-level override in both directions</td>
+              <td>The "exclude rule" checkbox UI is counterintuitive (checked = rule is active = accounts are excluded). Easy to misconfigure.</td>
+              <td>Test exclusion rules carefully before committing. Brief customers on the double-negative checkbox behavior before they use the UX.</td>
+            </tr>
+            <tr>
+              <td><strong>Score Threshold Changes</strong></td>
+              <td>Score-to-segment thresholds are configurable post-generation without a re-run</td>
+              <td>Changing scoring metric weights after generation requires understanding where in the module those weights live. Not obvious to new users.</td>
+              <td>Use CoModeler (when available) to locate the weight line items. Document the threshold settings during delivery.</td>
+            </tr>
+            <tr>
+              <td><strong>Wallet Size Data</strong></td>
+              <td>Wallet size calculation is built into the app and supports multiple calculation methods</td>
+              <td>Requires third-party firmographic data (e.g., employee count, industry benchmarks) that many customers don't have.</td>
+              <td>Customers can use estimates or industry benchmarks. Alternatively, skip wallet size setup if it won't be used in scoring or target allocation.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Capacity Planning</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability Area</th>
+              <th>What It CAN Do</th>
+              <th>What It CANNOT Do Today</th>
+              <th>Workaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>In-Year Hierarchy Changes</strong></td>
+              <td>Supports effective-dated hiring plan entries; scenario comparison</td>
+              <td>Changing planning hierarchy dimensionality (geo tiers, role structure) post-generation requires a configurator re-run.</td>
+              <td>Get dimensionality decisions right before generating. The configurator conversation is more important than the post-gen work.</td>
+            </tr>
+            <tr>
+              <td><strong>Segmentation Auto-Sync</strong></td>
+              <td>Coverage ratios can incorporate segment counts</td>
+              <td>Segment count data from the Segmentation app does not automatically feed into Capacity coverage ratio inputs.</td>
+              <td>Manual export/import or ADO pipeline. Small ADO setup effort once ADO is configured for the customer.</td>
+            </tr>
+            <tr>
+              <td><strong>OWP Integration</strong></td>
+              <td>Can be connected to Operational Workforce Planning (OWP) for position and cost data</td>
+              <td>Not automatic — requires a dedicated integration project. Only relevant if the customer has OWP live.</td>
+              <td>Scope as a separate extension if customer has OWP. High value for customers with mature headcount planning processes.</td>
+            </tr>
+            <tr>
+              <td><strong>Scenario Count</strong></td>
+              <td>Supports multiple planning scenarios (base, conservative, optimistic, etc.)</td>
+              <td>Number of scenarios is set at generation time in the configurator. Adding scenarios post-gen requires extending the scenario list and replicating logic.</td>
+              <td>Ask customers how many scenarios they need before generating. Default to 3 unless there's a specific reason for more.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <hr class="divider">
+
+      <h2>Sales Forecasting</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Capability Area</th>
+              <th>What It CAN Do</th>
+              <th>What It CANNOT Do Today</th>
+              <th>Workaround</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Salesforce Write-Back</strong></td>
+              <td>Read opportunity data from Salesforce via A4S or ADO; display it in Anaplan</td>
+              <td>Cannot write forecast decisions back to Salesforce. Data flows inbound only.</td>
+              <td>None currently. Bidirectional ADO is on the roadmap. Set this expectation clearly before go-live — do not promise write-back.</td>
+            </tr>
+            <tr>
+              <td><strong>Real-Time Pipeline Updates</strong></td>
+              <td>Batch pipeline data ingestion on a scheduled basis</td>
+              <td>Not real-time. Sellers won't see pipeline changes reflected instantly.</td>
+              <td>Agree on a refresh schedule (e.g., nightly). Brief sales teams that the tool is a planning and forecasting layer, not a live CRM view.</td>
+            </tr>
+            <tr>
+              <td><strong>Configurability</strong></td>
+              <td>Works well out of the box for structured forecast collection and scenario modeling</td>
+              <td>No configurator — significantly less customizable than T&amp;Q, Segmentation, or Capacity.</td>
+              <td>Resist the urge to extend heavily before the customer has used the base app for one quarter. Let real usage identify where extensions are genuinely needed.</td>
+            </tr>
+            <tr>
+              <td><strong>ICM Connection</strong></td>
+              <td>Tracks forecast attainment against T&amp;Q quotas</td>
+              <td>No native ICM connection — incentive compensation calculations are not available in the current app.</td>
+              <td>ICM app is on the roadmap (TBD 2026). If customers need ICM now, this is a gap. Do not imply it will be available before you confirm with the Apps team.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

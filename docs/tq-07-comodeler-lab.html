@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: CoModeler — T&Q — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: CoModeler</h1>
+      <p class="subtitle">Using CoModeler to document and understand the T&amp;Q model</p>
+      <div class="badge-row">
+        <span class="content-badge">T&amp;Q Module</span>
+        <span class="content-badge">Lab</span>
+        <span class="content-badge">30 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>Use CoModeler to explore the generated model structure. These labs are designed to produce <strong>predictable, verifiable outputs</strong> — each one has a specific question you should be able to answer when done.</p>
+
+      <div class="callout-note">
+        <span class="callout-label">📝 Access</span>
+        <p>CoModeler is available within Anaplan. Open any module in the app → look for the CoModeler icon in the toolbar. Complete Lab A before Lab B — Lab B builds on what you find in Lab A.</p>
+      </div>
+
+      <h2>What You'll See — CoModeler in T&amp;Q</h2>
+      <p>The screenshots below show what CoModeler looks like when open in the T&amp;Q app. Familiarize yourself with the interface before starting Lab A.</p>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler panel open in T&Q SYS Territory Quota module]</div>
+        <div class="ss-desc">Show CoModeler side panel alongside SYS Territory Quota. Prompt input field visible. Toolbar CoModeler icon highlighted. No live demo recorded — capture from T&Q template app with CoModeler enabled.</div>
+      </div>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler response — line item dictionary for SYS Territory Quota]</div>
+        <div class="ss-desc">Show a CoModeler output listing quota calculation line items. Should show Base Target, Assignment %, Ramp Factor, and the output quota line item.</div>
+      </div>
+
+      <div class="screenshot-placeholder">
+        <div class="ss-icon">📸</div>
+        <div class="ss-label">[SCREENSHOT NEEDED: CoModeler documentation output — formula explanation]</div>
+        <div class="ss-desc">Show CoModeler explaining a formula in plain language — e.g., how Rep Quota = Base Target × Assignment % × Ramp Factor is calculated.</div>
+      </div>
+
+
+
+      <h2>CoModeler Lab A — Generate a Line Item Dictionary</h2>
+      <p>Use CoModeler to generate a complete line item dictionary for the SYS Territory Quota module — the core quota calculation module in T&amp;Q.</p>
+
+      <ol class="lab-steps">
+        <li>Open the <strong>T&amp;Q V2 template app</strong> in your partner workspace.</li>
+        <li>Navigate to the <strong>SYS Territory Quota</strong> module (use the model map or search).</li>
+        <li>Open <strong>CoModeler</strong> for this module.</li>
+        <li>Prompt CoModeler: <em>"Generate a line item dictionary for this module. For each line item include: name, formula summary, data type, and purpose."</em></li>
+        <li>Review the output. Identify which line items calculate: (a) the base target, (b) the assignment percentage adjustment, and (c) the ramp factor adjustment.</li>
+        <li>Export or copy the dictionary — you'll use it as a reference during the extension exercise.</li>
+      </ol>
+
+      <div class="callout-tip" style="margin-top:0.75rem;">
+        <span class="callout-label">💡 What to Look For</span>
+        <p>The quota calculation follows this pattern: <strong>Base Target × Assignment % × Ramp Factor = Rep Quota</strong>. Find the line items that represent each of these three inputs and confirm you understand how they connect.</p>
+      </div>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        Which line item in SYS Territory Quota holds the final calculated quota value for a rep? What are its inputs?
+      </div>
+
+      <h2>CoModeler Lab B — Explain the Quota Calculation Logic</h2>
+      <p>Use CoModeler to understand exactly how quota is calculated for a rep who covers multiple territories with different assignment percentages.</p>
+
+      <ol class="lab-steps">
+        <li>With the T&amp;Q template app open, launch <strong>CoModeler</strong>.</li>
+        <li>Ask: <em>"How does the quota calculation work when a single rep is assigned to multiple territories at different assignment percentages? Walk me through the formula logic step by step."</em></li>
+        <li>Read the explanation. Then ask a follow-up: <em>"Which module consolidates the quota across all territories for a single rep, and what is the output used for downstream systems like ICM?"</em></li>
+        <li>Note the module name that consolidates multi-territory quota (hint: it's the one you'd export to CRM/ICM).</li>
+        <li>Ask one more: <em>"If a rep has a ramp profile that starts at 0% in month 1 and reaches 100% in month 4, how does the app calculate their prorated annual quota?"</em></li>
+      </ol>
+
+      <div class="lab-expected-todo">
+        <strong>Done when you can answer</strong>
+        What is the name of the module that holds the consolidated quota for a rep across all their territory assignments? Why does this matter for ICM integration?
+      </div>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Model Review Debrief</span>
+        <p>After completing both CoModeler labs, discuss with your partner:</p>
+        <ul>
+          <li>What surprised you about the quota calculation? Was it more or less complex than you expected?</li>
+          <li>How would you explain the quota formula to a Sales Ops stakeholder in plain language?</li>
+          <li>Which module would you check first if a rep's quota looked wrong after generation?</li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>

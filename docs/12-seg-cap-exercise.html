@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lab: Segmentation & Capacity Configurator Exercise — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+      <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Lab: Segmentation &amp; Capacity Configurator Exercise</h1>
+      <p class="subtitle">Using the CloudWorks case study — Segmentation and Capacity sections</p>
+    </div>
+    <div class="content-body">
+
+      <h2>Exercise Overview</h2>
+      <p>Using the same <strong>CloudWorks case study</strong> from the T&amp;Q module, configure the Segmentation and Capacity sections of the configurator. The case study has a dedicated section for each — scroll down past the T&amp;Q section to find them.</p>
+
+      <h2>Access</h2>
+      <ul>
+        <li>Use the <strong>same configurator app</strong> you used in the T&amp;Q exercise</li>
+        <li>Find the <strong>Segmentation section</strong> (lower in the same nav)</li>
+        <li>Then the <strong>Capacity section</strong> below that</li>
+        <li>Reference dataset files are the same — same accounts, employees, and opportunities from the T&amp;Q module</li>
+      </ul>
+
+      <div class="callout-tip">
+        After each configurator page, hit <strong>Apply / Calculate</strong> before moving on — same rule as T&amp;Q. Don't skip this step or your downstream pages may not reflect your inputs correctly.
+      </div>
+
+      <hr>
+
+      <h2>Part 1: Segmentation Configuration</h2>
+      <p>Navigate to the <strong>Segmentation section</strong> of the configurator (section 1A in the left nav). Complete these labs in order.</p>
+
+      <h2>S1 — Data Setup — Page 1A.01</h2>
+      <p>Configure the account data attributes that will drive segmentation rules and scoring. Get this right — attributes must be list-formatted to work as rule dimensions.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1A.01: SG GTM Performance Analysis Guided Setup</strong>.</li>
+        <li>Review the CloudWorks account data: key firmographic fields are Industry, Employee Count, and Revenue Band.</li>
+        <li>Enable <strong>list-formatted attributes</strong> for: Industry, Employee Band, Revenue Band. Raw numeric fields (Employee Count) must be banded — confirm the banded version is enabled, not the raw number.</li>
+        <li>Enable <em>Enable for Calculate</em> for any attribute you plan to use in scoring.</li>
+        <li>Click <strong>Apply / Calculate</strong> before moving on.</li>
+      </ol>
+
+      <div class="callout-tip" style="margin-top:0.75rem;">
+        <span class="callout-label">💡 Tip</span>
+        <p>Numeric values (like raw employee count) cannot be used directly as rule dimensions — only list-formatted attributes work. Always use banded versions for segmentation rules.</p>
+      </div>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/10-seg-config-overview.png" alt="Segmentation configurator data setup — attributes configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1A.01: Data setup — firmographic attributes configured and enabled for segmentation</figcaption>
+      </figure>
+
+      <h2>S2 — Rule-Based Segmentation — Page 1A.05</h2>
+      <p>Define the 4 CloudWorks segments and the account attributes that will serve as rule dimensions for explicit rule-based assignment.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1A.05: SG Segmentation Configuration Guided Setup</strong>.</li>
+        <li>Configure the segment list: <strong>Strategic, Named, Commercial, SMB</strong>.</li>
+        <li>Enable the following as rule dimensions: <strong>Industry, Employee Band, Revenue Band</strong>.</li>
+        <li>Enable Wallet Size Tier as a rule dimension if you completed the wallet size setup.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <div class="callout-tip" style="margin-top:0.75rem;">
+        <span class="callout-label">💡 Tip</span>
+        <p>Keep segments to 4 or fewer. Every extra segment multiplies complexity in T&amp;Q and Capacity — more territory types, more coverage ratios, more headcount rows.</p>
+      </div>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/10-seg-config-rules.png" alt="Segmentation configurator — 4 segments defined with rule dimensions" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1A.05: 4 segments configured (Strategic, Named, Commercial, SMB) with rule dimensions enabled</figcaption>
+      </figure>
+
+      <h2>S3 — Score-Based Segmentation — Page 1A.05</h2>
+      <p>Configure the scoring model that assigns every account a numeric score — acting as a catch-all for accounts that don't match any explicit rule.</p>
+
+      <ol class="lab-steps">
+        <li>Scroll to the scoring section of <strong>Page 1A.05</strong>.</li>
+        <li>Configure scoring metrics using CloudWorks's account data. Suggested: Employee Band (40%), Revenue Band (35%), Industry (25%).</li>
+        <li>Verify <strong>weights sum to exactly 100%</strong> — the configurator will warn you if they don't.</li>
+        <li>Define score-to-segment thresholds: 7–10 = Strategic, 5–7 = Named, 3–5 = Commercial, 0–3 = SMB.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <div class="callout-note" style="margin-top:0.75rem;">
+        <span class="callout-label">📝 Note</span>
+        <p>Score-based acts as the default — every account gets a score and therefore a segment. Rule-based overrides the score for accounts that explicitly match your defined conditions. Use both.</p>
+      </div>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/13-seg-score-based.png" alt="Score-based segmentation — metrics, weights, and segment thresholds configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Score-based segmentation — scoring metrics with weights summing to 100% and score-to-segment thresholds</figcaption>
+      </figure>
+
+      <h2>S4 — Wallet Size — Page 1A.03</h2>
+      <p>Configure the wallet size model that estimates total addressable spend per account. CloudWorks uses the Revenue method. This feeds directly into T&amp;Q as the default target allocation metric.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1A.03: SG Wallet Size Calculation Guided Setup</strong>.</li>
+        <li>Select <strong>Revenue method</strong> for wallet size calculation.</li>
+        <li>Set addressable market % assumptions by industry using the CloudWorks case study data (use simple round numbers for the exercise — the goal is understanding the flow, not tuning the model).</li>
+        <li>Configure geo index if prompted — use 1.0 (neutral) for all regions for this exercise.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <div class="callout-note" style="margin-top:0.75rem;">
+        <span class="callout-label">📝 Note</span>
+        <p>Wallet size is optional. If a customer doesn't have reliable firmographic data, skip it. Don't over-engineer a model the customer won't trust or maintain.</p>
+      </div>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/configurator/seg-wallet-size.png" alt="Wallet Size configuration — Revenue method selected with spending assumptions" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1A.03: Wallet Size Calculation — Revenue method with spending calculation and wallet calculation drivers configured</figcaption>
+      </figure>
+
+      <hr>
+      <h2>Part 2: Capacity Configuration</h2>
+      <p>Navigate to the <strong>Capacity section</strong> (section 1.2 in the left nav). Data setup is shared with Segmentation — skip it if you already configured it above.</p>
+
+      <h2>C1 — Role Hierarchy — Page 1.2.x</h2>
+      <p>Define CloudWorks's sales role hierarchy — the structure that determines how headcount is planned and reported.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to the role hierarchy page in <strong>section 1.2</strong> of the configurator.</li>
+        <li>Configure <strong>3 levels</strong>: Job Family Group → Job Family → Sales Role.</li>
+        <li>Job Family Groups: <strong>Core, Support</strong>.</li>
+        <li>Job Families: <strong>AE, CS, Pre-Sales, Management</strong>.</li>
+        <li>Sales Roles: <strong>Strategic AE, Commercial AE, SMB AE, Customer Success Manager, Pre-Sales Engineer, Regional Manager</strong>.</li>
+        <li><strong>Do NOT enable role grade</strong> — not needed for CloudWorks and adds unnecessary complexity.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/11-cap-config-overview.png" alt="Capacity configurator — role hierarchy configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Capacity configurator: role hierarchy — Job Family Group → Job Family → Sales Role, 3 levels, no role grade</figcaption>
+      </figure>
+
+      <h2>C2 — Coverage &amp; Workload — Page 1.2.3</h2>
+      <p>Define how roles cover accounts — the fundamental input for calculating how many people CloudWorks needs.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1.2.3: GTM Coverage &amp; Workload Capacity Guided Setup</strong>.</li>
+        <li>Configure coverage at the <strong>Americas level</strong>.</li>
+        <li>Set account-based coverage ratios: Strategic AE → 1:5 accounts (Strategic + Named), Commercial AE → 1:30 (Commercial), SMB AE → 1:100 (SMB).</li>
+        <li>Map derived coverage for overlay roles: 1 Pre-Sales generalist per 8 AEs, 1 Regional Manager per 10 AEs.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/11-cap-config-coverage.png" alt="Coverage and workload — role-to-segment mapping and coverage ratios configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1.2.3: Coverage &amp; Workload — role coverage ratios and segment mapping configured</figcaption>
+      </figure>
+
+      <h2>C3 — Revenue Target Dimensions — Page 1.2.x</h2>
+      <p>Define the dimensionality of revenue targets — how Finance provides the numbers that drive tops-down planning.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to the Revenue Target configuration page in section 1.2.</li>
+        <li>Set target level → <strong>Sub-region</strong> (CloudWorks Finance provides targets at the sub-region level).</li>
+        <li>Enable <strong>by account segment</strong> dimensionality (targets are broken down by Strategic/Named/Commercial/SMB).</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <div class="callout-warning" style="margin-top:0.75rem;">
+        <span class="callout-label">⚠ Flag for Post-Gen</span>
+        <p>Sub-region + account segment dimensionality requires post-generation routing work to connect the productivity model to the target properly. Note this as a post-gen task before moving on.</p>
+      </div>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/configurator/cap-headcount-data.png" alt="Capacity configurator — headcount data and revenue target dimensions configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Revenue target configuration — sub-region level with account segment dimensionality</figcaption>
+      </figure>
+
+      <h2>C4 — Tops-Down Planning — Page 1.2.2</h2>
+      <p>Configure the guardrail structure for finance-driven headcount planning — the NTE ceiling that constrains all bottoms-up plans.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1.2.2: GTM Top-Down HC Target Setting Guided Setup</strong>.</li>
+        <li>Set tops-down planning level → <strong>Americas</strong> (all Americas as the top-level guardrail).</li>
+        <li>Configure <strong>2 scenarios</strong>: Base and Conservative.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/14-cap-topdown-hiring.png" alt="Tops-down planning — Americas level with 2 scenarios configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1.2.2: Tops-Down — Americas guardrail level with Base and Conservative scenarios</figcaption>
+      </figure>
+
+      <h2>C5 — Bottoms-Up Planning — Page 1.2.4</h2>
+      <p>Configure the tactical hiring plan layer — where planners enter month-by-month hires, constrained by the tops-down NTE.</p>
+
+      <ol class="lab-steps">
+        <li>Navigate to <strong>Page 1.2.4: GTM Bottom-Up Hiring Plan Guided Setup</strong>.</li>
+        <li>Set bottoms-up entry level → <strong>Territory</strong>.</li>
+        <li>Set approval level → <strong>Region</strong> (plans submitted at territory, approved at region).</li>
+        <li>Leave OWP connection disabled for this exercise.</li>
+        <li>Click <strong>Apply / Calculate</strong>.</li>
+      </ol>
+
+      <figure class="screenshot" style="margin:0;">
+        <img src="../img/day2/11-cap-config-bottoms-up.png" alt="Bottoms-up planning — territory entry level with region approval configured" style="width:100%;border-radius:4px;border:1px solid #e2e8f0;">
+        <figcaption style="font-size:0.78rem;color:#6b7280;margin-top:0.35rem;text-align:center;">Page 1.2.4: Bottoms-Up — territory-level entry, region-level approval, OWP connection disabled</figcaption>
+      </figure>
+
+      <div class="callout-tip">
+        If you're doing both Segmentation and Capacity, the <strong>data setup is shared</strong> — you only need to configure accounts, employees, and opportunities once. Don't re-enter the same data in the Capacity section if you've already done it for Segmentation.
+      </div>
+
+      <hr>
+
+      <h2>Debrief Questions</h2>
+      <p>After completing both exercises, discuss these questions with your group:</p>
+
+      <h3>Segmentation</h3>
+      <ol>
+        <li>You configured 4 segments for CloudWorks (Strategic, Named, Commercial, SMB). A customer pushes back and says they want 8 segments. How do you respond? What's the downstream impact?</li>
+        <li>The scoring weights must sum to 100%. You assigned weights to 3 metrics. A 4th stakeholder now wants to add "recent growth rate" as a scoring factor. How does this change your weights, and what data would you need?</li>
+        <li>What would happen if 30% of CloudWorks's accounts had missing employee count data — a field you relied on for both rule-based and score-based segmentation? What's your mitigation plan?</li>
+        <li>A customer says: "We already have segments in Salesforce — why do we need the Segmentation app?" How do you answer?</li>
+      </ol>
+
+      <h3>Capacity</h3>
+      <ol>
+        <li>You configured coverage ratios at the Americas level. A stakeholder says EMEA needs different ratios (EMEA AEs cover fewer accounts due to relationship-based selling). How does this affect your configuration? What would you change?</li>
+        <li>CloudWorks's revenue targets are provided at sub-region level by account segment. You learned this requires post-generation routing work. What's the risk if you don't flag this clearly during configuration? How would you communicate it?</li>
+        <li>You configured 2 scenarios (base + conservative). Sales leadership now wants a 3rd scenario (stretch/optimistic). Is this a configuration change or a post-gen setup? What's the effort?</li>
+        <li>A customer's ramp profile shows new AEs at 0% in Month 1 and 20% in Month 2. Their Finance team insists on using a simpler model: full quota from Month 3. How does this difference affect your capacity calculations over a 12-month planning horizon?</li>
+      </ol>
+
+      <div class="callout-tip">
+        <span class="callout-label">✅ Exercises Complete</span>
+        <p>When the group reconvenes, the facilitator will walk through reference configurations for both Segmentation and Capacity. As with the T&amp;Q exercise, there are often multiple valid approaches — the goal is to understand the tradeoffs, not find the single "right" answer.</p>
+      </div>
+
+    </div>
+  </main>
+  <script src="../js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sales Forecasting Functional Overview — RPM Apps Lab Guide</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <div class="mobile-header">
+    <button id="hamburger">☰</button>
+    <span>RPM Apps Lab Guide</span>
+  </div>
+
+  <nav class="sidebar"></nav>
+
+  <main class="main-content">
+    <div class="content-header">
+      <h1>Sales Forecasting</h1>
+      <p class="subtitle">What the app does, who uses it, and where it sits in the RPM suite</p>
+      <div class="badge-row">
+        <span class="content-badge">Sales Forecasting Module</span>
+        <span class="content-badge">15 min</span>
+      </div>
+    </div>
+    <div class="content-body">
+      <p>The Sales Forecasting app is the predictive front-end of the RPM suite. T&amp;Q tells you what each rep is on the hook for. Segmentation tells you which accounts matter. Capacity tells you whether you have the headcount to cover them. Sales Forecasting answers a different question: <strong>given everything happening in the pipeline right now, what are you actually going to land — and where are the risks?</strong></p>
+
+      <h2>The Core Question</h2>
+      <p>From the in-app description: Sales Forecasting is a connected analytics workspace that gives sales teams a complete, real-time view of their revenue — from individual deals and pipeline health to team forecasts, account growth opportunities, and performance trends. It consolidates pipeline management, revenue prediction, account intelligence, and team performance tracking in a single interface, so users can make informed decisions based on actual numbers rather than assumptions, identify pipeline gaps early, submit reliable forecasts, surface accounts with growth potential, and understand what's actually driving team performance — all without navigating between multiple systems or relying on others to generate reports.</p>
+
+      <div class="two-col">
+        <div class="card">
+          <h3>The 6 Top-Level Pages</h3>
+          <ul>
+            <li><strong>Homepage</strong> — track sales performance, pipeline health, and revenue forecasting</li>
+            <li><strong>Sales Forecast</strong> — review, adjust, and submit forecasts; compare manual inputs against Anaplan predictions</li>
+            <li><strong>Sales Pipeline</strong> — monitor current pipeline health and coverage; track new-deal-creation; fix data quality; analyze historical movement</li>
+            <li><strong>Sales Accounts</strong> — full view of each strategic account: ARR, ACV, product adoption, white space, engagement activity</li>
+            <li><strong>Sales Insights</strong> — analyze six rolling quarters of business trends; compare team performance to guide coaching</li>
+            <li><strong>Sales Overlays</strong> — channel partner and product-level performance</li>
+          </ul>
+          <p style="font-size:0.85rem;color:#6b7280;margin-top:0.5rem;">See <a href="sf-04-app-walkthrough.html">Application Review</a> for the page-by-page detail.</p>
+        </div>
+        <div class="card">
+          <h3>The 3 Personas</h3>
+          <p style="font-size:0.85rem;color:#6b7280;margin-top:0;">From the in-app docs — every page reads "Your user role determines what data displays on the page."</p>
+          <ul>
+            <li><strong>Sales representatives</strong> — manage deals and pipeline activities</li>
+            <li><strong>Sales managers</strong> — align and review team forecasts</li>
+            <li><strong>RevOps leaders</strong> — configure processes and monitor accuracy</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>Where It Sits in the RPM Suite</h2>
+      <div class="callout-note">
+        <span class="callout-label">🔗 Connected to T&amp;Q, Segmentation, and CRM</span>
+        <p>Sales Forecasting is downstream of <strong>T&amp;Q</strong> (consumes rep-level quotas as the attainment denominator) and <strong>Segmentation</strong> (consumes account segments and potential values). It is upstream of executive reporting and connects bidirectionally to <strong>CRM</strong> — pulling opportunities and pipeline data in, pushing back updated commits and overrides. Salesforce is the V1 reference CRM via a built-in connector; other CRMs are supported via custom ADO pipelines.</p>
+      </div>
+
+      <h2>What Makes This App Different</h2>
+      <p>Unlike T&amp;Q, Segmentation, and Capacity — which are each configured per partner via a configurator UI — Sales Forecasting V1 is delivered as a <strong>templated application</strong>. The data model, UX pages, and Forecaster engine are pre-built. The implementation work is concentrated in data integration (CRM, hierarchies, history) and targeted extensions, not in walking through a configurator. See <a href="sf-03-deployment.html">Deployment Model</a> for the full picture.</p>
+
+      <h2>The AI Layer</h2>
+      <p>What sets Sales Forecasting apart from a standalone forecasting model is the <strong>Anaplan Prediction</strong> sub-engine. The platform ships with the Forecaster, which trains a panel of statistical and machine-learning algorithms — ETS, SARIMAX, Prophet, TimesFM, LightGBM, MULR/MVLR, and DeepAR — on the org's own historical sales data, generates a baseline at a chosen confidence level (P1 / P2 / P3), and exposes the result back into the planning loop. Sales Ops picks the active algorithm and confidence level; reps and managers see the baseline next to their commit. Reps and managers still own the commit — but they're now reviewing it against a machine-generated counterpoint trained on their own actuals, not negotiating in a vacuum. The full workflow is covered in the <a href="sf-05-prediction-lab.html">AI Prediction Lab</a>.</p>
+
+      <div class="callout-do">
+        <span class="callout-label">✅ Do — Access Check</span>
+        <p>Before continuing, confirm you can access the <strong>Sales Forecasting demo UX app</strong> in your Anaplan partner workspace. You'll follow along with this app during the Application Review and AI Prediction Lab sections. If you can't see it, check the <a href="00-tenant-access.html">Tenant Access &amp; Prerequisites</a> page first.</p>
+      </div>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+</body>
+</html>
